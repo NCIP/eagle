@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+ <!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+       "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+<tiles-definitions>
+    <definition name="baseDef" path="/WEB-INF/jsp/layout.jsp">
+		<put name="title" value="EAGLE Portal" />
+		<!--  the common criteria  -->
+		<put name="htmlHead" value="/WEB-INF/jsp/tiles/htmlHead_tile.jsp" />
+		<put name="overlib" value="/WEB-INF/jsp/tiles/overlib_tile.jsp" />		
+		<put name="header" value="/WEB-INF/jsp/tiles/header_tile.jsp" />
+	    <put name="crumbMenu" value="/WEB-INF/jsp/tiles/crumbMenu_tile.jsp" />
+		<put name="sideBar" value="/WEB-INF/jsp/tiles/sideBar_tile.jsp" />
+		<put name="footer" value="/WEB-INF/jsp/tiles/footer_tile.jsp" />
+		<!--  form specific criteria  -->
+		<put name="mainForm" value="" />		
+	</definition>
+	
+	<definition name="cssBaseDef" path="/WEB-INF/jsp/cssLayout.jsp">
+		<put name="title" value="EAGLE Portal" />
+		<!--  the common criteria  -->
+		<put name="htmlHead" value="/WEB-INF/jsp/tiles/htmlHead_tile.jsp" />
+		<put name="overlib" value="/WEB-INF/jsp/tiles/overlib_tile.jsp" />		
+		<put name="nciHeader" value="/WEB-INF/jsp/tiles/nciHeader_tile.jsp" />
+	    <put name="tabs" value="/WEB-INF/jsp/tiles/cssTabs_tile.jsp" />
+		<put name="sideBar" value="/WEB-INF/jsp/tiles/loginForm_tile.jsp" />
+		<put name="nciFooter" value="/WEB-INF/jsp/tiles/nciFooter_tile.jsp" />
+		<!--  form specific criteria  -->
+		<put name="mainForm" value="" />		
+	</definition>
+	
+	<definition name="caintegrator.legal" extends="cssBaseDef">
+      <put name="mainForm" value="/legal.jsp" />
+	  <put name="sideBar" value="/WEB-INF/jsp/tiles/blank_tile.jsp" />
+	  <put name="tabs" value="/WEB-INF/jsp/tiles/cssTabs_tile.jsp?s=0" />
+    </definition>
+
+	<definition name="caintegrator.splash" extends="cssBaseDef">
+      <put name="mainForm" value="/WEB-INF/jsp/tiles/splash_tile.jsp" />
+    </definition>
+        	
+	<definition name="caintegrator.welcome" extends="cssBaseDef">
+      <put name="mainForm" value="/WEB-INF/jsp/tiles/welcome_tile.jsp" />
+	  <put name="sideBar" value="/WEB-INF/jsp/tiles/blank_tile.jsp" />
+    </definition>
+    
+    <definition name="caintegrator.analysisHome" extends="baseDef">
+      <put name="mainForm" value="/WEB-INF/jsp/tiles/analysisHome_tile.jsp" />
+	  <put name="title" value="Analysis Home" />
+	  <put name="sideBar" value="/WEB-INF/jsp/tiles/sideBar_tile.jsp" />
+	  <put name="tabs" value="/WEB-INF/jsp/tiles/tabs_tile.jsp?s=3" />
+    </definition>
+    
+    <definition name="caintegrator.viewResults" extends="baseDef">
+      <put name="mainForm" value="/WEB-INF/jsp/tiles/viewResults_tile.jsp" />
+	  <put name="title" value="View Results" />
+	  <put name="sideBar" value="/WEB-INF/jsp/tiles/sideBar_tile.jsp" />
+	  <put name="tabs" value="/WEB-INF/jsp/tiles/tabs_tile.jsp?s=4" />
+    </definition>
+    
+    <definition name="caintegrator.manageLists" extends="baseDef">
+      <put name="mainForm" value="/manageLists.jsp" />
+	  <put name="title" value="List Manager" />
+	  <put name="sideBar" value="/WEB-INF/jsp/tiles/sideBar_tile.jsp" />
+	  <put name="tabs" value="/WEB-INF/jsp/tiles/tabs_tile.jsp?s=5" />
+    </definition>    
+    
+    <definition name="eagle.clinicalQuery" extends="baseDef">
+      <put name="mainForm" value="/WEB-INF/jsp/tiles/clinicalQuery_tile.jsp" />
+	  <put name="title" value="Clinical Query Form" />
+	  <put name="sideBar" value="/WEB-INF/jsp/tiles/sideBar_tile.jsp" />
+	  <put name="tabs" value="/WEB-INF/jsp/tiles/tabs_tile.jsp?s=2" />
+    </definition>
+
+</tiles-definitions>

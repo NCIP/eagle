@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN" "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+
+<taglib>
+	<tlib-version>0.5</tlib-version>
+	<jsp-version>1.2</jsp-version>
+	<short-name>caintegrator-graphing</short-name>
+	<description>
+		This library contains the graphing tags created for caIntegrator
+	</description>
+	<tag>
+		<name>KaplanMeierPlot</name>
+		<tag-class>
+			gov.nih.nci.ispy.web.taglib.KaplanMeierPlotTag
+		</tag-class>
+		<body-content>empty</body-content>
+		<description>The Kaplan Meier Survival Plot</description>
+		<attribute>
+			<name>bean</name>
+			<required>true</required>
+		</attribute>
+		<attribute>
+			<name>dataset</name>
+			<required>true</required>
+		</attribute>
+	</tag>
+	<tag>
+		<name>PCAPlot</name>
+		<tag-class>
+			gov.nih.nci.ispy.web.taglib.PCAPlotTag
+		</tag-class>
+		<body-content>empty</body-content>
+		<description>The Principal Component Analysis Plots</description>
+		<attribute>
+			<name>taskId</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>components</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>colorBy</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
+		<name>CorrPlot</name>
+		<tag-class>
+			gov.nih.nci.ispy.web.taglib.CorrScatterPlotTag
+		</tag-class>
+		<body-content>empty</body-content>
+		<description>The Correlation Analysis Plots</description>
+		<attribute>
+			<name>taskId</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>colorBy</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
+		<name>CatCorrPlot</name>
+		<tag-class>
+			gov.nih.nci.ispy.web.taglib.CatCorrPlotTag
+		</tag-class>
+		<body-content>empty</body-content>
+		<description>The Categorical Analysis Plots</description>
+		<attribute>
+			<name>taskId</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>	
+		<attribute>
+			<name>colorBy</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>	
+	</tag>
+	<tag>
+		<name>HCPlot</name>
+		<tag-class>
+			gov.nih.nci.ispy.web.taglib.HCPlotTag
+		</tag-class>
+		<body-content>empty</body-content>
+		<description>The Hierarchical Clustering Analysis Plot</description>
+		<attribute>
+			<name>taskId</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
+		<name>HCPlotReport</name>
+		<tag-class>
+			gov.nih.nci.ispy.web.taglib.HCPlotReport
+		</tag-class>
+		<body-content>empty</body-content>
+		<description>The Hierarchical Clustering Analysis Report</description>
+		<attribute>
+			<name>taskId</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
+		<name>GenePlot</name>
+		<tag-class>
+			gov.nih.nci.ispy.web.taglib.GenePlotTag
+		</tag-class>
+		<body-content>empty</body-content>
+		<description>The Gene Expression Plot</description>
+		<attribute>
+			<name>algorithm</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
+		<name>ClinicalPlot</name>
+		<tag-class>
+			gov.nih.nci.ispy.web.taglib.ClinicalPlotTag
+		</tag-class>
+		<body-content>empty</body-content>
+		<description>The Clinical Plot</description>
+		<attribute>
+			<name>taskId</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>components</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>

@@ -1,0 +1,22 @@
+#crumb	{
+	text-align:right;
+	margin-right:20px;margin-left:20px; margin-bottom:5px;	
+}
+#crumb, #crumb a	{
+	font-size: 11px;
+	color: darkgrey;
+}
+
+#side	{
+	font-size:11px;
+}
+
+button	{
+	border: 1px solid black;
+}
+
+div.error	{
+	height: 100px;
+	text-align:center;
+	font-size:15px;
+}

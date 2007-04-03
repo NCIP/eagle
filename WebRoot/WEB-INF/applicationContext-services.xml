@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+       http://www.directwebremoting.org/schema/spring-dwr http://www.directwebremoting.org/schema/spring-dwr-2.0.xsd">
+
+
+
+	<!-- Bean for CSM Login Service -->
+	<bean id="loginService"
+		class="gov.nih.nci.eagle.service.security.CsmLoginService">
+	</bean>
+
+	<!--  Beans to handle the clinical findings -->
+	<!-- bean id="clinicalFindingStrategy"
+		class="gov.nih.nci.eagle.service.findings.strategies.BaseFindingStrategy" scope="prototype">
+		<property name="queryHandler" ref="clinicalQueryHandler" />
+		<property name="cacheManager" ref="businessCacheManager" />
+		<property name="applicationFinding" ref="applicationFinding" />
+	</bean>
+	<bean id="clinicalQueryHandler"
+		class="gov.nih.nci.eagle.service.findings.handlers.ClinicalQueryHandler"
+		parent="baseQueryHandler">
+	</bean-->
+
+	<!-- Base bean for query handler -->
+	<!-- bean id="baseQueryHandler"
+		class="gov.nih.nci.eagle.service.findings.handlers.HibernateQueryHandler" abstract="true">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean-->
+	<!--  Bean for Business cache manager -->
+	<bean id="businessCacheManager" class="gov.nih.nci.caintegrator.application.cache.BusinessCacheManager" factory-method="getInstance">
+	</bean>
+	<!-- bean id="applicationFinding" class="gov.nih.nci.eagle.application.findings.ApplicationFinding" scope="prototype">
+	</bean-->
+	
+	<!-- Beans for DTO builders -->
+	<!-- bean id="clinicalQueryDTOBuilder"
+		class="gov.nih.nci.eagle.query.dto.ClinicalQueryDTOBuilder" scope="prototype">		
+	</bean-->
+		
+	<!--  Beans for DWR -->
+	<bean id="annotationHelper" class="gov.nih.nci.eagle.web.ajax.AnnotationHelper">
+		<dwr:remote javascript="AnnotationService"/>
+		<property name="annotationManager" ref="annotationManager" />
+	</bean>
+		
+	<!--  Bean for thread pool -->
+	<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+  		<property name="corePoolSize" value="10" />
+  		<property name="maxPoolSize" value="50" />
+  		<property name="queueCapacity" value="200" />
+	</bean>
+	<!-- Transactional advice pointcut definition -->
+	<!-- aop:config>
+		<aop:pointcut id="handlerMethods"
+			expression="execution(* gov.nih.nci.eagle.service.findings.handlers.QueryHandler.*(..))" />
+		<aop:advisor advice-ref="txAdvice"
+			pointcut-ref="handlerMethods" />
+	</aop:config-->
+
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="*" propagation="REQUIRED"
+				read-only="false" />
+		</tx:attributes>
+	</tx:advice>
+
+</beans>
