@@ -1,6 +1,7 @@
 <%@ page language="java" %>
 <%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <p>
 <!--  start login box -->
 <html:form action="login.do" styleId="loginForm">
