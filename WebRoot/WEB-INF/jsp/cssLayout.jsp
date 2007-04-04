@@ -15,7 +15,7 @@
 		<tiles:insert attribute="nciHeader" />
 		<div id="header">
 			<h1>
-				EAGLE App [Logo will go Here]
+				<a href="index.jsp" style="text-decoration:none; color:#fff">EAGLE App [Logo will go Here]</a>
 			</h1>
 			<tiles:insert attribute="tabs" />
 		</div>
