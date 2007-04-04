@@ -43,27 +43,31 @@
 	<definition name="caintegrator.welcome" extends="cssBaseDef">
       <put name="mainForm" value="/WEB-INF/jsp/tiles/welcome_tile.jsp" />
 	  <put name="sideBar" value="/WEB-INF/jsp/tiles/blank_tile.jsp" />
+	  <put name="tabs" value="/WEB-INF/jsp/tiles/cssTabs_tile.jsp?s=1" />
     </definition>
     
-    <definition name="caintegrator.analysisHome" extends="baseDef">
+    <definition name="caintegrator.analysisHome" extends="cssBaseDef">
       <put name="mainForm" value="/WEB-INF/jsp/tiles/analysisHome_tile.jsp" />
-	  <put name="title" value="Analysis Home" />
-	  <put name="sideBar" value="/WEB-INF/jsp/tiles/sideBar_tile.jsp" />
-	  <put name="tabs" value="/WEB-INF/jsp/tiles/tabs_tile.jsp?s=3" />
+	  <put name="sideBar" value="/WEB-INF/jsp/tiles/blank_tile.jsp" />
+	  <put name="tabs" value="/WEB-INF/jsp/tiles/cssTabs_tile.jsp?s=3" />
+    </definition>
+    
+    <definition name="caintegrator.advancedHome" extends="cssBaseDef">
+      <put name="mainForm" value="/WEB-INF/jsp/tiles/advancedHome_tile.jsp" />
+	  <put name="sideBar" value="/WEB-INF/jsp/tiles/blank_tile.jsp" />
+	  <put name="tabs" value="/WEB-INF/jsp/tiles/cssTabs_tile.jsp?s=2" />
     </definition>
     
     <definition name="caintegrator.viewResults" extends="baseDef">
       <put name="mainForm" value="/WEB-INF/jsp/tiles/viewResults_tile.jsp" />
-	  <put name="title" value="View Results" />
-	  <put name="sideBar" value="/WEB-INF/jsp/tiles/sideBar_tile.jsp" />
-	  <put name="tabs" value="/WEB-INF/jsp/tiles/tabs_tile.jsp?s=4" />
+	  <put name="sideBar" value="/WEB-INF/jsp/tiles/blank_tile.jsp" />
+	  <put name="tabs" value="/WEB-INF/jsp/tiles/cssTabs_tile.jsp?s=4" />
     </definition>
     
     <definition name="caintegrator.manageLists" extends="baseDef">
       <put name="mainForm" value="/manageLists.jsp" />
-	  <put name="title" value="List Manager" />
-	  <put name="sideBar" value="/WEB-INF/jsp/tiles/sideBar_tile.jsp" />
-	  <put name="tabs" value="/WEB-INF/jsp/tiles/tabs_tile.jsp?s=5" />
+	  <put name="sideBar" value="/WEB-INF/jsp/tiles/blank_tile.jsp" />
+	  <put name="tabs" value="/WEB-INF/jsp/tiles/cssTabs_tile.jsp?s=5" />
     </definition>    
     
     <definition name="eagle.clinicalQuery" extends="baseDef">
