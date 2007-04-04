@@ -8,4 +8,9 @@ public final class EAGLEConstants {
     public static final String ALL = "all";
     public static final int PB_BLAST_COLUMNS = 2;
     public static final int BM_BLAST_COLUMNS = 4;
+    
+    public static String getCSMAppName()	{
+		String appname = System.getProperty("gov.nih.nci.eagle.csm_app_name") != null ? (String) System.getProperty("gov.nih.nci.eagle.csm_app_name") : "eagle";
+		return appname;
+	}
 }
