@@ -9,7 +9,6 @@ public final class LoginForm extends ValidatorForm
 {
 private static Logger logger = Logger.getLogger(LoginForm.class);
 
-
 private String username;
 private String password;
 
@@ -25,12 +24,11 @@ public String getUsername() {
 public void setUsername(String username) {
     this.username = username;
 }
-public void setPassword(String argPassword)
-{
+public void setPassword(String argPassword)	{
 	password = argPassword;
 }
-public String getPassword()
-{
+public String getPassword()	{
 	return password;
 }
+
 }
