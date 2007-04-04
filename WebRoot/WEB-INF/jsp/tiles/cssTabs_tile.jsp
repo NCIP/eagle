@@ -1,9 +1,15 @@
-	<div id="menu">
-		<ul id="nav">
-		<li id="home" class="activelink"><a href="#">Home</a></li>
-		<li id="who"><a href="#">Advanced Search</a></li>
-		<li id="prod"><a href="#">Analysis</a></li>
-		<li id="serv"><a href="#">Manage Lists</a></li>
-		<li id="cont"><a href="#">View Results</a></li>
-		</ul>
-	</div>
+<% 
+String s = request.getParameter("s")!= null ? (String) request.getParameter("s") : "1";
+String a = "activelink";
+%>
+
+
+<div id="menu">
+	<ul id="nav">
+	<li id="home" class="<%= (s.equals("1")) ? a : "" %>"><a href="welcome.do">Home</a></li>
+	<li id="who" class="<%= (s.equals("2")) ? a : "" %>"><a href="advancedHome.do">Advanced Search</a></li>
+	<li id="prod" class="<%= (s.equals("3")) ? a : "" %>"><a href="analysisHome.do">Analysis</a></li>
+	<li id="serv" class="<%= (s.equals("4")) ? a : "" %>"><a href="manageLists.do" onclick="return false;">Manage Lists</a></li>
+	<li id="cont"class="<%= (s.equals("5")) ? a : "" %>"><a href="viewResults.do" onclick="return false;">View Results</a></li>
+	</ul>
+</div>
