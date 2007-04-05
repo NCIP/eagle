@@ -1,14 +1,19 @@
+<%@ page language="java" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+
 <script type="text/javascript" src="js/common/MenuSwapper.js"></script>
 <p>
 <div class="comments">
 <div>
 	<b>Analysis Name:</b>
-	<input type="text"/>
+	<input type="text" name="analysisName" id="analysisName"/>
 </div>
 
 <div class="elementTile">
 	<b>Statistical Method</b>
-	<select onchange="$('baseline').disabled = (this.selectedIndex == '0') ? '' : 'true'; if(this.selectedIndex == '2') { $('covariates').show();}else {$('covariates').hide();} ">
+	<select id="statisticalMethod" name="statisticalMethod" onchange="$('baseline').disabled = (this.selectedIndex == '0') ? '' : 'true'; if(this.selectedIndex == '2') { $('covariates').show();}else {$('covariates').hide();} ">
 		<option> T-Test: Two Sample Test</option>
 		<option> F-Test: One Way ANOVA</option>
 		<option> Linear Model with/without covariate adjustment</option>
@@ -17,7 +22,7 @@
 
 <div id="baselineDiv">
 	<b>Baseline:</b>
-	<select id="baseline">
+	<select id="baseline" name="baseline">
 		<option>Group1</option>
 		<option>Group1</option>
 		<option>Group1</option>
@@ -38,7 +43,7 @@
 			<tbody>
 				<tr style="vertical-align: top;">
 					<td>
-						<select name="cexistingGroups" multiple="multiple" size="5"
+						<select name="existingCovariates" multiple="multiple" size="5"
 							ondblclick="MenuSwapper.move($('cnonselectedGroups'),$('cselectedGroups'));"
 							id="cnonselectedGroups" style="width: 200px;">
 							<option>Age</option>
@@ -57,7 +62,7 @@
 							value="&gt;&gt;" type="button"/>
 					</td>
 					<td>
-						<select name="cselectedGroups" multiple="multiple" size="5"
+						<select name="selectedCovariates" multiple="multiple" size="5"
 							ondblclick="MenuSwapper.move($('cselectedGroups'),$('cnonselectedGroups'));"
 							id="cselectedGroups" style="width: 200px;"></select>
 					</td>
@@ -79,21 +84,11 @@
 						<select name="existingGroups" multiple="multiple" size="5"
 							ondblclick="MenuSwapper.move($('nonselectedGroups'),$('selectedGroups'));"
 							id="nonselectedGroups" style="width: 200px;">
-							<option>
-								Smokers
-							</option>
-							<option>
-								Non-Smokers
-							</option>
-							<option>
-								Males
-							</option>
-							<option>
-								Females
-							</option>
-							<option>
-								ALL
-							</option>
+							<option>Smokers</option>
+							<option>Non-Smokers</option>
+							<option>Males</option>
+							<option>Females</option>
+							<option>ALL</option>
 						</select>
 					</td>
 					<td style="vertical-align: middle;">
@@ -113,29 +108,25 @@
 							id="selectedGroups" style="width: 200px;"></select>
 					</td>
 				</tr>
-
 			</tbody>
 		</table>
-
-
-	</div>
-
+</div>
 
 <div>
 <b>Select Constraint</b><br/>
 	
 	&nbsp;&nbsp;Fold Change&nbsp; &ge;	
-	<input size="14" value="2.0" type="text"/>
+	<input size="14" value="2.0" type="text" name="foldChange"/>
 			
 	&nbsp;p-Value &nbsp; &le;
-	<input size="10" value="0.05" type="text"/>
+	<input size="10" value="0.05" type="text" name="pvalue"/>
 
 </div>
 
 
 <div>
 	<b>Platform:</b>
-	<select>
+	<select name="platform" id="platform">
 		<option selected="true">Blood</option>
 		<option>Tissue</option>
 	</select>
