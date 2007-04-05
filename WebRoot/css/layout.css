@@ -35,7 +35,7 @@ div.date{float:left;width: 4em;padding: 5px 0;background: #F1DDC4;color:#B0001E;
     text-align:center;margin: 0 4px 4px 0;font-size: 80%;line-height:0.9}
 div.date span{display:block;font-size: 150%;font-weight:bold}
 
-div.comments div{background: #EEE;margin-bottom:10px}
+div.comments div{background: #EEE;margin-bottom:10px; padding:5px;}
 div.comments p{padding: 10px;margin:0}
 div.comments div.odd{background:#DAE6FE}
 
