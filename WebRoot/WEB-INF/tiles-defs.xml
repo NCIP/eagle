@@ -58,23 +58,29 @@
 	  <put name="tabs" value="/WEB-INF/jsp/tiles/cssTabs_tile.jsp?s=2" />
     </definition>
     
-    <definition name="caintegrator.viewResults" extends="baseDef">
+    <definition name="caintegrator.viewResults" extends="cssBaseDef">
       <put name="mainForm" value="/WEB-INF/jsp/tiles/viewResults_tile.jsp" />
 	  <put name="sideBar" value="/WEB-INF/jsp/tiles/blank_tile.jsp" />
 	  <put name="tabs" value="/WEB-INF/jsp/tiles/cssTabs_tile.jsp?s=4" />
     </definition>
     
-    <definition name="caintegrator.manageLists" extends="baseDef">
+    <definition name="caintegrator.manageLists" extends="cssBaseDef">
       <put name="mainForm" value="/manageLists.jsp" />
 	  <put name="sideBar" value="/WEB-INF/jsp/tiles/blank_tile.jsp" />
 	  <put name="tabs" value="/WEB-INF/jsp/tiles/cssTabs_tile.jsp?s=5" />
-    </definition>    
+    </definition> 
     
-    <definition name="eagle.clinicalQuery" extends="baseDef">
+    <definition name="eagle.classComparison" extends="cssBaseDef">
+      <put name="mainForm" value="/WEB-INF/jsp/tiles/classComparison_tile.jsp" />
+	  <put name="sideBar" value="/WEB-INF/jsp/tiles/blank_tile.jsp" />
+	  <put name="tabs" value="/WEB-INF/jsp/tiles/cssTabs_tile.jsp?s=3" />
+    </definition>     
+    
+    <definition name="eagle.clinicalQuery" extends="cssBaseDef">
       <put name="mainForm" value="/WEB-INF/jsp/tiles/clinicalQuery_tile.jsp" />
 	  <put name="title" value="Clinical Query Form" />
 	  <put name="sideBar" value="/WEB-INF/jsp/tiles/sideBar_tile.jsp" />
-	  <put name="tabs" value="/WEB-INF/jsp/tiles/tabs_tile.jsp?s=2" />
+	  <put name="tabs" value="/WEB-INF/jsp/tiles/cssTabs_tile.jsp?s=2" />
     </definition>
 
 </tiles-definitions>

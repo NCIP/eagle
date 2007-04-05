@@ -7,6 +7,7 @@
     <!-- ========== Form Bean Definitions ================================== -->
     <form-beans>
     	<form-bean name="loginForm" type="gov.nih.nci.eagle.web.struts.LoginForm"/>
+    	<form-bean name="classComparisonForm" type="gov.nih.nci.eagle.web.struts.ClassComparisonForm"/>
   	</form-beans>
   <!-- ========== Global Exception Definitions ============================ -->
   <global-exceptions />
@@ -49,6 +50,29 @@
     <forward name="success" path="target.viewResults"/> 
     <forward name="failure" path="/clinicalInit.do?method=setup"/>    
     </action>
+    
+    <action path="/classComparisonInit" forward="eagle.classComparison"/>
+    <!--  
+    <action path="/classComparisonInit"
+           type="org.springframework.web.struts.DelegatingActionProxy"
+           name="classComparisonForm"
+           scope="request"
+           validate="false"
+           parameter="method">
+    <forward name="success" path="eagle.classComparison"/> 
+    <forward name="failure" path="caintegrator.welcome"/>    
+    </action>
+    <action path="/classComparison"
+           type="org.springframework.web.struts.DelegatingActionProxy"
+           name="classComparisonForm"
+           scope="request"
+           validate="true"
+           input="/classComparisonInit.do?method=setup"
+           parameter="method">
+    <forward name="success" path="eagle.viewResults"/> 
+    <forward name="failure" path="/classComparisonInit.do?method=setup"/>    
+    </action>
+    -->
        
     <action path="/logout"
            type="gov.nih.nci.eagle.web.struts.LogoutAction"
