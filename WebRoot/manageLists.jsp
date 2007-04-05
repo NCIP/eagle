@@ -11,16 +11,14 @@
 				java.util.HashMap,
 				java.util.List,
 				org.dom4j.Document"%>
-<script type='text/javascript' src='js/lib/scriptaculous/effects.js'></script>
-<script type='text/javascript' src='dwr/interface/UserListHelper.js'></script>
-
+<!-- 
 <script type='text/javascript' src='dwr/engine.js'></script>
 <script type='text/javascript' src='dwr/util.js'></script>
 <script type='text/javascript' src='js/lib/common/ManageListHelper.js'></script>
 <script type='text/javascript' src='js/lib/common/TextFormList.js'></script>
 <script type='text/javascript' src='js/lib/common/FormChanger.js'></script>
 <script type='text/javascript' src='js/lib/common/StatusMessage.js'></script>
-
+-->
 <script type="text/javascript">
 	function handleResponse(msg)	{
 		ManageListHelper.handleResponse(msg);
@@ -57,14 +55,16 @@
 		padding:3px;
 	}
 </style>
+<!-- 
 <script type="text/javascript">Help.insertHelp("Manage_lists_overview", " align='right'", "padding:2px;");</script>
+-->
 <iframe id="RSIFrame" name="RSIFrame" style="width:0px; height:0px; border: 0px" src="blank.jsp"></iframe>
 
 <span id="info">&nbsp;</span>
 
 <div style="text-align:center">
 <%
-	ListType[] lts = TARGETListFilter.values();
+	ListType[] lts = EAGLEListFilter.values();
 	for(int i=0; i<lts.length; i++)	{
 		String label = lts[i].toString();
 %>
@@ -105,13 +105,14 @@
 %>
 
 <script type="text/javascript">
+/*
 		if(!saf)	{
 			addLoadEvent(ManageListHelper.generic_cb); 
 		}
 		else	{
 			ManageListHelper.generic_cb("init");
 		}
-		
+*/		
 		//StatusMessage.showStatus("asdf");
 </script>
 
@@ -136,7 +137,7 @@
 						String label = lts[i].toString();			
 						
 						//process the subtypes associated with this ListType
-						List subtypes = TARGETListFilter.getSubTypesForType(lts[i]);	
+						List subtypes = EAGLEListFilter.getSubTypesForType(lts[i]);	
 						if(subtypes!=null && subtypes.size()>0)	{
 							for(int s=0; s<subtypes.size(); s++)	{
 								String lsts =((ListSubType)subtypes.get(s)).toString();
