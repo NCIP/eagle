@@ -10,6 +10,17 @@
        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
        http://www.directwebremoting.org/schema/spring-dwr http://www.directwebremoting.org/schema/spring-dwr-2.0.xsd">
 
+	<!-- Findings Manager -->
+	<bean id="eagleFindingsManager"
+		class="gov.nih.nci.caintegrator.studyQueryService.FindingsManagerImpl"
+		scope="prototype">
+		<property name="strategyList">
+			<list>
+				<ref bean="epiQueryStrategy" />
+			</list>
+		</property>
+	</bean>
+
 
 
 	<!-- Bean for CSM Login Service -->
@@ -18,58 +29,45 @@
 	</bean>
 
 	<!--  Beans to handle the clinical findings -->
-	<!-- bean id="clinicalFindingStrategy"
-		class="gov.nih.nci.eagle.service.findings.strategies.BaseFindingStrategy" scope="prototype">
-		<property name="queryHandler" ref="clinicalQueryHandler" />
-		<property name="cacheManager" ref="businessCacheManager" />
-		<property name="applicationFinding" ref="applicationFinding" />
+	<bean id="epiQueryStrategy"
+		class="gov.nih.nci.caintegrator.application.service.strategy.AsynchronousFindingStrategy" scope="prototype">
+		<property name="queryHandler" ref="epiQueryHandler" />
+		<property name="businessCacheManager" ref="businessCacheManager" />
+		<property name="taskExecutor" ref="taskExecutor" />
+		<property name="taskResult" ref="taskResult" />
 	</bean>
-	<bean id="clinicalQueryHandler"
-		class="gov.nih.nci.eagle.service.findings.handlers.ClinicalQueryHandler"
-		parent="baseQueryHandler">
-	</bean-->
 
-	<!-- Base bean for query handler -->
-	<!-- bean id="baseQueryHandler"
-		class="gov.nih.nci.eagle.service.findings.handlers.HibernateQueryHandler" abstract="true">
+	<bean id="epiQueryHandler"
+		class="gov.nih.nci.eagle.service.handlers.EpidemiologicalQueryHandler" >
 		<property name="sessionFactory" ref="sessionFactory" />
-	</bean-->
+	</bean>
 	<!--  Bean for Business cache manager -->
-	<bean id="businessCacheManager" class="gov.nih.nci.caintegrator.application.cache.BusinessCacheManager" factory-method="getInstance">
+	<bean id="businessCacheManager"
+		class="gov.nih.nci.caintegrator.application.cache.BusinessCacheManager"
+		factory-method="getInstance">
 	</bean>
 	<!-- bean id="applicationFinding" class="gov.nih.nci.eagle.application.findings.ApplicationFinding" scope="prototype">
-	</bean-->
-	
+		</bean-->
+
 	<!-- Beans for DTO builders -->
 	<!-- bean id="clinicalQueryDTOBuilder"
 		class="gov.nih.nci.eagle.query.dto.ClinicalQueryDTOBuilder" scope="prototype">		
-	</bean-->
-		
+		</bean-->
+
 	<!--  Beans for DWR -->
-	<bean id="annotationHelper" class="gov.nih.nci.eagle.web.ajax.AnnotationHelper">
+	<!-- >bean id="annotationHelper" class="gov.nih.nci.eagle.web.ajax.AnnotationHelper">
 		<dwr:remote javascript="AnnotationService"/>
 		<property name="annotationManager" ref="annotationManager" />
-	</bean>
-		
-	<!--  Bean for thread pool -->
-	<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
-  		<property name="corePoolSize" value="10" />
-  		<property name="maxPoolSize" value="50" />
-  		<property name="queueCapacity" value="200" />
-	</bean>
-	<!-- Transactional advice pointcut definition -->
-	<!-- aop:config>
-		<aop:pointcut id="handlerMethods"
-			expression="execution(* gov.nih.nci.eagle.service.findings.handlers.QueryHandler.*(..))" />
-		<aop:advisor advice-ref="txAdvice"
-			pointcut-ref="handlerMethods" />
-	</aop:config-->
+		</bean-->
 
-	<tx:advice id="txAdvice" transaction-manager="txManager">
-		<tx:attributes>
-			<tx:method name="*" propagation="REQUIRED"
-				read-only="false" />
-		</tx:attributes>
-	</tx:advice>
+	
+	<!--  Bean for thread pool -->
+	<bean id="taskExecutor"
+		class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<property name="corePoolSize" value="10" />
+		<property name="maxPoolSize" value="50" />
+		<property name="queueCapacity" value="200" />
+	</bean>
+
 
 </beans>

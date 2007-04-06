@@ -12,7 +12,7 @@
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="configLocation">
-			<value>/WEB-INF/target-domain-hibernate.cfg.xml</value>
+			<value>/WEB-INF/eagle-domain-hibernate.cfg.xml</value>
 		</property>
 
 	</bean>
