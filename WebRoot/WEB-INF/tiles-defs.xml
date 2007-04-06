@@ -75,6 +75,12 @@
 	  <put name="sideBar" value="/WEB-INF/jsp/tiles/blank_tile.jsp" />
 	  <put name="tabs" value="/WEB-INF/jsp/tiles/cssTabs_tile.jsp?s=3" />
     </definition>     
+ 
+     <definition name="eagle.epiQuery" extends="cssBaseDef">
+      <put name="mainForm" value="/WEB-INF/jsp/tiles/epiQuery_tile.jsp" />
+	  <put name="sideBar" value="/WEB-INF/jsp/tiles/blank_tile.jsp" />
+	  <put name="tabs" value="/WEB-INF/jsp/tiles/cssTabs_tile.jsp?s=2" />
+    </definition>     
     
     <definition name="eagle.clinicalQuery" extends="cssBaseDef">
       <put name="mainForm" value="/WEB-INF/jsp/tiles/clinicalQuery_tile.jsp" />

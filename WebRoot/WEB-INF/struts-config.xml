@@ -8,6 +8,7 @@
     <form-beans>
     	<form-bean name="loginForm" type="gov.nih.nci.eagle.web.struts.LoginForm"/>
     	<form-bean name="classComparisonForm" type="gov.nih.nci.eagle.web.struts.ClassComparisonForm"/>
+    	<form-bean name="epiForm" type="gov.nih.nci.eagle.web.struts.EpiForm"/>
   	</form-beans>
   <!-- ========== Global Exception Definitions ============================ -->
   <global-exceptions />
@@ -71,6 +72,29 @@
            parameter="method">
     <forward name="success" path="eagle.viewResults"/> 
     <forward name="failure" path="/classComparisonInit.do?method=setup"/>    
+    </action>
+    -->
+
+    <action path="/epiQueryInit" forward="eagle.epiQuery"/>
+    <!--  
+    <action path="/epiQueryInit"
+           type="org.springframework.web.struts.DelegatingActionProxy"
+           name="epiForm"
+           scope="request"
+           validate="false"
+           parameter="method">
+    <forward name="success" path="eagle.epiQuery"/> 
+    <forward name="failure" path="caintegrator.welcome"/>    
+    </action>
+    <action path="/epiQuery"
+           type="org.springframework.web.struts.DelegatingActionProxy"
+           name="epiForm"
+           scope="request"
+           validate="true"
+           input="/epiQueryInit.do?method=setup"
+           parameter="method">
+    <forward name="success" path="eagle.viewResults"/> 
+    <forward name="failure" path="/epiQueryInit.do?method=setup"/>    
     </action>
     -->
        
