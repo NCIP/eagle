@@ -15,7 +15,7 @@ ul#nav,ul#nav li{list-style-type:none;margin:0;padding:0}
 ul#nav{float:right;font-size: 80%}
 ul#nav li{float:left;margin-left: 3px;text-align: center}
 ul#nav a{float:left;width: 115px;padding: 5px 0;background: #A0A0A0;text-decoration:none;color: #FFF}
-ul#nav a:hover{background: lightblue;color: #000}
+ul#nav a:hover{background: #DAE6FE;color: #000}
 ul#nav li.activelink a,ul#nav li.activelink a:hover{background: #FFF;color: #003}
 
 div#container{width:770px;margin:0 auto 10px;padding:5px 0 10px;text-align:left;background:#FFF}

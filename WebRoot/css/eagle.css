@@ -36,3 +36,8 @@ button.menuButton	{
 div.elementTile	{
 	padding:20px;
 }
+
+.underlineRight	{
+	text-align:right;
+	border-bottom: 1px solid black;
+}
