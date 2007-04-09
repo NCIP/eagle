@@ -46,8 +46,8 @@
 		class="gov.nih.nci.caintegrator.application.cache.BusinessCacheManager"
 		factory-method="getInstance">
 	</bean>
-	<!-- bean id="applicationFinding" class="gov.nih.nci.eagle.application.findings.ApplicationFinding" scope="prototype">
-		</bean-->
+	<bean id="presentationCacheManager" class="gov.nih.nci.caintegrator.application.cache.PresentationCacheManager" factory-method="getInstance">
+	</bean>	
 
 	<!-- Beans for DTO builders -->
 	<!-- bean id="clinicalQueryDTOBuilder"
