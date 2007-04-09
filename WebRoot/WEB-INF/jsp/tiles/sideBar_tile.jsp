@@ -13,7 +13,7 @@
 
 <div id="sidebar">
 <%
-	ListType[] lts = TARGETListFilter.values();
+	ListType[] lts = EAGLEListFilter.values();
 	for(int i=0; i<lts.length; i++)	{
 		String label = lts[i].toString();
 %>
