@@ -14,7 +14,11 @@
 			<ref bean="loginService" />
 		</property>
 	</bean>
-	
+	<!-- 
+	<bean name="/classComparisonInit"
+		class="gov.nih.nci.eagle.web.struts.ClassComparisonAction" scope="prototype">		
+	</bean>
+	-->
 	<!-- bean name="/clinicalQuery"
 		class="gov.nih.nci.eagle.web.struts.ClinicalAction" scope="prototype">
 		<property name="strategy">
@@ -34,4 +38,16 @@
 		<property name="cacheManager" ref="businessCacheManager" />	
 	</bean-->
 
+	<bean name="/epiQueryInit"
+		class="gov.nih.nci.eagle.web.struts.EpiAction" scope="prototype">		
+	</bean>
+	
+	<bean name="/epiQuery"
+		class="gov.nih.nci.eagle.web.struts.EpiAction" scope="prototype">		
+	</bean>	
+	<!-- bean name="/epiReport"
+		class="gov.nih.nci.eagle.web.struts.EpiAction" scope="prototype">	
+		<property name="cacheManager" ref="businessCacheManager" />	
+	</bean -->
+	
 </beans>
