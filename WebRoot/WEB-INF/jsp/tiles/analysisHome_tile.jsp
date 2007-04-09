@@ -1,7 +1,7 @@
 <p>
 <div class="comments" style="margin:40px;">
 <div class="odd">
-	<p><a href="classComparisonInit.do" style="margin:10px">Class Comparison Analysis</a></p>
+	<p><a href="classComparisonInit.do?method=setup" style="margin:10px">Class Comparison Analysis</a></p>
 </div>
 <br/><br/>
 <div>
