@@ -47,11 +47,27 @@
 		<mapping
 			resource="gov/nih/nci/caintegrator/domain/finding/clinical/bean/ClinicalFinding.hbm.xml" />
 		<mapping
-			resource="gov/nih/nci/caintegrator/domain/study/bean/StudyParticipant.hbm.xml" />
+			resource="gov/nih/nci/caintegrator/domain/epidemiology/bean/EpidemiologicalStudyParticipant.hbm.xml" />
+		<mapping
+			resource="gov/nih/nci/caintegrator/domain/epidemiology/bean/DietaryConsumption.hbm.xml" />
+		<mapping
+			resource="gov/nih/nci/caintegrator/domain/epidemiology/bean/TobaccoConsumption.hbm.xml" />
+		<mapping
+			resource="gov/nih/nci/caintegrator/domain/epidemiology/bean/EnvironmentalFactor.hbm.xml" />
+		<mapping
+			resource="gov/nih/nci/caintegrator/domain/epidemiology/bean/Relative.hbm.xml" />
+		<mapping
+			resource="gov/nih/nci/caintegrator/domain/epidemiology/bean/MedicalCondition.hbm.xml" />
+		<mapping
+			resource="gov/nih/nci/caintegrator/domain/epidemiology/bean/BehavioralAssessment.hbm.xml" />
+		<mapping
+			resource="gov/nih/nci/caintegrator/domain/epidemiology/bean/Lifestyle.hbm.xml" />
 		<mapping
 			resource="gov/nih/nci/caintegrator/domain/study/bean/Activity.hbm.xml" />
 		<mapping
 			resource="gov/nih/nci/caintegrator/domain/study/bean/Study.hbm.xml" />
+		<mapping
+			resource="gov/nih/nci/caintegrator/domain/study/bean/StudyParticipant.hbm.xml" />
 		<mapping
 			resource="gov/nih/nci/caintegrator/domain/study/bean/Specimen.hbm.xml" />
 		<mapping
