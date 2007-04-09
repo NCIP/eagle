@@ -5,31 +5,34 @@
 
 <script type="text/javascript" src="js/common/MenuSwapper.js"></script>
 
+<html:form action="classComparison.do?method=submit" >
+<html:errors property="queryErrors" />
+
 <p>
 <div class="comments">
 <h2>Class Comparison Analysis</h2>
 <div>
 	<b>Analysis Name:</b>
-	<input type="text" name="analysisName" id="analysisName"/>
+	<html:text property="analysisName" styleId="analysisName"/>
 </div>
 
 <div class="elementTile">
 	<b>Statistical Method</b>
-	<select id="statisticalMethod" name="statisticalMethod" onchange="$('baseline').disabled = (this.selectedIndex == '0') ? '' : 'true'; if(this.selectedIndex == '2') { $('covariates').show();}else {$('covariates').hide();} ">
-		<option> T-Test: Two Sample Test</option>
-		<option> F-Test: One Way ANOVA</option>
-		<option> Linear Model with/without covariate adjustment</option>
-	</select>
+	<html:select styleId="statisticalMethod" property="statisticalMethod" onchange="$('baseline').disabled = (this.selectedIndex == '0') ? '' : 'true'; if(this.selectedIndex == '2') { $('covariates').show();}else {$('covariates').hide();} ">
+		<html:option value="t-test"> T-Test: Two Sample Test</html:option>
+		<html:option value="f-test"> F-Test: One Way ANOVA</html:option>
+		<html:option value="lm"> Linear Model with/without covariate adjustment</html:option>
+	</html:select>
 </div>
 
 <div id="baselineDiv">
 	<b>Baseline:</b>
-	<select id="baseline" name="baseline">
-		<option>Group1</option>
-		<option>Group1</option>
-		<option>Group1</option>
-		<option>Group1</option>
-	</select>
+	<html:select styleId="baseline" property="baseline">
+		<html:option value="g1">Group1</html:option>
+		<html:option value="g2">Group1</html:option>
+		<html:option value="g3">Group1</html:option>
+		<html:option value="g4">Group1</html:option>
+	</html:select>
 </div>
 
 <div id="covariates" style="display:none">
@@ -45,14 +48,14 @@
 			<tbody>
 				<tr style="vertical-align: top;">
 					<td>
-						<select name="existingCovariates" multiple="multiple" size="5"
+						<html:select property="existingCovariates" multiple="multiple" size="5"
 							ondblclick="MenuSwapper.move($('cnonselectedGroups'),$('cselectedGroups'));"
-							id="cnonselectedGroups" style="width: 200px;">
-							<option>Age</option>
-							<option>Gender</option>
-							<option>Smoking Status</option>
-							<option>Residential Area</option>
-						</select>
+							styleId="cnonselectedGroups" style="width: 200px;">
+							<html:option value="age">Age</html:option>
+							<html:option value="gender">Gender</html:option>
+							<html:option value="smokingStatus">Smoking Status</html:option>
+							<html:option value="residentialArea">Residential Area</html:option>
+						</html:select>
 					</td>
 					<td style="vertical-align: middle;">
 						<input
@@ -64,9 +67,9 @@
 							value="&gt;&gt;" type="button"/>
 					</td>
 					<td>
-						<select name="selectedCovariates" multiple="multiple" size="5"
+						<html:select property="selectedCovariates" multiple="multiple" size="5"
 							ondblclick="MenuSwapper.move($('cselectedGroups'),$('cnonselectedGroups'));"
-							id="cselectedGroups" style="width: 200px;"></select>
+							styleId="cselectedGroups" style="width: 200px;"></html:select>
 					</td>
 				</tr>
 			</tbody>
@@ -83,15 +86,15 @@
 					<td>
 						Existing Groups
 						<br>
-						<select name="existingGroups" multiple="multiple" size="5"
+						<html:select property="existingGroups" multiple="multiple" size="5"
 							ondblclick="MenuSwapper.move($('nonselectedGroups'),$('selectedGroups'));"
-							id="nonselectedGroups" style="width: 200px;">
-							<option>Smokers</option>
-							<option>Non-Smokers</option>
-							<option>Males</option>
-							<option>Females</option>
-							<option>ALL</option>
-						</select>
+							styleId="nonselectedGroups" style="width: 200px;">
+							<html:option value="smokers">Smokers</html:option>
+							<html:option value="nonSmokers">Non-Smokers</html:option>
+							<html:option value="males">Males</html:option>
+							<html:option value="females">Females</html:option>
+							<html:option value="all">ALL</html:option>
+						</html:select>
 					</td>
 					<td style="vertical-align: middle;">
 						<input
@@ -105,9 +108,9 @@
 					<td>
 						Selected Groups
 						<br>
-						<select name="selectedGroups" multiple="multiple" size="5"
+						<html:select property="selectedGroups" multiple="multiple" size="5"
 							ondblclick="MenuSwapper.move($('selectedGroups'),$('nonselectedGroups'));"
-							id="selectedGroups" style="width: 200px;"></select>
+							styleId="selectedGroups" style="width: 200px;"></html:select>
 					</td>
 				</tr>
 			</tbody>
@@ -118,20 +121,20 @@
 <b>Select Constraint</b><br/>
 	
 	&nbsp;&nbsp;Fold Change&nbsp; &ge;	
-	<input size="14" value="2.0" type="text" name="foldChange"/>
+	<html:text size="14" value="2.0" property="foldChange" />
 			
 	&nbsp;p-Value &nbsp; &le;
-	<input size="10" value="0.05" type="text" name="pvalue"/>
+	<html:text size="10" value="0.05" property="pvalue" />
 
 </div>
 
 
 <div>
 	<b>Platform:</b>
-	<select name="platform" id="platform">
-		<option selected="true">Blood</option>
-		<option>Tissue</option>
-	</select>
+	<html:select property="platform" styleId="platform">
+		<html:option value="blood">Blood</html:option>
+		<html:option value="tissue">Tissue</html:option>
+	</html:select>
 </div>
 
 <div style="text-align:center">
@@ -141,3 +144,4 @@
 </div>
 
 </p>
+</html:form>
