@@ -3,6 +3,9 @@
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 
+<html:form action="epiQuery.do?method=submit" >
+<html:errors property="queryErrors" />
+
 <p>
 <div class="comments">
 <h2>Epidemiology Query</h2>
@@ -17,18 +20,17 @@
 	</p>
 	<div>
 		<b>Query Name</b>
-			<input type="text" />
+			<html:text property="queryName" />
 			(should be unique)
 	</div>
 
 	<div>
 		<b>Patients</b>
-			<select>
-				<option>Group1</option>
-				<option>Group2</option>
-				<option>Group3</option>
-				<option>Group4</option>
-			</select>
+		<html:select property="patientGroup">
+			<html:option value="Group1">Group1</html:option>
+			<html:option value="Group2">Group2</html:option>
+			<html:option value="Group3">Group3</html:option>
+		</html:select>
 	</div>
 
 	<a name="smoking"></a>
@@ -38,27 +40,26 @@
 
 	<div>
 		<b>Smoking Status</b>
-		<select>
-			<option>Current Smoker</option>
-			<option>Former Smoker</option>
-			<option>Occasional Smoker</option>
-			<option>Non-smoker</option>
-			<option>...	</option>
-		</select>
+		<html:select property="smokingStatus">
+			<html:option value="current">Current Smoker</html:option>
+			<html:option value="former">Former Smoker</html:option>
+			<html:option value="occasional">Occasional Smoker</html:option>
+			<html:option value="non-smoker">Non-smoker</html:option>
+		</html:select>
 	</div>
 
 	<div>
 		<b>Cigarette Smoking</b><br/>
-		Intensity:<input type="text" />
+		Intensity: <html:text property="intensity" />
 		(cigarettes per day)
 		<br />
-		Duration:<input type="text" />
+		Duration: <html:text property="duration" />
 		(years smoked)
 		<br />
-		Age at Initiation:	<input type="text" />
+		Age at Initiation:	<html:text property="ageAtInitiation" />
 		(years)
 		<br />
-		Years Since Quitting:<input type="text" />
+		Years Since Quitting: <html:text property="yearsSinceQuitting" />
 		(years)
 		<br />
 	</div>
@@ -69,12 +70,10 @@
 	</h4>
 	<div>
 		<b>Fagerstrom</b>
-		<select>
-			<option>1</option>
-			<option>2</option>
-			<option>3</option>
-			<option>...</option>
-		</select>
+		<html:select property="fagerstromScore">
+			<html:option value="1">1</html:option>
+			<html:option value="2">2</html:option>
+		</html:select>
 	</div>
 
 	<a name="demographics"></a>
@@ -84,116 +83,114 @@
 	<div>
 		<b>Age (years)</b>
 		lower:
-		<select style="width:60px">
-			<option>10</option>
-			<option>10</option>
-		</select>
+		<html:select property="ageLower" style="width:60px">
+			<html:option value="10">10</html:option>
+			<html:option value="20">20</html:option>
+		</html:select>
 		upper:
-		<select style="width:60px">
-			<option>90</option>
-			<option>10</option>
-		</select>
+		<html:select property="ageUpper" style="width:60px">
+			<html:option value="80">80</html:option>
+			<html:option value="90">90</html:option>
+		</html:select>
 		&nbsp;years
 	</div>
 
 	<div>
 		<b>Self Reported Gender</b>
-		<select>
-			<option>Male</option>
-			<option>Female</option>
-			<option>other/unknown</option>
-		</select>
+		<html:select property="gender">
+			<html:option value="male">Male</html:option>
+			<html:option value="female">Female</html:option>
+			<html:option value="other">other/unknown</html:option>
+		</html:select>
 	</div>
 
 	<div>
 		<b>Weight</b>
-		<input type="text" />
-		<select>
-			<option>LBS</option>
-			<option>KILOS</option>
-		</select>
+		<html:text property="weight" />
+		<html:select property="weightMeasure">
+			<html:option value="lbs">LBS</html:option>
+			<html:option value="kilos">KILOS</html:option>
+		</html:select>
 	</div>
 
 	<div>
 		<b>Height</b>
-			<input type="text" />
-			<select>
-				<option>Inches</option>
-				<option>CM</option>
-			</select>
+			<html:text property="height" />
+			<html:select property="heightMeasure">
+				<html:option value="inches">Inches</html:option>
+				<html:option value="cm">CM</html:option>
+			</html:select>
 	</div>
 
 	<div>
 		<b>Waist Circumference</b>
-		<select>
-			<option>20</option>
-			<option>21</option>
-			<option>33</option>
-			<option>34</option>
-			<option>...</option>
-		</select>
+		<html:select property="waist">
+			<html:option value="20">20</html:option>
+			<html:option value="21">21</html:option>
+			<html:option value="33">33</html:option>
+			<html:option value="34">34</html:option>
+		</html:select>
 
-		<select>
-			<option>inches</option>
-			<option>cm</option>
-			<option>...</option>
-		</select>
+		<html:select property="waistMeasure">
+			<html:option value="inches">inches</html:option>
+			<html:option value="cm">cm</html:option>
+		</html:select>
 	</div>
 
 	<div>
 		<b>Education Level (highest)</b>
-		<select>
-			<option>High School</option>
-			<option>Bachelors</option>
-			<option>Masters	</option>
-			<option>PhD</option>
-		</select>
+		<html:select property="educationLevel">
+			<html:option value="hs">High School</html:option>
+			<html:option value="bs">Bachelors</html:option>
+			<html:option value="ms">Masters	</html:option>
+			<html:option value="phd">PhD</html:option>
+		</html:select>
 	</div>
 
 	<div>
 		<b>Socio-ecomomic Status</b>
-			<select>
-				<option>
+			<html:select property="socioEconomicStatus">
+				<html:option value="m1">
 					measure 1
-				</option>
-				<option>
+				</html:option>
+				<html:option value="m2">
 					measure 2
-				</option>
-			</select>
+				</html:option>
+			</html:select>
 	</div>
 
 	<div>
 		<b>Residential Area</b>
-			<select>
-				<option>
+			<html:select property="residentialArea">
+				<html:option value="a1">
 					area 1
-				</option>
-				<option>
+				</html:option>
+				<html:option value="a2">
 					area 2
-				</option>
-			</select>
+				</html:option>
+			</html:select>
 	</div>
 
 	<div>
 		<b>Maritial Status</b>
-			<select>
-				<option>Single</option>
-				<option>Married</option>
-				<option>Divorced</option>
-				<option>Widowed</option>
-			</select>
+			<html:select property="maritalStatus">
+				<html:option value="single">Single</html:option>
+				<html:option value="married">Married</html:option>
+				<html:option value="divorced">Divorced</html:option>
+				<html:option value="widowed">Widowed</html:option>
+			</html:select>
 	</div>
 
 	<div>
 		<b>Religion</b>
-			<select>
-				<option>
+			<html:select property="religion">
+				<html:option value="r1">
 					religion 1
-				</option>
-				<option>
+				</html:option>
+				<html:option value="r2">
 					religion 2
-				</option>
-			</select>
+				</html:option>
+			</html:select>
 	</div>
 
 
@@ -203,26 +200,26 @@
 	</h4>
 	<div>
 		<b>Depression Score</b>
-			<select>
-				<option>
+			<html:select property="depressionScore">
+				<html:option value="1">
 					1
-				</option>
-				<option>
+				</html:option>
+				<html:option value="2">
 					2
-				</option>
-			</select>
+				</html:option>
+			</html:select>
 	</div>
 
 	<div>
 		<b>Anxiety Score</b>
-			<select>
-				<option>
+			<html:select property="anxietyScore">
+				<html:option value="1">
 					1
-				</option>
-				<option>
+				</html:option>
+				<html:option value="2">
 					2
-				</option>
-			</select>
+				</html:option>
+			</html:select>
 	</div>
 
 	<a name="diet"></a>
@@ -232,55 +229,50 @@
 	<div>
 		<b>Diet Items</b>
 		<div id="foodItems">
-			<select>
-				<option>
+			<html:select property="foodItems(item1)">
+				<html:option value="">
 					select food..
-				</option>
-				<option>
+				</html:option>
+				<html:option value="tomatoes">
 					Tomatoes
-				</option>
-				<option>
+				</html:option>
+				<html:option value="raw peppers">
 					Raw Peppers
-				</option>
-				<option>
+				</html:option>
+				<html:option value="salad">
 					Salad
-				</option>
-				<option>
+				</html:option>
+				<html:option value="potatoes">
 					Potatoes
-				</option>
-				<option>
+				</html:option>
+				<html:option value="onions">
 					Onions
-				</option>
-				<option>
-					etc
-				</option>
-			</select>
-			<select>
-				<option>
+				</html:option>
+			</html:select>
+
+			<html:select property="foodItems(freq1)">
+				<html:option value="">
 					select frequency..
-				</option>
-				<option>
+				</html:option>
+				<html:option value="never">
 					never
-				</option>
-				<option>
+				</html:option>
+				<html:option value="1-6">
 					1-6 times a season
-				</option>
-				<option>
+				</html:option>
+				<html:option value="7-11">
 					7-11 times a season
-				</option>
-				<option>
+				</html:option>
+				<html:option value="1 per month">
 					once a month
-				</option>
-				<option>
+				</html:option>
+				<html:option value="2-3 per month">
 					2-3 times a month
-				</option>
-				<option>
+				</html:option>
+				<html:option value="1 per week">
 					once a week
-				</option>
-				<option>
-					etc
-				</option>
-			</select>
+				</html:option>
+			</html:select>
 			<br />
 		</div>
 		<div>
@@ -297,50 +289,44 @@
 	<div>
 		<b>Medical Conditions</b>
 		<div id="famHist">
-			<select>
-				<option>
+			<html:select property="relatives(relative1)">
+				<html:option value="">
 					select relative..
-				</option>
-				<option>
+				</html:option>
+				<html:option value="mother">
 					mother
-				</option>
-				<option>
+				</html:option>
+				<html:option value="father">
 					father
-				</option>
-				<option>
+				</html:option>
+				<html:option value="sister">
 					sister
-				</option>
-				<option>
+				</html:option>
+				<html:option value="brother">
 					brother
-				</option>
-				<option>
+				</html:option>
+				<html:option value="grand-mother">
 					grand-mother
-				</option>
-				<option>
-					etc
-				</option>
-			</select>
-			<select>
-				<option>
+				</html:option>
+			</html:select>
+			<html:select property="relatives(condition1)">
+				<html:option value="">
 					select condition...
-				</option>
-				<option>
+				</html:option>
+				<html:option value="bronchitis">
 					chronic bronchitis
-				</option>
-				<option>
+				</html:option>
+				<html:option value="pneumonia">
 					pneumonia
-				</option>
-				<option>
+				</html:option>
+				<html:option value="emphysema">
 					emphysema
-				</option>
-				<option>
+				</html:option>
+				<html:option value="tuberculosis">
 					tuberculosis
-				</option>
-				<option>
-					etc
-				</option>
-			</select>
-			<input type="checkbox">
+				</html:option>
+			</html:select>
+			<html:checkbox property="relatives(currentlyAlive)" value="1" />
 			currently alive
 			<br />
 		</div>
@@ -353,27 +339,27 @@
 	<div>
 		<b>Relative's Smoking Status</b>
 		<br/>
-		Select which relatives were smokers (smoked more than 100 cigarettes
+		select which relatives were smokers (smoked more than 100 cigarettes
 		in their lifetime)
 		<br />
-		<input type="checkbox" />
+		<html:checkbox property="relativesWhoSmoked" value="mother"/>
 		Mother
-		<input type="checkbox" />
+		<html:checkbox property="relativesWhoSmoked" value="father"/>
 		Father
 		<br />
-		<input type="checkbox" />
+		<html:checkbox property="relativesWhoSmoked" value="grandmotherm"/>
 		Grandmother (Maternal)
-		<input type="checkbox" />
+		<html:checkbox property="relativesWhoSmoked" value="grandfatherm"/>
 		Grandfather (Maternal)
 		<br />
-		<input type="checkbox" />
+		<html:checkbox property="relativesWhoSmoked" value="grandfatherp"/>
 		Grandfather (Paternal)
-		<input type="checkbox" />
+		<html:checkbox property="relativesWhoSmoked" value="grandmotherp"/>
 		Grandfather (Paternal)
 		<br />
-		<input type="checkbox" />
+		<html:checkbox property="relativesWhoSmoked" value="sister"/>
 		Sister
-		<input type="checkbox" />
+		<html:checkbox property="relativesWhoSmoked" value="brother"/>
 		Brother
 		<br />
 	</div>
@@ -386,26 +372,23 @@
 	<div>
 		<b>Occupational Exposure to smoking</b>
 		<div id="jobs">
-			<input type="text" value="job name">
-			<input type="text" size="6" value="start date">
-			<input type="text" size="6" value="end date">
-			<select>
-				<option>
+			<html:text property="jobs(name1)" value="job name" />
+			<html:text property="jobs(startDate1)" size="6" value="start date"/>
+			<html:text property="jobs(endDate1)" size="6" value="end date"/>
+			<html:select property="jobs(smokiness1)">
+				<html:option value="">
 					select smokiness..
-				</option>
-				<option>
+				</html:option>
+				<html:option value="light">
 					light
-				</option>
-				<option>
+				</html:option>
+				<html:option value="moderate">
 					moderate
-				</option>
-				<option>
+				</html:option>
+				<html:option value="heavy">
 					heavy
-				</option>
-				<option>
-					etc
-				</option>
-			</select>
+				</html:option>
+			</html:select>
 			<br />
 		</div>
 		<div>
@@ -418,42 +401,39 @@
 	<div>
 		<b>Living Companions who smoked</b>
 		<div id="living">
-			<select>
-				<option>
+			<html:select property="livingCompanions(livingCompanion1)">
+				<html:option value="">
 					select person..
-				</option>
-				<option>
+				</html:option>
+				<html:option value="father">
 					father
-				</option>
-				<option>
+				</html:option>
+				<html:option value="mother">
 					mother
-				</option>
-				<option>
+				</html:option>
+				<html:option value="sister">
 					sister
-				</option>
-				<option>
-					etc
-				</option>
-			</select>
-			<input type="text" size="6" value="years">
-			<input type="text" size="6" value="hrs/day">
-			<select>
-				<option>
+				</html:option>
+			</html:select>
+			<html:text property="livingCompanions(companionYears1)" size="6" value="years" />
+			<html:text property="livingCompanions(companionHoursPerDay1)" size="6" value="hrs/day" />
+			<html:select property="livingCompanions(companionProduct1)">
+				<html:option value="">
 					select product..
-				</option>
-				<option>
+				</html:option>
+				<html:option value="cigar">
 					cigar
-				</option>
-				<option>
+				</html:option>
+				<html:option value="cigarette">
 					cigarette
-				</option>
-				<option>
+				</html:option>
+				<html:option value="pipe">
 					pipe
-				</option>
-				<option>
-					etc
-				</option>
-			</select>
+				</html:option>
+				<html:option value="cigarello">
+					cigarello
+				</html:option>
+			</html:select>
 			<br />
 		</div>
 		<div>
@@ -466,15 +446,15 @@
 	<div>
 		<b>Exposure to smoke</b>
 		<br/>
-		Select the areas in which you were exposed to smoke
+		select the areas in which you were exposed to smoke
 		<br />
-		<input type="checkbox" />
+		<html:checkbox property="smokingAreas" value="childhood" />
 		Childhood
 		<br />
-		<input type="checkbox" />
+		<html:checkbox property="smokingAreas" value="workplace" />
 		Workplace
 		<br />
-		<input type="checkbox" />
+		<html:checkbox property="smokingAreas" value="adulthoodInHome" />
 		Adulthood (in home)
 		<br />
 	</div>
@@ -484,3 +464,4 @@
 	</div>
 </div>
 </p>
+</html:form>
