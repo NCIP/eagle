@@ -75,8 +75,9 @@
     </action>
     -->
 
+<!--
     <action path="/epiQueryInit" forward="eagle.epiQuery"/>
-    <!--  
+ -->     
     <action path="/epiQueryInit"
            type="org.springframework.web.struts.DelegatingActionProxy"
            name="epiForm"
@@ -93,10 +94,10 @@
            validate="true"
            input="/epiQueryInit.do?method=setup"
            parameter="method">
-    <forward name="success" path="eagle.viewResults"/> 
+    <forward name="success" path="caintegrator.viewResults"/> 
     <forward name="failure" path="/epiQueryInit.do?method=setup"/>    
     </action>
-    -->
+
        
     <action path="/logout"
            type="gov.nih.nci.eagle.web.struts.LogoutAction"
