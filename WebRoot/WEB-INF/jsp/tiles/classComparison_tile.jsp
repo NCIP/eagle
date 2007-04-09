@@ -4,8 +4,10 @@
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 
 <script type="text/javascript" src="js/common/MenuSwapper.js"></script>
+
 <p>
 <div class="comments">
+<h2>Class Comparison Analysis</h2>
 <div>
 	<b>Analysis Name:</b>
 	<input type="text" name="analysisName" id="analysisName"/>
@@ -137,4 +139,5 @@
 </div>
 
 </div>
+
 </p>
