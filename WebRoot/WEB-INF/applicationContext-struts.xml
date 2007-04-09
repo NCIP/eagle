@@ -22,21 +22,15 @@
 		class="gov.nih.nci.eagle.web.struts.ClassComparisonAction" scope="prototype">		
 	</bean>	
 
-	<!-- bean name="/clinicalQuery"
-		class="gov.nih.nci.eagle.web.struts.ClinicalAction" scope="prototype">
-		<property name="strategy">
-			<ref bean="clinicalFindingStrategy" />
-		</property>
-		<property name="dtoBuilder">
-			<ref bean="clinicalQueryDTOBuilder" />
-		</property>			
+	<bean name="/clinicalQuery"
+		class="gov.nih.nci.eagle.web.struts.ClinicalAction" scope="prototype">		
 	</bean>
 	
 	<bean name="/clinicalInit"
 		class="gov.nih.nci.eagle.web.struts.ClinicalAction" scope="prototype">		
 	</bean>
 	
-	<bean name="/clinicalReport"
+	<!--  bean name="/clinicalReport"
 		class="gov.nih.nci.eagle.web.struts.ClinicalAction" scope="prototype">	
 		<property name="cacheManager" ref="businessCacheManager" />	
 	</bean-->

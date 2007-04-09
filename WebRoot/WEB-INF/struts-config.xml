@@ -9,6 +9,7 @@
     	<form-bean name="loginForm" type="gov.nih.nci.eagle.web.struts.LoginForm"/>
     	<form-bean name="classComparisonForm" type="gov.nih.nci.eagle.web.struts.ClassComparisonForm"/>
     	<form-bean name="epiForm" type="gov.nih.nci.eagle.web.struts.EpiForm"/>
+    	<form-bean name="clinicalForm" type="gov.nih.nci.eagle.web.struts.ClinicalForm"/>
   	</form-beans>
   <!-- ========== Global Exception Definitions ============================ -->
   <global-exceptions />
@@ -37,8 +38,8 @@
            scope="request"
            validate="false"
            parameter="method">
-    <forward name="success" path="target.clinicalQuery"/> 
-    <forward name="failure" path="target.welcome"/>    
+    <forward name="success" path="eagle.clinicalQuery"/> 
+    <forward name="failure" path="caintegrator.welcome"/>    
     </action>
     
     <action path="/clinicalQuery"
@@ -48,7 +49,7 @@
            validate="true"
            input="/clinicalInit.do?method=setup"
            parameter="method">
-    <forward name="success" path="target.viewResults"/> 
+    <forward name="success" path="caintegrator.viewResults"/> 
     <forward name="failure" path="/clinicalInit.do?method=setup"/>    
     </action>
 <!--
