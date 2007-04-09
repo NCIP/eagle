@@ -6,7 +6,7 @@
 	<session-factory>
 
 		<property name="connection.datasource">
-			java:/target
+			java:/eagle
 		</property>
 		<property name="connection.driver_class">
 			oracle.jdbc.driver.OracleDriver
