@@ -33,13 +33,9 @@
       </field>
     </form>
     <form name="clinicalForm">
-      <field property="analysisResultName"
+      <field property="queryName"
             depends="required">
         <arg key="caintegrator.no.resultName"/>
-      </field>
-      <field property="peripheralBloodWBC"
-            depends="double">
-        <arg key="target.clinical.pbwbc"/>
       </field>
     </form>
   </formset>
