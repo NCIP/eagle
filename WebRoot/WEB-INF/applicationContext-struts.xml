@@ -14,11 +14,14 @@
 			<ref bean="loginService" />
 		</property>
 	</bean>
-	<!-- 
+
 	<bean name="/classComparisonInit"
 		class="gov.nih.nci.eagle.web.struts.ClassComparisonAction" scope="prototype">		
 	</bean>
-	-->
+	<bean name="/classComparison"
+		class="gov.nih.nci.eagle.web.struts.ClassComparisonAction" scope="prototype">		
+	</bean>	
+
 	<!-- bean name="/clinicalQuery"
 		class="gov.nih.nci.eagle.web.struts.ClinicalAction" scope="prototype">
 		<property name="strategy">

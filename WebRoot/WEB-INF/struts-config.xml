@@ -51,9 +51,9 @@
     <forward name="success" path="target.viewResults"/> 
     <forward name="failure" path="/clinicalInit.do?method=setup"/>    
     </action>
-    
+<!--
     <action path="/classComparisonInit" forward="eagle.classComparison"/>
-    <!--  
+ -->   
     <action path="/classComparisonInit"
            type="org.springframework.web.struts.DelegatingActionProxy"
            name="classComparisonForm"
@@ -70,10 +70,9 @@
            validate="true"
            input="/classComparisonInit.do?method=setup"
            parameter="method">
-    <forward name="success" path="eagle.viewResults"/> 
+    <forward name="success" path="caintegrator.viewResults"/> 
     <forward name="failure" path="/classComparisonInit.do?method=setup"/>    
     </action>
-    -->
 
 <!--
     <action path="/epiQueryInit" forward="eagle.epiQuery"/>
