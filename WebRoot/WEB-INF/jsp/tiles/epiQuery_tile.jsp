@@ -3,6 +3,52 @@
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 
+<script type="text/javascript">
+//foodItems(item1)
+//get the number = 1
+//increment global counter
+//get the innerHTML, replace "_1" with updated global counter "_2"
+//do the insertion
+//params - which global counter, div.innerHTML
+ gDietItems = 1;
+ gMedicalConditions = 1;
+ gOccupationalExposure = 1;
+ gLivingCompanions = 1;
+
+var EpiQuery = {
+	'insertTile' : function(whichElement)	{
+		var domhtml = $(whichElement).innerHTML;
+		//find 'gXXX)', ex ..item1)
+		
+		var newhtml;
+		if(domhtml != '')	{
+			switch(whichElement)	{
+				case 'foodItems':	
+				newhtml = domhtml.gsub("_1", "_"+(gDietItems+1));
+				gDietItems+=1;
+				break;
+				case 'famHist':	
+				newhtml = domhtml.gsub("_1", "_"+(gMedicalConditions+1));
+				gMedicalConditions++;
+				break;
+				case 'jobs':	
+				newhtml = domhtml.gsub("_1", "_"+(gOccupationalExposure+1));
+				gOccupationalExposure++;
+				break;
+				case 'living':	
+				newhtml = domhtml.gsub("_1", "_"+(gLivingCompanions+1));
+				gLivingCompanions++;
+				break;
+			}
+			if(newhtml != '')	{
+				new Insertion.Before(whichElement, '<b>'+newhtml+'</b>');
+			}
+		}
+	}
+
+};
+</script>
+
 <html:form action="epiQuery.do?method=submit" >
 <html:errors property="queryErrors" />
 
@@ -227,9 +273,9 @@
 		Diet Notes
 	</h4>
 	<div>
-		<b>Diet Items</b>
-		<div id="foodItems">
-			<html:select property="foodItems(item1)">
+		<b>Diet Items</b><br/>
+		<b id="foodItems">
+			<html:select property="foodItems(item_1)">
 				<html:option value="">
 					select food..
 				</html:option>
@@ -250,17 +296,17 @@
 				</html:option>
 			</html:select>
 
-			<html:select property="foodItems(freq1)">
+			<html:select property="foodItems(freq_1)">
 				<html:option value="">
 					select frequency..
 				</html:option>
 				<html:option value="never">
 					never
 				</html:option>
-				<html:option value="1-6">
+				<html:option value="1-6 per season">
 					1-6 times a season
 				</html:option>
-				<html:option value="7-11">
+				<html:option value="7-11 per season">
 					7-11 times a season
 				</html:option>
 				<html:option value="1 per month">
@@ -274,10 +320,9 @@
 				</html:option>
 			</html:select>
 			<br />
-		</div>
+		</b>
 		<div>
-			<a href="#"
-				onclick="new Insertion.Before('foodItems', '<div>'+$('foodItems').innerHTML+'</div>');return false;">[more]</a>
+			<a href="#" onclick="EpiQuery.insertTile('foodItems'); return false;">[more]</a>
 			*All Items will be combined with an "AND"
 		</div>
 	</div>
@@ -287,9 +332,9 @@
 		Family History
 	</h4>
 	<div>
-		<b>Medical Conditions</b>
-		<div id="famHist">
-			<html:select property="relatives(relative1)">
+		<b>Medical Conditions</b><br/>
+		<b id="famHist">
+			<html:select property="relatives(relative_1)">
 				<html:option value="">
 					select relative..
 				</html:option>
@@ -309,7 +354,7 @@
 					grand-mother
 				</html:option>
 			</html:select>
-			<html:select property="relatives(condition1)">
+			<html:select property="relatives(condition_1)">
 				<html:option value="">
 					select condition...
 				</html:option>
@@ -326,13 +371,12 @@
 					tuberculosis
 				</html:option>
 			</html:select>
-			<html:checkbox property="relatives(currentlyAlive)" value="1" />
+			<html:checkbox property="relatives(currentlyAlive_1)" value="1" />
 			currently alive
 			<br />
-		</div>
+		</b>
 		<div>
-			<a href="#"
-				onclick="new Insertion.Before('famHist', '<div>'+$('famHist').innerHTML+'</div>');return false;">[more]</a>
+			<a href="#" onclick="EpiQuery.insertTile('famHist'); return false;">[more]</a>
 			*All Items will be combined with an "AND"
 		</div>
 	</div>
@@ -370,12 +414,12 @@
 		Environmental Tobacco Smoke
 	</h4>
 	<div>
-		<b>Occupational Exposure to smoking</b>
-		<div id="jobs">
-			<html:text property="jobs(name1)" value="job name" />
-			<html:text property="jobs(startDate1)" size="6" value="start date"/>
-			<html:text property="jobs(endDate1)" size="6" value="end date"/>
-			<html:select property="jobs(smokiness1)">
+		<b>Occupational Exposure to smoking</b><br/>
+		<b id="jobs">
+			<html:text property="jobs(name_1)" value="job name" />
+			<html:text property="jobs(startDate_1)" size="6" value="start date"/>
+			<html:text property="jobs(endDate_1)" size="6" value="end date"/>
+			<html:select property="jobs(smokiness_1)">
 				<html:option value="">
 					select smokiness..
 				</html:option>
@@ -390,18 +434,17 @@
 				</html:option>
 			</html:select>
 			<br />
-		</div>
+		</b>
 		<div>
-			<a href="#"
-				onclick="new Insertion.Before('jobs', '<div>'+$('jobs').innerHTML+'</div>');return false;">[more]</a>
+			<a href="#" onclick="EpiQuery.insertTile('jobs'); return false;">[more]</a>		
 			*All Items will be combined with an "AND"
 		</div>
 	</div>
 	
 	<div>
-		<b>Living Companions who smoked</b>
-		<div id="living">
-			<html:select property="livingCompanions(livingCompanion1)">
+		<b>Living Companions who smoked</b><br/>
+		<b id="living">
+			<html:select property="livingCompanions(livingCompanion_1)">
 				<html:option value="">
 					select person..
 				</html:option>
@@ -415,9 +458,9 @@
 					sister
 				</html:option>
 			</html:select>
-			<html:text property="livingCompanions(companionYears1)" size="6" value="years" />
-			<html:text property="livingCompanions(companionHoursPerDay1)" size="6" value="hrs/day" />
-			<html:select property="livingCompanions(companionProduct1)">
+			<html:text property="livingCompanions(companionYears_1)" size="6" value="years" />
+			<html:text property="livingCompanions(companionHoursPerDay_1)" size="6" value="hrs/day" />
+			<html:select property="livingCompanions(companionProduct_1)">
 				<html:option value="">
 					select product..
 				</html:option>
@@ -435,10 +478,9 @@
 				</html:option>
 			</html:select>
 			<br />
-		</div>
+		</b>
 		<div>
-			<a href="#"
-				onclick="new Insertion.Before('living', '<div>'+$('living').innerHTML+'</div>');return false;">[more]</a>
+			<a href="#" onclick="EpiQuery.insertTile('living'); return false;">[more]</a>
 			*All Items will be combined with an "AND"
 		</div>
 	</div>

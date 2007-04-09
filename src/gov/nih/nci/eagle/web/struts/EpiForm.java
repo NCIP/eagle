@@ -42,9 +42,9 @@ public class EpiForm extends ValidatorForm{
 	
 	//diet notes...multiple?  limit to 3?
 	private final Map foodItemsMap = new HashMap();
-	// foodItems[item1], [freq1], [item2], [freq2] ...etc
-	// access in struts UI:  foodItems(item1), foodItems(frequency1), foodItems(item2), etc
-	// code proper get/sets
+	// foodItems[item_1], [freq_1], [item_2], [freq_2] ...etc
+	// access in struts UI:  foodItems(item_1), foodItems(frequency_1), foodItems(item_2), etc
+	// code proper get/sets and must validate the keys before accessing
 	//private String foodItem; //array?
 	//private String foodFrequency; //array?
 	
@@ -145,7 +145,7 @@ public class EpiForm extends ValidatorForm{
 		return foodItemsMap.get(key);
 	}
 
-	public void setFoodItems(String key, String value) {
+	public void setFoodItems(String key, Object value) {
 		this.foodItemsMap.put(key, value);
 	}
 
@@ -185,7 +185,7 @@ public class EpiForm extends ValidatorForm{
 		return jobsMap.get(key);
 	}
 
-	public void setJobs(String key, String value) {
+	public void setJobs(String key, Object value) {
 		this.jobsMap.put(key, value);
 	}
 
@@ -193,7 +193,7 @@ public class EpiForm extends ValidatorForm{
 		return livingCompanionsMap.get(key);
 	}
 
-	public void setLivingCompanions(String key, String value) {
+	public void setLivingCompanions(String key, Object value) {
 		this.livingCompanionsMap.put(key, value);
 	}
 
@@ -225,7 +225,7 @@ public class EpiForm extends ValidatorForm{
 		return relativesMap.get(key);
 	}
 
-	public void setRelatives(String key, String value) {
+	public void setRelatives(String key, Object value) {
 		this.relativesMap.put(key, value);
 	}
 
