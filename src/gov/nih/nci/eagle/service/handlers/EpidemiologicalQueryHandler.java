@@ -5,9 +5,10 @@ import gov.nih.nci.caintegrator.dto.query.EpiQueryDTO;
 import gov.nih.nci.caintegrator.dto.query.QueryDTO;
 import gov.nih.nci.caintegrator.studyQueryService.QueryHandler;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 public class EpidemiologicalQueryHandler implements QueryHandler {
@@ -25,36 +26,11 @@ public class EpidemiologicalQueryHandler implements QueryHandler {
     }
 
     public List getResults(QueryDTO query) {
-//        Session currentSession = sessionFactory.getCurrentSession();
-//        Criteria criteria = currentSession.createCriteria(StudyParticipant.class);
-//        
-//        return criteria.list();
-        List participants = new ArrayList();
-        EpidemiologicalStudyParticipant p = new EpidemiologicalStudyParticipant();
-        p.setId(1L);
-        p.setHeight(6.0);
-        p.setWeight(100.0);
-        p.setWaistCircumference(30.0);
-        participants.add(p);
-        p = new EpidemiologicalStudyParticipant();
-        p.setId(2L);
-        p.setHeight(6.0);
-        p.setWeight(100.0);
-        p.setWaistCircumference(30.0);
-        participants.add(p);
-        p = new EpidemiologicalStudyParticipant();
-        p.setId(3L);
-        p.setHeight(6.0);
-        p.setWeight(100.0);
-        p.setWaistCircumference(30.0);
-        participants.add(p);
-        p = new EpidemiologicalStudyParticipant();
-        p.setId(4L);
-        p.setHeight(6.0);
-        p.setWeight(100.0);
-        p.setWaistCircumference(30.0);
-        participants.add(p);
-        return participants;
+        Session currentSession = sessionFactory.getCurrentSession();
+        Criteria criteria = currentSession.createCriteria(EpidemiologicalStudyParticipant.class);
+        
+        return criteria.list();
+
     }
     
     public boolean canHandle(QueryDTO query) {
