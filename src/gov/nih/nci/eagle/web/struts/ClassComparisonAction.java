@@ -32,7 +32,7 @@ public class ClassComparisonAction extends DispatchAction{
     public ActionForward setup(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)throws Exception {
         
-        return mapping.findForward("failure");
+        return mapping.findForward("success");
     } 
     
 }
