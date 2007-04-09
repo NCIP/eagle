@@ -20,14 +20,14 @@
 		</property>
 		<property name="jdbcUrl">
 			<value>
-				jdbc:oracle:thin:@cbiodb2-d.nci.nih.gov:1521:TARDEV
+				jdbc:oracle:thin:@cbiodb2-d.nci.nih.gov:1521:RBTDEV
 			</value>
 		</property>
 		<property name="user">
-			<value>tardev</value>
+			<value>eagledev</value>
 		</property>
 		<property name="password">
-			<value>go!tardev</value>
+			<value>dev!eagle</value>
 		</property>
 	</bean>
 
