@@ -6,10 +6,12 @@ import gov.nih.nci.eagle.bean.UserInfoBean;
 import gov.nih.nci.eagle.exception.LoginException;
 import gov.nih.nci.eagle.service.security.LoginService;
 import gov.nih.nci.eagle.util.EAGLEConstants;
+import gov.nih.nci.eagle.util.EAGLEListLoader;
 
 import java.io.File;
 import java.io.IOException;
 
+import javax.naming.OperationNotSupportedException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -46,7 +48,18 @@ public final class LoginAction extends Action
             UserInfoBean userInfoBean = loginService.loginUser(f.getUsername(),f.getPassword());
             request.getSession().setAttribute(EAGLEConstants.userInfoBean,userInfoBean);
             UserListBean userListBean = new UserListBean();
+           
+            
+            try {
+            	userListBean = EAGLEListLoader.loadDefaultLists(userListBean, request.getSession());
+            } catch (OperationNotSupportedException e) {
+            	// TODO Auto-generated catch block
+            	e.printStackTrace();
+            	System.out.println("list did not save");
+            }
+            
             request.getSession().setAttribute(CacheConstants.USER_LISTS,userListBean);
+            
             return (mapping.findForward("success"));
         } catch (LoginException e) {
             ActionErrors errors = new ActionErrors();
