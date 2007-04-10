@@ -65,8 +65,10 @@
 <iframe id="RSIFrame" name="RSIFrame" style="width:0px; height:0px; border: 0px" src="blank.jsp"></iframe>
 
 <span id="info">&nbsp;</span>
-
-<div style="text-align:center">
+<div id="comments">
+<h2>Manage Application Lists</h2>
+</div>
+<div style="text-align:center; font-size:11px;">
 <%
 	ListType[] lts = EAGLEListFilter.values();
 	for(int i=0; i<lts.length; i++)	{
