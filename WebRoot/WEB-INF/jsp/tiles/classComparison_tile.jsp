@@ -28,10 +28,7 @@
 <div id="baselineDiv">
 	<b>Baseline:</b>
 	<html:select styleId="baseline" property="baseline">
-		<html:option value="g1">Group1</html:option>
-		<html:option value="g2">Group1</html:option>
-		<html:option value="g3">Group1</html:option>
-		<html:option value="g4">Group1</html:option>
+		<html:optionsCollection property="existingGroups"/>
 	</html:select>
 </div>
 
@@ -89,11 +86,7 @@
 						<html:select property="existingGroups" multiple="multiple" size="5"
 							ondblclick="MenuSwapper.move($('nonselectedGroups'),$('selectedGroups'));"
 							styleId="nonselectedGroups" style="width: 200px;">
-							<html:option value="smokers">Smokers</html:option>
-							<html:option value="nonSmokers">Non-Smokers</html:option>
-							<html:option value="males">Males</html:option>
-							<html:option value="females">Females</html:option>
-							<html:option value="all">ALL</html:option>
+							<html:optionsCollection property="existingGroups"/>
 						</html:select>
 					</td>
 					<td style="vertical-align: middle;">
