@@ -71,7 +71,14 @@
 		<dwr:remote javascript="AnnotationService"/>
 		<property name="annotationManager" ref="annotationManager" />
 		</bean-->
-
+	<bean id="inbox" class="gov.nih.nci.caintegrator.application.inbox.QueryInbox">
+      <dwr:remote javascript="Inbox"/>
+      <property name="findingsManager">
+			<ref bean="eagleFindingsManager" />
+	  </property>
+	  <property name="btc" ref="businessCacheManager" />
+	  <property name="ptc" ref="presentationCacheManager" />
+    </bean>
 	
 	<!--  Bean for thread pool -->
 	<bean id="taskExecutor"

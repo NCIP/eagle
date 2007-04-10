@@ -37,7 +37,7 @@ public class EpiAction extends DispatchAction {
             HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         EPIQueryDTO dto = new EPIQueryDTO();
-        dto.setQueryName("test");
+        dto.setQueryName(((EpiForm)form).getQueryName());
         try {
             Task task = findingsManager.submitQuery(dto);
             presentationCacheManager.addNonPersistableToSessionCache(request

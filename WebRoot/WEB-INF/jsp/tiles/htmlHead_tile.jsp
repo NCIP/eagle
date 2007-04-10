@@ -18,6 +18,7 @@
 	<script language="javascript" src="js/Help.js"></script>
 	<script language="javascript" src="js/lib/overlib_mini.js"></script>
 	<script language="javascript" src="js/lib/overlib_hideform_mini.js"></script>	
+	<script language="javascript" src="js/common/a_functions.js"></script>	
 
 <!-- 
 	<style type="text/css" media="screen">@import "css/tabs.css";</style>
@@ -26,7 +27,10 @@
 <!-- 
 	<script type='text/javascript' src='dwr/interface/DynamicListHelper.js'></script>
 	<script type='text/javascript' src='js/lib/common/SidebarHelper.js'></script>
-	<script type='text/javascript' src='dwr/engine.js'></script>
--->	
+	
+	-->
+		<script type='text/javascript' src='dwrspring//engine.js'></script>
+		<script type='text/javascript' src='dwrspring/interface/Inbox.js'></script>
+
 	
 	

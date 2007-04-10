@@ -24,6 +24,11 @@ public class EpidemiologicalQueryHandler implements QueryHandler {
     }
 
     public List getResults(QueryDTO query) {
+        try {
+            Thread.sleep(10000L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         Session currentSession = sessionFactory.getCurrentSession();
         Criteria criteria = currentSession.createCriteria(EpidemiologicalStudyParticipant.class);
         
