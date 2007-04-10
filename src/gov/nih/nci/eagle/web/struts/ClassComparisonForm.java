@@ -1,5 +1,7 @@
 package gov.nih.nci.eagle.web.struts;
 
+import java.util.List;
+
 import org.apache.struts.validator.ValidatorForm;
 
 public class ClassComparisonForm extends ValidatorForm{
@@ -7,7 +9,7 @@ public class ClassComparisonForm extends ValidatorForm{
 	private String [] existingCovariates;
 	private String [] selectedCovariates;
 	
-	private String [] existingGroups;
+	private List existingGroups;
 	private String [] selectedGroups;
 	private String baseline;
 	
@@ -43,11 +45,11 @@ public class ClassComparisonForm extends ValidatorForm{
 		this.existingCovariates = existingCovariates;
 	}
 
-	public String[] getExistingGroups() {
+	public List getExistingGroups() {
 		return existingGroups;
 	}
 
-	public void setExistingGroups(String[] existingGroups) {
+	public void setExistingGroups(List existingGroups) {
 		this.existingGroups = existingGroups;
 	}
 
