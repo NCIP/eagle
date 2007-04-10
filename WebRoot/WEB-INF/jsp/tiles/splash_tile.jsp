@@ -8,13 +8,16 @@
 <h2>EAGLE Application Text Here</h2>
 
 <p>
+	Environmental And Genetic Lung cancer Etiology (EAGLE) is an interdisciplinary multi-center case-control study of lung cancer conducted in Milan, Italy, designed to explore the genetic determinants both of lung cancer and smoking.  The study, initiated by the Division of Cancer Epidemiology and Genetics (DCEG), enrolled 2,000 incident lung cancer cases, including both males and females of Italian nationality, ages 35 to 79 years old, with verified lung cancer of any histological type.  In addition 2,000 healthy controls randomly selected from the catchment area and matched to cases by age, gender and residence are enrolled.  Extensive epidemiologic data, clinical data, blood and lung tissue paraffin blocks are collected, to enable investigation into the genetic factors that interact with smoking in the etiology of the disease as well as to identify the genetic determinants of therapy efficacy and survival in the lung cancer subjects. 
+</p>
+<p>
 	Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut in magna sit amet pede aliquet feugiat. Nunc ullamcorper mauris sed eros. Nunc at ante eget metus accumsan pharetra. Morbi metus lorem, ultrices nec, ultricies et, sodales eu, eros. Ut ultricies. Donec ac augue. Morbi viverra tellus non nisl luctus interdum. Maecenas augue purus, aliquet sit amet, blandit eu, placerat ac, nulla. Nam turpis sapien, venenatis nec, scelerisque a, condimentum vel, quam. Praesent viverra orci sit amet nulla. Etiam ac nisl. Morbi magna. Fusce posuere, nisl id adipiscing facilisis, massa nisi pulvinar ipsum, ac congue urna risus in sapien. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec fringilla lectus non neque. Fusce laoreet, arcu eu sodales accumsan, libero est dapibus est, ut congue est tellus ut massa. Sed cursus mattis pede.
 </p>
-
+<!-- 
 <p>
 	Praesent magna ipsum, fringilla ut, elementum in, blandit sit amet, sem. Curabitur ultricies condimentum arcu. Duis turpis leo, pulvinar ut, iaculis id, tempor a, nisi. In tempus porttitor nisl. Maecenas aliquet viverra sem. Fusce placerat velit sit amet risus. Pellentesque varius, metus eu tincidunt rutrum, arcu eros fringilla eros, in faucibus tellus justo et turpis. Curabitur massa lorem, vulputate in, scelerisque sodales, tempor ut, lorem. Etiam laoreet. Suspendisse lobortis nulla.
 </p>
-
+-->
 
 
 <div class="date">MAR <span>27</span> 2007</div>
