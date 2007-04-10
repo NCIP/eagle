@@ -24,13 +24,9 @@
 	<style type="text/css" media="screen">@import "css/tabs.css";</style>
 -->		
 
-<!-- 
 	<script type='text/javascript' src='dwr/interface/DynamicListHelper.js'></script>
-	<script type='text/javascript' src='js/lib/common/SidebarHelper.js'></script>
+	<script type='text/javascript' src='js/common/SidebarHelper.js'></script>
 	
-	-->
-		<script type='text/javascript' src='dwrspring//engine.js'></script>
-		<script type='text/javascript' src='dwrspring/interface/Inbox.js'></script>
-
-	
+	<script type='text/javascript' src='dwrspring/engine.js'></script>
+	<script type='text/javascript' src='dwrspring/interface/Inbox.js'></script>
 	
