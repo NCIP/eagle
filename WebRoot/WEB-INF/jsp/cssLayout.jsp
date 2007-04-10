@@ -33,7 +33,8 @@
 
 			<div id="footer">
 				<p>
-					EAGLE Footers will go here
+				Environmental And Genetic Lung cancer Etiology (EAGLE) 
+		<!--  			EAGLE Footers will go here	-->
 				</p>
 			</div>
 			<tiles:insert attribute="nciFooter" />
