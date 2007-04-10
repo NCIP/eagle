@@ -44,7 +44,8 @@ public class ClassComparisonAction extends DispatchAction{
         List<UserList> patientLists = helper.getLists(ListType.PatientDID);
         List<LabelValueBean> sampleGroups = new ArrayList<LabelValueBean>();
         for(UserList patientList: patientLists){
-        	sampleGroups.add(new LabelValueBean(patientList.getName(),patientList.getClass().getCanonicalName() + "#" + patientList.getName()));
+        	//sampleGroups.add(new LabelValueBean(patientList.getName(),patientList.getClass().getCanonicalName() + "#" + patientList.getName()));
+        	sampleGroups.add(new LabelValueBean(patientList.getName(),patientList.getName()));
         }
         ((ClassComparisonForm) form).setExistingGroups(sampleGroups);
         
