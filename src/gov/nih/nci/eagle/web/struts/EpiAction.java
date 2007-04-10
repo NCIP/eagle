@@ -1,10 +1,10 @@
 package gov.nih.nci.eagle.web.struts;
 
 import gov.nih.nci.caintegrator.application.cache.PresentationCacheManager;
-import gov.nih.nci.caintegrator.dto.query.EpiQueryDTO;
 import gov.nih.nci.caintegrator.exceptions.FindingsQueryException;
 import gov.nih.nci.caintegrator.service.task.Task;
 import gov.nih.nci.caintegrator.studyQueryService.FindingsManager;
+import gov.nih.nci.caintegrator.studyQueryService.dto.epi.EPIQueryDTO;
 
 import java.io.IOException;
 
@@ -36,7 +36,7 @@ public class EpiAction extends DispatchAction {
     public ActionForward submit(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws IOException {
-        EpiQueryDTO dto = new EpiQueryDTO();
+        EPIQueryDTO dto = new EPIQueryDTO();
         dto.setQueryName("test");
         try {
             Task task = findingsManager.submitQuery(dto);

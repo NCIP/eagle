@@ -1,12 +1,12 @@
 package gov.nih.nci.eagle.service.test;
 
 import gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant;
-import gov.nih.nci.caintegrator.dto.query.EpiQueryDTO;
 import gov.nih.nci.caintegrator.enumeration.FindingStatus;
 import gov.nih.nci.caintegrator.exceptions.FindingsQueryException;
 import gov.nih.nci.caintegrator.service.task.Task;
 import gov.nih.nci.caintegrator.service.task.TaskResult;
 import gov.nih.nci.caintegrator.studyQueryService.FindingsManager;
+import gov.nih.nci.caintegrator.studyQueryService.dto.epi.EPIQueryDTO;
 import gov.nih.nci.caintegrator.test.BaseSpringTestCase;
 
 import java.util.Collection;
@@ -27,7 +27,7 @@ public class FindingsManagerTest extends BaseSpringTestCase {
     }
     
     public void testManager() throws FindingsQueryException {
-        EpiQueryDTO dto = new EpiQueryDTO();
+        EPIQueryDTO dto = new EPIQueryDTO();
         dto.setQueryName("test");
         Task task = fm.submitQuery(dto);
         task = fm.checkStatus(task);

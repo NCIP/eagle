@@ -1,9 +1,9 @@
 package gov.nih.nci.eagle.service.handlers;
 
 import gov.nih.nci.caintegrator.domain.epidemiology.bean.EpidemiologicalStudyParticipant;
-import gov.nih.nci.caintegrator.dto.query.EpiQueryDTO;
 import gov.nih.nci.caintegrator.dto.query.QueryDTO;
 import gov.nih.nci.caintegrator.studyQueryService.QueryHandler;
+import gov.nih.nci.caintegrator.studyQueryService.dto.epi.EPIQueryDTO;
 
 import java.util.List;
 
@@ -34,7 +34,7 @@ public class EpidemiologicalQueryHandler implements QueryHandler {
     }
     
     public boolean canHandle(QueryDTO query) {
-        return (query instanceof EpiQueryDTO);
+        return (query instanceof EPIQueryDTO);
     }
 
     public SessionFactory getSessionFactory() {
