@@ -16,13 +16,11 @@ public class EpidemiologicalQueryHandler implements QueryHandler {
     private SessionFactory sessionFactory;
 
     public Integer getResultCount(QueryDTO query) {
-        // TODO Auto-generated method stub
-        return null;
+        throw new UnsupportedOperationException();
     }
 
     public List getResults(QueryDTO dto, Integer page) {
-        // TODO Auto-generated method stub
-        return null;
+        throw new UnsupportedOperationException();
     }
 
     public List getResults(QueryDTO query) {

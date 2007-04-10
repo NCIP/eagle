@@ -8,6 +8,7 @@ import gov.nih.nci.caintegrator.service.task.TaskResult;
 import gov.nih.nci.caintegrator.studyQueryService.FindingsManager;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.EPIQueryDTO;
 import gov.nih.nci.caintegrator.test.BaseSpringTestCase;
+import gov.nih.nci.eagle.query.dto.EagleClinicalQueryDTO;
 
 import java.util.Collection;
 
@@ -38,6 +39,23 @@ public class FindingsManagerTest extends BaseSpringTestCase {
         Collection taskResults = taskResult.getTaskResults();
         for(StudyParticipant p : (Collection<StudyParticipant>)taskResults) {
             System.out.println(p.getId());
+        }
+        
+    }
+    public void testClinical() throws FindingsQueryException {
+        EagleClinicalQueryDTO dto = new EagleClinicalQueryDTO();
+        dto.setQueryName("test");
+        Task task = fm.submitQuery(dto);
+        task = fm.checkStatus(task);
+        while(task.getStatus().equals(FindingStatus.Running)) {
+            task = fm.checkStatus(task);
+        }
+        TaskResult taskResult = fm.getTaskResult(task);
+        Collection taskResults = taskResult.getTaskResults();
+        if(taskResults != null) {
+            for(StudyParticipant p : (Collection<StudyParticipant>)taskResults) {
+                System.out.println(p.getId());
+            }
         }
     }
 }

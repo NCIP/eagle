@@ -17,6 +17,7 @@
 		<property name="strategyList">
 			<list>
 				<ref bean="epiQueryStrategy" />
+				<ref bean="clinicalQueryStrategy" />
 			</list>
 		</property>
 	</bean>
@@ -28,7 +29,7 @@
 		class="gov.nih.nci.eagle.service.security.CsmLoginService">
 	</bean>
 
-	<!--  Beans to handle the clinical findings -->
+	<!--  Beans to handle the findings -->
 	<bean id="epiQueryStrategy"
 		class="gov.nih.nci.caintegrator.application.service.strategy.AsynchronousFindingStrategy" scope="prototype">
 		<property name="queryHandler" ref="epiQueryHandler" />
@@ -36,9 +37,20 @@
 		<property name="taskExecutor" ref="taskExecutor" />
 		<property name="taskResult" ref="taskResult" />
 	</bean>
+	<bean id="clinicalQueryStrategy"
+		class="gov.nih.nci.caintegrator.application.service.strategy.AsynchronousFindingStrategy" scope="prototype">
+		<property name="queryHandler" ref="clinicalQueryHandler" />
+		<property name="businessCacheManager" ref="businessCacheManager" />
+		<property name="taskExecutor" ref="taskExecutor" />
+		<property name="taskResult" ref="taskResult" />
+	</bean>
 
 	<bean id="epiQueryHandler"
 		class="gov.nih.nci.eagle.service.handlers.EpidemiologicalQueryHandler" >
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="clinicalQueryHandler"
+		class="gov.nih.nci.eagle.service.handlers.ClinicalQueryHandler" >
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	<!--  Bean for Business cache manager -->

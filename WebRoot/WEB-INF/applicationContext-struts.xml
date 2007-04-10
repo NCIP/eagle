@@ -24,6 +24,8 @@
 
 	<bean name="/clinicalQuery"
 		class="gov.nih.nci.eagle.web.struts.ClinicalAction" scope="prototype">		
+		<property name="findingsManager" ref="eagleFindingsManager"/>
+		<property name="presentationCacheManager" ref="presentationCacheManager" />				
 	</bean>
 	
 	<bean name="/clinicalInit"

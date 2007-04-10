@@ -1,14 +1,21 @@
 package gov.nih.nci.eagle.web.struts;
 
+import gov.nih.nci.caintegrator.application.cache.PresentationCacheManager;
+import gov.nih.nci.caintegrator.exceptions.FindingsQueryException;
+import gov.nih.nci.caintegrator.service.task.Task;
+import gov.nih.nci.caintegrator.studyQueryService.FindingsManager;
+import gov.nih.nci.eagle.query.dto.EagleClinicalQueryDTO;
+
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.struts.action.Action;
+import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
 import org.apache.struts.actions.DispatchAction;
 
 /**
@@ -23,9 +30,25 @@ import org.apache.struts.actions.DispatchAction;
  */
 
 public class ClinicalAction extends DispatchAction{
+    
+    private FindingsManager findingsManager;
+    private PresentationCacheManager presentationCacheManager;
+    
     public ActionForward submit(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response) throws IOException	{
-               
+        EagleClinicalQueryDTO dto = new EagleClinicalQueryDTO();
+        dto.setQueryName("test");
+        try {
+            Task task = findingsManager.submitQuery(dto);
+            presentationCacheManager.addNonPersistableToSessionCache(request
+                    .getSession().getId(), task.getId(), task);
+        } catch (FindingsQueryException e) {
+            ActionErrors errors = new ActionErrors();
+            errors.add("queryErrors", new ActionMessage(
+                    "caintegrator.error.query"));
+            saveMessages(request, errors);
+            return (mapping.findForward("failure"));
+        }
             return (mapping.findForward("success"));
     }
     
@@ -33,6 +56,23 @@ public class ClinicalAction extends DispatchAction{
             HttpServletRequest request, HttpServletResponse response)throws Exception {
         
         return mapping.findForward("success");
+    }
+
+    public FindingsManager getFindingsManager() {
+        return findingsManager;
+    }
+
+    public void setFindingsManager(FindingsManager findingsManager) {
+        this.findingsManager = findingsManager;
+    }
+
+    public PresentationCacheManager getPresentationCacheManager() {
+        return presentationCacheManager;
+    }
+
+    public void setPresentationCacheManager(
+            PresentationCacheManager presentationCacheManager) {
+        this.presentationCacheManager = presentationCacheManager;
     } 
     
 }
