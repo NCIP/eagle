@@ -12,8 +12,8 @@ public enum EducationLevel {
     POSTGRAD(9, "Postgraduate"),
     OTHER(10, "Other");
 
-    private int key;
-    private String name;
+    private final int key;
+    private final String name;
 
     EducationLevel(int key, String name) {
         this.key = key;

@@ -4,8 +4,8 @@ public enum Gender {
     MALE(1, "Male"), 
     FEMALE(2, "Female");
 
-    private int key;
-    private String name;
+    private final int key;
+    private final String name;
 
     Gender(int key, String name) {
         this.key = key;
