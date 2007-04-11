@@ -1,7 +1,6 @@
 package gov.nih.nci.eagle.util;
 
 import gov.nih.nci.caintegrator.application.analysis.AnalysisServerClientManager;
-import gov.nih.nci.caintegrator.application.service.annotation.GeneExprAnnotationService;
 import gov.nih.nci.caintegrator.application.util.PropertyLoader;
 import gov.nih.nci.caintegrator.application.cache.CacheFactory;
 
