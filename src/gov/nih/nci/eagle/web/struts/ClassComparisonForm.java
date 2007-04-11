@@ -9,6 +9,8 @@ public class ClassComparisonForm extends ValidatorForm{
 	private String [] existingCovariates;
 	private String [] selectedCovariates;
 	
+	private String covariate;
+	
 	private List existingGroups;
 	private String [] selectedGroups;
 	private String baseline;
@@ -43,6 +45,15 @@ public class ClassComparisonForm extends ValidatorForm{
 
 	public void setExistingCovariates(String[] existingCovariates) {
 		this.existingCovariates = existingCovariates;
+	}
+	
+	
+	public String getCovariate() {
+		return covariate;
+	}
+
+	public void setCovariate(String covariate) {
+		this.covariate = covariate;
 	}
 
 	public List getExistingGroups() {
