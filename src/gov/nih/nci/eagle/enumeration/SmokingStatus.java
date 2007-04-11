@@ -6,11 +6,11 @@ public enum SmokingStatus {
     CURRENT(2, "Current Smoker"), 
     NO_INFO(9, "No Information");
 
-    private final int key;
+    private final int value;
     private final String name;
 
     SmokingStatus(int key, String name) {
-        this.key = key;
+        this.value = key;
     	this.name = name;
     }
 
@@ -18,8 +18,8 @@ public enum SmokingStatus {
         return name;
     }
     
-    public int getKey()	{
-    	return key;
+    public int getValue()	{
+    	return value;
     }
     
 }

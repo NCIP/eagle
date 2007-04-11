@@ -9,11 +9,11 @@ public enum Religion {
     OTHER(6,"Other"),
     DONT_KNOW(7,"Don't know");
 
-    private final int key;
+    private final int value;
     private final String name;
 
     Religion(int key, String name) {
-        this.key = key;
+        this.value = key;
     	this.name = name;
     }
 
@@ -21,8 +21,8 @@ public enum Religion {
         return name;
     }
     
-    public int getKey()	{
-    	return key;
+    public int getValue()	{
+    	return value;
     }
     
 }
