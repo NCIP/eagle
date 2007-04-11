@@ -41,8 +41,7 @@ public class ClassComparisonQueryDTOBuilder implements QueryDTOBuilder{
 	
 	private static Logger logger = Logger.getLogger(ClassComparisonQueryDTOBuilder.class);
 	private HttpSession session;
-	public ClassComparisonQueryDTOBuilder() {			
-	}
+	public ClassComparisonQueryDTOBuilder() {}
 	public ClassComparisonQueryDTOBuilder(HttpSession session) {
 		this.session = session;		
 	}
