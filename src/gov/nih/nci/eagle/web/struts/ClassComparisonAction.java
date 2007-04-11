@@ -122,4 +122,19 @@ public class ClassComparisonAction extends DispatchAction{
         this.dtoBuilder = dtoBuilder;
     }
     
+    /**
+     * @return Returns the presentationCacheManager.
+     */
+    public PresentationCacheManager getPresentationCacheManager() {
+        return presentationCacheManager;
+    }
+
+    /**
+     * @param presentationCacheManager The presentationCacheManager to set.
+     */
+    public void setPresentationCacheManager(
+            PresentationCacheManager presentationCacheManager) {
+        this.presentationCacheManager = presentationCacheManager;
+    }
+    
 }
