@@ -131,7 +131,7 @@
 </div>
 
 <div style="text-align:center">
-	<button onclick="MenuSwapper.saveMe($('selectedGroups'),$('nonselectedGroups'));">Submit Analysis</button>
+	<button onclick="MenuSwapper.saveMe( $('selectedGroups'),$('existingGroups') );" >Submit Analysis</button>
 </div>
 
 </div>
