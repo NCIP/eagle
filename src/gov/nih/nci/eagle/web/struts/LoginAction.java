@@ -2,6 +2,7 @@ package gov.nih.nci.eagle.web.struts;
 
 import gov.nih.nci.caintegrator.application.cache.CacheConstants;
 import gov.nih.nci.caintegrator.application.lists.UserListBean;
+import gov.nih.nci.caintegrator.application.lists.UserListBeanHelper;
 import gov.nih.nci.eagle.bean.UserInfoBean;
 import gov.nih.nci.eagle.exception.LoginException;
 import gov.nih.nci.eagle.service.security.LoginService;
@@ -58,7 +59,14 @@ public final class LoginAction extends Action
             	System.out.println("list did not save");
             }
             
-            request.getSession().setAttribute(CacheConstants.USER_LISTS,userListBean);
+            //request.getSession().setAttribute(CacheConstants.USER_LISTS,userListBean);
+            try {
+				UserListBeanHelper ulbh = new UserListBeanHelper(request.getSession());
+				ulbh.addBean(request.getSession().getId(), CacheConstants.USER_LISTS,userListBean);
+			} catch (RuntimeException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
             
             return (mapping.findForward("success"));
         } catch (LoginException e) {
