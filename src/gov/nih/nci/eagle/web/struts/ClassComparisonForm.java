@@ -6,7 +6,9 @@ import org.apache.struts.validator.ValidatorForm;
 
 public class ClassComparisonForm extends ValidatorForm{
 
-	private String [] existingCovariates;
+	//TODO:  store the cacheId here as a string?
+	
+	private List existingCovariates;
 	private String [] selectedCovariates;
 	
 	private String covariate;
@@ -39,11 +41,11 @@ public class ClassComparisonForm extends ValidatorForm{
 		this.baseline = baseline;
 	}
 
-	public String[] getExistingCovariates() {
+	public List getExistingCovariates() {
 		return existingCovariates;
 	}
 
-	public void setExistingCovariates(String[] existingCovariates) {
+	public void setExistingCovariates(List existingCovariates) {
 		this.existingCovariates = existingCovariates;
 	}
 	

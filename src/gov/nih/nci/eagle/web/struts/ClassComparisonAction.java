@@ -60,8 +60,8 @@ public class ClassComparisonAction extends DispatchAction{
     public ActionForward submit(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response) throws IOException	{
     	
-    	      dtoBuilder = new ClassComparisonQueryDTOBuilder(request.getSession());    	   
-    	      ccQueryDTO = (ClassComparisonQueryDTOImpl)dtoBuilder.buildQueryDTO(form);  
+    	      dtoBuilder = new ClassComparisonQueryDTOBuilder();    	   
+    	      ccQueryDTO = (ClassComparisonQueryDTOImpl)dtoBuilder.buildQueryDTO(form, request.getSession().getId());  
     	      try {             
     	            Task task = findingsManager.submitQuery(ccQueryDTO);
     	            presentationCacheManager.addNonPersistableToSessionCache(request.getSession().getId(),task.getId(),task);           
@@ -80,6 +80,7 @@ public class ClassComparisonAction extends DispatchAction{
     public ActionForward setup(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)throws Exception {
 
+    	//set the group names
     	UserListBeanHelper helper = new UserListBeanHelper(request.getSession());
         List<UserList> patientLists = helper.getLists(ListType.PatientDID);
         List<LabelValueBean> sampleGroups = new ArrayList<LabelValueBean>();
@@ -89,6 +90,8 @@ public class ClassComparisonAction extends DispatchAction{
         }
         ((ClassComparisonForm) form).setExistingGroups(sampleGroups);        
 
+        //set the covariate options
+        
         return mapping.findForward("success");
     } 
     
