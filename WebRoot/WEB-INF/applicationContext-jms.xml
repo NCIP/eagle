@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+	<bean id="analysisServerClientManager"
+		class="gov.nih.nci.caintegrator.application.analysis.AnalysisServerClientManager"
+		factory-method="getInstance">
+		<property name="cache" ref="businessCacheManager" />
+		<property name="requestQueue" ref="sendDestination" />
+		<property name="resultQueue" ref="receiveDestination" />
+		<property name="queueConnectionFactory"
+			ref="jmsQueueConnectionFactory" />
+		<property name="managedBean">
+			<value>true</value>
+		</property>
+	</bean>
+	<bean id="jndiTemplate"
+		class="org.springframework.jndi.JndiTemplate">
+		<property name="environment">
+			<props>
+				<prop key="java.naming.factory.initial">
+					org.jnp.interfaces.NamingContextFactory
+				</prop>
+				<prop key="java.naming.provider.url">
+					${gov.nih.nci.eagleportal.jms.jboss_url}
+				</prop>
+				<prop key="java.naming.factory.url.pkgs">
+					org.jnp.interfaces:org.jboss.naming
+				</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="jmsQueueConnectionFactory"
+		class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiTemplate">
+			<ref bean="jndiTemplate" />
+		</property>
+		<property name="jndiName">
+			<value>${gov.nih.nci.eagleportal.jms.factory_jndi}</value>
+		</property>
+	</bean>
+	<bean id="sendDestination"
+		class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiTemplate">
+			<ref bean="jndiTemplate" />
+		</property>
+		<property name="jndiName">
+			<value>${gov.nih.nci.eagleportal.jms.analysis_request_queue}</value>
+		</property>
+	</bean>
+	<bean id="receiveDestination"
+		class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiTemplate">
+			<ref bean="jndiTemplate" />
+		</property>
+		<property name="jndiName">
+			<value>${gov.nih.nci.eagleportal.jms.analysis_response_queue}</value>
+		</property>
+	</bean>
+	<bean id="jmsTemplate"
+		class="org.springframework.jms.core.JmsTemplate102">
+		<property name="connectionFactory">
+			<ref bean="jmsQueueConnectionFactory" />
+		</property>
+		<property name="defaultDestination">
+			<ref bean="sendDestination" />
+		</property>
+		<property name="receiveTimeout">
+			<value>30000</value>
+		</property>
+	</bean>
+	<bean id="listenerContainer"
+		class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="concurrentConsumers" value="5" />
+		<property name="connectionFactory"
+			ref="jmsQueueConnectionFactory" />
+		<property name="destination" ref="receiveDestination" />
+		<property name="messageListener"
+			ref="analysisServerClientManager" />
+	</bean>
+</beans>
