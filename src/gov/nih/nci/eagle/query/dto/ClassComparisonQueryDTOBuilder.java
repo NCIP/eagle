@@ -4,22 +4,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 
-import javax.servlet.http.HttpSession;
-
 
 import gov.nih.nci.caintegrator.application.dtobuilder.QueryDTOBuilder;
 import gov.nih.nci.caintegrator.dto.query.QueryDTO;
+import gov.nih.nci.caintegrator.enumeration.MultiGroupComparisonAdjustmentType;
 import gov.nih.nci.caintegrator.enumeration.Operator;
 import gov.nih.nci.caintegrator.enumeration.StatisticalMethodType;
 import gov.nih.nci.caintegrator.enumeration.StatisticalSignificanceType;
 import gov.nih.nci.caintegrator.dto.de.ArrayPlatformDE;
+import gov.nih.nci.caintegrator.dto.de.MultiGroupComparisonAdjustmentTypeDE;
 import gov.nih.nci.caintegrator.dto.de.StatisticTypeDE;
 import gov.nih.nci.caintegrator.dto.de.StatisticalSignificanceDE;
 import gov.nih.nci.caintegrator.dto.de.ExprFoldChangeDE.UpRegulation;
 import gov.nih.nci.caintegrator.dto.query.ClinicalQueryDTO;
-import gov.nih.nci.caintegrator.application.lists.UserList;
 import gov.nih.nci.caintegrator.application.lists.UserListBeanHelper;
-import gov.nih.nci.caintegrator.application.util.ClassHelper;
+
 
 import gov.nih.nci.eagle.web.struts.ClassComparisonForm;
 import gov.nih.nci.eagle.web.helper.EnumCaseChecker;
@@ -97,6 +96,10 @@ public class ClassComparisonQueryDTOBuilder implements QueryDTOBuilder{
        
  	        }
         
+        // set up MultiGroupComparisonAdjustmentType
+        classComparisondto.setMultiGroupComparisonAdjustmentTypeDE(new MultiGroupComparisonAdjustmentTypeDE(MultiGroupComparisonAdjustmentType.NONE));
+        
+        
 	// set up co-variate 
         
         //set statistical method
@@ -170,7 +173,9 @@ public class ClassComparisonQueryDTOBuilder implements QueryDTOBuilder{
 	   
 	   if(classComparisonForm.getPlatform()!= "" || classComparisonForm.getPlatform().length() != 0){       
            ArrayPlatformDE arrayPlatformDE = new ArrayPlatformDE(classComparisonForm.getPlatform());
-           classComparisondto.setArrayPlatformDE(arrayPlatformDE);
+           //classComparisondto.setArrayPlatformDE(arrayPlatformDE);
+           classComparisondto.setArrayPlatformDE(new ArrayPlatformDE("ALL_PLATFORM"));
+           
        }
 		
 	   return classComparisondto;
