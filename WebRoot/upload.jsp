@@ -18,7 +18,7 @@
 	java.util.List,
 	gov.nih.nci.caintegrator.application.lists.ajax.*,
 	org.dom4j.Document,
-	gov.nih.nci.target.util.*"%>
+	gov.nih.nci.eagle.util.*"%>
 <html>
 	<head>
 		<title>Upload.jsp</title>
@@ -89,7 +89,7 @@
 			String res = "fail";
             ArrayList lst = new ArrayList();
             
-			TARGETListValidator listValidator = new TARGETListValidator();
+			EAGLEListValidator listValidator = new EAGLEListValidator();
             try	{
 			/*
 				if(tps.length > 1)	{
@@ -115,11 +115,11 @@
 				//create a list out of [1]
 				lst = new ArrayList();
 				lst.add(ListSubType.valueOf(tps[1]));
-				res =  CommonListFunctions.createGenericListWithSession(lt, lst, myUndefinedList, name, new TARGETListValidator(ListType.valueOf(tps[0]), ListSubType.valueOf(tps[1]), myUndefinedList), request.getSession());
+				res =  CommonListFunctions.createGenericListWithSession(lt, lst, myUndefinedList, name, new EAGLEListValidator(ListType.valueOf(tps[0]), ListSubType.valueOf(tps[1]), myUndefinedList), request.getSession());
 			}
 			else if(tps.length >0 && tps[0] != null)	{
 				//no subtype, only a primary type - typically a PatientDID then
-				res = CommonListFunctions.createGenericListWithSession(lt, lst, myUndefinedList, name, new TARGETListValidator(ListType.valueOf(tps[0]), ListSubType.Custom, myUndefinedList), request.getSession());
+				res = CommonListFunctions.createGenericListWithSession(lt, lst, myUndefinedList, name, new EAGLEListValidator(ListType.valueOf(tps[0]), ListSubType.Custom, myUndefinedList), request.getSession());
 			}
 			else	{
 				//no type or subtype, not good, force to clinical in catch
