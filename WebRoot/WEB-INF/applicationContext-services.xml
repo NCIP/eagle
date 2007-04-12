@@ -18,6 +18,7 @@
 			<list>
 				<ref bean="epiQueryStrategy" />
 				<ref bean="clinicalQueryStrategy" />
+				<ref bean="classComparisonQueryStrategy" />
 			</list>
 		</property>
 	</bean>
@@ -44,6 +45,14 @@
 		<property name="taskExecutor" ref="taskExecutor" />
 		<property name="taskResult" ref="taskResult" />
 	</bean>
+	<bean id="classComparisonQueryStrategy"
+		class="gov.nih.nci.eagle.service.strategies.ClassComparisonFindingStrategy" scope="prototype">
+		<property name="businessCacheManager" ref="businessCacheManager" />
+		<property name="taskResult" ref="classComparisonTaskResult" />
+		<property name="analysisServerClientManager" ref="analysisServerClientManager" />
+	</bean>
+	<bean id="classComparisonTaskResult" class="gov.nih.nci.caintegrator.service.findings.ClassComparisonFinding" scope="prototype">
+	</bean>
 
 	<bean id="epiQueryHandler"
 		class="gov.nih.nci.eagle.service.handlers.EpidemiologicalQueryHandler" >
@@ -60,11 +69,18 @@
 	</bean>
 	<bean id="presentationCacheManager" class="gov.nih.nci.caintegrator.application.cache.PresentationCacheManager" factory-method="getInstance">
 	</bean>	
+	<!-- Beans for analysis server -->
+	<!--  
+	<bean id="analysisServerClientManager"
+		class="gov.nih.nci.caintegrator.application.analysis.AnalysisServerClientManager"
+		factory-method="getInstance">
+	</bean>
+	-->
 
 	<!-- Beans for DTO builders -->
-	<!-- bean id="clinicalQueryDTOBuilder"
-		class="gov.nih.nci.eagle.query.dto.ClinicalQueryDTOBuilder" scope="prototype">		
-		</bean-->
+	<bean id="classComparisonQueryDTOBuilder"
+		class="gov.nih.nci.eagle.query.dto.ClassComparisonQueryDTOBuilder" scope="prototype">		
+		</bean>
 
 	<!--  Beans for DWR -->
 	<!-- >bean id="annotationHelper" class="gov.nih.nci.eagle.web.ajax.AnnotationHelper">

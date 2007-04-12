@@ -20,6 +20,9 @@
 	</bean>
 	<bean name="/classComparison"
 		class="gov.nih.nci.eagle.web.struts.ClassComparisonAction" scope="prototype">		
+		<property name="findingsManager" ref="eagleFindingsManager"/>
+		<property name="presentationCacheManager" ref="presentationCacheManager" />				
+		<property name="dtoBuilder" ref="classComparisonQueryDTOBuilder" />				
 	</bean>	
 
 	<bean name="/clinicalQuery"
