@@ -42,35 +42,35 @@
 	<input type="checkbox"/>Residential Area
 	-->
 	<table align="center" border="0">
-			<tbody>
-				<tr style="vertical-align: top;">
-					<td>
-						<html:select property="existingCovariates" multiple="multiple" size="5"
-							ondblclick="MenuSwapper.move($('cnonselectedGroups'),$('cselectedGroups'));"
-							styleId="cnonselectedGroups" style="width: 200px;">
-							<html:option value="age">Age</html:option>
-							<html:option value="gender">Gender</html:option>
-							<html:option value="smokingStatus">Smoking Status</html:option>
-							<html:option value="residentialArea">Residential Area</html:option>
-						</html:select>
-					</td>
-					<td style="vertical-align: middle;">
-						<input
-							onclick="MenuSwapper.move($('cselectedGroups'),$('cnonselectedGroups'));"
-							value="&lt;&lt;" type="button"/>
-						<br>
-						<input
-							onclick="MenuSwapper.move($('cnonselectedGroups'),$('cselectedGroups'));"
-							value="&gt;&gt;" type="button"/>
-					</td>
-					<td>
-						<html:select property="selectedCovariates" multiple="multiple" size="5"
-							ondblclick="MenuSwapper.move($('cselectedGroups'),$('cnonselectedGroups'));"
-							styleId="cselectedGroups" style="width: 200px;"></html:select>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		<tbody>
+			<tr style="vertical-align: top;">
+				<td>
+					<html:select property="existingCovariates" multiple="multiple" size="5"
+						ondblclick="MenuSwapper.move($('cnonselectedGroups'),$('cselectedGroups'));"
+						styleId="cnonselectedGroups" style="width: 200px;">
+						<html:option value="age">Age</html:option>
+						<html:option value="gender">Gender</html:option>
+						<html:option value="smokingStatus">Smoking Status</html:option>
+						<html:option value="residentialArea">Residential Area</html:option>
+					</html:select>
+				</td>
+				<td style="vertical-align: middle;">
+					<input
+						onclick="MenuSwapper.move($('cselectedGroups'),$('cnonselectedGroups'));"
+						value="&lt;&lt;" type="button"/>
+					<br>
+					<input
+						onclick="MenuSwapper.move($('cnonselectedGroups'),$('cselectedGroups'));"
+						value="&gt;&gt;" type="button"/>
+				</td>
+				<td>
+					<html:select property="selectedCovariates" multiple="multiple" size="5"
+						ondblclick="MenuSwapper.move($('cselectedGroups'),$('cnonselectedGroups'));"
+						styleId="cselectedGroups" style="width: 200px;"></html:select>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 </div>
 
 <div>
@@ -131,7 +131,7 @@
 </div>
 
 <div style="text-align:center">
-	<button>Submit Analysis</button>
+	<button onclick="MenuSwapper.saveMe($('selectedGroups'),$('nonselectedGroups'));">Submit Analysis</button>
 </div>
 
 </div>
