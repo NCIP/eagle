@@ -9,6 +9,7 @@
 <%@ page import="gov.nih.nci.caintegrator.service.findings.*" %>
 <%@ page import="gov.nih.nci.caintegrator.service.task.*" %>
 <%@ page import="gov.nih.nci.caintegrator.studyQueryService.dto.epi.*" %>
+<%@ page import="gov.nih.nci.caintegrator.dto.query.*" %>
 <%@ page import="gov.nih.nci.eagle.query.dto.*" %>
 <%@ page import="gov.nih.nci.caintegrator.enumeration.*" %>
 <%@ page import="gov.nih.nci.caintegrator.exceptions.*" %>
@@ -83,8 +84,11 @@
 						out.println("<li><a id=\"" + task.getId() + "_link\" href=\"javascript:spawnx('clinicalReport.do?method=runReport&taskId=" + task.getId() + "&cacheId=" + task.getCacheId() + "', 750, 500,'clinical_report');\" onclick=\"" + onclick + "\">" + qname + "</a> <i>(Clinical)</i> ");
 					}
 					if(task.getQueryDTO() instanceof EPIQueryDTO){						
-						out.println("<li><a id=\"" + task.getId() + "_link\" href=\"javascript:spawnx('copyNumberReport.do?method=runReport&taskId=" + task.getId() + "&cacheId=" + task.getCacheId() + "', 750, 500,'copy_number_report');\" onclick=\"" + onclick + "\">" + qname + "</a> <i>(Copy Number)</i> ");
-					}
+						out.println("<li><a id=\"" + task.getId() + "_link\" href=\"javascript:spawnx('copyNumberReport.do?method=runReport&taskId=" + task.getId() + "&cacheId=" + task.getCacheId() + "', 750, 500,'copy_number_report');\" onclick=\"" + onclick + "\">" + qname + "</a> <i>(Epi)</i> ");
+					} 
+					if(task.getQueryDTO() instanceof ClassComparisonQueryDTO){						
+						out.println("<li><a id=\"" + task.getId() + "_link\" href=\"javascript:spawnx('copyNumberReport.do?method=runReport&taskId=" + task.getId() + "&cacheId=" + task.getCacheId() + "', 750, 500,'copy_number_report');\" onclick=\"" + onclick + "\">" + qname + "</a> <i>(Class Comparison)</i> ");
+					} 
 					
 					out.println("<span style=\"font-size:10px\">(elapsed time: <span id=\"" + task.getId() + "_time\" >" + task.getElapsedTime() + "</span>ms) </span>");
 					out.println("</li>");
