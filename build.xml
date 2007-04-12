@@ -8,7 +8,7 @@
 	<target name="compile" depends="config_cache">
 		<delete dir="${build.classes.dir}"/>
 		<mkdir dir="${build.classes.dir}"/>
-		<javac srcdir="${source.dir}" destdir="${build.classes.dir}" source="1.5"  debug="true" debuglevel="lines,vars,source">
+		<javac srcdir="${source.dir}" destdir="${build.classes.dir}" source="1.5"  debug="true" debuglevel="lines,vars,source" excludes="**/test/*">
 			<classpath>
 				<fileset dir="${source.lib.dir}">
 					<include name="*.jar"/>
@@ -80,11 +80,9 @@
 		<delete file="${app.war.name}.war"/>
 		<war destfile="${app.war.name}.war" webxml="${webapp.dir}/WEB-INF/web.xml">
 			<fileset file="${webapp.dir}/*.*"/>
-			<zipfileset dir="${webapp.dir}/docs" prefix="docs"/>
 			<zipfileset dir="${webapp.dir}/css" prefix="css"/>
 			<zipfileset dir="${webapp.dir}/images" prefix="images"/>
 			<zipfileset dir="${webapp.dir}/js" prefix="js"/>
-			<zipfileset dir="${webapp.dir}/helpDocs" prefix="helpDocs"/>			
 			<!-- <zipfileset dir="${webapp.dir}/tutorials" prefix="tutorials"/> needed for later -->
 			<!-- <zipfileset dir="${webapp.dir}/xsl" prefix="xsl"/> -->
 			<zipfileset dir="${anthill.dependency.artifacts.dir}" prefix="WEB-INF/lib" >
