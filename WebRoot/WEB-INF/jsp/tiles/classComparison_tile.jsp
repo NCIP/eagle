@@ -129,9 +129,9 @@
 		<html:option value="tissue">Tissue</html:option>
 	</html:select>
 </div>
-
+ 
 <div style="text-align:center">
-	<button onclick="MenuSwapper.saveMe( $('selectedGroups'),$('existingGroups') );" >Submit Analysis</button>
+	<button onclick="return MenuSwapper.saveMe( $('selectedGroups'),$('nonselectedGroups') ); ">Submit Analysis</button>
 </div>
 
 </div>
