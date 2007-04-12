@@ -64,10 +64,10 @@ var MenuSwapper = {
         }
     }
     if (strValues.length == 0) {
-//alert("You have not made any selections");
-    } else {
-
-//alert("Here are your values you've selected:rn" + strValues);
+		//alert("You have not made any selections");
+    } 
+    else {
+		//alert("Here are your values you've selected:rn" + strValues);
         for (i = 0; i < boxLength; i++) {
             tbox.options[i].selected = true;
         }
