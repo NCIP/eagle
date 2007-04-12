@@ -92,8 +92,8 @@
       <property name="findingsManager">
 			<ref bean="eagleFindingsManager" />
 	  </property>
-	  <property name="btc" ref="businessCacheManager" />
-	  <property name="ptc" ref="presentationCacheManager" />
+	  <property name="businessTierCache" ref="businessCacheManager" />
+	  <property name="presentationTierCache" ref="presentationCacheManager" />
     </bean>
 	
 	<!--  Bean for thread pool -->
