@@ -1,5 +1,6 @@
 package gov.nih.nci.eagle.query.dto;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -17,6 +18,7 @@ import gov.nih.nci.caintegrator.dto.de.StatisticalSignificanceDE;
 import gov.nih.nci.caintegrator.dto.de.ExprFoldChangeDE.UpRegulation;
 import gov.nih.nci.caintegrator.dto.query.ClinicalQueryDTO;
 import gov.nih.nci.caintegrator.application.lists.UserList;
+import gov.nih.nci.caintegrator.application.lists.UserListBeanHelper;
 import gov.nih.nci.caintegrator.application.util.ClassHelper;
 
 import gov.nih.nci.eagle.web.struts.ClassComparisonForm;
@@ -40,11 +42,9 @@ import org.apache.log4j.Logger;
 public class ClassComparisonQueryDTOBuilder implements QueryDTOBuilder{
 	
 	private static Logger logger = Logger.getLogger(ClassComparisonQueryDTOBuilder.class);
-	private HttpSession session;
+
 	public ClassComparisonQueryDTOBuilder() {}
-	public ClassComparisonQueryDTOBuilder(HttpSession session) {
-		this.session = session;		
-	}
+	
 	
 	  /***
      * These are the default error values used when an invalid enum type
@@ -54,10 +54,13 @@ public class ClassComparisonQueryDTOBuilder implements QueryDTOBuilder{
      private StatisticalMethodType ERROR_STATISTICAL_METHOD_TYPE = StatisticalMethodType.TTest;
      private CoVariateType ERROR_COVARIATE_TYPE = CoVariateType.Age;
      
-  
-    
+    public QueryDTO buildQueryDTO(Object form){
+    	//dont use
+    	throw(new UnsupportedOperationException());
+    }
+     
 	// in the QueryDTOBuilder interface, there is only one method : QueryDTO buildQueryDTO(Object form){}
-	public QueryDTO buildQueryDTO(Object form) {
+	public QueryDTO buildQueryDTO(Object form, String cacheId) {
 		
 		ClassComparisonForm classComparisonForm = (ClassComparisonForm) form;
 		ClassComparisonQueryDTOImpl  classComparisondto = new ClassComparisonQueryDTOImpl();
@@ -125,33 +128,30 @@ public class ClassComparisonQueryDTOBuilder implements QueryDTOBuilder{
         
 	 
 	 // set comparison groups
+       UserListBeanHelper ulbh = new UserListBeanHelper(cacheId);
 	   List<ClinicalQueryDTO> clinicalQueryCollection = new ArrayList<ClinicalQueryDTO>();
     
 	   if(classComparisonForm.getSelectedGroups() != null && classComparisonForm.getSelectedGroups().length >=2) {
+		   	   
+		   HashMap<String, List> compGroups = new HashMap();
 		   
-		   for(int i=0; i<classComparisonForm.getSelectedGroups().length; i++){
-			  String[] uiDropdownString = classComparisonForm.getSelectedGroups()[i].split("#");  
-			  String myClassName = uiDropdownString[0];
-			  String myValueName = uiDropdownString[1];
-			  
-			  Class myClass = ClassHelper.createClass(myClassName);
-			  if(myClass.isInstance(new UserList())) {
-				  PatientUserListQueryDTO patientUserListQueryDTO = new PatientUserListQueryDTO(session, myValueName);
-				  clinicalQueryCollection.add(patientUserListQueryDTO);
-				  if(i==1) {
-					  // the second group is always the baseline, when the statisticalMethod is not F-test
-				    if(!"FTest".equals(classComparisonForm.getStatisticalMethod())) {
-				    	patientUserListQueryDTO.setBaseline(true);
-				    }
-				  }
-			  }
-			  classComparisondto.setComparisonGroups(clinicalQueryCollection);  
+		   for(int i=0; i<classComparisonForm.getSelectedGroups().length; i++){			   
+			  String myGroupName = classComparisonForm.getSelectedGroups()[i];
+			  List<String> myGroupValues = new ArrayList();
+			  myGroupValues = ulbh.getItemsFromList(myGroupName);
+			  compGroups.put(myGroupName, myGroupValues);
 		   }
-		  //  finishing add comparison groups from the form 
 		   
+		   classComparisondto.setComparisonGroupsMap(compGroups);
 	   }
         
-	   
+	   //set the baseline group in a similar manner as above
+	   if(classComparisonForm.getBaseline()!=null){
+		   HashMap baselineMap = new HashMap();
+		   List<String> baselineValues = ulbh.getItemsFromList(classComparisonForm.getBaseline());
+		   baselineMap.put(classComparisonForm.getBaseline(), baselineValues);
+		   classComparisondto.setBaselineGroupMap(baselineMap);
+	   }
 	   //set up fold change
 	   
 	   if(classComparisonForm.getFoldChange()!= null && classComparisonForm.getFoldChange()!= "") {

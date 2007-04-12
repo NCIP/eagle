@@ -1,6 +1,7 @@
 package gov.nih.nci.eagle.query.dto;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 
 import gov.nih.nci.caintegrator.dto.de.ArrayPlatformDE;
@@ -31,6 +32,10 @@ public class ClassComparisonQueryDTOImpl implements ClassComparisonQueryDTO {
     
      //  comparison groups
 	private List<ClinicalQueryDTO> comparisonGroups;
+	
+	//hold the lists as maps listName->listValues, seperated for baseline
+	private HashMap<String, List> comparisonGroupsMap;
+	private HashMap<String, List> baselineGroupMap;
 	
     //	 fold change
 	private ExprFoldChangeDE exprFoldChangeDE;
@@ -132,6 +137,22 @@ public class ClassComparisonQueryDTOImpl implements ClassComparisonQueryDTO {
 	public void setInstitutionDEs(Collection<InstitutionDE> institutionDE) {
 		this.institutionDEs = institutionDEs;
 
+	}
+
+	public HashMap<String, List> getBaselineGroupMap() {
+		return baselineGroupMap;
+	}
+
+	public void setBaselineGroupMap(HashMap<String, List> baselineGroupMap) {
+		this.baselineGroupMap = baselineGroupMap;
+	}
+
+	public HashMap<String, List> getComparisonGroupsMap() {
+		return comparisonGroupsMap;
+	}
+
+	public void setComparisonGroupsMap(HashMap<String, List> comparisonGroupsMap) {
+		this.comparisonGroupsMap = comparisonGroupsMap;
 	}
 
 	
