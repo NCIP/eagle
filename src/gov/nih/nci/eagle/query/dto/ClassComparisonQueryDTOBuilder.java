@@ -134,7 +134,7 @@ public class ClassComparisonQueryDTOBuilder implements QueryDTOBuilder{
        UserListBeanHelper ulbh = new UserListBeanHelper(cacheId);
 	   List<ClinicalQueryDTO> clinicalQueryCollection = new ArrayList<ClinicalQueryDTO>();
     
-	   if(classComparisonForm.getSelectedGroups() != null && classComparisonForm.getSelectedGroups().length >=2) {
+	   if(classComparisonForm.getSelectedGroups() != null && classComparisonForm.getSelectedGroups().length >=1) {
 		   	   
 		   HashMap<String, List> compGroups = new HashMap();
 		   
