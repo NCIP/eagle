@@ -1,9 +1,5 @@
 package gov.nih.nci.eagle.service.strategies;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
 import gov.nih.nci.caintegrator.analysis.messaging.ClassComparisonRequest;
 import gov.nih.nci.caintegrator.analysis.messaging.SampleGroup;
 import gov.nih.nci.caintegrator.application.analysis.AnalysisServerClientManager;
@@ -11,10 +7,8 @@ import gov.nih.nci.caintegrator.application.cache.BusinessTierCache;
 import gov.nih.nci.caintegrator.application.service.strategy.AsynchronousFindingStrategy;
 import gov.nih.nci.caintegrator.dto.de.ExprFoldChangeDE;
 import gov.nih.nci.caintegrator.dto.query.ClassComparisonQueryDTO;
-import gov.nih.nci.caintegrator.dto.query.ClinicalQueryDTO;
 import gov.nih.nci.caintegrator.dto.query.QueryDTO;
 import gov.nih.nci.caintegrator.enumeration.ArrayPlatformType;
-import gov.nih.nci.caintegrator.enumeration.FindingStatus;
 import gov.nih.nci.caintegrator.enumeration.StatisticalMethodType;
 import gov.nih.nci.caintegrator.enumeration.StatisticalSignificanceType;
 import gov.nih.nci.caintegrator.exceptions.FindingsAnalysisException;
@@ -25,10 +19,14 @@ import gov.nih.nci.caintegrator.service.findings.Finding;
 import gov.nih.nci.caintegrator.service.task.Task;
 import gov.nih.nci.caintegrator.service.task.TaskResult;
 import gov.nih.nci.caintegrator.util.ValidationUtility;
-import gov.nih.nci.eagle.query.dto.PatientUserListQueryDTO;
+import gov.nih.nci.eagle.query.dto.ClassComparisonQueryDTOImpl;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 
 import javax.jms.JMSException;
-import javax.naming.NamingException;
 
 import org.apache.log4j.Logger;
 
@@ -169,33 +167,34 @@ public class ClassComparisonFindingStrategy extends AsynchronousFindingStrategy 
                 getTaskResult());
         System.out
                 .println("Task has been set to running and placed in cache, query will be run");
-        List<ClinicalQueryDTO> clinicalQueries = getQueryDTO()
-                .getComparisonGroups();
-        if (clinicalQueries != null) {
-            for (ClinicalQueryDTO clinicalDataQuery : clinicalQueries) {
-                if (clinicalDataQuery instanceof PatientUserListQueryDTO) {
-                    try {
+//        List<ClinicalQueryDTO> clinicalQueries = getQueryDTO()
+//                .getComparisonGroups();
+//        if (clinicalQueries != null) {
+//            for (ClinicalQueryDTO clinicalDataQuery : clinicalQueries) {
+//                if (clinicalDataQuery instanceof PatientUserListQueryDTO) {
+//                    try {
+//
+//                        PatientUserListQueryDTO ptQuery = (PatientUserListQueryDTO) clinicalDataQuery;
+//                        List<String> sampleIds = ptQuery.getPatientDIDs();
+//                        if (sampleIds != null && sampleIds.size() > 0) {
+//                            SampleGroup sampleGroup = new SampleGroup(
+//                                    clinicalDataQuery.getQueryName(), sampleIds
+//                                            .size());
+//                            sampleGroup.addAll(sampleIds);
+//                            sampleGroups.add(sampleGroup);
+//
+//                        }
+//                    }// end of try
+//                    catch (Exception e) {
+//                        e.printStackTrace();
+//                        logger.error(e.getMessage());
+//                        throw new RuntimeException(e);
+//                    }
+//                }
+//
+//            }
+//        }
 
-                        PatientUserListQueryDTO ptQuery = (PatientUserListQueryDTO) clinicalDataQuery;
-                        List<String> sampleIds = ptQuery.getPatientDIDs();
-                        if (sampleIds != null && sampleIds.size() > 0) {
-                            SampleGroup sampleGroup = new SampleGroup(
-                                    clinicalDataQuery.getQueryName(), sampleIds
-                                            .size());
-                            sampleGroup.addAll(sampleIds);
-                            sampleGroups.add(sampleGroup);
-
-                        }
-                    }// end of try
-                    catch (Exception e) {
-                        e.printStackTrace();
-                        logger.error(e.getMessage());
-                        throw new RuntimeException(e);
-                    }
-                }
-
-            }
-        }
 
     }
 
@@ -231,6 +230,22 @@ public class ClassComparisonFindingStrategy extends AsynchronousFindingStrategy 
                         .getValueObjectAsArrayPlatformType();
 
                 classComparisonRequest.setArrayPlatform(arrayPlatform);
+
+                // Set sample groups
+                HashMap<String, List> comparisonGroupsMap = getQueryDTO().getComparisonGroupsMap();
+                HashMap<String, List> baselineGroupMap = getQueryDTO().getBaselineGroupMap();
+                for(String name : baselineGroupMap.keySet()) {
+                    SampleGroup baseline = new SampleGroup(name);
+                    baseline.addAll(baselineGroupMap.get(name));
+                    //sampleGroups.add(baseline);
+                    classComparisonRequest.setBaselineGroup(baseline);
+                }
+                for(String name : comparisonGroupsMap.keySet()) {
+                    SampleGroup comparison = new SampleGroup(name);
+                    comparison.addAll(comparisonGroupsMap.get(name));
+                    //sampleGroups.add(comparison);
+                    classComparisonRequest.setGroup1(comparison);
+                }
 
                 if (classComparisonRequest.getArrayPlatform() == ArrayPlatformType.BLOOD_ARRAY) {
                     classComparisonRequest
@@ -331,8 +346,8 @@ public class ClassComparisonFindingStrategy extends AsynchronousFindingStrategy 
         return _valid;
     }
 
-    private ClassComparisonQueryDTO getQueryDTO() {
-        return (ClassComparisonQueryDTO) taskResult.getTask().getQueryDTO();
+    private ClassComparisonQueryDTOImpl getQueryDTO() {
+        return (ClassComparisonQueryDTOImpl) taskResult.getTask().getQueryDTO();
     }
 
     @Override
