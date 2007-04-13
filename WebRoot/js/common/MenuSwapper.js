@@ -72,5 +72,7 @@ var MenuSwapper = {
             tbox.options[i].selected = true;
         }
     }
+    
+    return true;
 }
 }
