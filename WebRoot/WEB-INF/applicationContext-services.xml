@@ -19,6 +19,7 @@
 				<ref bean="epiQueryStrategy" />
 				<ref bean="clinicalQueryStrategy" />
 				<ref bean="classComparisonQueryStrategy" />
+                <ref bean="fTestQueryStrategy" />
 			</list>
 		</property>
 	</bean>
@@ -47,6 +48,13 @@
 	</bean>
 	<bean id="classComparisonQueryStrategy"
 		class="gov.nih.nci.eagle.service.strategies.ClassComparisonFindingStrategy" scope="prototype">
+		<property name="businessCacheManager" ref="businessCacheManager" />
+		<property name="taskResult" ref="classComparisonTaskResult" />
+		<property name="analysisServerClientManager" ref="analysisServerClientManager" />
+	</bean>
+
+     <bean id="fTestQueryStrategy"
+		class="gov.nih.nci.eagle.service.strategies.FTestFindingStrategy" scope="prototype">
 		<property name="businessCacheManager" ref="businessCacheManager" />
 		<property name="taskResult" ref="classComparisonTaskResult" />
 		<property name="analysisServerClientManager" ref="analysisServerClientManager" />
