@@ -4,7 +4,59 @@
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 
 <script type="text/javascript" src="js/common/MenuSwapper.js"></script>
+<script type="text/javascript">
+var CCForm = {
+	'changeStat': function(el)	{
+		if(el.selectedIndex != '0')	{
+			//$('baselineButtons').hide();
+			$$('#baselineButtons input', '#baselineField select').each( function(s)	{
+				s.disabled = "true";
+			} );
+			
+			//clear the baseline
+			MenuSwapper.move($('selectedBaseline'),$('nonselectedGroups'));
+			//$('baselineField').hide(); 
+		} 
+		else	{ 
+			//$('baselineButtons').show();
+			$$('#baselineButtons input', '#baselineField select').each( function(s)	{
+				s.disabled = "";
+			} );
+			//$('baselineField').show();
+		} 
+		
+		if(this.selectedIndex == '2')	{ 
+			$('covariates').show();
+		}
+		else	{
+			$('covariates').hide();
+		}
+	},
+	'validate': function()	{
+		if($('analysisName').value == "")	{
+			alert("Please enter an Analysis Name");
+			$('analysisName').style.border="1px solid red";
+			return false;
+		}
+		if($('statisticalMethod').selectedIndex == 0 && $('selectedBaseline').length<1)	{
+			//need a baseline
+			alert("Please choose a baseline");
+			$('selectedBaseline').style.border="1px solid red";
+			return false;
+		}
+		else	{
+		
+			
+		}
+		
+		//save the selectedGroups
+		MenuSwapper.saveMe( $('selectedGroups'),$('nonselectedGroups') );
+		return true;
+	
+	}
 
+}
+</script>
 <html:form action="classComparison.do?method=submit" >
 <html:errors property="queryErrors" />
 
@@ -18,19 +70,14 @@
 
 <div class="elementTile">
 	<b>Statistical Method</b>
-	<html:select styleId="statisticalMethod" property="statisticalMethod" onchange="$('baseline').disabled = (this.selectedIndex == '0') ? '' : 'true'; if(this.selectedIndex == '2') { $('covariates').show();}else {$('covariates').hide();} ">
+	<html:select styleId="statisticalMethod" property="statisticalMethod" 
+	onchange="CCForm.changeStat(this); ">
 		<html:option value="t-test"> T-Test: Two Sample Test</html:option>
 		<html:option value="f-test"> F-Test: One Way ANOVA</html:option>
 		<html:option value="lm"> Linear Model with/without covariate adjustment</html:option>
 	</html:select>
 </div>
 
-<div id="baselineDiv">
-	<b>Baseline:</b>
-	<html:select styleId="baseline" property="baseline">
-		<html:optionsCollection property="existingGroups"/>
-	</html:select>
-</div>
 
 <div id="covariates" style="display:none">
 	<b>Co-variates:</b>
@@ -41,6 +88,7 @@
 	<input type="checkbox"/>Age
 	<input type="checkbox"/>Residential Area
 	-->
+	
 	<html:select property="covariate" style="width: 200px;">
 		<html:option value="age">Age</html:option>
 		<html:option value="gender">Gender</html:option>
@@ -58,25 +106,33 @@
 				<tr style="vertical-align: top;">
 					<td>
 						Existing Groups
-						<br>
-						<html:select property="existingGroups" multiple="multiple" size="5"
+						<br/>
+						<html:select property="existingGroups" multiple="multiple" size="8"
 							ondblclick="MenuSwapper.move($('nonselectedGroups'),$('selectedGroups'));"
 							styleId="nonselectedGroups" style="width: 200px;">
 							<html:optionsCollection property="existingGroups"/>
 						</html:select>
 					</td>
-					<td style="vertical-align: middle;">
-						<input
-							onclick="MenuSwapper.move($('selectedGroups'),$('nonselectedGroups'));"
-							value="&lt;&lt;" type="button">
-						<br>
-						<input
-							onclick="MenuSwapper.move($('nonselectedGroups'),$('selectedGroups'));"
-							value="&gt;&gt;" type="button">
+					<td style="vertical-align: middle;" id="menuSwapperButtons">
+						<b id="baselineButtons">
+						<input onclick="MenuSwapper.move($('selectedBaseline'),$('nonselectedGroups'));" value="&lt;&lt;Base" type="button">
+						<br/>	
+						<input onclick="if($('selectedBaseline').length && $('selectedBaseline').length>0){ alert('You have already selected a baseline.  Please unselect it first.'); return; }; MenuSwapper.move($('nonselectedGroups'),$('selectedBaseline'));" value="Base&gt;&gt;" type="button">
+						<br/><br/>
+						</b>
+						
+						<input onclick="MenuSwapper.move($('selectedGroups'),$('nonselectedGroups'));" value="&lt;&lt;" type="button" />
+						<br/>
+						<input onclick="MenuSwapper.move($('nonselectedGroups'),$('selectedGroups'));" value="&gt;&gt;" type="button" />
 					</td>
 					<td>
+						<span id="baselineField">
+						Baseline Group<br/>
+						<select name="baseline" id="selectedBaseline" size="1" style="width:200px;">
+						</select><br/>
+						</span>
 						Selected Groups
-						<br>
+						<br/>
 						<html:select property="selectedGroups" multiple="multiple" size="5"
 							ondblclick="MenuSwapper.move($('selectedGroups'),$('nonselectedGroups'));"
 							styleId="selectedGroups" style="width: 200px;"></html:select>
@@ -107,7 +163,7 @@
 </div>
  
 <div style="text-align:center">
-	<button onclick="return MenuSwapper.saveMe( $('selectedGroups'),$('nonselectedGroups') ); ">Submit Analysis</button>
+	<button onclick="return CCForm.validate();  ">Submit Analysis</button>
 </div>
 
 </div>
