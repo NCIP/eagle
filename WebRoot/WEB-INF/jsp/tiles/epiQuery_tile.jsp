@@ -127,13 +127,14 @@ var EpiQuery = {
 		Patient Characteristics
 	</h4>
 	<div>
-		<b>Age (years)</b>
-		lower:
+		<b>Age Range</b>
+		
 		<html:select property="ageLower" style="width:60px">
 			<html:option value="10">10</html:option>
 			<html:option value="20">20</html:option>
+			<html:option value="30">40</html:option>
 		</html:select>
-		upper:
+		 to 
 		<html:select property="ageUpper" style="width:60px">
 			<html:option value="80">80</html:option>
 			<html:option value="90">90</html:option>
