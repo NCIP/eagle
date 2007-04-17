@@ -274,11 +274,12 @@ var EpiQuery = {
 	</div>
 
 	<a name="diet"></a>
-	<!--  h4 class="underlineRight">
+	<!--
+	<h4 class="underlineRight">
 		Diet Notes
 	</h4>
 	<div>
-		<b>Diet Items</b><br/>
+		<b>Diet Items</b> <br />
 		<b id="foodItems">
 			<html:select property="foodItems(item_1)">
 				<html:option value="">
@@ -330,8 +331,8 @@ var EpiQuery = {
 			<a href="#" onclick="EpiQuery.insertTile('foodItems'); return false;">[more]</a>
 			*All Items will be combined with an "AND"
 		</div>
-	</div -->
-
+	</div>
+-->
 	<a name="familyHistory"></a>
 	<h4 class="underlineRight">
 		Family History
