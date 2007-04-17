@@ -348,5 +348,21 @@ public class EpiForm extends ValidatorForm{
 	public void setRelativesWithCancer(String[] relativesWithCancer) {
 		this.relativesWithCancer = relativesWithCancer;
 	}
+
+	public Map getFoodItemsMap() {
+		return foodItemsMap;
+	}
+
+	public Map getJobsMap() {
+		return jobsMap;
+	}
+
+	public Map getLivingCompanionsMap() {
+		return livingCompanionsMap;
+	}
+
+	public Map getRelativesMap() {
+		return relativesMap;
+	}
 	
 }
