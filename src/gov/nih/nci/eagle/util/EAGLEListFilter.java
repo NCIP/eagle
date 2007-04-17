@@ -20,7 +20,7 @@ public class EAGLEListFilter{
 	
 	public static ListType[] values()	{
 
-		ListType[] lsa = {ListType.PatientDID,ListType.Gene, ListType.Reporter}; //no duplicates here
+		ListType[] lsa = {ListType.PatientDID}; //no duplicates here
 		
 		return lsa;
 	}
