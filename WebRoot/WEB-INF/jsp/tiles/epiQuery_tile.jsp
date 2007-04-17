@@ -60,7 +60,7 @@ var EpiQuery = {
 			<a href="#tobdep">Tobacco Dependency</a> |
 			<a href="#demographics">Subject Characteristics</a> |
 			<a href="#behavioral">Behavioral</a> |
-			<a href="#diet">Diet</a> |
+			<!--   a href="#diet">Diet</a> | -->
 			<a href="#familyHistory">Family History</a> |
 			<a href="#occupation">Environmental Tobacco Smoke</a>
 	</p>
@@ -85,7 +85,7 @@ var EpiQuery = {
 	</h4>
 
 	<div>
-		<b>Smoking Status</b>
+		<b>Smoking Status (Cigarette)</b>
 		<html:select property="smokingStatus">
 			<html:option value="current">Current Smoker</html:option>
 			<html:option value="former">Former Smoker</html:option>
@@ -151,36 +151,40 @@ var EpiQuery = {
 	</div>
 
 	<div>
-		<b>Weight</b>
-		<html:text property="weight" />
+		<b>Weight Range</b>
+		<html:text property="weightLower" size="5" /> to
+		<html:text property="weightUpper" size="5" /> kg
+		
+	<!--
 		<html:select property="weightMeasure">
 			<html:option value="lbs">LBS</html:option>
 			<html:option value="kilos">KILOS</html:option>
 		</html:select>
+	-->
 	</div>
 
 	<div>
-		<b>Height</b>
-			<html:text property="height" />
-			<html:select property="heightMeasure">
+		<b>Height Range</b>
+			<html:text property="heightLower" size="5" /> to
+			<html:text property="heightUpper" size="5" /> cm
+<!-- 		<html:select property="heightMeasure">
 				<html:option value="inches">Inches</html:option>
 				<html:option value="cm">CM</html:option>
 			</html:select>
+-->
 	</div>
 
 	<div>
-		<b>Waist Circumference</b>
-		<html:select property="waist">
-			<html:option value="20">20</html:option>
-			<html:option value="21">21</html:option>
-			<html:option value="33">33</html:option>
-			<html:option value="34">34</html:option>
-		</html:select>
-
+		<b>Waist Circumference Range</b>
+			<html:text property="waistLower" size="5" /> to
+			<html:text property="waistUpper" size="5" /> cm
+ 
+<!--  
 		<html:select property="waistMeasure">
 			<html:option value="inches">inches</html:option>
 			<html:option value="cm">cm</html:option>
 		</html:select>
+-->
 	</div>
 
 	<div>
@@ -192,7 +196,7 @@ var EpiQuery = {
 			<html:option value="phd">PhD</html:option>
 		</html:select>
 	</div>
-
+<!-- 
 	<div>
 		<b>Socio-ecomomic Status</b>
 			<html:select property="socioEconomicStatus">
@@ -204,7 +208,7 @@ var EpiQuery = {
 				</html:option>
 			</html:select>
 	</div>
-
+-->
 	<div>
 		<b>Residential Area</b>
 			<html:select property="residentialArea">
@@ -246,7 +250,7 @@ var EpiQuery = {
 	</h4>
 	<div>
 		<b>Depression Score</b>
-			<html:select property="depressionScore">
+			<html:select property="depressionScore" disabled="true">
 				<html:option value="1">
 					1
 				</html:option>
@@ -258,7 +262,7 @@ var EpiQuery = {
 
 	<div>
 		<b>Anxiety Score</b>
-			<html:select property="anxietyScore">
+			<html:select property="anxietyScore" disabled="true">
 				<html:option value="1">
 					1
 				</html:option>
@@ -269,7 +273,7 @@ var EpiQuery = {
 	</div>
 
 	<a name="diet"></a>
-	<h4 class="underlineRight">
+	<!--  h4 class="underlineRight">
 		Diet Notes
 	</h4>
 	<div>
@@ -325,13 +329,14 @@ var EpiQuery = {
 			<a href="#" onclick="EpiQuery.insertTile('foodItems'); return false;">[more]</a>
 			*All Items will be combined with an "AND"
 		</div>
-	</div>
+	</div -->
 
 	<a name="familyHistory"></a>
 	<h4 class="underlineRight">
 		Family History
 	</h4>
-	<div>
+	
+	<!--   div>
 		<b>Medical Conditions</b><br/>
 		<b id="famHist">
 			<html:select property="relatives(relative_1)">
@@ -379,7 +384,36 @@ var EpiQuery = {
 			<a href="#" onclick="EpiQuery.insertTile('famHist'); return false;">[more]</a>
 			*All Items will be combined with an "AND"
 		</div>
+	</div -->
+	
+	
+		<div>
+		<b>Relatives With Lung Cancer</b>
+		<br/>
+		select which relatives had lung cancer
+		<br />
+		<html:checkbox property="relativesWithCancer" value="mother"/>
+		Mother
+		<html:checkbox property="relativesWithCancer" value="father"/>
+		Father
+		<br />
+		<html:checkbox property="relativesWithCancer" value="grandmotherm"/>
+		Grandmother (Maternal)
+		<html:checkbox property="relativesWithCancer" value="grandfatherm"/>
+		Grandfather (Maternal)
+		<br />
+		<html:checkbox property="relativesWithCancer" value="grandfatherp"/>
+		Grandfather (Paternal)
+		<html:checkbox property="relativesWithCancer" value="grandmotherp"/>
+		Grandfather (Paternal)
+		<br />
+		<html:checkbox property="relativesWithCancer" value="sister"/>
+		Sister
+		<html:checkbox property="relativesWithCancer" value="brother"/>
+		Brother
+		<br />
 	</div>
+	
 	<div>
 		<b>Relative's Smoking Status</b>
 		<br/>
