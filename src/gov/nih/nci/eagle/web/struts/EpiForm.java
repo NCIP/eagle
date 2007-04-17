@@ -24,12 +24,19 @@ public class EpiForm extends ValidatorForm{
 	private String ageLower;
 	private String ageUpper;
 	private String gender;
-	private String weight;
-	private String weightMeasure;
-	private String height;
-	private String heightMeasure;
-	private String waist;
-	private String waistMeasure;
+	
+	private String weightLower;
+	private String weightUpper;
+	private String weightMeasure; //metric for now
+	
+	private String heightLower;
+	private String heightUpper;
+	private String heightMeasure; //metric for now
+	
+	private String waistLower;
+	private String waistUpper;
+	private String waistMeasure;	//metric for now
+	
 	private String educationLevel;
 	private String socioEconomicStatus;
 	private String residentialArea;
@@ -39,40 +46,33 @@ public class EpiForm extends ValidatorForm{
 	//behavorial
 	private String depressionScore;
 	private String anxietyScore;
-	
-	//diet notes...multiple?  limit to 3?
+
 	private final Map foodItemsMap = new HashMap();
-	// foodItems[item_1], [freq_1], [item_2], [freq_2] ...etc
-	// access in struts UI:  foodItems(item_1), foodItems(frequency_1), foodItems(item_2), etc
-	// code proper get/sets and must validate the keys before accessing
-	//private String foodItem; //array?
-	//private String foodFrequency; //array?
+	/*
+	 keys: item_n, freq_n
+	 foodItems[item_1], [freq_1], [item_2], [freq_2] ...etc
+	 access in struts UI:  foodItems(item_1), foodItems(frequency_1), foodItems(item_2), etc
+	*/
 	
 	//family history
-		//next 3 are multiples, consider array of hashmaps
 	private final Map relativesMap = new HashMap();
-	//private String relative;
-	//private String condition;
-	//private boolean currentlyAlive; //as of?
+	/*
+	 *keys:  relative_n, condition_n, currentlyAlive_n
+	 */
+	
+	private String [] relativesWithCancer;
 	
 	private String [] relativesWhoSmoked;
 	
 	//environmental tobacco smoke
-		//next 4 are multiples, consider array of hashmaps
 	private final Map jobsMap = new HashMap();
 	/*
-	private String jobName;
-	private String startDate;
-	private String endDate;
-	private String smokiness;
+	keys:  jobName_n, startDate_n, endDate_n, smokiness_n
 	*/
-		//next 4 are multiples, consider array of hashmaps
+
 	private final Map livingCompanionsMap = new HashMap();
 	/*
-	private String livingCompanion;
-	private String companionYears;
-	private String companionHoursPerDay;
-	private String companionProduct;
+	keys: livingCompanion_n, companionYears_n, companionHoursPerDay_n, companionProduct_n
 	*/
 	
 	private String [] smokingAreas;
@@ -157,12 +157,20 @@ public class EpiForm extends ValidatorForm{
 		this.gender = gender;
 	}
 
-	public String getHeight() {
-		return height;
+	public String getHeightLower() {
+		return heightLower;
 	}
 
-	public void setHeight(String height) {
-		this.height = height;
+	public void setHeightLower(String height) {
+		this.heightLower = height;
+	}
+
+	public String getHeightUpper() {
+		return heightUpper;
+	}
+
+	public void setHeightUpper(String heightUpper) {
+		this.heightUpper = heightUpper;
 	}
 
 	public String getHeightMeasure() {
@@ -277,12 +285,20 @@ public class EpiForm extends ValidatorForm{
 		this.socioEconomicStatus = socioEconomicStatus;
 	}
 
-	public String getWaist() {
-		return waist;
+	public String getWaistLower() {
+		return waistLower;
 	}
 
-	public void setWaist(String waist) {
-		this.waist = waist;
+	public void setWaistLower(String waist) {
+		this.waistLower = waist;
+	}
+
+	public String getWaistUpper() {
+		return waistUpper;
+	}
+
+	public void setWaistUpper(String waistUpper) {
+		this.waistUpper = waistUpper;
 	}
 
 	public String getWaistMeasure() {
@@ -293,12 +309,20 @@ public class EpiForm extends ValidatorForm{
 		this.waistMeasure = waistMeasure;
 	}
 
-	public String getWeight() {
-		return weight;
+	public String getWeightLower() {
+		return weightLower;
 	}
 
-	public void setWeight(String weight) {
-		this.weight = weight;
+	public void setWeightLower(String weight) {
+		this.weightLower = weight;
+	}
+
+	public String getWeightUpper() {
+		return weightUpper;
+	}
+
+	public void setWeightUpper(String weightUpper) {
+		this.weightUpper = weightUpper;
 	}
 
 	public String getWeightMeasure() {
@@ -315,6 +339,14 @@ public class EpiForm extends ValidatorForm{
 
 	public void setYearsSinceQuitting(String yearsSinceQuitting) {
 		this.yearsSinceQuitting = yearsSinceQuitting;
+	}
+
+	public String[] getRelativesWithCancer() {
+		return relativesWithCancer;
+	}
+
+	public void setRelativesWithCancer(String[] relativesWithCancer) {
+		this.relativesWithCancer = relativesWithCancer;
 	}
 	
 }
