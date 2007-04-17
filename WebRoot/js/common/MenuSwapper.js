@@ -40,8 +40,9 @@ var MenuSwapper = {
 },
 
 'saveMe': function(tbox, fbox) {
+
     var strValues = "";
-    if (tbox == null || fbox == null || !tbox.length || !fbox.length) {
+    if (tbox == null || fbox == null || !tbox.length ) {
         return;
     }
     var boxLength = 0;
