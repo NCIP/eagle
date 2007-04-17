@@ -1,15 +1,21 @@
 package gov.nih.nci.eagle.service.strategies;
 
 
+import gov.nih.nci.caintegrator.analysis.messaging.ClassComparisonRequest;
 import gov.nih.nci.caintegrator.analysis.messaging.FTestRequest;
+import gov.nih.nci.caintegrator.service.findings.ClassComparisonFinding;
 import gov.nih.nci.caintegrator.service.findings.FTestFinding;
 import gov.nih.nci.caintegrator.application.analysis.AnalysisServerClientManager;
 import gov.nih.nci.caintegrator.application.cache.BusinessTierCache;
 import gov.nih.nci.caintegrator.application.cache.CacheFactory;
+import gov.nih.nci.caintegrator.application.service.strategy.AsynchronousFindingStrategy;
 import gov.nih.nci.caintegrator.service.findings.strategies.SessionBasedFindingStrategy;
 import gov.nih.nci.caintegrator.dto.query.ClassComparisonQueryDTO;
+import gov.nih.nci.caintegrator.dto.query.QueryDTO;
 import gov.nih.nci.caintegrator.enumeration.FindingStatus;
 import gov.nih.nci.caintegrator.service.findings.Finding;
+import gov.nih.nci.caintegrator.service.task.Task;
+import gov.nih.nci.caintegrator.service.task.TaskResult;
 import gov.nih.nci.caintegrator.exceptions.FindingsAnalysisException;
 import gov.nih.nci.caintegrator.exceptions.FindingsQueryException;
 import gov.nih.nci.caintegrator.analysis.messaging.SampleGroup;
@@ -19,9 +25,11 @@ import gov.nih.nci.caintegrator.enumeration.StatisticalMethodType;
 import gov.nih.nci.caintegrator.dto.query.*;
 import gov.nih.nci.caintegrator.enumeration.ArrayPlatformType;
 
+import gov.nih.nci.eagle.query.dto.ClassComparisonQueryDTOImpl;
 import gov.nih.nci.eagle.query.dto.PatientUserListQueryDTO;
 
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -32,28 +40,21 @@ import javax.naming.NamingException;
 
 import org.apache.log4j.Logger;
 
-public class FTestFindingStrategy extends SessionBasedFindingStrategy{
+public class FTestFindingStrategy extends AsynchronousFindingStrategy{
 	
 	private static  Logger logger = Logger.getLogger(FTestFindingStrategy.class);
 	
-	private String sessionId = null;
-	
-	private String taskId = null;
 	
 	private ClassComparisonQueryDTO myQueryDTO = null;
 	
-	private FTestRequest fTestRequest = null;
+	private FTestRequest fTestRequest = null;		
 	
-	private FTestFinding fTestFinding = null;	
-	
-	private AnalysisServerClientManager analysisServerClientManager = null;	
-	
-	private BusinessTierCache cacheManager = CacheFactory.getBusinessTierCache();
+	private AnalysisServerClientManager analysisServerClientManager = null;		
 	
 	private List<SampleGroup> sampleGroups = new ArrayList<SampleGroup>();	
 	
 	
-	public FTestFindingStrategy(String sessionId, String taskId, ClassComparisonQueryDTO queryDTO) throws ValidationException  {
+	/*public FTestFindingStrategy(String sessionId, String taskId, ClassComparisonQueryDTO queryDTO) throws ValidationException  {
 		if(validate(queryDTO)) {
 		   this.sessionId = sessionId;
 		   this.taskId = taskId;
@@ -72,16 +73,16 @@ public class FTestFindingStrategy extends SessionBasedFindingStrategy{
 			   logger.error(ex);
 		     }
 		}// end if
-		
+		*/
 	    /*
 		 * set Finding in cache
 		 */
-		FindingStatus currentStatus  = FindingStatus.Running;
+		/*FindingStatus currentStatus  = FindingStatus.Running;
 		fTestFinding = new FTestFinding (this.sessionId,this.taskId,currentStatus, null);
 		fTestFinding.setQueryDTO(myQueryDTO);		
 		cacheManager.addToSessionCache(this.sessionId,this.taskId, fTestFinding);		
 	}
-	
+	*/
 	
 	// this method is used to verified the # of comparison groups for Ftest
 	public boolean 	createQuery() throws FindingsQueryException{
@@ -101,12 +102,17 @@ public class FTestFindingStrategy extends SessionBasedFindingStrategy{
 		return false;		
 	}
 	
-	/*
-	 * This method is putting the patient dids to sample groups
-	 */
-	public boolean executeQuery() throws FindingsQueryException{
+	 protected void executeStrategy() {
 		
-		List<ClinicalQueryDTO> clinicalQueries = myQueryDTO.getComparisonGroups();
+		
+		fTestRequest = new FTestRequest(taskResult
+                .getTask().getCacheId(), taskResult.getTask().getId());
+		businessCacheManager.addToSessionCache(getTaskResult().getTask()
+                .getCacheId(), getTaskResult().getTask().getId(),
+                getTaskResult());
+
+		
+		/*List<ClinicalQueryDTO> clinicalQueries = myQueryDTO.getComparisonGroups();
 		for(ClinicalQueryDTO clinicalDataQuery: clinicalQueries ) {
 			if(clinicalDataQuery instanceof PatientUserListQueryDTO) {
 				try {
@@ -128,6 +134,7 @@ public class FTestFindingStrategy extends SessionBasedFindingStrategy{
 		
 	     }
 	  return true;
+	  */
 	}
 	
 	
@@ -141,9 +148,19 @@ public class FTestFindingStrategy extends SessionBasedFindingStrategy{
 		    if(statisticType==StatisticalMethodType.FTest) {
 			
                 //	set sample groups
-			    if (sampleGroups.size() >= 2) {
+			  /*  if (sampleGroups.size() >= 2) {
 			    	fTestRequest.setSampleGroups(sampleGroups);
 			     }
+			    */
+			    // Set sample groups
+                HashMap<String, List> comparisonGroupsMap = getQueryDTO().getComparisonGroupsMap();
+               
+                for(String name : comparisonGroupsMap.keySet()) {
+                    SampleGroup comparison = new SampleGroup(name);
+                    comparison.addAll(comparisonGroupsMap.get(name));
+                    sampleGroups.add(comparison);
+                    fTestRequest.setSampleGroups(sampleGroups);
+                }
 			    // set statistical method
 			    fTestRequest.setStatisticalMethod(statisticType);
 			
@@ -188,7 +205,7 @@ public class FTestFindingStrategy extends SessionBasedFindingStrategy{
 	 * get Finding object
 	 */
 	public Finding getFinding() {
-		return fTestFinding;
+		return (ClassComparisonFinding) taskResult;
 	}
 	/*
 	 * This is to validate if the classComparasonQuery is valid or not.
@@ -220,6 +237,39 @@ public class FTestFindingStrategy extends SessionBasedFindingStrategy{
 		return validStatus;
 		
 	}
+	 private ClassComparisonQueryDTOImpl getQueryDTO() {
+	        return (ClassComparisonQueryDTOImpl) taskResult.getTask().getQueryDTO();
+	    }
+	 
+	 @Override
+	    public TaskResult retrieveTaskResult(Task task) {
+	        TaskResult taskResult = (TaskResult) businessCacheManager
+	                .getObjectFromSessionCache(task.getCacheId(), task.getId());
+	        return taskResult;
+	    }
+
+	    @Override
+	    public boolean canHandle(QueryDTO query) {
+	        return (query instanceof ClassComparisonQueryDTO);
+	    }
+
+	    public AnalysisServerClientManager getAnalysisServerClientManager() {
+	        return analysisServerClientManager;
+	    }
+
+	    public void setAnalysisServerClientManager(
+	            AnalysisServerClientManager analysisServerClientManager) {
+	        this.analysisServerClientManager = analysisServerClientManager;
+	    }
+
+	    public BusinessTierCache getBusinessCacheManager() {
+	        return businessCacheManager;
+	    }
+
+	    public void setBusinessCacheManager(BusinessTierCache cacheManager) {
+	        this.businessCacheManager = cacheManager;
+	    }
+
 	
 }
 
