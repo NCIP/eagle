@@ -42,6 +42,7 @@ var CCForm = {
 			//need a baseline
 			alert("Please choose a baseline");
 			$('selectedBaseline').style.border="1px solid red";
+			$('nonselectedGroups').style.border="1px solid red";
 			return false;
 		}
 		else	{
