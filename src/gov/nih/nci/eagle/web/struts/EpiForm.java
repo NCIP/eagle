@@ -1,6 +1,7 @@
 package gov.nih.nci.eagle.web.struts;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.struts.validator.ValidatorForm;
@@ -9,9 +10,12 @@ public class EpiForm extends ValidatorForm{
 	
 	private String queryName;
 	private String patientGroup;
+	private List existingGroups;
 	
 	//tobacco consumption (cigarette only for now)
 	private String smokingStatus;
+	private List existingSmokingStatus;
+	
 	private String intensity;
 	private String duration;
 	private String ageAtInitiation;
@@ -24,6 +28,7 @@ public class EpiForm extends ValidatorForm{
 	private String ageLower;
 	private String ageUpper;
 	private String gender;
+	private List existingGender;
 	
 	private String weightLower;
 	private String weightUpper;
@@ -38,10 +43,14 @@ public class EpiForm extends ValidatorForm{
 	private String waistMeasure;	//metric for now
 	
 	private String educationLevel;
+	private List existingEducationLevel;
 	private String socioEconomicStatus;
 	private String residentialArea;
+	private List existingResidentialArea;
 	private String maritalStatus;
+	private List existingMaritalStatus;
 	private String religion;
+	private List existingReligion;
 	
 	//behavorial
 	private String depressionScore;
@@ -55,6 +64,8 @@ public class EpiForm extends ValidatorForm{
 	*/
 	
 	//family history
+	private List existingRelatives;
+	
 	private final Map relativesMap = new HashMap();
 	/*
 	 *keys:  relative_n, condition_n, currentlyAlive_n
@@ -69,13 +80,16 @@ public class EpiForm extends ValidatorForm{
 	/*
 	keys:  jobName_n, startDate_n, endDate_n, smokiness_n
 	*/
+	private List existingSmokiness;
 
 	private final Map livingCompanionsMap = new HashMap();
 	/*
 	keys: livingCompanion_n, companionYears_n, companionHoursPerDay_n, companionProduct_n
 	*/
+	private List existingTobaccoType;
 	
 	private String [] smokingAreas;
+	private List existingSmokingAreas;
 
 	public String getAgeAtInitiation() {
 		return ageAtInitiation;
@@ -363,6 +377,94 @@ public class EpiForm extends ValidatorForm{
 
 	public Map getRelativesMap() {
 		return relativesMap;
+	}
+
+	public List getExistingGroups() {
+		return existingGroups;
+	}
+
+	public void setExistingGroups(List existingGroups) {
+		this.existingGroups = existingGroups;
+	}
+
+	public List getExistingEducationLevel() {
+		return existingEducationLevel;
+	}
+
+	public void setExistingEducationLevel(List existingEducationLevel) {
+		this.existingEducationLevel = existingEducationLevel;
+	}
+
+	public List getExistingGender() {
+		return existingGender;
+	}
+
+	public void setExistingGender(List existingGender) {
+		this.existingGender = existingGender;
+	}
+
+	public List getExistingMaritalStatus() {
+		return existingMaritalStatus;
+	}
+
+	public void setExistingMaritalStatus(List existingMaritalStatus) {
+		this.existingMaritalStatus = existingMaritalStatus;
+	}
+
+	public List getExistingRelatives() {
+		return existingRelatives;
+	}
+
+	public void setExistingRelatives(List existingRelatives) {
+		this.existingRelatives = existingRelatives;
+	}
+
+	public List getExistingReligion() {
+		return existingReligion;
+	}
+
+	public void setExistingReligion(List existingReligion) {
+		this.existingReligion = existingReligion;
+	}
+
+	public List getExistingResidentialArea() {
+		return existingResidentialArea;
+	}
+
+	public void setExistingResidentialArea(List existingResidentialArea) {
+		this.existingResidentialArea = existingResidentialArea;
+	}
+
+	public List getExistingSmokiness() {
+		return existingSmokiness;
+	}
+
+	public void setExistingSmokiness(List existingSmokiness) {
+		this.existingSmokiness = existingSmokiness;
+	}
+
+	public List getExistingSmokingAreas() {
+		return existingSmokingAreas;
+	}
+
+	public void setExistingSmokingAreas(List existingSmokingAreas) {
+		this.existingSmokingAreas = existingSmokingAreas;
+	}
+
+	public List getExistingSmokingStatus() {
+		return existingSmokingStatus;
+	}
+
+	public void setExistingSmokingStatus(List existingSmokingStatus) {
+		this.existingSmokingStatus = existingSmokingStatus;
+	}
+
+	public List getExistingTobaccoType() {
+		return existingTobaccoType;
+	}
+
+	public void setExistingTobaccoType(List existingTobaccoType) {
+		this.existingTobaccoType = existingTobaccoType;
 	}
 	
 }
