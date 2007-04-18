@@ -92,16 +92,21 @@ var EpiQuery = {
 
 	<div>
 		<b>Cigarette Smoking</b><br/>
-		Intensity: <html:text property="intensity" />
+		Intensity Range: 
+		<html:text size="5" property="intensityLower" /> to
+		<html:text size="5" property="intensityUpper" />
 		(cigarettes per day)
 		<br />
-		Duration: <html:text property="duration" />
+		Duration Range: <html:text size="5" property="durationLower" /> to
+		<html:text size="5" property="durationUpper" />
 		(years smoked)
 		<br />
-		Age at Initiation:	<html:text property="ageAtInitiation" />
+		Age at Initiation:	<html:text size="5" property="ageAtInitiationLower" /> to
+		<html:text size="5" property="ageAtInitiationUpper" />
 		(years)
 		<br />
-		Years Since Quitting: <html:text property="yearsSinceQuitting" />
+		Years Since Quitting: <html:text size="5" property="yearsSinceQuittingLower" /> to
+		<html:text size="5" property="yearsSinceQuittingUpper" />
 		(years)
 		<br />
 	</div>
