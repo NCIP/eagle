@@ -41,3 +41,8 @@ div.elementTile	{
 	text-align:right;
 	border-bottom: 1px solid black;
 }
+
+#menuSwapperButtons input	{
+	width:70px;
+	font-size:10px;
+}
