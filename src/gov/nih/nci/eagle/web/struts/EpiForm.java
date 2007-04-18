@@ -16,10 +16,17 @@ public class EpiForm extends ValidatorForm{
 	private String smokingStatus;
 	private List existingSmokingStatus;
 	
-	private String intensity;
-	private String duration;
-	private String ageAtInitiation;
-	private String yearsSinceQuitting;
+	private String intensityLower;
+	private String intensityUpper;
+	
+	private String durationLower;
+	private String durationUpper;
+	
+	private String ageAtInitiationLower;
+	private String ageAtInitiationUpper;
+	
+	private String yearsSinceQuittingLower;
+	private String yearsSinceQuittingUpper;
 
 	//tobacco dependency
 	private String fagerstromScore;
@@ -91,12 +98,12 @@ public class EpiForm extends ValidatorForm{
 	private String [] smokingAreas;
 	private List existingSmokingAreas;
 
-	public String getAgeAtInitiation() {
-		return ageAtInitiation;
+	public String getAgeAtInitiationLower() {
+		return ageAtInitiationLower;
 	}
 
-	public void setAgeAtInitiation(String ageAtInitiation) {
-		this.ageAtInitiation = ageAtInitiation;
+	public void setAgeAtInitiationLower(String ageAtInitiation) {
+		this.ageAtInitiationLower = ageAtInitiation;
 	}
 
 	public String getAgeLower() {
@@ -131,12 +138,12 @@ public class EpiForm extends ValidatorForm{
 		this.depressionScore = depressionScore;
 	}
 
-	public String getDuration() {
-		return duration;
+	public String getDurationLower() {
+		return durationLower;
 	}
 
-	public void setDuration(String duration) {
-		this.duration = duration;
+	public void setDurationLower(String duration) {
+		this.durationLower = duration;
 	}
 
 	public String getEducationLevel() {
@@ -195,12 +202,12 @@ public class EpiForm extends ValidatorForm{
 		this.heightMeasure = heightMeasure;
 	}
 
-	public String getIntensity() {
-		return intensity;
+	public String getIntensityLower() {
+		return intensityLower;
 	}
 
-	public void setIntensity(String intensity) {
-		this.intensity = intensity;
+	public void setIntensityLower(String intensity) {
+		this.intensityLower = intensity;
 	}
 
 	public Object getJobs(String key) {
@@ -347,12 +354,12 @@ public class EpiForm extends ValidatorForm{
 		this.weightMeasure = weightMeasure;
 	}
 
-	public String getYearsSinceQuitting() {
-		return yearsSinceQuitting;
+	public String getYearsSinceQuittingLower() {
+		return yearsSinceQuittingLower;
 	}
 
-	public void setYearsSinceQuitting(String yearsSinceQuitting) {
-		this.yearsSinceQuitting = yearsSinceQuitting;
+	public void setYearsSinceQuittingLower(String yearsSinceQuitting) {
+		this.yearsSinceQuittingLower = yearsSinceQuitting;
 	}
 
 	public String[] getRelativesWithCancer() {
@@ -465,6 +472,38 @@ public class EpiForm extends ValidatorForm{
 
 	public void setExistingTobaccoType(List existingTobaccoType) {
 		this.existingTobaccoType = existingTobaccoType;
+	}
+
+	public String getAgeAtInitiationUpper() {
+		return ageAtInitiationUpper;
+	}
+
+	public void setAgeAtInitiationUpper(String ageAtInitiationUpper) {
+		this.ageAtInitiationUpper = ageAtInitiationUpper;
+	}
+
+	public String getDurationUpper() {
+		return durationUpper;
+	}
+
+	public void setDurationUpper(String durationUpper) {
+		this.durationUpper = durationUpper;
+	}
+
+	public String getIntensityUpper() {
+		return intensityUpper;
+	}
+
+	public void setIntensityUpper(String intensityUpper) {
+		this.intensityUpper = intensityUpper;
+	}
+
+	public String getYearsSinceQuittingUpper() {
+		return yearsSinceQuittingUpper;
+	}
+
+	public void setYearsSinceQuittingUpper(String yearsSinceQuittingUpper) {
+		this.yearsSinceQuittingUpper = yearsSinceQuittingUpper;
 	}
 	
 }

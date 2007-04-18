@@ -87,14 +87,14 @@ public class EpiAction extends DispatchAction {
         //set the smoking status
         lvbeans = new ArrayList<LabelValueBean>();
         for(SmokingStatus s : SmokingStatus.values())	{
-        	lvbeans.add(new LabelValueBean(s.getName(), String.valueOf(s.getValue())));
+        	lvbeans.add(new LabelValueBean(s.getName(), s.toString()));
         }
         eform.setExistingSmokingStatus(lvbeans);
         
         //set the gender
         lvbeans = new ArrayList<LabelValueBean>();
         for(Gender s : Gender.values())	{
-        	lvbeans.add(new LabelValueBean(s.getName(), String.valueOf(s.getValue())));
+        	lvbeans.add(new LabelValueBean(s.getName(), s.toString()));
         }
         eform.setExistingGender(lvbeans);
  
@@ -102,56 +102,56 @@ public class EpiAction extends DispatchAction {
         //set the educationLevel
         lvbeans = new ArrayList<LabelValueBean>();
         for(EducationLevel s : EducationLevel.values())	{
-        	lvbeans.add(new LabelValueBean(s.getName(), String.valueOf(s.getValue())));
+        	lvbeans.add(new LabelValueBean(s.getName(), s.toString()));
         }
         eform.setExistingEducationLevel(lvbeans);
 
         //set the residentialArea
         lvbeans = new ArrayList<LabelValueBean>();
         for(ResidentialArea s : ResidentialArea.values())	{
-        	lvbeans.add(new LabelValueBean(s.getName(), String.valueOf(s.getValue())));
+        	lvbeans.add(new LabelValueBean(s.getName(), s.toString()));
         }
         eform.setExistingResidentialArea(lvbeans);
  
         //set the maritalStatus
         lvbeans = new ArrayList<LabelValueBean>();
         for(MaritalStatus s : MaritalStatus.values())	{
-        	lvbeans.add(new LabelValueBean(s.getName(), String.valueOf(s.getValue())));
+        	lvbeans.add(new LabelValueBean(s.getName(), s.toString()));
         }
         eform.setExistingMaritalStatus(lvbeans);
         
         //set the religion
         lvbeans = new ArrayList<LabelValueBean>();
         for(Religion s : Religion.values())	{
-        	lvbeans.add(new LabelValueBean(s.getName(), String.valueOf(s.getValue())));
+        	lvbeans.add(new LabelValueBean(s.getName(), s.toString()));
         }
         eform.setExistingReligion(lvbeans);
         
         //set the relatives
         lvbeans = new ArrayList<LabelValueBean>();
         for(Relative s : Relative.values())	{
-        	lvbeans.add(new LabelValueBean(s.getValue(), String.valueOf(s.getValue())));
+        	lvbeans.add(new LabelValueBean(s.getValue(), s.toString()));
         }
         eform.setExistingRelatives(lvbeans);
  
         //set the smokiness
         lvbeans = new ArrayList<LabelValueBean>();
         for(ExposureLevel s : ExposureLevel.values())	{
-        	lvbeans.add(new LabelValueBean(s.getName(), String.valueOf(s.getValue())));
+        	lvbeans.add(new LabelValueBean(s.getName(), s.toString()));
         }
         eform.setExistingSmokiness(lvbeans);
 
         //set the tobacco type
         lvbeans = new ArrayList<LabelValueBean>();
         for(TobaccoType s : TobaccoType.values())	{
-        	lvbeans.add(new LabelValueBean(s.getName(), String.valueOf(s.getValue())));
+        	lvbeans.add(new LabelValueBean(s.getName(), s.toString()));
         }
         eform.setExistingTobaccoType(lvbeans);
 
         //set the smokingAreas
         lvbeans = new ArrayList<LabelValueBean>();
         for(SmokingExposure s : SmokingExposure.values())	{
-        	lvbeans.add(new LabelValueBean(s.getName(), String.valueOf(s.getValue())));
+        	lvbeans.add(new LabelValueBean(s.getName(), s.toString()));
         }
         eform.setExistingSmokingAreas(lvbeans);
         
