@@ -2,6 +2,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
 
 <script type="text/javascript">
 //foodItems(item1)
@@ -73,9 +74,7 @@ var EpiQuery = {
 	<div>
 		<b>Patients</b>
 		<html:select property="patientGroup">
-			<html:option value="Group1">Group1</html:option>
-			<html:option value="Group2">Group2</html:option>
-			<html:option value="Group3">Group3</html:option>
+			<html:optionsCollection property="existingGroups"/>
 		</html:select>
 	</div>
 
@@ -87,10 +86,7 @@ var EpiQuery = {
 	<div>
 		<b>Smoking Status (Cigarette)</b>
 		<html:select property="smokingStatus">
-			<html:option value="current">Current Smoker</html:option>
-			<html:option value="former">Former Smoker</html:option>
-			<html:option value="occasional">Occasional Smoker</html:option>
-			<html:option value="non-smoker">Non-smoker</html:option>
+			<html:optionsCollection property="existingSmokingStatus"/>
 		</html:select>
 	</div>
 
@@ -145,9 +141,7 @@ var EpiQuery = {
 	<div>
 		<b>Self Reported Gender</b>
 		<html:select property="gender">
-			<html:option value="male">Male</html:option>
-			<html:option value="female">Female</html:option>
-			<html:option value="other">other/unknown</html:option>
+			<html:optionsCollection property="existingGender"/>
 		</html:select>
 	</div>
 
@@ -189,12 +183,9 @@ var EpiQuery = {
 	</div>
 
 	<div>
-		<b>Education Level (highest)</b>
+		<b>Education Level (highest)</b><br/>
 		<html:select property="educationLevel">
-			<html:option value="hs">High School</html:option>
-			<html:option value="bs">Bachelors</html:option>
-			<html:option value="ms">Masters	</html:option>
-			<html:option value="phd">PhD</html:option>
+			<html:optionsCollection property="existingEducationLevel"/>
 		</html:select>
 	</div>
 <!-- 
@@ -213,34 +204,21 @@ var EpiQuery = {
 	<div>
 		<b>Residential Area</b>
 			<html:select property="residentialArea">
-				<html:option value="a1">
-					area 1
-				</html:option>
-				<html:option value="a2">
-					area 2
-				</html:option>
+				<html:optionsCollection property="existingResidentialArea"/>
 			</html:select>
 	</div>
 
 	<div>
 		<b>Maritial Status</b>
 			<html:select property="maritalStatus">
-				<html:option value="single">Single</html:option>
-				<html:option value="married">Married</html:option>
-				<html:option value="divorced">Divorced</html:option>
-				<html:option value="widowed">Widowed</html:option>
+				<html:optionsCollection property="existingMaritalStatus"/>
 			</html:select>
 	</div>
 
 	<div>
 		<b>Religion</b>
 			<html:select property="religion">
-				<html:option value="r1">
-					religion 1
-				</html:option>
-				<html:option value="r2">
-					religion 2
-				</html:option>
+				<html:optionsCollection property="existingReligion"/>
 			</html:select>
 	</div>
 
@@ -394,25 +372,12 @@ var EpiQuery = {
 		<br/>
 		select which relatives had lung cancer
 		<br />
-		<html:checkbox property="relativesWithCancer" value="mother"/>
-		Mother
-		<html:checkbox property="relativesWithCancer" value="father"/>
-		Father
-		<br />
-		<html:checkbox property="relativesWithCancer" value="grandmotherm"/>
-		Grandmother (Maternal)
-		<html:checkbox property="relativesWithCancer" value="grandfatherm"/>
-		Grandfather (Maternal)
-		<br />
-		<html:checkbox property="relativesWithCancer" value="grandfatherp"/>
-		Grandfather (Paternal)
-		<html:checkbox property="relativesWithCancer" value="grandmotherp"/>
-		Grandfather (Paternal)
-		<br />
-		<html:checkbox property="relativesWithCancer" value="sister"/>
-		Sister
-		<html:checkbox property="relativesWithCancer" value="brother"/>
-		Brother
+		<logic:iterate id="epiForm" name="epiForm" property="existingRelatives" scope="request">
+			<html:multibox property="relativesWithCancer"> 
+				<bean:write name="epiForm" property="value"/> 
+			</html:multibox> 
+			<bean:write name="epiForm" property="label"/> 
+		</logic:iterate>
 		<br />
 	</div>
 	
@@ -422,26 +387,13 @@ var EpiQuery = {
 		select which relatives were smokers (smoked more than 100 cigarettes
 		in their lifetime)
 		<br />
-		<html:checkbox property="relativesWhoSmoked" value="mother"/>
-		Mother
-		<html:checkbox property="relativesWhoSmoked" value="father"/>
-		Father
-		<br />
-		<html:checkbox property="relativesWhoSmoked" value="grandmotherm"/>
-		Grandmother (Maternal)
-		<html:checkbox property="relativesWhoSmoked" value="grandfatherm"/>
-		Grandfather (Maternal)
-		<br />
-		<html:checkbox property="relativesWhoSmoked" value="grandfatherp"/>
-		Grandfather (Paternal)
-		<html:checkbox property="relativesWhoSmoked" value="grandmotherp"/>
-		Grandfather (Paternal)
-		<br />
-		<html:checkbox property="relativesWhoSmoked" value="sister"/>
-		Sister
-		<html:checkbox property="relativesWhoSmoked" value="brother"/>
-		Brother
-		<br />
+		<logic:iterate id="epiForm" name="epiForm" property="existingRelatives" scope="request">
+			<html:multibox property="relativesWhoSmoked"> 
+				<bean:write name="epiForm" property="value"/> 
+			</html:multibox> 
+			<bean:write name="epiForm" property="label"/> 
+		</logic:iterate>
+		<br/>
 	</div>
 
 
@@ -456,18 +408,7 @@ var EpiQuery = {
 			<html:text property="jobs(startDate_1)" size="6" value="start date"/>
 			<html:text property="jobs(endDate_1)" size="6" value="end date"/>
 			<html:select property="jobs(smokiness_1)">
-				<html:option value="">
-					select smokiness..
-				</html:option>
-				<html:option value="light">
-					light
-				</html:option>
-				<html:option value="moderate">
-					moderate
-				</html:option>
-				<html:option value="heavy">
-					heavy
-				</html:option>
+				<html:optionsCollection property="existingSmokiness"/>
 			</html:select>
 			<br />
 		</b>
@@ -481,18 +422,7 @@ var EpiQuery = {
 		<b>Living Companions who smoked</b><br/>
 		<b id="living">
 			<html:select property="livingCompanions(livingCompanion_1)">
-				<html:option value="">
-					select person..
-				</html:option>
-				<html:option value="father">
-					father
-				</html:option>
-				<html:option value="mother">
-					mother
-				</html:option>
-				<html:option value="sister">
-					sister
-				</html:option>
+				<html:optionsCollection property="existingRelatives"/>
 			</html:select>
 			<html:text property="livingCompanions(companionYears_1)" size="6" value="years" />
 			<html:text property="livingCompanions(companionHoursPerDay_1)" size="6" value="hrs/day" />
@@ -500,18 +430,7 @@ var EpiQuery = {
 				<html:option value="">
 					select product..
 				</html:option>
-				<html:option value="cigar">
-					cigar
-				</html:option>
-				<html:option value="cigarette">
-					cigarette
-				</html:option>
-				<html:option value="pipe">
-					pipe
-				</html:option>
-				<html:option value="cigarello">
-					cigarello
-				</html:option>
+				<html:optionsCollection property="existingTobaccoType"/>
 			</html:select>
 			<br />
 		</b>
@@ -526,14 +445,13 @@ var EpiQuery = {
 		<br/>
 		select the areas in which you were exposed to smoke
 		<br />
-		<html:checkbox property="smokingAreas" value="childhood" />
-		Childhood
-		<br />
-		<html:checkbox property="smokingAreas" value="workplace" />
-		Workplace
-		<br />
-		<html:checkbox property="smokingAreas" value="adulthoodInHome" />
-		Adulthood (in home)
+		
+		<logic:iterate id="epiForm" name="epiForm" property="existingSmokingAreas" scope="request">
+			<html:multibox property="smokingAreas">
+				<bean:write name="epiForm" property="value"/>
+			</html:multibox>
+			<bean:write name="epiForm" property="label"/>
+		</logic:iterate>
 		<br />
 	</div>
 
