@@ -7,7 +7,7 @@
 <script type="text/javascript">
 var CCForm = {
 	'changeStat': function(el)	{
-		if(el.selectedIndex != '0')	{
+		if(el.selectedIndex == '1')	{
 			//$('baselineButtons').hide();
 			$$('#baselineButtons input', '#baselineField select').each( function(s)	{
 				s.disabled = "true";
@@ -25,7 +25,7 @@ var CCForm = {
 			//$('baselineField').show();
 		} 
 		
-		if(this.selectedIndex == '2')	{ 
+		if(el.selectedIndex == '2')	{ 
 			$('covariates').show();
 		}
 		else	{
@@ -70,12 +70,12 @@ var CCForm = {
 </div>
 
 <div class="elementTile">
-	<b>Statistical Method</b>
-	<html:select styleId="statisticalMethod" property="statisticalMethod" 
+	<b>Statistical Method</b><br/>
+	<html:select style="margin-left:50px" styleId="statisticalMethod" property="statisticalMethod" 
 	onchange="CCForm.changeStat(this); ">
 		<html:option value="t-test"> T-Test: Two Sample Test</html:option>
 		<html:option value="f-test"> F-Test: One Way ANOVA</html:option>
-		<html:option value="lm"> Linear Model with/without covariate adjustment</html:option>
+		<html:option value="glm">Generalized Linear Model with/without covariate adjustment</html:option>
 	</html:select>
 </div>
 
@@ -90,7 +90,7 @@ var CCForm = {
 	<input type="checkbox"/>Residential Area
 	-->
 	
-	<html:select property="covariate" style="width: 200px;">
+	<html:select property="covariate" style="margin-left:50px;width: 200px;">
 		<html:option value="age">Age</html:option>
 		<html:option value="gender">Gender</html:option>
 		<html:option value="smokingStatus">Smoking Status</html:option>
