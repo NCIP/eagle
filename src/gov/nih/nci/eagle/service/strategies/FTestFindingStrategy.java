@@ -178,13 +178,13 @@ public class FTestFindingStrategy extends AsynchronousFindingStrategy{
 			
 			    // go the correct matrix to fetch data			
 			
-			   if (fTestRequest.getArrayPlatform() == ArrayPlatformType.BLOOD_ARRAY) {				
+			  /* if (fTestRequest.getArrayPlatform() == ArrayPlatformType.BLOOD_ARRAY) {				
 				   fTestRequest.setDataFileName(System.getProperty("gov.nih.nci.eagle.blood_data_matrix"));				
 			    }
 			   else if (fTestRequest.getArrayPlatform() == ArrayPlatformType.TISSUE_ARRAY)  {
 				   fTestRequest.setDataFileName(System.getProperty("gov.nih.nci.eagle.tissue_data_matrix"));					
 			    }				
-		      
+		      */
 		
 		   analysisServerClientManager.sendRequest(fTestRequest);
 		   return true;	

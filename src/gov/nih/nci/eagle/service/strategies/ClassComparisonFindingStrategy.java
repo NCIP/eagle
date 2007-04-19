@@ -247,11 +247,13 @@ public class ClassComparisonFindingStrategy extends AsynchronousFindingStrategy 
                     classComparisonRequest.setGroup1(comparison);
                 }
 
-                if (classComparisonRequest.getArrayPlatform() == ArrayPlatformType.BLOOD_ARRAY) {
+                /*if (classComparisonRequest.getArrayPlatform() == ArrayPlatformType.BLOOD_ARRAY) {
                     classComparisonRequest
                             .setDataFileName(System
                                     .getProperty("gov.nih.nci.eagleportal.blood_data_matrix"));
-                } else if (classComparisonRequest.getArrayPlatform() == ArrayPlatformType.ALL_PLATFORM) {
+                } else
+*/
+                if (classComparisonRequest.getArrayPlatform() == ArrayPlatformType.ALL_PLATFORM) {
 //                    classComparisonRequest
 //                            .setDataFileName(System
 //                                    .getProperty("gov.nih.nci.eagleportal.tissue_data_matrix"));
