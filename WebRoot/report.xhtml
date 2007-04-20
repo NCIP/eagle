@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<head>
+		<style type="text/css">
+				body { font-family:arial; font-size: 11px; margin-top: 3px}
+				table{border: 1px; padding:0px; font-size:11px;}
+				.rowOdd {		
+				font-size: 11px;
+				background: #F2F2F2;
+				padding: 4px; 
+				border: 1px solid white;
+				color: #000000;
+				white-space:nowrap;		
+				}
+				.rowEven {		
+				font-size: 11px;
+				background: #D4D4D4;
+				padding: 4px; 
+				border: 1px solid white;
+				color: #000000;
+				white-space:nowrap;		
+				}
+				th{
+				background: #6EA667;
+				border: 1px solid white;
+				}
+				a { color:#2B2E4A;}
+				.listSize{margin:5px }
+				.boundary{
+				border:1px solid #6EA667;
+				background: #F2F2F2;
+				width:200px;
+				border-bottom:0px;
+				}
+			</style>
+	</head>
+	<body>
+		<!--header target image map-->
+		<div style="border-bottom: 1px solid #000000; margin:0px;">
+			<map name="eagleMap">
+				<area alt="EAGLE Application Logo" coords="5,3,236,61"
+					href="index.jsp" />
+			</map>
+			<img src="images/eagleHeader.png" width="765" height="65" border="0"
+				usemap="#eagleMap" />
+		</div>
+		<!--end all headers-->
+		<ui:include src="/WEB-INF/facelets/classComparisonReport.xhtml" />
+
+	</body>
+</html>
