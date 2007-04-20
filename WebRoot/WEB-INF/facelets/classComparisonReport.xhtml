@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:i="http://caintegrator.nci.nih.gov/jsf"
+	xmlns:jsfExt="http://java.sun.com/jsf/extensions/dynafaces">
+
+	<ui:composition>
+		<f:view id="classComparisonView">
+			<head>
+				<title>Class Comparison Report</title>
+			</head>
+
+			<body>
+			<jsfExt:scripts />
+				<h:form id="classComparisonForm">
+					<i:pager dataTable="classComparisonTable" />
+					<h:dataTable id="classComparisonTable" style="border:1px solid #6EA667"
+						value="#{classComparisonReport.resultEntries}" var="entry"
+						rowClasses="rowOdd,rowEven" rows="50">
+						<h:column>
+							<f:facet name="header">
+								Reporter
+        					</f:facet>
+							<h:outputText
+								value="#{entry.reporterId}" />
+
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								P-value
+        					</f:facet>
+							<h:outputText value="#{entry.pvalue}" />
+
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								Group Avg
+        					</f:facet>
+							<h:outputText value="#{entry.meanBaselineGrp} / #{entry.meanGrp1}" />
+
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								Fold Change
+        					</f:facet>
+							<h:outputText value="#{entry.absoluteFoldChange}" />
+
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								Gene Symbol
+        					</f:facet>
+							<h:outputText value="#{classComparisonReport.annotationMap[entry.reporterId].hugoGeneSymbol}" />
+
+						</h:column>
+
+					</h:dataTable>
+
+				</h:form>
+			</body>
+
+		</f:view>
+	</ui:composition>
+</html>

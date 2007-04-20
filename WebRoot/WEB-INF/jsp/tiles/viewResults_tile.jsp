@@ -87,7 +87,7 @@
 						out.println("<li><a id=\"" + task.getId() + "_link\" href=\"javascript:spawnx('copyNumberReport.do?method=runReport&taskId=" + task.getId() + "&cacheId=" + task.getCacheId() + "', 750, 500,'copy_number_report');\" onclick=\"" + onclick + "\">" + qname + "</a> <i>(Epi)</i> ");
 					} 
 					if(task.getQueryDTO() instanceof ClassComparisonQueryDTO){						
-						out.println("<li><a id=\"" + task.getId() + "_link\" href=\"javascript:spawnx('copyNumberReport.do?method=runReport&taskId=" + task.getId() + "&cacheId=" + task.getCacheId() + "', 750, 500,'copy_number_report');\" onclick=\"" + onclick + "\">" + qname + "</a> <i>(Class Comparison)</i> ");
+						out.println("<li><a id=\"" + task.getId() + "_link\" href=\"javascript:spawnx('classComparisonReport.do?method=runReport&taskId=" + task.getId() + "&cacheId=" + task.getCacheId() + "', 750, 500,'copy_number_report');\" onclick=\"" + onclick + "\">" + qname + "</a> <i>(Class Comparison)</i> ");
 					} 
 					
 					out.println("<span style=\"font-size:10px\">(elapsed time: <span id=\"" + task.getId() + "_time\" >" + task.getElapsedTime() + "</span>ms) </span>");

@@ -19,6 +19,7 @@
 	<script language="javascript" src="js/lib/overlib_mini.js"></script>
 	<script language="javascript" src="js/lib/overlib_hideform_mini.js"></script>	
 	<script language="javascript" src="js/common/a_functions.js"></script>	
+	<script language="javascript" src="js/eagle.js"></script>	
 
 <!-- 
 	<style type="text/css" media="screen">@import "css/tabs.css";</style>

@@ -15,6 +15,7 @@
 		<property name="cache" ref="businessCacheManager" />
 		<property name="requestQueue" ref="sendDestination" />
 		<property name="resultQueue" ref="receiveDestination" />
+		<property name="annotationManager" ref="annotationManager" />
 		<property name="queueConnectionFactory"
 			ref="jmsQueueConnectionFactory" />
 		<property name="managedBean">

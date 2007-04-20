@@ -12,9 +12,9 @@
 		<view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
 	</application>
 	<managed-bean>
-		<description>Clinical report that holds report beans</description>
-		<managed-bean-name>clinicalReport</managed-bean-name>
-		<managed-bean-class>gov.nih.nci.eagle.web.reports.ClinicalReport</managed-bean-class>
+		<description>Class comparison report that holds report beans</description>
+		<managed-bean-name>classComparisonReport</managed-bean-name>
+		<managed-bean-class>gov.nih.nci.eagle.web.reports.ClassComparisonReport</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>	
 </faces-config>

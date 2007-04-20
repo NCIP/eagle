@@ -1,36 +1,34 @@
 package gov.nih.nci.eagle.web.struts;
 
 
+import gov.nih.nci.caintegrator.application.cache.PresentationCacheManager;
 import gov.nih.nci.caintegrator.application.lists.ListType;
 import gov.nih.nci.caintegrator.application.lists.UserList;
 import gov.nih.nci.caintegrator.application.lists.UserListBeanHelper;
-import gov.nih.nci.caintegrator.studyQueryService.FindingsManager;
-import gov.nih.nci.caintegrator.application.cache.PresentationCacheManager;
-import gov.nih.nci.caintegrator.service.task.Task;
 import gov.nih.nci.caintegrator.exceptions.FindingsQueryException;
-
+import gov.nih.nci.caintegrator.service.findings.ClassComparisonFinding;
+import gov.nih.nci.caintegrator.service.task.Task;
+import gov.nih.nci.caintegrator.service.task.TaskResult;
+import gov.nih.nci.caintegrator.studyQueryService.FindingsManager;
 import gov.nih.nci.eagle.query.dto.ClassComparisonQueryDTOBuilder;
 import gov.nih.nci.eagle.query.dto.ClassComparisonQueryDTOImpl;
+import gov.nih.nci.eagle.web.reports.ClassComparisonReport;
 
-
-
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.io.IOException;
-
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-
-
+import org.apache.log4j.Logger;
+import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
-import org.apache.struts.action.ActionErrors;
 import org.apache.struts.actions.DispatchAction;
-import org.apache.log4j.Logger;
 import org.apache.struts.util.LabelValueBean;
 
 
@@ -95,6 +93,31 @@ public class ClassComparisonAction extends DispatchAction{
         return mapping.findForward("success");
     } 
     
+    public ActionForward runReport(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+    throws Exception {
+        
+        HttpSession session = request.getSession();
+        
+        try{            
+               Task task = (Task) presentationCacheManager.getNonPersistableObjectFromSessionCache(session.getId(),request.getParameter("taskId"));
+               TaskResult result = findingsManager.getTaskResult(task);
+               if(result != null){   
+                
+                
+            ClassComparisonReport report = new ClassComparisonReport(((ClassComparisonFinding)result));            
+            session.setAttribute("classComparisonReport",report);
+            
+            }
+            
+            return (mapping.findForward("success"));
+            
+        }
+        catch(Exception e){            
+            logger.error("Error getting copy number findings", e);
+            return (mapping.findForward("failure"));
+        }
+    }    
     
     /**
      * @return Returns the findingsManager.
