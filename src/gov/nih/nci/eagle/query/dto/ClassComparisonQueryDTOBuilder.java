@@ -1,30 +1,26 @@
 package gov.nih.nci.eagle.query.dto;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.ArrayList;
-
-
 import gov.nih.nci.caintegrator.application.dtobuilder.QueryDTOBuilder;
-import gov.nih.nci.caintegrator.dto.query.QueryDTO;
-import gov.nih.nci.caintegrator.enumeration.MultiGroupComparisonAdjustmentType;
-import gov.nih.nci.caintegrator.enumeration.Operator;
-import gov.nih.nci.caintegrator.enumeration.StatisticalMethodType;
-import gov.nih.nci.caintegrator.enumeration.StatisticalSignificanceType;
+import gov.nih.nci.caintegrator.application.lists.UserListBeanHelper;
 import gov.nih.nci.caintegrator.dto.de.ArrayPlatformDE;
 import gov.nih.nci.caintegrator.dto.de.MultiGroupComparisonAdjustmentTypeDE;
 import gov.nih.nci.caintegrator.dto.de.StatisticTypeDE;
 import gov.nih.nci.caintegrator.dto.de.StatisticalSignificanceDE;
 import gov.nih.nci.caintegrator.dto.de.ExprFoldChangeDE.UpRegulation;
 import gov.nih.nci.caintegrator.dto.query.ClinicalQueryDTO;
-import gov.nih.nci.caintegrator.application.lists.UserListBeanHelper;
-
-
-import gov.nih.nci.eagle.web.struts.ClassComparisonForm;
-import gov.nih.nci.eagle.web.helper.EnumCaseChecker;
-import gov.nih.nci.eagle.enumeration.CoVariateType;
+import gov.nih.nci.caintegrator.dto.query.QueryDTO;
+import gov.nih.nci.caintegrator.enumeration.CoVariateType;
+import gov.nih.nci.caintegrator.enumeration.MultiGroupComparisonAdjustmentType;
+import gov.nih.nci.caintegrator.enumeration.Operator;
+import gov.nih.nci.caintegrator.enumeration.StatisticalMethodType;
+import gov.nih.nci.caintegrator.enumeration.StatisticalSignificanceType;
 import gov.nih.nci.eagle.dto.de.CoVariateDE;
+import gov.nih.nci.eagle.web.helper.EnumCaseChecker;
+import gov.nih.nci.eagle.web.struts.ClassComparisonForm;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 

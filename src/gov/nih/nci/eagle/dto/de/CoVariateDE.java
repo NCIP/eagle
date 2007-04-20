@@ -1,8 +1,7 @@
 package gov.nih.nci.eagle.dto.de;
 
 import gov.nih.nci.caintegrator.dto.de.DomainElement;
-
-import gov.nih.nci.eagle.enumeration.CoVariateType;
+import gov.nih.nci.caintegrator.enumeration.CoVariateType;
 
 import java.io.Serializable;
 
