@@ -3,6 +3,8 @@
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
+<%@ page import="org.apache.struts.util.LabelValueBean" %>
+
 
 <script type="text/javascript">
 //foodItems(item1)
@@ -408,6 +410,7 @@ var EpiQuery = {
 	</h4>
 	<div>
 		<b>Occupational Exposure to smoking</b><br/>
+		<!--  
 		<b id="jobs">
 			<html:text property="jobs(name_1)" value="job name" />
 			<html:text property="jobs(startDate_1)" size="6" value="start date"/>
@@ -421,10 +424,17 @@ var EpiQuery = {
 			<a href="#" onclick="EpiQuery.insertTile('jobs'); return false;">[more]</a>		
 			*All Items will be combined with an "AND"
 		</div>
+		-->
+		<br/>
+		<logic:iterate id="epiForm" name="epiForm" property="existingSmokiness" scope="request">
+			years worked in <bean:write name="epiForm" property="label"/> smoke:
+			<html:text property="<%="jobs(" +((LabelValueBean) epiForm).getLabel()+ ")" %>" size="5"/><br/>
+		</logic:iterate>
 	</div>
 	
 	<div>
 		<b>Living Companions who smoked</b><br/>
+		<!--  -
 		<b id="living">
 			<html:select property="livingCompanions(livingCompanion_1)">
 				<html:optionsCollection property="existingRelatives"/>
@@ -443,6 +453,13 @@ var EpiQuery = {
 			<a href="#" onclick="EpiQuery.insertTile('living'); return false;">[more]</a>
 			*All Items will be combined with an "AND"
 		</div>
+		-->
+		<br/>
+		<logic:iterate id="epiForm" name="epiForm" property="existingTobaccoType" scope="request">
+			Companions who smoked <bean:write name="epiForm" property="label"/>s:
+			<html:text property="<%="livingCompanions(" +((LabelValueBean) epiForm).getLabel()+ "_hrs)" %>" size="5"/>hrs/day
+			<html:text property="<%="livingCompanions(" +((LabelValueBean) epiForm).getLabel()+ "_yrs)" %>" size="5"/>yrs<br/>
+		</logic:iterate>
 	</div>
 	
 	<div>
