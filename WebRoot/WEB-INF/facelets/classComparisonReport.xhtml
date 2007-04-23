@@ -18,6 +18,7 @@
 			<jsfExt:scripts />
 				<h:form id="classComparisonForm">
 					<i:pager dataTable="classComparisonTable" />
+					<div id="reportDiv">
 					<h:dataTable id="classComparisonTable" style="border:1px solid #6EA667"
 						value="#{classComparisonReport.resultEntries}" var="entry"
 						rowClasses="rowOdd,rowEven" rows="50">
@@ -65,12 +66,12 @@
 							<f:facet name="header">
 								Gene Symbol
         					</f:facet>
-							<h:outputText value="#{classComparisonReport.annotationMap[entry.reporterId].hugoGeneSymbol}" />
+							<a href="#" onclick="return false;"><h:outputText value="#{classComparisonReport.annotationMap[entry.reporterId].hugoGeneSymbol}" /></a>
 
 						</h:column>
 
 					</h:dataTable>
-
+					</div>
 				</h:form>
 			</body>
 

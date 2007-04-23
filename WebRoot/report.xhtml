@@ -5,7 +5,7 @@
 	<head>
 		<style type="text/css">
 				body { font-family:arial; font-size: 11px; margin-top: 3px}
-				table{border: 1px; padding:0px; font-size:11px;}
+				table{border: 1px; padding:0px; font-size:11px; }
 				.rowOdd {		
 				font-size: 11px;
 				background: #F2F2F2;
@@ -34,19 +34,17 @@
 				width:200px;
 				border-bottom:0px;
 				}
+				
+				#reportDiv table	{
+					width:100%;
+				}
+				#reportDiv table td	{
+					padding:3px;
+				}
 			</style>
 	</head>
 	<body>
-		<!--header target image map-->
-		<div style="border-bottom: 1px solid #000000; margin:0px;">
-			<map name="eagleMap">
-				<area alt="EAGLE Application Logo" coords="5,3,236,61"
-					href="index.jsp" />
-			</map>
-			<img src="images/eagleHeader.png" width="765" height="65" border="0"
-				usemap="#eagleMap" />
-		</div>
-		<!--end all headers-->
+		
 		<ui:include src="/WEB-INF/facelets/classComparisonReport.xhtml" />
 
 	</body>
