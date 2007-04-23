@@ -33,21 +33,32 @@
 							<f:facet name="header">
 								P-value
         					</f:facet>
-							<h:outputText value="#{entry.pvalue}" />
+							<h:outputText value="#{entry.pvalue}">
+								<f:convertNumber pattern="0.00E0" />
+							</h:outputText>
 
 						</h:column>
 						<h:column>
 							<f:facet name="header">
 								Group Avg
         					</f:facet>
-							<h:outputText value="#{entry.meanBaselineGrp} / #{entry.meanGrp1}" />
+							<h:outputText value="#{entry.meanBaselineGrp}">
+								<f:convertNumber pattern="0.0000" />
+							</h:outputText>
+							&nbsp;/ &nbsp;&nbsp;
+							<h:outputText value="#{entry.meanGrp1}">
+								<f:convertNumber pattern="0.0000" />
+							</h:outputText>
+							
 
 						</h:column>
 						<h:column>
 							<f:facet name="header">
 								Fold Change
         					</f:facet>
-							<h:outputText value="#{entry.absoluteFoldChange}" />
+							<h:outputText value="#{entry.absoluteFoldChange}" >
+								<f:convertNumber pattern="0.0000" />
+							</h:outputText>
 
 						</h:column>
 						<h:column>
