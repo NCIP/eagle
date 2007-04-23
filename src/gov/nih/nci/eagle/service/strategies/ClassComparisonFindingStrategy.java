@@ -116,6 +116,7 @@ public class ClassComparisonFindingStrategy extends AsynchronousFindingStrategy 
     private Collection<SampleGroup> sampleGroups = new ArrayList<SampleGroup>();
     private ClassComparisonRequest classComparisonRequest = null;
     private AnalysisServerClientManager analysisServerClientManager;
+    private String tissueDataFile;
 
     public ClassComparisonFindingStrategy() {
 
@@ -254,10 +255,8 @@ public class ClassComparisonFindingStrategy extends AsynchronousFindingStrategy 
                 } else
 */
                 if (classComparisonRequest.getArrayPlatform() == ArrayPlatformType.ALL_PLATFORM) {
-//                    classComparisonRequest
-//                            .setDataFileName(System
-//                                    .getProperty("gov.nih.nci.eagleportal.tissue_data_matrix"));
-                    classComparisonRequest.setDataFileName("Rembrandt_dataMatrix_07AUG06.Rda");
+                    classComparisonRequest
+                            .setDataFileName(tissueDataFile);
                 } else {
                     logger
                             .warn("Unrecognized array platform type for ClassComparisionRequest");
@@ -379,6 +378,14 @@ public class ClassComparisonFindingStrategy extends AsynchronousFindingStrategy 
 
     public void setBusinessCacheManager(BusinessTierCache cacheManager) {
         this.businessCacheManager = cacheManager;
+    }
+
+    public String getTissueDataFile() {
+        return tissueDataFile;
+    }
+
+    public void setTissueDataFile(String tissueDataFile) {
+        this.tissueDataFile = tissueDataFile;
     }
 
 }

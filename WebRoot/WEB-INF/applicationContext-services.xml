@@ -51,6 +51,7 @@
 		<property name="businessCacheManager" ref="businessCacheManager" />
 		<property name="taskResult" ref="classComparisonTaskResult" />
 		<property name="analysisServerClientManager" ref="analysisServerClientManager" />
+		<property name="tissueDataFile" value="${gov.nih.nci.eagleportal.tissue_data_matrix}" />
 	</bean>
 
      <bean id="fTestQueryStrategy"
