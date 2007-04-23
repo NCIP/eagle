@@ -428,7 +428,7 @@ var EpiQuery = {
 		<br/>
 		<logic:iterate id="epiForm" name="epiForm" property="existingSmokiness" scope="request">
 			years worked in <bean:write name="epiForm" property="label"/> smoke:
-			<html:text property="<%="jobs(" +((LabelValueBean) epiForm).getLabel()+ ")" %>" size="5"/><br/>
+			<html:text property="<%="jobs(" +((LabelValueBean) epiForm).getValue()+ ")" %>" size="5"/><br/>
 		</logic:iterate>
 	</div>
 	
@@ -457,8 +457,8 @@ var EpiQuery = {
 		<br/>
 		<logic:iterate id="epiForm" name="epiForm" property="existingTobaccoType" scope="request">
 			Companions who smoked <bean:write name="epiForm" property="label"/>s:
-			<html:text property="<%="livingCompanions(" +((LabelValueBean) epiForm).getLabel()+ "_hrs)" %>" size="5"/>hrs/day
-			<html:text property="<%="livingCompanions(" +((LabelValueBean) epiForm).getLabel()+ "_yrs)" %>" size="5"/>yrs<br/>
+			<html:text property="<%="livingCompanions(" +((LabelValueBean) epiForm).getValue()+ "_hrs)" %>" size="5"/>hrs/day
+			<html:text property="<%="livingCompanions(" +((LabelValueBean) epiForm).getValue()+ "_yrs)" %>" size="5"/>yrs<br/>
 		</logic:iterate>
 	</div>
 	
