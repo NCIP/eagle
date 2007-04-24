@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.jms.JMSException;
 
@@ -116,7 +117,7 @@ public class ClassComparisonFindingStrategy extends AsynchronousFindingStrategy 
     private Collection<SampleGroup> sampleGroups = new ArrayList<SampleGroup>();
     private ClassComparisonRequest classComparisonRequest = null;
     private AnalysisServerClientManager analysisServerClientManager;
-    private String tissueDataFile;
+    private Map<ArrayPlatformType, String> dataFileMap;
 
     public ClassComparisonFindingStrategy() {
 
@@ -254,14 +255,16 @@ public class ClassComparisonFindingStrategy extends AsynchronousFindingStrategy 
                                     .getProperty("gov.nih.nci.eagleportal.blood_data_matrix"));
                 } else
 */
-                if (classComparisonRequest.getArrayPlatform() == ArrayPlatformType.ALL_PLATFORM) {
-                    classComparisonRequest
-                            .setDataFileName(tissueDataFile);
-                } else {
-                    logger
-                            .warn("Unrecognized array platform type for ClassComparisionRequest");
-                    // may want to return false and show an error on the page.
-                }
+                
+                classComparisonRequest.setDataFileName(dataFileMap.get(classComparisonRequest.getArrayPlatform().name()));
+//                if (classComparisonRequest.getArrayPlatform() == ArrayPlatformType.ALL_PLATFORM) {
+//                    classComparisonRequest
+//                            .setDataFileName(tissueDataFile);
+//                } else {
+//                    logger
+//                            .warn("Unrecognized array platform type for ClassComparisionRequest");
+//                    // may want to return false and show an error on the page.
+//                }
 
             }
             case GLM: {
@@ -380,12 +383,12 @@ public class ClassComparisonFindingStrategy extends AsynchronousFindingStrategy 
         this.businessCacheManager = cacheManager;
     }
 
-    public String getTissueDataFile() {
-        return tissueDataFile;
+    public Map getDataFileMap() {
+        return dataFileMap;
     }
 
-    public void setTissueDataFile(String tissueDataFile) {
-        this.tissueDataFile = tissueDataFile;
+    public void setDataFileMap(Map dataFileMap) {
+        this.dataFileMap = dataFileMap;
     }
 
 }

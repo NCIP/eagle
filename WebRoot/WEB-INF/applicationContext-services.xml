@@ -19,7 +19,7 @@
 				<ref bean="epiQueryStrategy" />
 				<ref bean="clinicalQueryStrategy" />
 				<ref bean="classComparisonQueryStrategy" />
-                <ref bean="fTestQueryStrategy" />
+				<ref bean="fTestQueryStrategy" />
 			</list>
 		</property>
 	</bean>
@@ -33,42 +33,60 @@
 
 	<!--  Beans to handle the findings -->
 	<bean id="epiQueryStrategy"
-		class="gov.nih.nci.caintegrator.application.service.strategy.AsynchronousFindingStrategy" scope="prototype">
+		class="gov.nih.nci.caintegrator.application.service.strategy.AsynchronousFindingStrategy"
+		scope="prototype">
 		<property name="queryHandler" ref="epiQueryHandler" />
-		<property name="businessCacheManager" ref="businessCacheManager" />
+		<property name="businessCacheManager"
+			ref="businessCacheManager" />
 		<property name="taskExecutor" ref="taskExecutor" />
 		<property name="taskResult" ref="taskResult" />
 	</bean>
 	<bean id="clinicalQueryStrategy"
-		class="gov.nih.nci.caintegrator.application.service.strategy.AsynchronousFindingStrategy" scope="prototype">
+		class="gov.nih.nci.caintegrator.application.service.strategy.AsynchronousFindingStrategy"
+		scope="prototype">
 		<property name="queryHandler" ref="clinicalQueryHandler" />
-		<property name="businessCacheManager" ref="businessCacheManager" />
+		<property name="businessCacheManager"
+			ref="businessCacheManager" />
 		<property name="taskExecutor" ref="taskExecutor" />
 		<property name="taskResult" ref="taskResult" />
 	</bean>
 	<bean id="classComparisonQueryStrategy"
-		class="gov.nih.nci.eagle.service.strategies.ClassComparisonFindingStrategy" scope="prototype">
-		<property name="businessCacheManager" ref="businessCacheManager" />
+		class="gov.nih.nci.eagle.service.strategies.ClassComparisonFindingStrategy"
+		scope="prototype">
+		<property name="businessCacheManager"
+			ref="businessCacheManager" />
 		<property name="taskResult" ref="classComparisonTaskResult" />
-		<property name="analysisServerClientManager" ref="analysisServerClientManager" />
-		<property name="tissueDataFile" value="${gov.nih.nci.eagleportal.tissue_data_matrix}" />
+		<property name="analysisServerClientManager"
+			ref="analysisServerClientManager" />
+		<property name="dataFileMap">
+			<map>
+				<entry key="ALL_PLATFORM">
+					<value>${gov.nih.nci.eagleportal.tissue_data_matrix}</value>
+				</entry>
+			</map>
+		</property>
 	</bean>
 
-     <bean id="fTestQueryStrategy"
-		class="gov.nih.nci.eagle.service.strategies.FTestFindingStrategy" scope="prototype">
-		<property name="businessCacheManager" ref="businessCacheManager" />
+	<bean id="fTestQueryStrategy"
+		class="gov.nih.nci.eagle.service.strategies.FTestFindingStrategy"
+		scope="prototype">
+		<property name="businessCacheManager"
+			ref="businessCacheManager" />
 		<property name="taskResult" ref="classComparisonTaskResult" />
-		<property name="analysisServerClientManager" ref="analysisServerClientManager" />
+		<property name="analysisServerClientManager"
+			ref="analysisServerClientManager" />
 	</bean>
-	<bean id="classComparisonTaskResult" class="gov.nih.nci.caintegrator.service.findings.ClassComparisonFinding" scope="prototype">
+	<bean id="classComparisonTaskResult"
+		class="gov.nih.nci.caintegrator.service.findings.ClassComparisonFinding"
+		scope="prototype">
 	</bean>
 
 	<bean id="epiQueryHandler"
-		class="gov.nih.nci.eagle.service.handlers.EpidemiologicalQueryHandler" >
+		class="gov.nih.nci.eagle.service.handlers.EpidemiologicalQueryHandler">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	<bean id="clinicalQueryHandler"
-		class="gov.nih.nci.eagle.service.handlers.ClinicalQueryHandler" >
+		class="gov.nih.nci.eagle.service.handlers.ClinicalQueryHandler">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	<!--  Bean for Business cache manager -->
@@ -76,35 +94,40 @@
 		class="gov.nih.nci.caintegrator.application.cache.BusinessCacheManager"
 		factory-method="getInstance">
 	</bean>
-	<bean id="presentationCacheManager" class="gov.nih.nci.caintegrator.application.cache.PresentationCacheManager" factory-method="getInstance">
-	</bean>	
-	<!-- Beans for analysis server -->
-	<!--  
-	<bean id="analysisServerClientManager"
-		class="gov.nih.nci.caintegrator.application.analysis.AnalysisServerClientManager"
+	<bean id="presentationCacheManager"
+		class="gov.nih.nci.caintegrator.application.cache.PresentationCacheManager"
 		factory-method="getInstance">
 	</bean>
+	<!-- Beans for analysis server -->
+	<!--  
+		<bean id="analysisServerClientManager"
+		class="gov.nih.nci.caintegrator.application.analysis.AnalysisServerClientManager"
+		factory-method="getInstance">
+		</bean>
 	-->
 
 	<!-- Beans for DTO builders -->
 	<bean id="classComparisonQueryDTOBuilder"
-		class="gov.nih.nci.eagle.query.dto.ClassComparisonQueryDTOBuilder" scope="prototype">		
-		</bean>
+		class="gov.nih.nci.eagle.query.dto.ClassComparisonQueryDTOBuilder"
+		scope="prototype">
+	</bean>
 
 	<!--  Beans for DWR -->
 	<!-- >bean id="annotationHelper" class="gov.nih.nci.eagle.web.ajax.AnnotationHelper">
 		<dwr:remote javascript="AnnotationService"/>
 		<property name="annotationManager" ref="annotationManager" />
 		</bean-->
-	<bean id="inbox" class="gov.nih.nci.caintegrator.application.inbox.QueryInbox">
-      <dwr:remote javascript="Inbox"/>
-      <property name="findingsManager">
+	<bean id="inbox"
+		class="gov.nih.nci.caintegrator.application.inbox.QueryInbox">
+		<dwr:remote javascript="Inbox" />
+		<property name="findingsManager">
 			<ref bean="eagleFindingsManager" />
-	  </property>
-	  <property name="businessTierCache" ref="businessCacheManager" />
-	  <property name="presentationTierCache" ref="presentationCacheManager" />
-    </bean>
-	
+		</property>
+		<property name="businessTierCache" ref="businessCacheManager" />
+		<property name="presentationTierCache"
+			ref="presentationCacheManager" />
+	</bean>
+
 	<!--  Bean for thread pool -->
 	<bean id="taskExecutor"
 		class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
