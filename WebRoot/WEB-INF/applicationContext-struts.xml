@@ -29,6 +29,11 @@
 		<property name="presentationCacheManager" ref="presentationCacheManager" />	
 		<property name="findingsManager" ref="eagleFindingsManager"/>			
 	</bean>	
+	<bean name="/ftestReport"
+		class="gov.nih.nci.eagle.web.struts.ClassComparisonAction" scope="prototype">		
+		<property name="presentationCacheManager" ref="presentationCacheManager" />	
+		<property name="findingsManager" ref="eagleFindingsManager"/>			
+	</bean>	
 
 	<bean name="/clinicalQuery"
 		class="gov.nih.nci.eagle.web.struts.ClinicalAction" scope="prototype">		

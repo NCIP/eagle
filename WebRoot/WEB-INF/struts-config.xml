@@ -127,6 +127,12 @@
     <forward name="success" path="/report.jsf"/>
     <forward name="failure" path="/500.jsp"/>
     </action>            
+    <action path="/ftestReport" 
+    	 type="org.springframework.web.struts.DelegatingActionProxy"
+    	 parameter="method">
+    <forward name="success" path="/ftestReport.jsf"/>
+    <forward name="failure" path="/500.jsp"/>
+    </action>            
          
  </action-mappings>
     

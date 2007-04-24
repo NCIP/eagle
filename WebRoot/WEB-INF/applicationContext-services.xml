@@ -72,12 +72,16 @@
 		scope="prototype">
 		<property name="businessCacheManager"
 			ref="businessCacheManager" />
-		<property name="taskResult" ref="classComparisonTaskResult" />
+		<property name="taskResult" ref="fTestTaskResult" />
 		<property name="analysisServerClientManager"
 			ref="analysisServerClientManager" />
 	</bean>
 	<bean id="classComparisonTaskResult"
 		class="gov.nih.nci.caintegrator.service.findings.ClassComparisonFinding"
+		scope="prototype">
+	</bean>
+	<bean id="fTestTaskResult"
+		class="gov.nih.nci.caintegrator.service.findings.FTestFinding"
 		scope="prototype">
 	</bean>
 

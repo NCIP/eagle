@@ -73,9 +73,9 @@ var CCForm = {
 	<b>Statistical Method</b><br/>
 	<html:select style="margin-left:50px" styleId="statisticalMethod" property="statisticalMethod" 
 	onchange="CCForm.changeStat(this); ">
-		<html:option value="t-test"> T-Test: Two Sample Test</html:option>
-		<html:option value="f-test"> F-Test: One Way ANOVA</html:option>
-		<html:option value="glm">Generalized Linear Model with/without covariate adjustment</html:option>
+		<html:option value="TTEst"> T-Test: Two Sample Test</html:option>
+		<html:option value="FTest"> F-Test: One Way ANOVA</html:option>
+		<html:option value="GLM">Generalized Linear Model with/without covariate adjustment</html:option>
 	</html:select>
 </div>
 

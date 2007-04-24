@@ -45,7 +45,6 @@ public class FTestFindingStrategy extends AsynchronousFindingStrategy{
 	private static  Logger logger = Logger.getLogger(FTestFindingStrategy.class);
 	
 	
-	private ClassComparisonQueryDTO myQueryDTO = null;
 	
 	private FTestRequest fTestRequest = null;		
 	
@@ -88,11 +87,11 @@ public class FTestFindingStrategy extends AsynchronousFindingStrategy{
 	public boolean 	createQuery() throws FindingsQueryException{
 		
        // retrieve statisticType for F-test, it ususally deals with multiple groups
-		StatisticalMethodType statisticType = myQueryDTO.getStatisticTypeDE().getValueObject();
+		StatisticalMethodType statisticType = getQueryDTO().getStatisticTypeDE().getValueObject();
 		
-		if(myQueryDTO.getComparisonGroups()!= null) {			
+		if(getQueryDTO().getComparisonGroups()!= null) {			
 		    if(statisticType==StatisticalMethodType.FTest) {
-		    	if(myQueryDTO.getComparisonGroups().size()<2) {
+		    	if(getQueryDTO().getComparisonGroups().size()<2) {
 		    		throw new FindingsQueryException("Incorrect numbers of comparison groups are passed for FTest");		    		
 		    	}
 		    	
@@ -110,31 +109,6 @@ public class FTestFindingStrategy extends AsynchronousFindingStrategy{
 		businessCacheManager.addToSessionCache(getTaskResult().getTask()
                 .getCacheId(), getTaskResult().getTask().getId(),
                 getTaskResult());
-
-		
-		/*List<ClinicalQueryDTO> clinicalQueries = myQueryDTO.getComparisonGroups();
-		for(ClinicalQueryDTO clinicalDataQuery: clinicalQueries ) {
-			if(clinicalDataQuery instanceof PatientUserListQueryDTO) {
-				try {
-				    PatientUserListQueryDTO ptQuery = (PatientUserListQueryDTO)clinicalDataQuery;
-				    List<String> sampleIds = ptQuery.getPatientDIDs();
-				    if(sampleIds != null  && sampleIds.size() > 0){					
-					    SampleGroup sampleGroup = new SampleGroup(clinicalDataQuery.getQueryName(),sampleIds.size());
-					    sampleGroup.addAll(sampleIds);
-					    sampleGroups.add(sampleGroup);				
-				       }  
-				    }
-				catch(Exception ex) {
-					ex.printStackTrace();
-					logger.error(ex.getMessage());
-		  			throw new FindingsQueryException(ex.getMessage());
-				    }  	    
-			
-		     }	
-		
-	     }
-	  return true;
-	  */
 	}
 	
 	
@@ -142,7 +116,7 @@ public class FTestFindingStrategy extends AsynchronousFindingStrategy{
 	 * 
 	 */
 	public boolean analyzeResultSet() throws  FindingsAnalysisException {
-		StatisticalMethodType statisticType = myQueryDTO.getStatisticTypeDE().getValueObject();
+		StatisticalMethodType statisticType = getQueryDTO().getStatisticTypeDE().getValueObject();
 		
 		try {
 		    if(statisticType==StatisticalMethodType.FTest) {
@@ -165,19 +139,20 @@ public class FTestFindingStrategy extends AsynchronousFindingStrategy{
 			    fTestRequest.setStatisticalMethod(statisticType);
 			
 			    // set Multiple Comparison Adjustment type
-			    fTestRequest.setMultiGrpComparisonAdjType(myQueryDTO.getMultiGroupComparisonAdjustmentTypeDE().getValueObject());
+			    fTestRequest.setMultiGrpComparisonAdjType(getQueryDTO().getMultiGroupComparisonAdjustmentTypeDE().getValueObject());
 			
 			    // set foldChange
-			    fTestRequest.setFoldChangeThreshold(myQueryDTO.getExprFoldChangeDE().getValueObject());
+			    fTestRequest.setFoldChangeThreshold(getQueryDTO().getExprFoldChangeDE().getValueObject());
 			
 			    // set pvalue
-			    fTestRequest.setPValueThreshold(myQueryDTO.getStatisticalSignificanceDE().getValueObject());
+			    fTestRequest.setPValueThreshold(getQueryDTO().getStatisticalSignificanceDE().getValueObject());
 			
 			    // set arrayplat form
-			    fTestRequest.setArrayPlatform(myQueryDTO.getArrayPlatformDE().getValueObjectAsArrayPlatformType());
+			    fTestRequest.setArrayPlatform(getQueryDTO().getArrayPlatformDE().getValueObjectAsArrayPlatformType());
 			
 			    // go the correct matrix to fetch data			
 			
+                fTestRequest.setDataFileName("eagle_tissue_23APR07.Rda");
 			  /* if (fTestRequest.getArrayPlatform() == ArrayPlatformType.BLOOD_ARRAY) {				
 				   fTestRequest.setDataFileName(System.getProperty("gov.nih.nci.eagle.blood_data_matrix"));				
 			    }
@@ -250,7 +225,11 @@ public class FTestFindingStrategy extends AsynchronousFindingStrategy{
 
 	    @Override
 	    public boolean canHandle(QueryDTO query) {
-	        return (query instanceof ClassComparisonQueryDTO);
+            if(query instanceof ClassComparisonQueryDTO) {
+                ClassComparisonQueryDTO dto = (ClassComparisonQueryDTO)query;
+                return dto.getStatisticTypeDE().getValueObject().equals(StatisticalMethodType.FTest);
+            }
+            return false;
 	    }
 
 	    public AnalysisServerClientManager getAnalysisServerClientManager() {

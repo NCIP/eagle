@@ -17,4 +17,10 @@
 		<managed-bean-class>gov.nih.nci.eagle.web.reports.ClassComparisonReport</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>	
+	<managed-bean>
+		<description>FTest report that holds report beans</description>
+		<managed-bean-name>ftestReport</managed-bean-name>
+		<managed-bean-class>gov.nih.nci.eagle.web.reports.FTestReport</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>	
 </faces-config>

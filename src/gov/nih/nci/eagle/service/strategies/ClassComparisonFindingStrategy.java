@@ -363,7 +363,11 @@ public class ClassComparisonFindingStrategy extends AsynchronousFindingStrategy 
 
     @Override
     public boolean canHandle(QueryDTO query) {
-        return (query instanceof ClassComparisonQueryDTO);
+        if(query instanceof ClassComparisonQueryDTO) {
+            ClassComparisonQueryDTO dto = (ClassComparisonQueryDTO)query;
+            return (dto.getStatisticTypeDE().getValueObject().equals(StatisticalMethodType.TTest) || dto.getStatisticTypeDE().equals(StatisticalMethodType.GLM));
+        }
+        return false;
     }
 
     public AnalysisServerClientManager getAnalysisServerClientManager() {

@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:i="http://caintegrator.nci.nih.gov/jsf"
+	xmlns:jsfExt="http://java.sun.com/jsf/extensions/dynafaces">
+	<head>
+		<style type="text/css">
+				body { font-family:arial; font-size: 11px; margin-top: 3px}
+				table{border: 1px; padding:0px; font-size:11px; }
+				.rowOdd {		
+				font-size: 11px;
+				background: #F2F2F2;
+				padding: 4px; 
+				border: 1px solid white;
+				color: #000000;
+				white-space:nowrap;		
+				}
+				.rowEven {		
+				font-size: 11px;
+				background: #D4D4D4;
+				padding: 4px; 
+				border: 1px solid white;
+				color: #000000;
+				white-space:nowrap;		
+				}
+				th{
+				background: #6EA667;
+				border: 1px solid white;
+				}
+				a { color:#2B2E4A;}
+				.listSize{margin:5px }
+				.boundary{
+				border:1px solid #6EA667;
+				background: #F2F2F2;
+				width:200px;
+				border-bottom:0px;
+				}
+				
+				#reportDiv table	{
+					width:100%;
+				}
+				#reportDiv table td	{
+					padding:3px;
+				}
+			</style>
+	</head>
+	<body>
+		
+		<f:view id="ftestView">
+			<head>
+				<title>FTest Report</title>
+			</head>
+
+			<body>
+			<jsfExt:scripts />
+				<h:form id="ftestForm">
+					<i:pager dataTable="ftestTable" />
+					<div id="reportDiv">
+					<h:dataTable id="ftestTable" style="border:1px solid #6EA667"
+						value="#{ftestReport.resultEntries}" var="entry"
+						rowClasses="rowOdd,rowEven" rows="50">
+						<h:column>
+							<f:facet name="header">
+								Reporter
+        					</f:facet>
+							<h:outputText
+								value="#{entry.reporterId}" />
+
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								P-value
+        					</f:facet>
+							<h:outputText value="#{entry.pvalue}">
+								<f:convertNumber pattern="0.00E0" />
+							</h:outputText>
+
+						</h:column>
+						<c:forEach var="i" begin="1" end="#{ftestReport.numberGroups}">
+						<h:column>
+							<f:facet name="header">
+								#{ftestReport.groupNames[i - 1]} Group Avg
+        					</f:facet>
+							<h:outputText value="#{entry.groupMeans[i - 1]}">
+								<f:convertNumber pattern="0.0000" />
+							</h:outputText>
+							
+
+						</h:column>
+						</c:forEach>
+						<h:column>
+							<f:facet name="header">
+								Fold Change
+        					</f:facet>
+							<h:outputText value="#{entry.maximumFoldChange}" >
+								<f:convertNumber pattern="0.0000" />
+							</h:outputText>
+
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								Gene Symbol
+        					</f:facet>
+							<a href="#" onclick="return false;"><h:outputText value="#{ftestReport.annotationMap[entry.reporterId].hugoGeneSymbol}" /></a>
+
+						</h:column> 
+					</h:dataTable>
+					</div>
+				</h:form>
+			</body>
+
+		</f:view>
+
+	</body>
+</html>
