@@ -51,8 +51,39 @@ public class EPIQueryDTOBuilder implements QueryDTOBuilder {
         pupulateEnvironmentalTobaccoCrit(epiForm, environCrit);
         epiQueryDTO.setEnvironmentalTobaccoSmokeCriterion(environCrit);
 
+        FamilyHistoryCriterion familyHistCrit = new FamilyHistoryCriterion();
+        populateFamilyHistoryCrit(epiForm, familyHistCrit);
+        epiQueryDTO.setFamilyHistoryCriterion(familyHistCrit);
+
         return epiQueryDTO;
     }
+
+    private void populateFamilyHistoryCrit(EpiForm epiForm, FamilyHistoryCriterion familyHistCrit) {
+
+        /*  1. handle Smoking Relatives */
+        String[] smokingRelatives = epiForm.getRelativesWhoSmoked();
+        if (smokingRelatives != null && smokingRelatives.length > 0) {
+            final Collection<Relative> smokingRelativeCol = new ArrayList<Relative>();
+            for (int i = 0; i < smokingRelatives.length; i++) {
+                Relative  smokingRelative = Enum.valueOf(Relative.class, smokingRelatives[i]);
+                smokingRelativeCol.add(smokingRelative);
+            }
+            familyHistCrit.setSmokingRelativeCollection(smokingRelativeCol);
+        }
+
+        /*  2. handle Smoking Relatives */
+        String[] lungCancerRelatives = epiForm.getRelativesWithCancer();
+        if (lungCancerRelatives != null && lungCancerRelatives.length > 0) {
+            final Collection<Relative> lungCancerRelativeCol = new ArrayList<Relative>();
+            for (int i = 0; i < lungCancerRelatives.length; i++) {
+                Relative  lungCancerRelative = Enum.valueOf(Relative.class, lungCancerRelatives[i]);
+                lungCancerRelativeCol.add(lungCancerRelative);
+            }
+            familyHistCrit.setLungCancerRelativeCollection(lungCancerRelativeCol);
+        }
+
+    }
+
 
     private void pupulateEnvironmentalTobaccoCrit(EpiForm epiForm, EnvironmentalTobaccoSmokeCriterion environCrit) {
         prepareAndSetSmokingAreaExposureCrit(epiForm, environCrit);
