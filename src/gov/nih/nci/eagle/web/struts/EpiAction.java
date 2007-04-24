@@ -130,7 +130,7 @@ public class EpiAction extends DispatchAction {
         //set the relatives
         lvbeans = new ArrayList<LabelValueBean>();
         for(Relative s : Relative.values())	{
-        	lvbeans.add(new LabelValueBean(s.getValue(), s.toString()));
+        	lvbeans.add(new LabelValueBean(s.getName(), s.toString()));
         }
         eform.setExistingRelatives(lvbeans);
  
