@@ -23,7 +23,7 @@ public class EPIQueryDTOBuilder implements QueryDTOBuilder {
     public EPIQueryDTOBuilder() {}
 
     public QueryDTO buildQueryDTO(Object form, String cacheId) {
-        EpiForm epiForm = (EpiForm) form;
+        EpiForm epiForm = (EpiForm) form;            // test
 
         EPIQueryDTO  epiQueryDTO = new EPIQueryDTO();
 
