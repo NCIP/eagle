@@ -4,6 +4,7 @@ import gov.nih.nci.caintegrator.application.cache.PresentationCacheManager;
 import gov.nih.nci.caintegrator.application.lists.ListType;
 import gov.nih.nci.caintegrator.application.lists.UserList;
 import gov.nih.nci.caintegrator.application.lists.UserListBeanHelper;
+import gov.nih.nci.caintegrator.application.dtobuilder.QueryDTOBuilder;
 import gov.nih.nci.caintegrator.exceptions.FindingsQueryException;
 import gov.nih.nci.caintegrator.service.task.Task;
 import gov.nih.nci.caintegrator.studyQueryService.FindingsManager;
@@ -18,6 +19,7 @@ import gov.nih.nci.caintegrator.studyQueryService.dto.epi.ResidentialArea;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.SmokingStatus;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.TobaccoType;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.SmokingExposure;
+import gov.nih.nci.caintegrator.dto.query.QueryDTO;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -48,11 +50,13 @@ import org.apache.struts.util.LabelValueBean;
 public class EpiAction extends DispatchAction {
     private FindingsManager findingsManager;
     private PresentationCacheManager presentationCacheManager;
+    private QueryDTOBuilder dtoBuilder;
 
     public ActionForward submit(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws IOException {
-        EPIQueryDTO dto = new EPIQueryDTO();
+        //EPIQueryDTO dto = new EPIQueryDTO();
+        QueryDTO dto = dtoBuilder.buildQueryDTO(form, null);
         dto.setQueryName(((EpiForm)form).getQueryName());
         try {
             Task task = findingsManager.submitQuery(dto);
@@ -173,5 +177,13 @@ public class EpiAction extends DispatchAction {
     public void setPresentationCacheManager(
             PresentationCacheManager presentationCacheManager) {
         this.presentationCacheManager = presentationCacheManager;
+    }
+
+    public QueryDTOBuilder getDtoBuilder() {
+        return dtoBuilder;
+    }
+
+    public void setDtoBuilder(QueryDTOBuilder dtoBuilder) {
+        this.dtoBuilder = dtoBuilder;
     }
 }

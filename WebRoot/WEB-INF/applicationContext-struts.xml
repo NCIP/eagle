@@ -57,7 +57,8 @@
 	<bean name="/epiQuery"
 		class="gov.nih.nci.eagle.web.struts.EpiAction" scope="prototype">		
 		<property name="findingsManager" ref="eagleFindingsManager"/>
-		<property name="presentationCacheManager" ref="presentationCacheManager" />		
+		<property name="presentationCacheManager" ref="presentationCacheManager" />
+		<property name="dtoBuilder" ref="epiDTOBuilder" />
 	</bean>	
 	<!-- bean name="/epiReport"
 		class="gov.nih.nci.eagle.web.struts.EpiAction" scope="prototype">	
