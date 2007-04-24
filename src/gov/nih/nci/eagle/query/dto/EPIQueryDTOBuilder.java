@@ -157,29 +157,6 @@ public class EPIQueryDTOBuilder implements QueryDTOBuilder {
         environCrit.setLivingCompanionExposureCollection(results);
      }
 
-//        for (Iterator iterator = jobs.iterator(); iterator.hasNext();) {
-//            String key =  (String) iterator.next();
-//            char trailingIndex = key.charAt(key.length() -1);
-//            String keyIndex = Character.toString(trailingIndex); // something like 1, 2, 3..
-//            OccupationalExposure occupExpCritObj = occupExpCritObjs.get(key);
-//            if (occupExpCritObj == null)  { // first time
-//               occupExpCritObj = new OccupationalExposure();
-//               occupExpCritObjs.put(keyIndex, occupExpCritObj);
-//            }
-//            /* get each of jobName_n, startDate_n, endDate_n, smokiness_n values for this current keyIndex */
-//            String jobName = (String) jobsMap.get("jobName_" + keyIndex);
-//            String startDate = (String) jobsMap.get("startDate_" + keyIndex);
-//            String endDate = (String) jobsMap.get("endDate_" + keyIndex);
-//            String smokiness = (String) jobsMap.get("smokiness_" + keyIndex);
-//
-//            /* set these values on  OccupationalExposure object */
-//            occupExpCritObj.setStartDate(new Date(startDate));
-//            occupExpCritObj.setEndDate(new Date(endDate));
-//            occupExpCritObj.setExposureLevel(Enum.valueOf(ExposureLevel.class, smokiness));
-//            occupExpCritObj.setJobName(jobName);
-
-//        }
-
 
     private void populateTobaccoCrit(EpiForm epiForm, TobaccoConsumptionCriterion tobaccoCrit) {
 
@@ -247,6 +224,12 @@ public class EPIQueryDTOBuilder implements QueryDTOBuilder {
             patCharacterCrit.setWeightLowerLimit(Float.parseFloat(epiForm.getWeightLower()));
         if(epiForm.getWeightUpper() != null && epiForm.getWeightUpper().trim().length() > 0)
             patCharacterCrit.setWeightUpperLimit(Float.parseFloat(epiForm.getWeightUpper()));
+
+        if(epiForm.getResidentialArea() != null && epiForm.getResidentialArea().length() > 0)
+            patCharacterCrit.setResidentialAreas(Enum.valueOf(ResidentialArea.class, epiForm.getResidentialArea() ));
+
+        if(epiForm.getReligion() != null && epiForm.getReligion().length() > 0)
+            patCharacterCrit.setReligion(Enum.valueOf(Religion.class, epiForm.getReligion() ));
 
     }
 
