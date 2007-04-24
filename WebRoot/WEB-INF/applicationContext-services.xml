@@ -116,6 +116,10 @@
 		scope="prototype">
 	</bean>
 
+        <bean id="epiDTOBuilder"
+        	class="gov.nih.nci.eagle.query.dto.EPIQueryDTOBuilder" scope="prototype">
+        </bean>
+
 	<!--  Beans for DWR -->
 	<!-- >bean id="annotationHelper" class="gov.nih.nci.eagle.web.ajax.AnnotationHelper">
 		<dwr:remote javascript="AnnotationService"/>
