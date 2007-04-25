@@ -226,7 +226,7 @@ public class EPIQueryDTOBuilder implements QueryDTOBuilder {
             patCharacterCrit.setWeightUpperLimit(Float.parseFloat(epiForm.getWeightUpper()));
 
         if(epiForm.getResidentialArea() != null && epiForm.getResidentialArea().length() > 0)
-            patCharacterCrit.setResidentialAreas(Enum.valueOf(ResidentialArea.class, epiForm.getResidentialArea() ));
+            patCharacterCrit.setResidentialArea(Enum.valueOf(ResidentialArea.class, epiForm.getResidentialArea() ));
 
         if(epiForm.getReligion() != null && epiForm.getReligion().length() > 0)
             patCharacterCrit.setReligion(Enum.valueOf(Religion.class, epiForm.getReligion() ));
