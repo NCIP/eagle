@@ -20,11 +20,14 @@
 					<i:pager dataTable="classComparisonTable" />
 					<div id="reportDiv">
 					<h:dataTable id="classComparisonTable" style="border:1px solid #6EA667"
-						value="#{classComparisonReport.resultEntries}" var="entry"
+						value="#{classComparisonReport.reportBeans}" var="entry"
 						rowClasses="rowOdd,rowEven" rows="50">
 						<h:column>
 							<f:facet name="header">
-								Reporter
+							<h:commandLink actionListener="#{classComparisonReport.sortDataList}" immediate="false">
+	                    		<f:attribute name="sortField" value="reporterId" />
+	                    		<h:outputText value="Reporter" />	                    		
+	                		</h:commandLink>
         					</f:facet>
 							<h:outputText
 								value="#{entry.reporterId}" />
@@ -32,7 +35,10 @@
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								P-value
+							<h:commandLink actionListener="#{classComparisonReport.sortDataList}" immediate="false">
+	                    		<f:attribute name="sortField" value="pvalue" />
+	                    		<h:outputText value="P-value" />	                    		
+	                		</h:commandLink>
         					</f:facet>
 							<h:outputText value="#{entry.pvalue}">
 								<f:convertNumber pattern="0.00E0" />
@@ -41,7 +47,10 @@
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								Group Avg
+							<h:commandLink actionListener="#{classComparisonReport.sortDataList}" immediate="false">
+	                    		<f:attribute name="sortField" value="meanBaselineGrp" />
+	                    		<h:outputText value="Group Avg" />	                    		
+	                		</h:commandLink>
         					</f:facet>
 							<h:outputText value="#{entry.meanBaselineGrp}">
 								<f:convertNumber pattern="0.0000" />
@@ -55,7 +64,10 @@
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								Fold Change
+							<h:commandLink actionListener="#{classComparisonReport.sortDataList}" immediate="false">
+	                    		<f:attribute name="sortField" value="absoluteFoldChange" />
+	                    		<h:outputText value="Fold Change" />	                    		
+	                		</h:commandLink>
         					</f:facet>
 							<h:outputText value="#{entry.absoluteFoldChange}" >
 								<f:convertNumber pattern="0.0000" />
@@ -64,7 +76,10 @@
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								Gene Symbol
+							<h:commandLink actionListener="#{classComparisonReport.sortDataList}" immediate="false">
+	                    		<f:attribute name="sortField" value="geneSymbol" />
+	                    		<h:outputText value="Gene Symbol" />	                    		
+	                		</h:commandLink>
         					</f:facet>
 							<a href="#" onclick="return false;"><h:outputText value="#{classComparisonReport.annotationMap[entry.reporterId].hugoGeneSymbol}" /></a>
 

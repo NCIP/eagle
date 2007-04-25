@@ -41,10 +41,6 @@ public class FTestReport {
         return reportBeans;
     }
 
-    public Map getAnnotationMap() {
-        return finding.getReporterAnnotationsMap();
-    }
-
     public int getNumberGroups() {
         return finding.getGroupNames().size();
     }
