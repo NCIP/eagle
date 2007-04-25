@@ -60,11 +60,14 @@
 					<i:pager dataTable="ftestTable" />
 					<div id="reportDiv">
 					<h:dataTable id="ftestTable" style="border:1px solid #6EA667"
-						value="#{ftestReport.resultEntries}" var="entry"
+						value="#{ftestReport.reportBeans}" var="entry"
 						rowClasses="rowOdd,rowEven" rows="50">
 						<h:column>
 							<f:facet name="header">
-								Reporter
+							<h:commandLink actionListener="#{ftestReport.sortDataList}" immediate="false">
+	                    		<f:attribute name="sortField" value="reporterId" />
+	                    		<h:outputText value="Reporter" />	                    		
+	                		</h:commandLink>
         					</f:facet>
 							<h:outputText
 								value="#{entry.reporterId}" />
@@ -72,7 +75,10 @@
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								P-value
+							<h:commandLink actionListener="#{ftestReport.sortDataList}" immediate="false">
+	                    		<f:attribute name="sortField" value="pvalue" />
+	                    		<h:outputText value="P-value" />	                    		
+	                		</h:commandLink>
         					</f:facet>
 							<h:outputText value="#{entry.pvalue}">
 								<f:convertNumber pattern="0.00E0" />
@@ -82,7 +88,10 @@
 						<c:forEach var="i" begin="1" end="#{ftestReport.numberGroups}">
 						<h:column>
 							<f:facet name="header">
-								#{ftestReport.groupNames[i - 1]} Group Avg
+							<h:commandLink actionListener="#{ftestReport.sortDataList}" immediate="false">
+	                    		<f:attribute name="sortField" value="groupMeans[#{i - 1}]" />
+	                    		<h:outputText value="#{ftestReport.groupNames[i - 1]} Group Avg" />	                    		
+	                		</h:commandLink>
         					</f:facet>
 							<h:outputText value="#{entry.groupMeans[i - 1]}">
 								<f:convertNumber pattern="0.0000" />
@@ -93,7 +102,10 @@
 						</c:forEach>
 						<h:column>
 							<f:facet name="header">
-								Fold Change
+							<h:commandLink actionListener="#{ftestReport.sortDataList}" immediate="false">
+	                    		<f:attribute name="sortField" value="maximumFoldChange" />
+	                    		<h:outputText value="Fold Change" />	                    		
+	                		</h:commandLink>
         					</f:facet>
 							<h:outputText value="#{entry.maximumFoldChange}" >
 								<f:convertNumber pattern="0.0000" />
@@ -102,9 +114,12 @@
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-								Gene Symbol
+							<h:commandLink actionListener="#{ftestReport.sortDataList}" immediate="false">
+	                    		<f:attribute name="sortField" value="geneSymbol" />
+	                    		<h:outputText value="Gene Symbol" />	                    		
+	                		</h:commandLink>
         					</f:facet>
-							<a href="#" onclick="return false;"><h:outputText value="#{ftestReport.annotationMap[entry.reporterId].hugoGeneSymbol}" /></a>
+							<a href="#" onclick="return false;"><h:outputText value="#{entry.geneSymbol}" /></a>
 
 						</h:column> 
 					</h:dataTable>
