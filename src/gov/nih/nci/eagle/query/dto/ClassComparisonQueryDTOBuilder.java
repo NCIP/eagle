@@ -103,17 +103,16 @@ public class ClassComparisonQueryDTOBuilder implements QueryDTOBuilder{
         classComparisondto.setMultiGroupComparisonAdjustmentTypeDE(new MultiGroupComparisonAdjustmentTypeDE(MultiGroupComparisonAdjustmentType.NONE));
         
         
-	// set up co-variate 
-        
-        //set statistical method
-        if(classComparisonForm.getCovariate()!= null && classComparisonForm.getCovariate().length()>1){
+	    // set up co-variate       
+       
+       // if(classComparisonForm.getCovariate()!= null && classComparisonForm.getCovariate().length()>1){
         	/*
              * This following code is here to deal with an observed problem with the changing 
              * of case in request parameters.  See the class EnumChecker for 
              * enlightenment.
              */
  		   
-           CoVariateType coVariateType; 
+          /* CoVariateType coVariateType; 
  		   String covariateString= EnumCaseChecker.getEnumTypeName(classComparisonForm.getCovariate(),CoVariateType.values());
             if(covariateString!=null) {
             	coVariateType = CoVariateType.valueOf(covariateString);
@@ -130,6 +129,39 @@ public class ClassComparisonQueryDTOBuilder implements QueryDTOBuilder{
             classComparisondto.setCoVariateDE(coVariateDE);
        
  	        }
+ 	        */
+        
+        // set up co-variates
+        
+        if(classComparisonForm.getSelectedCovariates() != null && classComparisonForm.getSelectedCovariates().length >=1) {
+        	
+        	   CoVariateType coVariateType ;     	   
+        	   List <CoVariateDE> coVariateDEs = new ArrayList<CoVariateDE>();       	   
+        	   
+        	   for(int i=0; i<classComparisonForm.getSelectedCovariates().length; i++){	
+        		   String myCovariateName = (String)classComparisonForm.getSelectedCovariates()[i];
+        		   String covariateString= EnumCaseChecker.getEnumTypeName(myCovariateName,CoVariateType.values());
+        		   if(covariateString!=null) {
+                   	   coVariateType = CoVariateType.valueOf(covariateString);
+                   }
+        		   else {
+                	logger.error("Invalid covariateType value given in request");
+               		logger.error("Selected covariateType value = "+classComparisonForm.getExistingCovariates());
+               		logger.error("Using the default covariateType type of :"+ERROR_COVARIATE_TYPE);
+               		coVariateType = ERROR_COVARIATE_TYPE;            
+                       }   
+        	          
+        		   CoVariateDE coVariateDE = new CoVariateDE(coVariateType);
+        		   coVariateDEs.add(coVariateDE);       		   
+        		   
+        	   }
+        	
+        	   classComparisondto.setCoVariateDEs(coVariateDEs);
+        
+         }
+    		
+        
+        
      
         
 	 
