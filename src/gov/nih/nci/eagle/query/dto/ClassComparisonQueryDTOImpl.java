@@ -29,6 +29,8 @@ public class ClassComparisonQueryDTOImpl implements ClassComparisonQueryDTO {
 	 //  co-variate
 	private CoVariateDE coVariateDE;
     
+	 //  co-variates
+	private List<CoVariateDE> coVariateDEs;
     
      //  comparison groups
 	private List<ClinicalQueryDTO> comparisonGroups;
@@ -81,6 +83,14 @@ public class ClassComparisonQueryDTOImpl implements ClassComparisonQueryDTO {
 		this.coVariateDE = coVariateDE;
 	}
 	
+
+	public List<CoVariateDE> getCoVariateDEs() {
+		return coVariateDEs;
+	}
+
+	public void setCoVariateDEs(List<CoVariateDE> coVariateDEs) {
+		this.coVariateDEs = coVariateDEs;
+	}
 
 	public List<ClinicalQueryDTO> getComparisonGroups() {		
 		return comparisonGroups;
