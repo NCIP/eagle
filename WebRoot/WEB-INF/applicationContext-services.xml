@@ -93,6 +93,11 @@
 		scope="prototype">
 	</bean>
 
+     <bean id="fTestTaskResult"
+		class="gov.nih.nci.caintegrator.service.findings.FTestFinding"
+		scope="prototype">
+	</bean>
+
 	<bean id="glmTaskResult"
 		class="gov.nih.nci.caintegrator.service.findings.GeneralizedLinearModelFinding"
 		scope="prototype">
