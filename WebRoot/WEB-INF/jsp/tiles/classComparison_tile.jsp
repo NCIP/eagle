@@ -69,6 +69,16 @@ var CCForm = {
 	<html:text property="analysisName" styleId="analysisName"/>
 </div>
 
+
+<div>
+	<b>Specimen Type:</b>
+	<html:select property="platform" styleId="platform">
+		<html:option value="blood">Blood</html:option>
+		<html:option value="tissue_cancer">Tissue - Cancer</html:option>
+		<html:option value="tissue_normal">Tissue - Normal</html:option>
+	</html:select>
+</div>
+
 <div class="elementTile">
 	<b>Statistical Method</b><br/>
 	<html:select style="margin-left:50px" styleId="statisticalMethod" property="statisticalMethod" 
@@ -90,12 +100,11 @@ var CCForm = {
 	<input type="checkbox"/>Residential Area
 	-->
 	
-	<html:select property="covariate" style="margin-left:50px;width: 200px;">
-		<html:option value="age">Age</html:option>
-		<html:option value="gender">Gender</html:option>
-		<html:option value="smokingStatus">Smoking Status</html:option>
-		<html:option value="residentialArea">Residential Area</html:option>
-	</html:select>				
+		<html:checkbox property="selectedCovariates" value="age">Age</html:checkbox>
+		<html:checkbox property="selectedCovariates" value="gender">Gender</html:checkbox>
+		<html:checkbox property="selectedCovariates" value="smokingStatus">Smoking Status</html:checkbox>
+		<html:checkbox disabled="true" property="selectedCovariates" value="residentialArea">Residential Area</html:checkbox>
+			
 </div>
 
 <div>
@@ -155,16 +164,9 @@ var CCForm = {
 </div>
 
 
-<div>
-	<b>Platform:</b>
-	<html:select property="platform" styleId="platform">
-		<html:option value="blood">Blood</html:option>
-		<html:option value="tissue">Tissue</html:option>
-	</html:select>
-</div>
  
 <div style="text-align:center">
-	<button onclick="return CCForm.validate();  ">Submit Analysis</button>
+	<button onclick="return CCForm.validate(); ">Submit Analysis</button>
 </div>
 
 </div>
