@@ -7,9 +7,10 @@ try	{
 	
 	Nifty("div.date");
 
-//	Nifty("div#content,div#side","same-height");
+	Nifty("div#content,div#side","same-height");
 	Nifty("div#content", "same-height");
 	Nifty("div#side", "same-height");
+	
 	Nifty("div.comments div");
 	Nifty("div#footer");
 	Nifty("div#container","bottom");
