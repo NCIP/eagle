@@ -11,6 +11,12 @@
 		</locale-config>
 		<view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
 	</application>
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>groupReport</from-outcome>
+			<to-view-id>/groupReport.jsf</to-view-id>
+		</navigation-case>
+	</navigation-rule>	
 	<managed-bean>
 		<description>Class comparison report that holds report beans</description>
 		<managed-bean-name>classComparisonReport</managed-bean-name>
@@ -22,5 +28,11 @@
 		<managed-bean-name>ftestReport</managed-bean-name>
 		<managed-bean-class>gov.nih.nci.eagle.web.reports.FTestReport</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>	
+	<managed-bean>
+		<description>Report to show patient groups</description>
+		<managed-bean-name>groupReport</managed-bean-name>
+		<managed-bean-class>gov.nih.nci.eagle.web.reports.PatientGroupReport</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>	
 </faces-config>

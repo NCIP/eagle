@@ -14,6 +14,12 @@
 			<value>file:${gov.nih.nci.eagleportal.propertiesFile}</value>
 		</property>
 	</bean>
+	<bean id="patientLists" class="gov.nih.nci.eagle.util.ReadablePropertyPlaceholder">
+		<property name="locations">
+			<value>file:${gov.nih.nci.eagleportal.listFile}</value>
+		</property>
+	</bean>		
+
 	<!-- Hibernate SessionFactory -->
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">

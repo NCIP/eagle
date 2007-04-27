@@ -61,8 +61,14 @@
 			ref="analysisServerClientManager" />
 		<property name="dataFileMap">
 			<map>
-				<entry key="ALL_PLATFORM">
-					<value>${gov.nih.nci.eagleportal.tissue_data_matrix}</value>
+				<entry key="TISSUE_NORMAL">
+					<value>${gov.nih.nci.eagleportal.tissue_normal_data_matrix}</value>
+				</entry>
+				<entry key="TISSUE_CANCER">
+					<value>${gov.nih.nci.eagleportal.tissue_cancer_data_matrix}</value>
+				</entry>
+				<entry key="BLOOD">
+					<value>${gov.nih.nci.eagleportal.blood_data_matrix}</value>
 				</entry>
 			</map>
 		</property>
@@ -76,6 +82,19 @@
 		<property name="taskResult" ref="fTestTaskResult" />
 		<property name="analysisServerClientManager"
 			ref="analysisServerClientManager" />
+		<property name="dataFileMap">
+			<map>
+				<entry key="TISSUE_NORMAL">
+					<value>${gov.nih.nci.eagleportal.tissue_normal_data_matrix}</value>
+				</entry>
+				<entry key="TISSUE_CANCER">
+					<value>${gov.nih.nci.eagleportal.tissue_cancer_data_matrix}</value>
+				</entry>
+				<entry key="BLOOD">
+					<value>${gov.nih.nci.eagleportal.blood_data_matrix}</value>
+				</entry>
+			</map>
+		</property>			
 	</bean>
 
     <bean id="glmQueryStrategy"
@@ -132,6 +151,8 @@
 	<bean id="classComparisonQueryDTOBuilder"
 		class="gov.nih.nci.eagle.query.dto.ClassComparisonQueryDTOBuilder"
 		scope="prototype">
+		<property name="listValidationService"
+			ref="listValidationService" />
 	</bean>
 
         <bean id="epiDTOBuilder"
@@ -152,6 +173,10 @@
 		<property name="businessTierCache" ref="businessCacheManager" />
 		<property name="presentationTierCache"
 			ref="presentationCacheManager" />
+	</bean>
+	
+	<bean id="listValidationService" class="gov.nih.nci.eagle.service.validation.ListValidationServiceImpl" >
+	
 	</bean>
 
 	<!--  Bean for thread pool -->
