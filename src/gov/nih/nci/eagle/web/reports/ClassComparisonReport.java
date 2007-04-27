@@ -6,11 +6,17 @@ import gov.nih.nci.caintegrator.service.findings.ClassComparisonFinding;
 import gov.nih.nci.eagle.util.FTestComparator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.collections.ListUtils;
+import org.apache.commons.lang.StringUtils;
 
 public class ClassComparisonReport {
 
@@ -74,6 +80,29 @@ public class ClassComparisonReport {
 
     public void setSortAscending(boolean sortAscending) {
         this.sortAscending = sortAscending;
+    }
+    
+    public void generateCSV(ActionEvent event)	{
+    	List reportBeans = this.getReportBeans();
+    	List<List> csv = new ArrayList<List>();
+    	
+   		for(ClassComparisonReportBean ccrb : (List<ClassComparisonReportBean>)reportBeans){
+   			if(csv.size()==0){
+   				csv.add(ccrb.getRowLabels());
+   			}
+   			csv.add(ccrb.getRow());
+		}
+		
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        HttpServletResponse response = (HttpServletResponse) facesContext.getExternalContext().getResponse();
+		try {
+			CSVUtil.renderCSV(response, csv);
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally	{
+			FacesContext.getCurrentInstance().responseComplete();
+		}
+
     }
 
 }
