@@ -11,7 +11,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.servlet.http.HttpServletResponse;
 
 public class FTestReport {
 
@@ -78,4 +80,42 @@ public class FTestReport {
     public void setSortAscending(boolean sortAscending) {
         this.sortAscending = sortAscending;
     }
+    
+    public void generateCSV(ActionEvent event)	{
+    	Collection reportBeans = this.getReportBeans();
+    	List<List> csv = new ArrayList<List>();
+    	
+   		for(FTestReportBean rb : (List<FTestReportBean>)reportBeans){
+   			if(csv.size()==0){
+   				List headers = rb.getRowLabels();
+   				//since the columns are dynamic based on the # of groups, we need to overwrite some of the header with
+   				//values from the Report, as the ReportBean doesnt have this info
+   				for(int i=0; i<this.getGroupNames().size(); i++){
+   					
+   					try {
+						headers.set(i+2, this.getGroupNames().toArray()[i].toString() + " group avg"); 
+						//overwrite, with an offset of 2
+					} catch (RuntimeException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+   				
+   				}
+   				csv.add(headers);
+   			}
+   			csv.add(rb.getRow());
+		}
+		
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        HttpServletResponse response = (HttpServletResponse) facesContext.getExternalContext().getResponse();
+		try {
+			CSVUtil.renderCSV(response, csv);
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally	{
+			FacesContext.getCurrentInstance().responseComplete();
+		}
+
+    }
+
 }
