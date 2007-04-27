@@ -11,6 +11,7 @@ import gov.nih.nci.caintegrator.service.findings.FTestFinding;
 import gov.nih.nci.caintegrator.service.task.Task;
 import gov.nih.nci.caintegrator.service.task.TaskResult;
 import gov.nih.nci.caintegrator.studyQueryService.FindingsManager;
+import gov.nih.nci.eagle.enumeration.SpecimenType;
 import gov.nih.nci.eagle.query.dto.ClassComparisonQueryDTOBuilder;
 import gov.nih.nci.eagle.query.dto.ClassComparisonQueryDTOImpl;
 import gov.nih.nci.eagle.web.reports.ClassComparisonReport;
@@ -92,6 +93,13 @@ public class ClassComparisonAction extends DispatchAction{
 
         //set the covariate options
         
+        //set the specimenTypes
+        List<LabelValueBean> sTypes = new ArrayList<LabelValueBean>();
+        for(SpecimenType st : SpecimenType.values())	{
+        	sTypes.add(new LabelValueBean(st.getName(), st.toString()));
+        }
+        ((ClassComparisonForm) form).setExistingSpecimenTypes(sTypes);        
+       
         return mapping.findForward("success");
     } 
     

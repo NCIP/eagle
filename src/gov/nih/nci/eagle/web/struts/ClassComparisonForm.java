@@ -24,6 +24,9 @@ public class ClassComparisonForm extends ValidatorForm{
 	private String pvalue;
 	
 	private String platform;
+	
+	private List existingSpecimenTypes;
+	private String specimenType;
 
 	public String getAnalysisName() {
 		return analysisName;
@@ -112,5 +115,21 @@ public class ClassComparisonForm extends ValidatorForm{
 
 	public void setStatisticalMethod(String statisticalMethod) {
 		this.statisticalMethod = statisticalMethod;
+	}
+
+	public String getSpecimenType() {
+		return specimenType;
+	}
+
+	public void setSpecimenType(String specimenType) {
+		this.specimenType = specimenType;
+	}
+
+	public List getExistingSpecimenTypes() {
+		return existingSpecimenTypes;
+	}
+
+	public void setExistingSpecimenTypes(List existingSpecimenTypes) {
+		this.existingSpecimenTypes = existingSpecimenTypes;
 	}
 }

@@ -72,10 +72,8 @@ var CCForm = {
 
 <div>
 	<b>Specimen Type:</b>
-	<html:select property="platform" styleId="platform">
-		<html:option value="blood">Blood</html:option>
-		<html:option value="tissue_cancer">Tissue - Cancer</html:option>
-		<html:option value="tissue_normal">Tissue - Normal</html:option>
+	<html:select property="specimenType" styleId="platform">
+		<html:optionsCollection property="existingSpecimenTypes"/>
 	</html:select>
 </div>
 

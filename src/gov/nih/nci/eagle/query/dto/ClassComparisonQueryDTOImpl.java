@@ -13,6 +13,7 @@ import gov.nih.nci.caintegrator.dto.de.StatisticalSignificanceDE;
 import gov.nih.nci.caintegrator.dto.query.ClassComparisonQueryDTO;
 import gov.nih.nci.caintegrator.dto.query.ClinicalQueryDTO;
 import gov.nih.nci.eagle.dto.de.CoVariateDE;
+import gov.nih.nci.eagle.enumeration.SpecimenType;
 
 
 public class ClassComparisonQueryDTOImpl implements ClassComparisonQueryDTO {
@@ -55,6 +56,8 @@ public class ClassComparisonQueryDTOImpl implements ClassComparisonQueryDTO {
 	
 	// currently eagle does not have this info
 	private Collection<InstitutionDE> institutionDEs;
+	
+	private SpecimenType specimenTypeEnum;
 	
 	
 	public void setQueryName(String name) {
@@ -163,6 +166,14 @@ public class ClassComparisonQueryDTOImpl implements ClassComparisonQueryDTO {
 
 	public void setComparisonGroupsMap(HashMap<String, List> comparisonGroupsMap) {
 		this.comparisonGroupsMap = comparisonGroupsMap;
+	}
+
+	public SpecimenType getSpecimenTypeEnum() {
+		return specimenTypeEnum;
+	}
+
+	public void setSpecimenTypeEnum(SpecimenType specimenTypeEnum) {
+		this.specimenTypeEnum = specimenTypeEnum;
 	}
 
 	

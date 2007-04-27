@@ -21,6 +21,7 @@ import gov.nih.nci.caintegrator.enumeration.Operator;
 import gov.nih.nci.caintegrator.enumeration.StatisticalMethodType;
 import gov.nih.nci.caintegrator.enumeration.StatisticalSignificanceType;
 import gov.nih.nci.eagle.dto.de.CoVariateDE;
+import gov.nih.nci.eagle.enumeration.SpecimenType;
 import gov.nih.nci.eagle.web.helper.EnumCaseChecker;
 import gov.nih.nci.eagle.web.struts.ClassComparisonForm;
 
@@ -205,14 +206,20 @@ public class ClassComparisonQueryDTOBuilder implements QueryDTOBuilder{
 	   }
 	   
 	   // set up platform
-	   
+	   /*
 	   if(classComparisonForm.getPlatform()!= "" || classComparisonForm.getPlatform().length() != 0){       
            ArrayPlatformDE arrayPlatformDE = new ArrayPlatformDE(classComparisonForm.getPlatform());
            //classComparisondto.setArrayPlatformDE(arrayPlatformDE);
            classComparisondto.setArrayPlatformDE(new ArrayPlatformDE("ALL_PLATFORM"));
            
        }
-		
+       */
+	   //this is ignored
+	   //look at the classComparisonForm.getSpecimenType() and then reconstruct the enum, then setSpecimenType(enum) in DTO
+	   if(classComparisonForm.getSpecimenType()!= "" || classComparisonForm.getSpecimenType().length() != 0){       
+           classComparisondto.setSpecimenTypeEnum(SpecimenType.valueOf(classComparisonForm.getSpecimenType()));
+       }
+	   
 	   return classComparisondto;
 		
 	}	
