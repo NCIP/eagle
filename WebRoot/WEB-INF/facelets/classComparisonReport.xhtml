@@ -15,8 +15,15 @@
 			</head>
 
 			<body>
+
 			<jsfExt:scripts />
 				<h:form id="classComparisonForm">
+
+					<h:commandLink actionListener="#{classComparisonReport.generateCSV}" immediate="false">
+		           		<h:outputText value="Download CSV" />	                    		
+		       		</h:commandLink>
+		       		<br/><br/>
+
 					<i:pager dataTable="classComparisonTable" />
 					<div id="reportDiv">
 					<h:dataTable id="classComparisonTable" style="border:1px solid #6EA667"
