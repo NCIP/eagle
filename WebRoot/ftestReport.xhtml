@@ -57,6 +57,12 @@
 			<body>
 			<jsfExt:scripts />
 				<h:form id="ftestForm">
+				
+					<h:commandLink actionListener="#{ftestReport.generateCSV}" immediate="false">
+		           		<h:outputText value="Download CSV" />	                    		
+		       		</h:commandLink>
+		       		<br/><br/>
+		       		
 					<i:pager dataTable="ftestTable" />
 					<div id="reportDiv">
 					<h:dataTable id="ftestTable" style="border:1px solid #6EA667"
