@@ -3,6 +3,7 @@ package gov.nih.nci.eagle.web.reports;
 import gov.nih.nci.caintegrator.analysis.messaging.FTestResultEntry;
 import gov.nih.nci.caintegrator.domain.annotation.gene.bean.GeneBiomarker;
 import gov.nih.nci.caintegrator.service.findings.FTestFinding;
+import gov.nih.nci.eagle.query.dto.ClassComparisonQueryDTOImpl;
 import gov.nih.nci.eagle.util.FTestComparator;
 
 import java.util.ArrayList;
@@ -38,6 +39,10 @@ public class FTestReport {
         }
     }
 
+    public ClassComparisonQueryDTOImpl getQueryDTO() {
+        return (ClassComparisonQueryDTOImpl)finding.getTask().getQueryDTO();
+    }
+    
     public Collection getReportBeans() {
         Collections.sort(reportBeans, sortComparator);
         return reportBeans;

@@ -1,22 +1,23 @@
 package gov.nih.nci.eagle.web.reports;
 
 import gov.nih.nci.caintegrator.analysis.messaging.ClassComparisonResultEntry;
+import gov.nih.nci.caintegrator.application.lists.UserListBeanHelper;
 import gov.nih.nci.caintegrator.domain.annotation.gene.bean.GeneBiomarker;
 import gov.nih.nci.caintegrator.service.findings.ClassComparisonFinding;
+import gov.nih.nci.eagle.query.dto.ClassComparisonQueryDTOImpl;
 import gov.nih.nci.eagle.util.FTestComparator;
+import gov.nih.nci.eagle.util.PatientGroupManager;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import javax.el.ValueExpression;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.collections.ListUtils;
-import org.apache.commons.lang.StringUtils;
+import javax.servlet.http.HttpSession;
 
 public class ClassComparisonReport {
 
@@ -37,11 +38,45 @@ public class ClassComparisonReport {
         reportBeans = new ArrayList();
 
         for (ClassComparisonResultEntry entry : finding.getResultEntries()) {
-            ClassComparisonReportBean bean = new ClassComparisonReportBean(entry,
-                    ((GeneBiomarker) finding.getReporterAnnotationsMap().get(
-                            entry.getReporterId())).getHugoGeneSymbol());
+            ClassComparisonReportBean bean = new ClassComparisonReportBean(
+                    entry, ((GeneBiomarker) finding.getReporterAnnotationsMap()
+                            .get(entry.getReporterId())).getHugoGeneSymbol());
             reportBeans.add(bean);
         }
+    }
+
+    public ClassComparisonQueryDTOImpl getQueryDTO() {
+        return (ClassComparisonQueryDTOImpl) finding.getTask().getQueryDTO();
+    }
+
+    public List getBaselineGroups() {
+        return new ArrayList(getQueryDTO().getBaselineGroupMap().keySet());
+    }
+
+    public List getComparisonGroups() {
+        return new ArrayList(getQueryDTO().getComparisonGroupsMap().keySet());
+    }
+
+    public String displayGroup() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        String val = (String) context.getExternalContext()
+                .getRequestParameterMap().get("group");
+        List<String> itemsFromList = null;
+        if(getQueryDTO().getBaselineGroupMap().containsKey(val))
+            itemsFromList = getQueryDTO().getBaselineGroupMap().get(val);
+        else
+            itemsFromList = getQueryDTO().getComparisonGroupsMap().get(val);
+
+        ValueExpression vex = context.getApplication().getExpressionFactory()
+                .createValueExpression(context.getELContext(),
+                        "#{groupReport}", PatientGroupReport.class);
+        PatientGroupReport report = (PatientGroupReport) vex.getValue(context
+                .getELContext());
+        
+        PatientGroupManager man = new PatientGroupManager();
+        List patientInfo = man.getPatientInfo(itemsFromList);
+        report.setPatients(patientInfo);
+        return "groupReport";
     }
 
     public List getReportBeans() {

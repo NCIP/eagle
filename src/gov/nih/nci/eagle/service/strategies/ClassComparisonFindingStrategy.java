@@ -19,6 +19,7 @@ import gov.nih.nci.caintegrator.service.findings.Finding;
 import gov.nih.nci.caintegrator.service.task.Task;
 import gov.nih.nci.caintegrator.service.task.TaskResult;
 import gov.nih.nci.caintegrator.util.ValidationUtility;
+import gov.nih.nci.eagle.enumeration.SpecimenType;
 import gov.nih.nci.eagle.query.dto.ClassComparisonQueryDTOImpl;
 
 import java.util.ArrayList;
@@ -117,7 +118,8 @@ public class ClassComparisonFindingStrategy extends AsynchronousFindingStrategy 
     private Collection<SampleGroup> sampleGroups = new ArrayList<SampleGroup>();
     private ClassComparisonRequest classComparisonRequest = null;
     private AnalysisServerClientManager analysisServerClientManager;
-    private Map<ArrayPlatformType, String> dataFileMap;
+    private Map<String, String> dataFileMap;
+
 
     public ClassComparisonFindingStrategy() {
 
@@ -169,33 +171,6 @@ public class ClassComparisonFindingStrategy extends AsynchronousFindingStrategy 
                 getTaskResult());
         System.out
                 .println("Task has been set to running and placed in cache, query will be run");
-//        List<ClinicalQueryDTO> clinicalQueries = getQueryDTO()
-//                .getComparisonGroups();
-//        if (clinicalQueries != null) {
-//            for (ClinicalQueryDTO clinicalDataQuery : clinicalQueries) {
-//                if (clinicalDataQuery instanceof PatientUserListQueryDTO) {
-//                    try {
-//
-//                        PatientUserListQueryDTO ptQuery = (PatientUserListQueryDTO) clinicalDataQuery;
-//                        List<String> sampleIds = ptQuery.getPatientDIDs();
-//                        if (sampleIds != null && sampleIds.size() > 0) {
-//                            SampleGroup sampleGroup = new SampleGroup(
-//                                    clinicalDataQuery.getQueryName(), sampleIds
-//                                            .size());
-//                            sampleGroup.addAll(sampleIds);
-//                            sampleGroups.add(sampleGroup);
-//
-//                        }
-//                    }// end of try
-//                    catch (Exception e) {
-//                        e.printStackTrace();
-//                        logger.error(e.getMessage());
-//                        throw new RuntimeException(e);
-//                    }
-//                }
-//
-//            }
-//        }
 
 
     }
@@ -238,33 +213,17 @@ public class ClassComparisonFindingStrategy extends AsynchronousFindingStrategy 
                 HashMap<String, List> baselineGroupMap = getQueryDTO().getBaselineGroupMap();
                 for(String name : baselineGroupMap.keySet()) {
                     SampleGroup baseline = new SampleGroup(name);
-                    baseline.addAll(baselineGroupMap.get(name));
-                    //sampleGroups.add(baseline);
+                    List<String> group = baselineGroupMap.get(name);
+                    baseline.addAll(group);
                     classComparisonRequest.setBaselineGroup(baseline);
                 }
                 for(String name : comparisonGroupsMap.keySet()) {
                     SampleGroup comparison = new SampleGroup(name);
-                    comparison.addAll(comparisonGroupsMap.get(name));
-                    //sampleGroups.add(comparison);
+                    List<String> group = comparisonGroupsMap.get(name);
+                    comparison.addAll(group);
                     classComparisonRequest.setGroup1(comparison);
                 }
-
-                /*if (classComparisonRequest.getArrayPlatform() == ArrayPlatformType.BLOOD_ARRAY) {
-                    classComparisonRequest
-                            .setDataFileName(System
-                                    .getProperty("gov.nih.nci.eagleportal.blood_data_matrix"));
-                } else
-*/
-                
-                classComparisonRequest.setDataFileName(dataFileMap.get(classComparisonRequest.getArrayPlatform().name()));
-//                if (classComparisonRequest.getArrayPlatform() == ArrayPlatformType.ALL_PLATFORM) {
-//                    classComparisonRequest
-//                            .setDataFileName(tissueDataFile);
-//                } else {
-//                    logger
-//                            .warn("Unrecognized array platform type for ClassComparisionRequest");
-//                    // may want to return false and show an error on the page.
-//                }
+                classComparisonRequest.setDataFileName(dataFileMap.get(getQueryDTO().getSpecimenTypeEnum().name()));
 
             }
             case GLM: {

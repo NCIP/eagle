@@ -25,6 +25,7 @@ import gov.nih.nci.caintegrator.enumeration.StatisticalMethodType;
 import gov.nih.nci.caintegrator.dto.query.*;
 import gov.nih.nci.caintegrator.enumeration.ArrayPlatformType;
 
+import gov.nih.nci.eagle.enumeration.SpecimenType;
 import gov.nih.nci.eagle.query.dto.ClassComparisonQueryDTOImpl;
 import gov.nih.nci.eagle.query.dto.PatientUserListQueryDTO;
 
@@ -32,6 +33,7 @@ import gov.nih.nci.eagle.query.dto.PatientUserListQueryDTO;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
 
 
 import javax.jms.JMSException;
@@ -51,37 +53,7 @@ public class FTestFindingStrategy extends AsynchronousFindingStrategy{
 	private AnalysisServerClientManager analysisServerClientManager = null;		
 	
 	private List<SampleGroup> sampleGroups = new ArrayList<SampleGroup>();	
-	
-	
-	/*public FTestFindingStrategy(String sessionId, String taskId, ClassComparisonQueryDTO queryDTO) throws ValidationException  {
-		if(validate(queryDTO)) {
-		   this.sessionId = sessionId;
-		   this.taskId = taskId;
-		   myQueryDTO = queryDTO;
-		   fTestRequest = new FTestRequest(this.sessionId,this.taskId);
-		
-		   try {
-			   analysisServerClientManager = AnalysisServerClientManager.getInstance();
-		     }
-		   catch(NamingException ex) {
-			   logger.error(ex.getMessage());
-			   logger.error(ex);
-		     }
-		   catch(JMSException ex) {
-			   logger.error(ex.getMessage());
-			   logger.error(ex);
-		     }
-		}// end if
-		*/
-	    /*
-		 * set Finding in cache
-		 */
-		/*FindingStatus currentStatus  = FindingStatus.Running;
-		fTestFinding = new FTestFinding (this.sessionId,this.taskId,currentStatus, null);
-		fTestFinding.setQueryDTO(myQueryDTO);		
-		cacheManager.addToSessionCache(this.sessionId,this.taskId, fTestFinding);		
-	}
-	*/
+    private Map<String, String> dataFileMap;
 	
 	// this method is used to verified the # of comparison groups for Ftest
 	public boolean 	createQuery() throws FindingsQueryException{
@@ -152,14 +124,14 @@ public class FTestFindingStrategy extends AsynchronousFindingStrategy{
 			
 			    // go the correct matrix to fetch data			
 			
-                fTestRequest.setDataFileName("eagle_tissue_23APR07.Rda");
-			  /* if (fTestRequest.getArrayPlatform() == ArrayPlatformType.BLOOD_ARRAY) {				
-				   fTestRequest.setDataFileName(System.getProperty("gov.nih.nci.eagle.blood_data_matrix"));				
-			    }
-			   else if (fTestRequest.getArrayPlatform() == ArrayPlatformType.TISSUE_ARRAY)  {
-				   fTestRequest.setDataFileName(System.getProperty("gov.nih.nci.eagle.tissue_data_matrix"));					
-			    }				
-		      */
+                ArrayPlatformType arrayPlatform = getQueryDTO()
+                .getArrayPlatformDE()
+                .getValueObjectAsArrayPlatformType();
+
+                fTestRequest.setArrayPlatform(arrayPlatform);
+                
+                // Set data file
+                fTestRequest.setDataFileName(dataFileMap.get(getQueryDTO().getSpecimenTypeEnum().name()));
 		
 		   analysisServerClientManager.sendRequest(fTestRequest);
 		   return true;	
@@ -248,6 +220,14 @@ public class FTestFindingStrategy extends AsynchronousFindingStrategy{
 	    public void setBusinessCacheManager(BusinessTierCache cacheManager) {
 	        this.businessCacheManager = cacheManager;
 	    }
+
+        public Map<String, String> getDataFileMap() {
+            return dataFileMap;
+        }
+
+        public void setDataFileMap(Map<String, String> dataFileMap) {
+            this.dataFileMap = dataFileMap;
+        }
 
 	
 }

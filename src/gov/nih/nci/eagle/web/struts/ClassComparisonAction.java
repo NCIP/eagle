@@ -61,7 +61,6 @@ public class ClassComparisonAction extends DispatchAction{
     public ActionForward submit(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response) throws IOException	{
     	
-    	      dtoBuilder = new ClassComparisonQueryDTOBuilder();    	   
     	      ccQueryDTO = (ClassComparisonQueryDTOImpl)dtoBuilder.buildQueryDTO(form, request.getSession().getId());  
     	      try {             
     	            Task task = findingsManager.submitQuery(ccQueryDTO);

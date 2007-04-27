@@ -22,6 +22,7 @@ import gov.nih.nci.caintegrator.enumeration.StatisticalMethodType;
 import gov.nih.nci.caintegrator.enumeration.StatisticalSignificanceType;
 import gov.nih.nci.eagle.dto.de.CoVariateDE;
 import gov.nih.nci.eagle.enumeration.SpecimenType;
+import gov.nih.nci.eagle.service.validation.ListValidationService;
 import gov.nih.nci.eagle.web.helper.EnumCaseChecker;
 import gov.nih.nci.eagle.web.struts.ClassComparisonForm;
 
@@ -45,6 +46,7 @@ import org.apache.log4j.Logger;
 public class ClassComparisonQueryDTOBuilder implements QueryDTOBuilder{
 	
 	private static Logger logger = Logger.getLogger(ClassComparisonQueryDTOBuilder.class);
+    private ListValidationService listValidationService;
 
 	public ClassComparisonQueryDTOBuilder() {}
 	
@@ -104,33 +106,6 @@ public class ClassComparisonQueryDTOBuilder implements QueryDTOBuilder{
         classComparisondto.setMultiGroupComparisonAdjustmentTypeDE(new MultiGroupComparisonAdjustmentTypeDE(MultiGroupComparisonAdjustmentType.NONE));
         
         
-	    // set up co-variate       
-       
-       // if(classComparisonForm.getCovariate()!= null && classComparisonForm.getCovariate().length()>1){
-        	/*
-             * This following code is here to deal with an observed problem with the changing 
-             * of case in request parameters.  See the class EnumChecker for 
-             * enlightenment.
-             */
- 		   
-          /* CoVariateType coVariateType; 
- 		   String covariateString= EnumCaseChecker.getEnumTypeName(classComparisonForm.getCovariate(),CoVariateType.values());
-            if(covariateString!=null) {
-            	coVariateType = CoVariateType.valueOf(covariateString);
-            }
-            
-            else {
-         	   	logger.error("Invalid covariateType value given in request");
-        		logger.error("Selected covariateType value = "+classComparisonForm.getExistingCovariates());
-        		logger.error("Using the default covariateType type of :"+ERROR_COVARIATE_TYPE);
-        		coVariateType = ERROR_COVARIATE_TYPE;            
-                }
-            
-            CoVariateDE coVariateDE = new CoVariateDE(coVariateType);
-            classComparisondto.setCoVariateDE(coVariateDE);
-       
- 	        }
- 	        */
         
         // set up co-variates
         
@@ -162,13 +137,15 @@ public class ClassComparisonQueryDTOBuilder implements QueryDTOBuilder{
          }
     		
         
-        
+       //look at the classComparisonForm.getSpecimenType() and then reconstruct the enum, then setSpecimenType(enum) in DTO
+       if(classComparisonForm.getSpecimenType()!= "" || classComparisonForm.getSpecimenType().length() != 0){       
+            classComparisondto.setSpecimenTypeEnum(SpecimenType.valueOf(classComparisonForm.getSpecimenType()));
+        }
      
         
 	 
 	 // set comparison groups
        UserListBeanHelper ulbh = new UserListBeanHelper(cacheId);
-	   List<ClinicalQueryDTO> clinicalQueryCollection = new ArrayList<ClinicalQueryDTO>();
     
 	   if(classComparisonForm.getSelectedGroups() != null && classComparisonForm.getSelectedGroups().length >=1) {
 		   	   
@@ -178,7 +155,8 @@ public class ClassComparisonQueryDTOBuilder implements QueryDTOBuilder{
 			  String myGroupName = classComparisonForm.getSelectedGroups()[i];
 			  List<String> myGroupValues = new ArrayList();
 			  myGroupValues = ulbh.getItemsFromList(myGroupName);
-			  compGroups.put(myGroupName, myGroupValues);
+              List<String> validList = listValidationService.validateList(myGroupValues, classComparisondto.getSpecimenTypeEnum());
+			  compGroups.put(myGroupName, validList);
 		   }
 		   
 		   classComparisondto.setComparisonGroupsMap(compGroups);
@@ -188,7 +166,8 @@ public class ClassComparisonQueryDTOBuilder implements QueryDTOBuilder{
 	   if(classComparisonForm.getBaseline()!=null){
 		   HashMap baselineMap = new HashMap();
 		   List<String> baselineValues = ulbh.getItemsFromList(classComparisonForm.getBaseline());
-		   baselineMap.put(classComparisonForm.getBaseline(), baselineValues);
+           List<String> validList = listValidationService.validateList(baselineValues, classComparisondto.getSpecimenTypeEnum());
+		   baselineMap.put(classComparisonForm.getBaseline(), validList);
 		   classComparisondto.setBaselineGroupMap(baselineMap);
 	   }
 	   //set up fold change
@@ -214,14 +193,19 @@ public class ClassComparisonQueryDTOBuilder implements QueryDTOBuilder{
            
        }
        */
-	   //this is ignored
-	   //look at the classComparisonForm.getSpecimenType() and then reconstruct the enum, then setSpecimenType(enum) in DTO
-	   if(classComparisonForm.getSpecimenType()!= "" || classComparisonForm.getSpecimenType().length() != 0){       
-           classComparisondto.setSpecimenTypeEnum(SpecimenType.valueOf(classComparisonForm.getSpecimenType()));
-       }
+	   // Set array platform so that the reporters can be annotated for the report.
+       classComparisondto.setArrayPlatformDE(new ArrayPlatformDE("ALL_PLATFORM"));
 	   
 	   return classComparisondto;
 		
-	}	
+	}
+
+    public ListValidationService getListValidationService() {
+        return listValidationService;
+    }
+
+    public void setListValidationService(ListValidationService listValidationService) {
+        this.listValidationService = listValidationService;
+    }	
 
 }
