@@ -7,4 +7,8 @@
 		<tag-name>pager</tag-name>
 		<source>pager.xhtml</source>
 	</tag>
+	<tag>
+		<tag-name>patientListTable</tag-name>
+		<source>patientListTable.xhtml</source>
+	</tag>
 </facelet-taglib>
