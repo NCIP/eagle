@@ -10,12 +10,11 @@
 
 	<ui:composition>
 		<f:view id="classComparisonView">
-			<head>
-				<title>Class Comparison Report</title>
-			</head>
 
-			<body>
 				<jsfExt:scripts />
+				<script type="text/javascript" src="js/lib/prototype.js"/>
+				<script type="text/javascript" src="js/lib/scriptaculous/effects.js"/>
+
 				<h:form id="gueryForm">
 					<h:panelGrid>
 						<h:outputText
@@ -23,8 +22,9 @@
 						<h:dataTable value="#{classComparisonReport.baselineGroups}"
 							var="group">
 							<h:column>
-								<h:commandLink value="#{group}" />
-								<div id="baselinePatients">
+								<a href="#" onclick="new Effect.toggle('baselinePatients');return false;">#{group}</a>
+
+								<div id="baselinePatients" style="display:none">
 									<i:patientListTable
 										patientList="#{classComparisonReport.patientInfoMap[group]}" />
 								</div>
@@ -33,8 +33,9 @@
 						<h:dataTable value="#{classComparisonReport.comparisonGroups}"
 							var="group">
 							<h:column>
-								<h:commandLink value="#{group}" />
-								<div id="comparisonPatients">
+								<a href="#" onclick="new Effect.toggle('comparisonPatients'); return false;">#{group}</a>
+
+								<div id="comparisonPatients" style="display:none">
 									<i:patientListTable
 										patientList="#{classComparisonReport.patientInfoMap[group]}" />
 								</div>
@@ -136,7 +137,7 @@
 						</h:dataTable>
 					</div>
 				</h:form>
-			</body>
+
 
 		</f:view>
 	</ui:composition>
