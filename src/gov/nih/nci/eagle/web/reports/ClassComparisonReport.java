@@ -1,7 +1,6 @@
 package gov.nih.nci.eagle.web.reports;
 
 import gov.nih.nci.caintegrator.analysis.messaging.ClassComparisonResultEntry;
-import gov.nih.nci.caintegrator.application.lists.UserListBeanHelper;
 import gov.nih.nci.caintegrator.domain.annotation.gene.bean.GeneBiomarker;
 import gov.nih.nci.caintegrator.service.findings.ClassComparisonFinding;
 import gov.nih.nci.eagle.query.dto.ClassComparisonQueryDTOImpl;
@@ -10,6 +9,7 @@ import gov.nih.nci.eagle.util.PatientGroupManager;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,7 +17,6 @@ import javax.el.ValueExpression;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 public class ClassComparisonReport {
 
@@ -25,6 +24,7 @@ public class ClassComparisonReport {
     private List reportBeans;
     private FTestComparator sortComparator;
     private Boolean sortAscending;
+    private Map<String, List> patientInfoMap;
 
     public ClassComparisonReport() {
 
@@ -42,6 +42,18 @@ public class ClassComparisonReport {
                     entry, ((GeneBiomarker) finding.getReporterAnnotationsMap()
                             .get(entry.getReporterId())).getHugoGeneSymbol());
             reportBeans.add(bean);
+        }
+        patientInfoMap = new HashMap<String, List>();
+        PatientGroupManager man = new PatientGroupManager();
+        for(String groupName : (List<String>)getBaselineGroups()) {
+            List patients = getQueryDTO().getBaselineGroupMap().get(groupName);
+            List patientInfo = man.getPatientInfo(patients);
+            patientInfoMap.put(groupName, patientInfo);
+        }
+        for(String groupName : (List<String>)getComparisonGroups()) {
+            List patients = getQueryDTO().getComparisonGroupsMap().get(groupName);
+            List patientInfo = man.getPatientInfo(patients);
+            patientInfoMap.put(groupName, patientInfo);
         }
     }
 
@@ -138,6 +150,14 @@ public class ClassComparisonReport {
 			FacesContext.getCurrentInstance().responseComplete();
 		}
 
+    }
+
+    public Map<String, List> getPatientInfoMap() {
+        return patientInfoMap;
+    }
+
+    public void setPatientInfoMap(Map<String, List> patientInfoMap) {
+        this.patientInfoMap = patientInfoMap;
     }
 
 }
