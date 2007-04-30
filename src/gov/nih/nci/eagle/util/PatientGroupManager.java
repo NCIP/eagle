@@ -36,10 +36,17 @@ public class PatientGroupManager {
         }
         return patients;
     }
+    
+    public Map getPatientInfo(String patientId) {
+        if(patientMap == null) {
+            buildPatientMap();
+        }
+        return patientMap.get(patientId);
+    }
 
     private void buildPatientMap() {
         patientMap = new HashMap<String, Map>();
-            File inFile = new File("C:\\devtools\\jboss-4.0.4.GA\\server\\default\\deploy\\eagle.war\\WEB-INF\\classes\\all_data_map.txt");
+            File inFile = new File("C:\\jboss-4.0.4.GA\\server\\default\\deploy\\eagle.war\\WEB-INF\\classes\\all_data_map.txt");
             BufferedReader br;
             try {
                 br = new BufferedReader(new InputStreamReader(
