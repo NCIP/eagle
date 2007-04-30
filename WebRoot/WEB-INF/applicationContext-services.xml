@@ -105,6 +105,19 @@
 		<property name="taskResult" ref="glmTaskResult" />
 		<property name="analysisServerClientManager"
 			ref="analysisServerClientManager" />
+			<property name="dataFileMap">
+			<map>
+				<entry key="TISSUE_NORMAL">
+					<value>${gov.nih.nci.eagleportal.tissue_normal_data_matrix}</value>
+				</entry>
+				<entry key="TISSUE_CANCER">
+					<value>${gov.nih.nci.eagleportal.tissue_cancer_data_matrix}</value>
+				</entry>
+				<entry key="BLOOD">
+					<value>${gov.nih.nci.eagleportal.blood_data_matrix}</value>
+				</entry>
+			</map>
+		</property>	
 	</bean>
 
 	<bean id="classComparisonTaskResult"

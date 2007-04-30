@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 
 
 
+import gov.nih.nci.caintegrator.analysis.messaging.GLMSampleGroup;
 import gov.nih.nci.caintegrator.analysis.messaging.GeneralizedLinearModelRequest;
 import gov.nih.nci.caintegrator.analysis.messaging.SampleGroup;
 import gov.nih.nci.caintegrator.application.analysis.AnalysisServerClientManager;
@@ -31,7 +32,9 @@ import gov.nih.nci.caintegrator.service.task.Task;
 import gov.nih.nci.caintegrator.service.task.TaskResult;
 import gov.nih.nci.caintegrator.util.ValidationUtility;
 import gov.nih.nci.eagle.dto.de.CoVariateDE;
+import gov.nih.nci.eagle.enumeration.SpecimenType;
 import gov.nih.nci.eagle.query.dto.ClassComparisonQueryDTOImpl;
+import gov.nih.nci.eagle.util.PatientGroupManager;
 
 public class GeneralizedLinearModelFindingStrategy extends
 		AsynchronousFindingStrategy {
@@ -43,6 +46,7 @@ public class GeneralizedLinearModelFindingStrategy extends
 	 private AnalysisServerClientManager analysisServerClientManager;
 	 private Map<ArrayPlatformType, String> dataFileMap;
 	 
+	 private PatientGroupManager pgm = new PatientGroupManager();
 	
 	 /*
 	     * (non-Javadoc)
@@ -61,7 +65,7 @@ public class GeneralizedLinearModelFindingStrategy extends
 	        if (getQueryDTO().getComparisonGroups() != null) {
 	        	
 	        	if(statisticType==StatisticalMethodType.GLM) {	           
-	                if (getQueryDTO().getComparisonGroups().size() != 2) {
+	                if (getQueryDTO().getComparisonGroups().size() < 1 && getQueryDTO().getBaselineGroupMap().size()>0) {
 	                    throw new FindingsQueryException(
 	                            "Incorrect Number of queries passed for the Generalized Linear Model statistical type");
 	                }	               
@@ -96,17 +100,47 @@ public class GeneralizedLinearModelFindingStrategy extends
 			    	 // Set sample groups
 	                HashMap<String, List> comparisonGroupsMap = getQueryDTO().getComparisonGroupsMap();
 	                HashMap<String, List> baselineGroupMap = getQueryDTO().getBaselineGroupMap();
-	                for(String name : baselineGroupMap.keySet()) {
-	                    SampleGroup baseline = new SampleGroup(name);
-	                    baseline.addAll(baselineGroupMap.get(name));	                   
-	                    glmRequest.setBaselineGroup(baseline);
+	                GLMSampleGroup baseline  = null;
+	                for(String gname : baselineGroupMap.keySet()) {
+	                	List<String> groups = baselineGroupMap.get(gname);
+	                	 baseline = new GLMSampleGroup(gname);
+	                	 baseline.addAll(baselineGroupMap.get(gname));
+	                	 
+	                	for(String name : groups )	{
+		                   
+		                   	
+		                    //add each patient
+		                    
+		                    HashMap<String, String> annotationMap = new HashMap<String, String>();
+		                    //fetch the data about each patient
+		                    Map pm = pgm.getPatientInfo(name);
+		                    annotationMap.put("sex", pm.get("sex").toString());
+		                    annotationMap.put("age", pm.get("age").toString());
+		                    annotationMap.put("smoking_status", pm.get("smoking_status").toString());
+	
+		                    baseline.addPatientData(name, annotationMap);
+	                	}
 	                }
-	                for(String name : comparisonGroupsMap.keySet()) {
-	                    SampleGroup comparison = new SampleGroup(name);
-	                    comparison.addAll(comparisonGroupsMap.get(name));	                    
-	                    glmRequest.setGroup1(comparison);
+                    glmRequest.setBaselineGroup(baseline);
+
+	                
+	                List<GLMSampleGroup> glmsgs = new ArrayList<GLMSampleGroup>();
+	                for(String gname : comparisonGroupsMap.keySet()) {
+	                	List<String> groups = comparisonGroupsMap.get(gname);
+	                	GLMSampleGroup comparison = new GLMSampleGroup(gname);
+	                	comparison.addAll(comparisonGroupsMap.get(gname));
+	                	for(String name : groups )	{
+		                    
+		                    HashMap<String, String> annotationMap = new HashMap<String, String>();
+		                    Map pm = pgm.getPatientInfo(name);
+		                    annotationMap.put("sex", pm.get("sex").toString());
+		                    annotationMap.put("age", pm.get("age").toString());
+		                    annotationMap.put("smoking_status", pm.get("smoking_status").toString());
+		                    comparison.addPatientData(name, annotationMap);
+	                	}
 	                }
 	                
+                    glmRequest.setComparisonGroups(glmsgs);
 	               
 	                
 				 // set Co-variates
@@ -135,14 +169,8 @@ public class GeneralizedLinearModelFindingStrategy extends
 				
 				    // go the correct matrix to fetch data			
 				
-	                glmRequest.setDataFileName("eagle_tissue_23APR07.Rda");
-				  /* if (fTestRequest.getArrayPlatform() == ArrayPlatformType.BLOOD_ARRAY) {				
-					   fTestRequest.setDataFileName(System.getProperty("gov.nih.nci.eagle.blood_data_matrix"));				
-				    }
-				   else if (fTestRequest.getArrayPlatform() == ArrayPlatformType.TISSUE_ARRAY)  {
-					   fTestRequest.setDataFileName(System.getProperty("gov.nih.nci.eagle.tissue_data_matrix"));					
-				    }				
-			      */
+	                glmRequest.setDataFileName(dataFileMap.get(getQueryDTO().getSpecimenTypeEnum().name()));
+			      
 			
 			   analysisServerClientManager.sendRequest(glmRequest);
 			   return true;	
@@ -153,7 +181,7 @@ public class GeneralizedLinearModelFindingStrategy extends
 	  			throw new FindingsAnalysisException(ex.getMessage());
 			}
 			catch(Exception ex) {
-				logger.error(ex.getMessage());
+				logger.error("erro in glm", ex);
 				throw new FindingsAnalysisException("Error in setting glmRequest object");
 			}
 			return false;
@@ -207,7 +235,7 @@ public class GeneralizedLinearModelFindingStrategy extends
 	    public boolean canHandle(QueryDTO query) {
 	        if(query instanceof ClassComparisonQueryDTO) {
 	            ClassComparisonQueryDTO dto = (ClassComparisonQueryDTO)query;
-	            return ( dto.getStatisticTypeDE().equals(StatisticalMethodType.GLM));
+	            return ( dto.getStatisticTypeDE().getValueObject().equals(StatisticalMethodType.GLM));
 	        }
 	        return false;
 	    }
