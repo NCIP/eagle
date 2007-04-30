@@ -138,6 +138,7 @@ public class GeneralizedLinearModelFindingStrategy extends
 		                    annotationMap.put("smoking_status", pm.get("smoking_status").toString());
 		                    comparison.addPatientData(name, annotationMap);
 	                	}
+	                	glmsgs.add(comparison);
 	                }
 	                
                     glmRequest.setComparisonGroups(glmsgs);
