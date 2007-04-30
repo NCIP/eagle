@@ -84,16 +84,22 @@
 					if(task.getQueryDTO() instanceof EagleClinicalQueryDTO){						
 						out.println("<li><a id=\"" + task.getId() + "_link\" href=\"javascript:spawnx('clinicalReport.do?method=runReport&taskId=" + task.getId() + "&cacheId=" + task.getCacheId() + "', 750, 500,'clinical_report');\" onclick=\"" + onclick + "\">" + qname + "</a> <i>(Clinical)</i> ");
 					}
-					if(task.getQueryDTO() instanceof EPIQueryDTO){						
+					else if(task.getQueryDTO() instanceof EPIQueryDTO){						
 						out.println("<li><a id=\"" + task.getId() + "_link\" href=\"javascript:spawnx('copyNumberReport.do?method=runReport&taskId=" + task.getId() + "&cacheId=" + task.getCacheId() + "', 750, 500,'copy_number_report');\" onclick=\"" + onclick + "\">" + qname + "</a> <i>(Epi)</i> ");
 					} 
-					if(task.getQueryDTO() instanceof ClassComparisonQueryDTO){	
+					else if(task.getQueryDTO() instanceof ClassComparisonQueryDTO){	
 						ClassComparisonQueryDTO dto = (ClassComparisonQueryDTO)task.getQueryDTO();
-						if(dto.getStatisticTypeDE().getValueObject().equals(StatisticalMethodType.TTest) || dto.getStatisticTypeDE().equals(StatisticalMethodType.GLM))
+						if(dto.getStatisticTypeDE().getValueObject().equals(StatisticalMethodType.TTest) || dto.getStatisticTypeDE().getValueObject().equals(StatisticalMethodType.GLM))
 							out.println("<li><a id=\"" + task.getId() + "_link\" href=\"javascript:spawnx('classComparisonReport.do?method=runReport&taskId=" + task.getId() + "&cacheId=" + task.getCacheId() + "', 750, 500,'copy_number_report');\" onclick=\"" + onclick + "\">" + qname + "</a> <i>(Class Comparison)</i> ");
 						else if(dto.getStatisticTypeDE().getValueObject().equals(StatisticalMethodType.FTest))
 							out.println("<li><a id=\"" + task.getId() + "_link\" href=\"javascript:spawnx('ftestReport.do?method=runReport&taskId=" + task.getId() + "&cacheId=" + task.getCacheId() + "', 750, 500,'copy_number_report');\" onclick=\"" + onclick + "\">" + qname + "</a> <i>(Class Comparison)</i> ");
+						else	{
+								out.println("<li>" + qname + "  ");					
+						}
 					} 
+					else	{
+							out.println("<li>unknown analysis: " + qname + "  ");					
+					}
  
 					
 					out.println("<span style=\"font-size:10px\">(elapsed time: <span id=\"" + task.getId() + "_time\" >" + task.getElapsedTime() + "</span>ms) </span>");
