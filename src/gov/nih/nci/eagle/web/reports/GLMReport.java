@@ -8,10 +8,12 @@ import gov.nih.nci.caintegrator.service.findings.FTestFinding;
 import gov.nih.nci.caintegrator.service.findings.GeneralizedLinearModelFinding;
 import gov.nih.nci.eagle.query.dto.ClassComparisonQueryDTOImpl;
 import gov.nih.nci.eagle.util.FTestComparator;
+import gov.nih.nci.eagle.util.PatientGroupManager;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,6 +27,9 @@ public class GLMReport {
     private Boolean sortAscending;
     private FTestComparator sortComparator;
     private List reportBeans;
+
+    private Map<String, List> patientInfoMap;
+
 
     public GLMReport(GeneralizedLinearModelFinding finding) {
 
@@ -40,10 +45,31 @@ public class GLMReport {
                     .getHugoGeneSymbol());
             reportBeans.add(bean);
         }
+        
+        patientInfoMap = new HashMap<String, List>();
+        PatientGroupManager man = new PatientGroupManager();
+        for(String groupName : (List<String>)getBaselineGroups()) {
+            List patients = getQueryDTO().getBaselineGroupMap().get(groupName);
+            List patientInfo = man.getPatientInfo(patients);
+            patientInfoMap.put(groupName, patientInfo);
+        }
+        for(String groupName : (List<String>)getComparisonGroups()) {
+            List patients = getQueryDTO().getComparisonGroupsMap().get(groupName);
+            List patientInfo = man.getPatientInfo(patients);
+            patientInfoMap.put(groupName, patientInfo);
+        }
     }
 
     public ClassComparisonQueryDTOImpl getQueryDTO() {
         return (ClassComparisonQueryDTOImpl)finding.getTask().getQueryDTO();
+    }
+    
+    public List getBaselineGroups() {
+        return new ArrayList(getQueryDTO().getBaselineGroupMap().keySet());
+    }
+
+    public List getComparisonGroups() {
+        return new ArrayList(getQueryDTO().getComparisonGroupsMap().keySet());
     }
     
     public Collection getReportBeans() {
@@ -131,5 +157,13 @@ public class GLMReport {
 		}
 
     }
+
+	public Map<String, List> getPatientInfoMap() {
+		return patientInfoMap;
+	}
+
+	public void setPatientInfoMap(Map<String, List> patientInfoMap) {
+		this.patientInfoMap = patientInfoMap;
+	}
 
 }

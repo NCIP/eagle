@@ -52,6 +52,43 @@
 		<f:view id="glmView">
 
 			<jsfExt:scripts />
+			
+			<script type="text/javascript" src="js/lib/prototype.js"/>
+			<script type="text/javascript" src="js/lib/scriptaculous/effects.js"/>
+
+				<h:form id="gueryForm">
+					<h:panelGrid>
+						<h:outputText
+							value="Query Name: #{glmReport.queryDTO.queryName}" />
+						Baseline Group: <br/>
+						<h:dataTable value="#{glmReport.baselineGroups}"
+							var="group">
+							<h:column>
+								<a href="#" onclick="new Effect.toggle('baselinePatients');return false;">#{group}</a>
+
+								<div id="baselinePatients" style="display:none">
+									<i:patientListTable
+										patientList="#{glmReport.patientInfoMap[group]}" />
+								</div>
+							</h:column>
+						</h:dataTable>
+						
+						Comparison Groups: <br/>
+						<h:dataTable value="#{glmReport.comparisonGroups}"
+							var="group">
+							<h:column>
+								<a href="#" onclick="new Effect.toggle('comparisonPatients_#{group}'); return false;">#{group}</a>
+
+								<div id="comparisonPatients_#{group}" style="display:none">
+									<i:patientListTable
+										patientList="#{glmReport.patientInfoMap[group]}" />
+								</div>
+							</h:column>
+						</h:dataTable>
+					</h:panelGrid>
+				</h:form>
+	
+			
 				<h:form id="glmForm">
 				
 					<h:commandLink actionListener="#{glmReport.generateCSV}" immediate="false">
