@@ -5,6 +5,13 @@
 
 <script type="text/javascript" src="js/common/MenuSwapper.js"></script>
 <script type="text/javascript">
+
+Event.observe(window, 'load',
+      function() { 
+      	$('ccForm').reset(); //force reset on soft refresh
+      }
+    );
+
 var CCForm = {
 	'changeStat': function(el)	{
 		if(el.selectedIndex == '1')	{
@@ -32,6 +39,25 @@ var CCForm = {
 			$('covariates').hide();
 		}
 	},
+	'changeSpecimen' : function(el)	{
+		//clear all selections, hide the existing options and show the correct ones
+		MenuSwapper.saveMe( $('selectedGroups'),$('nonselectedGroups') ); //select them all
+		MenuSwapper.move($('selectedGroups'),$('nonselectedGroups')); //move them back
+		
+		//clear the baseline
+		MenuSwapper.move($('selectedBaseline'),$('nonselectedGroups'));
+		
+		if(el.selectedIndex != 0)	{
+			//tissue
+			$('bloodGroups').hide();
+			$('tissueGroups').show();
+		}
+		else	{
+			$('tissueGroups').hide();
+			$('bloodGroups').show();		
+		}
+		
+	},
 	'validate': function()	{
 		if($('analysisName').value == "")	{
 			alert("Please enter an Analysis Name");
@@ -58,7 +84,7 @@ var CCForm = {
 
 }
 </script>
-<html:form action="classComparison.do?method=submit" >
+<html:form action="classComparison.do?method=submit" onsubmit="return CCForm.validate(); " styleId="ccForm">
 <html:errors property="queryErrors" />
 
 <p>
@@ -72,7 +98,7 @@ var CCForm = {
 
 <div>
 	<b>Specimen Type:</b>
-	<html:select property="specimenType" styleId="platform">
+	<html:select property="specimenType" styleId="platform" onchange="CCForm.changeSpecimen(this);">
 		<html:optionsCollection property="existingSpecimenTypes"/>
 	</html:select>
 </div>
@@ -115,11 +141,20 @@ var CCForm = {
 					<td>
 						Existing Groups
 						<br/>
+						<span id="bloodGroups">
 						<html:select property="existingGroups" multiple="multiple" size="8"
 							ondblclick="MenuSwapper.move($('nonselectedGroups'),$('selectedGroups'));"
 							styleId="nonselectedGroups" style="width: 200px;">
 							<html:optionsCollection property="existingGroups"/>
 						</html:select>
+						</span>
+						<span id="tissueGroups" style="display:none">
+						<html:select property="existingGroups" multiple="multiple" size="8"
+							ondblclick="MenuSwapper.move($('nonselectedGroups'),$('selectedGroups'));"
+							styleId="nonselectedGroups" style="width: 200px;">
+							<html:optionsCollection property="existingTissueGroups"/>
+						</html:select>
+						</span>
 					</td>
 					<td style="vertical-align: middle;" id="menuSwapperButtons">
 						<b id="baselineButtons">
