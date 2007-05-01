@@ -30,6 +30,12 @@
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>	
 	<managed-bean>
+		<description>GLM report that holds report beans</description>
+		<managed-bean-name>glmReport</managed-bean-name>
+		<managed-bean-class>gov.nih.nci.eagle.web.reports.GLMReport</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>	
+	<managed-bean>
 		<description>Report to show patient groups</description>
 		<managed-bean-name>groupReport</managed-bean-name>
 		<managed-bean-class>gov.nih.nci.eagle.web.reports.PatientGroupReport</managed-bean-class>

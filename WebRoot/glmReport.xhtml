@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:i="http://caintegrator.nci.nih.gov/jsf"
+	xmlns:jsfExt="http://java.sun.com/jsf/extensions/dynafaces">
+	<head>
+		<style type="text/css">
+				body { font-family:arial; font-size: 11px; margin-top: 3px}
+				table{border: 1px; padding:0px; font-size:11px; }
+				.rowOdd {		
+				font-size: 11px;
+				background: #F2F2F2;
+				padding: 4px; 
+				border: 1px solid white;
+				color: #000000;
+				white-space:nowrap;		
+				}
+				.rowEven {		
+				font-size: 11px;
+				background: #D4D4D4;
+				padding: 4px; 
+				border: 1px solid white;
+				color: #000000;
+				white-space:nowrap;		
+				}
+				th{
+				background: #6EA667;
+				border: 1px solid white;
+				}
+				a { color:#2B2E4A;}
+				.listSize{margin:5px }
+				.boundary{
+				border:1px solid #6EA667;
+				background: #F2F2F2;
+				width:200px;
+				border-bottom:0px;
+				}
+				
+				#reportDiv table	{
+					width:100%;
+				}
+				#reportDiv table td	{
+					padding:3px;
+				}
+			</style>
+	</head>
+	<body>
+		
+		<f:view id="ftestView">
+
+			<jsfExt:scripts />
+				<h:form id="ftestForm">
+				
+					<h:commandLink actionListener="#{glmReport.generateCSV}" immediate="false">
+		           		<h:outputText value="Download CSV" />	                    		
+		       		</h:commandLink>
+		       		<br/><br/>
+		       		
+					<i:pager dataTable="glmTable" />
+					<div id="reportDiv">
+					<h:dataTable id="glmTable" style="border:1px solid #6EA667"
+						value="#{glmReport.reportBeans}" var="entry"
+						rowClasses="rowOdd,rowEven" rows="50">
+						<h:column>
+							<f:facet name="header">
+							<h:commandLink actionListener="#{glmtReport.sortDataList}" immediate="false">
+	                    		<f:attribute name="sortField" value="reporterId" />
+	                    		<h:outputText value="Reporter" />	                    		
+	                		</h:commandLink>
+        					</f:facet>
+							<h:outputText
+								value="#{entry.reporterId}" />
+
+						</h:column>
+					
+						
+						<h:column>
+							<f:facet name="header">
+							<h:commandLink actionListener="#{glmReport.sortDataList}" immediate="false">
+	                    		<f:attribute name="sortField" value="geneSymbol" />
+	                    		<h:outputText value="Gene Symbol" />	                    		
+	                		</h:commandLink>
+        					</f:facet>
+							<a href="#" onclick="return false;"><h:outputText value="#{entry.geneSymbol}" /></a>
+
+						</h:column> 
+					</h:dataTable>
+					</div>
+				</h:form>
+
+		</f:view>
+
+	</body>
+</html>

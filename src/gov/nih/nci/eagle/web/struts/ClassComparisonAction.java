@@ -8,6 +8,7 @@ import gov.nih.nci.caintegrator.application.lists.UserListBeanHelper;
 import gov.nih.nci.caintegrator.exceptions.FindingsQueryException;
 import gov.nih.nci.caintegrator.service.findings.ClassComparisonFinding;
 import gov.nih.nci.caintegrator.service.findings.FTestFinding;
+import gov.nih.nci.caintegrator.service.findings.GeneralizedLinearModelFinding;
 import gov.nih.nci.caintegrator.service.task.Task;
 import gov.nih.nci.caintegrator.service.task.TaskResult;
 import gov.nih.nci.caintegrator.studyQueryService.FindingsManager;
@@ -16,6 +17,7 @@ import gov.nih.nci.eagle.query.dto.ClassComparisonQueryDTOBuilder;
 import gov.nih.nci.eagle.query.dto.ClassComparisonQueryDTOImpl;
 import gov.nih.nci.eagle.web.reports.ClassComparisonReport;
 import gov.nih.nci.eagle.web.reports.FTestReport;
+import gov.nih.nci.eagle.web.reports.GLMReport;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -127,6 +129,9 @@ public class ClassComparisonAction extends DispatchAction{
                 } else if(result instanceof FTestFinding) {
                     FTestReport report = new FTestReport(((FTestFinding)result));            
                     session.setAttribute("ftestReport",report);
+                } else if(result instanceof GeneralizedLinearModelFinding) {
+                    GLMReport report = new GLMReport(((GeneralizedLinearModelFinding)result));            
+                    session.setAttribute("glmReport",report);
                 }
 
             
