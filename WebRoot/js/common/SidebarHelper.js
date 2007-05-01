@@ -95,7 +95,7 @@ var SidebarHelper = {
 			lis[i].onmouseover = function() { 				
 				tmpp[this.id] = this.title;
 				this.title = "";				
-				return overlib(tmpp[this.id].split(",").join("<br/>"), CAPTION, this.id + " Elements:", HAUTO, VAUTO);
+				return overlib(tmpp[this.id].split(",").join("<br/>"), CAPTION, this.id + " Elements:", HAUTO, VAUTO, DELAY, 500);
 			};
 			lis[i].onmouseout = function() { 
 				this.title = tmpp[this.id];
