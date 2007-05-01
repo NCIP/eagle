@@ -49,10 +49,10 @@
 	</head>
 	<body>
 		
-		<f:view id="ftestView">
+		<f:view id="glmView">
 
 			<jsfExt:scripts />
-				<h:form id="ftestForm">
+				<h:form id="glmForm">
 				
 					<h:commandLink actionListener="#{glmReport.generateCSV}" immediate="false">
 		           		<h:outputText value="Download CSV" />	                    		
@@ -66,7 +66,7 @@
 						rowClasses="rowOdd,rowEven" rows="50">
 						<h:column>
 							<f:facet name="header">
-							<h:commandLink actionListener="#{glmtReport.sortDataList}" immediate="false">
+							<h:commandLink actionListener="#{glmReport.sortDataList}" immediate="false">
 	                    		<f:attribute name="sortField" value="reporterId" />
 	                    		<h:outputText value="Reporter" />	                    		
 	                		</h:commandLink>
@@ -76,6 +76,19 @@
 
 						</h:column>
 					
+						<c:forEach var="i" begin="1" end="#{glmReport.numberGroups}">
+							<h:column>
+								<f:facet name="header">
+								<h:commandLink actionListener="#{glmReport.sortDataList}" immediate="false">
+		                    		<f:attribute name="sortField" value="pvalues[#{i - 1}]" />
+		                    		<h:outputText value="#{glmReport.groupNames[i - 1]}" />	                    		
+		                		</h:commandLink>
+	        					</f:facet>
+								<h:outputText value="#{entry.pvalues[i - 1]}">
+									<f:convertNumber pattern="0.00E0" />
+								</h:outputText>
+							</h:column>
+						</c:forEach>
 						
 						<h:column>
 							<f:facet name="header">
