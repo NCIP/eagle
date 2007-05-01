@@ -88,7 +88,15 @@ public class ClassComparisonAction extends DispatchAction{
         	//sampleGroups.add(new LabelValueBean(patientList.getName(),patientList.getClass().getCanonicalName() + "#" + patientList.getName()));
         	sampleGroups.add(new LabelValueBean(patientList.getName(),patientList.getName()));
         }
-        ((ClassComparisonForm) form).setExistingGroups(sampleGroups);        
+        ((ClassComparisonForm) form).setExistingGroups(sampleGroups); 
+        
+        //for tissue, we can not do case v control since its using seperate rbinary files for now
+        List<LabelValueBean> tissueSampleGroups = new ArrayList<LabelValueBean>();
+        tissueSampleGroups.addAll(sampleGroups);
+        tissueSampleGroups.remove(new LabelValueBean("all_case", "all_case"));
+        tissueSampleGroups.remove(new LabelValueBean("all_control", "all_control"));
+        ((ClassComparisonForm) form).setExistingTissueGroups(tissueSampleGroups); 
+
 
         //set the covariate options
         

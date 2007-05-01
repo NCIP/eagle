@@ -14,6 +14,8 @@ public class ClassComparisonForm extends ValidatorForm{
 	private String covariate;
 	
 	private List existingGroups;
+	private List existingTissueGroups;
+	
 	private String [] selectedGroups;
 	private String baseline;
 	
@@ -131,5 +133,13 @@ public class ClassComparisonForm extends ValidatorForm{
 
 	public void setExistingSpecimenTypes(List existingSpecimenTypes) {
 		this.existingSpecimenTypes = existingSpecimenTypes;
+	}
+
+	public List getExistingTissueGroups() {
+		return existingTissueGroups;
+	}
+
+	public void setExistingTissueGroups(List existingTissueGroups) {
+		this.existingTissueGroups = existingTissueGroups;
 	}
 }
