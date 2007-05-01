@@ -30,7 +30,7 @@ public class GLMReport {
 
         this.finding = finding;
         sortAscending = true;
-        sortComparator = new FTestComparator("pvalue", sortAscending);
+        sortComparator = new FTestComparator("reporterId", sortAscending);
 
         reportBeans = new ArrayList<GLMReportBean>();
 
@@ -52,13 +52,17 @@ public class GLMReport {
     }
 
     public int getNumberGroups() {
-        return finding.getNumResultEntries();
+    	return (finding.getGroupNames() != null ? finding.getGroupNames().size() : 0);
     }
 
     public Collection getGroupNames() {
-        //return finding.getGroupNames();
-    	//TODO: return list of SampleGroups..also, do some null checks
-    	return ((GeneralizedLinearModelResult)finding.getAnalysisResult()).getSampleGroups();
+    	List<String> gnames = finding.getGroupNames();
+    	List<String> newgnames = new ArrayList<String>();
+    	for(String s : gnames)	{
+    		newgnames.add(s.replace("_after_adjustment", " (after adjustment)").replaceAll("_before_adjustment", " (before adjustment)"));
+    	}
+    	Collections.sort(newgnames);
+    	return newgnames;
     }
 
     public void sortDataList(ActionEvent event) {
@@ -103,7 +107,7 @@ public class GLMReport {
    				for(int i=0; i<this.getGroupNames().size(); i++){
    					
    					try {
-						headers.set(i+2, this.getGroupNames().toArray()[i].toString() + " group avg"); 
+						headers.set(i+1, this.getGroupNames().toArray()[i].toString() + ""); 
 						//overwrite, with an offset of 2
 					} catch (RuntimeException e) {
 						// TODO Auto-generated catch block
