@@ -96,7 +96,19 @@ public class GeneralizedLinearModelFindingStrategy extends
 			    	
 			    	 // set statistical method
 	                glmRequest.setStatisticalMethod(statisticType);
-			    	
+
+					 // set Co-variates (0 or more)	                
+	                List<CoVariateDE> coVariateDEs = getQueryDTO().getCoVariateDEs();
+	                //what?  convert from DE back to enum? why?
+	                if(coVariateDEs!=null){
+		                Object[] obj = coVariateDEs.toArray();
+		                for(int i=0; i<obj.length;i++) {
+		                	CoVariateDE coVariateDE = (CoVariateDE)obj[i];
+		                	coVariateTypes.add(coVariateDE.getValueObject());	                	
+		                }
+	                }
+	                glmRequest.setCoVariateTypes(coVariateTypes);              
+
 			    	 // Set sample groups
 	                HashMap<String, List> comparisonGroupsMap = getQueryDTO().getComparisonGroupsMap();
 	                HashMap<String, List> baselineGroupMap = getQueryDTO().getBaselineGroupMap();
@@ -106,17 +118,18 @@ public class GeneralizedLinearModelFindingStrategy extends
 	                	 baseline = new GLMSampleGroup(gname);
 	                	 baseline.addAll(baselineGroupMap.get(gname));
 	                	 
-	                	for(String name : groups )	{
-		                   
-		                   	
+	                	for(String name : groups )	{                   	
 		                    //add each patient
 		                    
 		                    HashMap<String, String> annotationMap = new HashMap<String, String>();
 		                    //fetch the data about each patient
 		                    Map pm = pgm.getPatientInfo(name);
-		                    annotationMap.put("sex", pm.get("sex").toString());
-		                    annotationMap.put("age", pm.get("age").toString());
-		                    annotationMap.put("smoking_status", pm.get("smoking_status").toString());
+		                    if(coVariateTypes.contains(CoVariateType.Gender))
+		                    	annotationMap.put("sex", pm.get("sex").toString());
+		                    if(coVariateTypes.contains(CoVariateType.Age))
+		                    	annotationMap.put("age", pm.get("age").toString());
+		                    if(coVariateTypes.contains(CoVariateType.SmokingStatus))
+		                    	annotationMap.put("smoking_status", pm.get("smoking_status").toString());
 	
 		                    baseline.addPatientData(name, annotationMap);
 	                	}
@@ -133,29 +146,19 @@ public class GeneralizedLinearModelFindingStrategy extends
 		                    
 		                    HashMap<String, String> annotationMap = new HashMap<String, String>();
 		                    Map pm = pgm.getPatientInfo(name);
-		                    annotationMap.put("sex", pm.get("sex").toString());
-		                    annotationMap.put("age", pm.get("age").toString());
-		                    annotationMap.put("smoking_status", pm.get("smoking_status").toString());
+		                    if(coVariateTypes.contains(CoVariateType.Gender))
+		                    	annotationMap.put("sex", pm.get("sex").toString());
+		                    if(coVariateTypes.contains(CoVariateType.Age))
+		                    	annotationMap.put("age", pm.get("age").toString());
+		                    if(coVariateTypes.contains(CoVariateType.SmokingStatus))
+		                    	annotationMap.put("smoking_status", pm.get("smoking_status").toString());
 		                    comparison.addPatientData(name, annotationMap);
 	                	}
 	                	glmsgs.add(comparison);
 	                }
 	                
                     glmRequest.setComparisonGroups(glmsgs);
-	               
-	                
-				 // set Co-variates
-	                
-	                List<CoVariateDE> coVariateDEs = getQueryDTO().getCoVariateDEs();
-	                Object[] obj = coVariateDEs.toArray();
-	                for(int i=0; i<obj.length;i++) {
-	                	CoVariateDE coVariateDE = (CoVariateDE)obj[i];
-	                	coVariateTypes.add(coVariateDE.getValueObject());	                	
-	                }
-	                glmRequest.setCoVariateTypes(coVariateTypes);              
-				   
-				   
-				
+	               				
 				    // set Multiple Comparison Adjustment type
 	                glmRequest.setMultiGrpComparisonAdjType(getQueryDTO().getMultiGroupComparisonAdjustmentTypeDE().getValueObject());
 				
@@ -182,7 +185,7 @@ public class GeneralizedLinearModelFindingStrategy extends
 	  			throw new FindingsAnalysisException(ex.getMessage());
 			}
 			catch(Exception ex) {
-				logger.error("erro in glm", ex);
+				logger.error("error in glm", ex);
 				throw new FindingsAnalysisException("Error in setting glmRequest object");
 			}
 			return false;
