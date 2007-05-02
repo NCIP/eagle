@@ -2,6 +2,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
 
 <script type="text/javascript" src="js/common/MenuSwapper.js"></script>
 <script type="text/javascript">
@@ -144,12 +145,18 @@ var CCForm = {
 						Existing Groups
 						<br/>
 						<span style="display:none; width:1px; height:1px; overflow:none;" id="optionsContainer">
-							<html:select property="existingGroups" styleId="bloodGroupsOptions">
-								<html:optionsCollection property="existingGroups"/>
-							</html:select>
-							<html:select property="existingGroups" styleId="tissueGroupsOptions"> 
-								<html:optionsCollection property="existingTissueGroups"/>
-							</html:select>
+							<select id="bloodGroupsOptions">
+							<logic:iterate id="classComparisonForm" name="classComparisonForm" property="existingGroups" scope="request">
+								<option value="<bean:write name="classComparisonForm" property="value"/>"><bean:write name="classComparisonForm" property="value"/></option>
+							</logic:iterate>
+							</select>
+							
+							<select id="tissueGroupsOptions">
+							<logic:iterate id="classComparisonForm" name="classComparisonForm" property="existingTissueGroups" scope="request">
+								<option value="<bean:write name="classComparisonForm" property="value"/>"><bean:write name="classComparisonForm" property="value"/></option>
+							</logic:iterate>
+							</select>
+		
 						</span>
 						
 						<span id="bloodGroups">
