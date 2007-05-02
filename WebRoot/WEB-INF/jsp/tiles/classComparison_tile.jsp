@@ -35,9 +35,13 @@ var CCForm = {
 		
 		if(el.selectedIndex == '2')	{ 
 			$('covariates').show();
+			$('pvalue').disable();
+			$('foldchange').disable();
 		}
 		else	{
 			$('covariates').hide();
+			$('pvalue').enable();
+			$('foldchange').enable();
 		}
 	},
 	'changeSpecimen' : function(el)	{
@@ -209,10 +213,10 @@ var CCForm = {
 <b>Select Constraint</b><br/>
 	
 	&nbsp;&nbsp;Fold Change&nbsp; &ge;	
-	<html:text size="14" value="2.0" property="foldChange" />
+	<html:text size="14" value="2.0" property="foldChange" styleId="foldchange" />
 			
 	&nbsp;p-Value &nbsp; &le;
-	<html:text size="10" value="0.05" property="pvalue" />
+	<html:text size="10" value="0.05" property="pvalue" styleId="pvalue" />
 
 </div>
 
