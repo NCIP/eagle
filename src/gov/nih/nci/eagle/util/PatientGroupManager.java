@@ -46,7 +46,7 @@ public class PatientGroupManager {
 
     private void buildPatientMap() {
         patientMap = new HashMap<String, Map>();
-            File inFile = new File("C:\\jboss-4.0.4.GA\\server\\default\\deploy\\eagle.war\\WEB-INF\\classes\\all_data_map.txt");
+            File inFile = new File(patientFileName);
             BufferedReader br;
             try {
                 br = new BufferedReader(new InputStreamReader(

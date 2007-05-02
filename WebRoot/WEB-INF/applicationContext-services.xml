@@ -105,6 +105,7 @@
 		<property name="taskResult" ref="glmTaskResult" />
 		<property name="analysisServerClientManager"
 			ref="analysisServerClientManager" />
+		<property name="patientGroupManager" ref="patientManager" />
 			<property name="dataFileMap">
 			<map>
 				<entry key="TISSUE_NORMAL">
@@ -192,6 +193,10 @@
 	
 	</bean>
 
+	<!-- Bean to manage patient data from text file -->
+	<bean id="patientManager" class="gov.nih.nci.eagle.util.PatientGroupManager" >
+		<property name="patientFileName" value="${gov.nih.nci.eagleportal.patient_data}" />
+	</bean>
 	<!--  Bean for thread pool -->
 	<bean id="taskExecutor"
 		class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">

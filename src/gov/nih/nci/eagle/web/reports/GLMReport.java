@@ -3,6 +3,7 @@ package gov.nih.nci.eagle.web.reports;
 import gov.nih.nci.caintegrator.analysis.messaging.FTestResultEntry;
 import gov.nih.nci.caintegrator.analysis.messaging.GeneralizedLinearModelResult;
 import gov.nih.nci.caintegrator.analysis.messaging.GeneralizedLinearModelResultEntry;
+import gov.nih.nci.caintegrator.application.configuration.SpringContext;
 import gov.nih.nci.caintegrator.domain.annotation.gene.bean.GeneBiomarker;
 import gov.nih.nci.caintegrator.service.findings.FTestFinding;
 import gov.nih.nci.caintegrator.service.findings.GeneralizedLinearModelFinding;
@@ -47,7 +48,7 @@ public class GLMReport {
         }
         
         patientInfoMap = new HashMap<String, List>();
-        PatientGroupManager man = new PatientGroupManager();
+        PatientGroupManager man = (PatientGroupManager)SpringContext.getBean("patientManager");
         for(String groupName : (List<String>)getBaselineGroups()) {
             List patients = getQueryDTO().getBaselineGroupMap().get(groupName);
             List patientInfo = man.getPatientInfo(patients);

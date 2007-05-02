@@ -46,7 +46,7 @@ public class GeneralizedLinearModelFindingStrategy extends
 	 private AnalysisServerClientManager analysisServerClientManager;
 	 private Map<ArrayPlatformType, String> dataFileMap;
 	 
-	 private PatientGroupManager pgm = new PatientGroupManager();
+	 private PatientGroupManager patientGroupManager;
 	
 	 /*
 	     * (non-Javadoc)
@@ -123,7 +123,7 @@ public class GeneralizedLinearModelFindingStrategy extends
 		                    
 		                    HashMap<String, String> annotationMap = new HashMap<String, String>();
 		                    //fetch the data about each patient
-		                    Map pm = pgm.getPatientInfo(name);
+		                    Map pm = patientGroupManager.getPatientInfo(name);
 		                    if(coVariateTypes.contains(CoVariateType.Gender))
 		                    	annotationMap.put("sex", pm.get("sex").toString());
 		                    if(coVariateTypes.contains(CoVariateType.Age))
@@ -145,7 +145,7 @@ public class GeneralizedLinearModelFindingStrategy extends
 	                	for(String name : groups )	{
 		                    
 		                    HashMap<String, String> annotationMap = new HashMap<String, String>();
-		                    Map pm = pgm.getPatientInfo(name);
+		                    Map pm = patientGroupManager.getPatientInfo(name);
 		                    if(coVariateTypes.contains(CoVariateType.Gender))
 		                    	annotationMap.put("sex", pm.get("sex").toString());
 		                    if(coVariateTypes.contains(CoVariateType.Age))
@@ -268,5 +268,13 @@ public class GeneralizedLinearModelFindingStrategy extends
 	    public void setDataFileMap(Map dataFileMap) {
 	        this.dataFileMap = dataFileMap;
 	    }
+
+        public PatientGroupManager getPatientGroupManager() {
+            return patientGroupManager;
+        }
+
+        public void setPatientGroupManager(PatientGroupManager patientGroupManager) {
+            this.patientGroupManager = patientGroupManager;
+        }
 
 }
