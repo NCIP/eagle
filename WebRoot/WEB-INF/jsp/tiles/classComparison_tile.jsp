@@ -49,12 +49,14 @@ var CCForm = {
 		
 		if(el.selectedIndex != 0)	{
 			//tissue
-			$('bloodGroups').hide();
-			$('tissueGroups').show();
+			$('nonselectedGroups').innerHTML = $('tissueGroupsOptions').innerHTML;
+			//$('bloodGroups').hide();
+			//$('tissueGroups').show();
 		}
 		else	{
-			$('tissueGroups').hide();
-			$('bloodGroups').show();		
+			//$('tissueGroups').hide();
+			//$('bloodGroups').show();	
+			$('nonselectedGroups').innerHTML = $('bloodGroupsOptions').innerHTML;	
 		}
 		
 	},
@@ -141,6 +143,15 @@ var CCForm = {
 					<td>
 						Existing Groups
 						<br/>
+						<span style="display:none; width:1px; height:1px; overflow:none;" id="optionsContainer">
+							<html:select property="existingGroups" styleId="bloodGroupsOptions">
+								<html:optionsCollection property="existingGroups"/>
+							</html:select>
+							<html:select property="existingGroups" styleId="tissueGroupsOptions"> 
+								<html:optionsCollection property="existingTissueGroups"/>
+							</html:select>
+						</span>
+						
 						<span id="bloodGroups">
 						<html:select property="existingGroups" multiple="multiple" size="8"
 							ondblclick="MenuSwapper.move($('nonselectedGroups'),$('selectedGroups'));"
@@ -148,6 +159,7 @@ var CCForm = {
 							<html:optionsCollection property="existingGroups"/>
 						</html:select>
 						</span>
+						<!-- 
 						<span id="tissueGroups" style="display:none">
 						<html:select property="existingGroups" multiple="multiple" size="8"
 							ondblclick="MenuSwapper.move($('nonselectedGroups'),$('selectedGroups'));"
@@ -155,6 +167,7 @@ var CCForm = {
 							<html:optionsCollection property="existingTissueGroups"/>
 						</html:select>
 						</span>
+						-->
 					</td>
 					<td style="vertical-align: middle;" id="menuSwapperButtons">
 						<b id="baselineButtons">
