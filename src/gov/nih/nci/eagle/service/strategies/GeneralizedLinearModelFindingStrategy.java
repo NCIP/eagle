@@ -1,17 +1,5 @@
 package gov.nih.nci.eagle.service.strategies;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.jms.JMSException;
-
-import org.apache.log4j.Logger;
-
-
-
 import gov.nih.nci.caintegrator.analysis.messaging.GLMSampleGroup;
 import gov.nih.nci.caintegrator.analysis.messaging.GeneralizedLinearModelRequest;
 import gov.nih.nci.caintegrator.analysis.messaging.SampleGroup;
@@ -32,9 +20,19 @@ import gov.nih.nci.caintegrator.service.task.Task;
 import gov.nih.nci.caintegrator.service.task.TaskResult;
 import gov.nih.nci.caintegrator.util.ValidationUtility;
 import gov.nih.nci.eagle.dto.de.CoVariateDE;
-import gov.nih.nci.eagle.enumeration.SpecimenType;
 import gov.nih.nci.eagle.query.dto.ClassComparisonQueryDTOImpl;
 import gov.nih.nci.eagle.util.PatientGroupManager;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import javax.jms.JMSException;
+
+import org.apache.log4j.Logger;
 
 public class GeneralizedLinearModelFindingStrategy extends
 		AsynchronousFindingStrategy {
@@ -175,7 +173,6 @@ public class GeneralizedLinearModelFindingStrategy extends
 				
 	                glmRequest.setDataFileName(dataFileMap.get(getQueryDTO().getSpecimenTypeEnum().name()));
 			      
-			
 			   analysisServerClientManager.sendRequest(glmRequest);
 			   return true;	
 			    }
