@@ -161,10 +161,10 @@ public class GeneralizedLinearModelFindingStrategy extends
 	                glmRequest.setMultiGrpComparisonAdjType(getQueryDTO().getMultiGroupComparisonAdjustmentTypeDE().getValueObject());
 				
 				    // set foldChange
-	                glmRequest.setFoldChangeThreshold(getQueryDTO().getExprFoldChangeDE().getValueObject());
+	                //glmRequest.setFoldChangeThreshold(getQueryDTO().getExprFoldChangeDE().getValueObject());
 				
 				    // set pvalue
-	                glmRequest.setPValueThreshold(getQueryDTO().getStatisticalSignificanceDE().getValueObject());
+	                //glmRequest.setPValueThreshold(getQueryDTO().getStatisticalSignificanceDE().getValueObject());
 				
 				    // set arrayplat form, come back to this to figure out how to pass the platform
 	               // glmRequest.setArrayPlatform(getQueryDTO().getArrayPlatformDE().getValueObjectAsArrayPlatformType());
