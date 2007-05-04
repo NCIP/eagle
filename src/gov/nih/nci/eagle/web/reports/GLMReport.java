@@ -36,7 +36,7 @@ public class GLMReport {
 
         this.finding = finding;
         sortAscending = true;
-        sortComparator = new FTestComparator("reporterId", sortAscending);
+        sortComparator = new FTestComparator("pvalues[0]", sortAscending);
 
         reportBeans = new ArrayList<GLMReportBean>();
 

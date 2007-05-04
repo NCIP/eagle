@@ -14,16 +14,18 @@ public class CSVUtil {
 	public static void renderCSV(HttpServletResponse response, List<List> csv)	{
 		PrintWriter out = null;
 		
-		String csvString = "";
-		for(List row : csv)	{
-			csvString += StringUtils.join(row.toArray(), ",") + "\r\n";
-		}
-		long randomness = System.currentTimeMillis();
-		response.setContentType("application/csv");
-		response.setHeader("Content-Disposition", "attachment; filename=report_"+randomness+".csv");
+        long randomness = System.currentTimeMillis();
+        response.setContentType("application/csv");
+        response.setHeader("Content-Disposition", "attachment; filename=report_"+randomness+".csv");
+
+
 		try	{
-			out = response.getWriter();
-			out.write(csvString);
+            for(List row : csv) {
+    
+    			out = response.getWriter();
+    			out.write(StringUtils.join(row.toArray(), ",") + "\r\n");
+                out.flush();
+            }
 		}
 		catch(Exception e)	{
 			out.write("error generating report");
