@@ -43,6 +43,8 @@ public class GeneralizedLinearModelFindingStrategy extends
 	 private GeneralizedLinearModelRequest glmRequest = null;
 	 private AnalysisServerClientManager analysisServerClientManager;
 	 private Map<ArrayPlatformType, String> dataFileMap;
+     
+     private static final Double variance = .95;
 	 
 	 private PatientGroupManager patientGroupManager;
 	
@@ -160,14 +162,8 @@ public class GeneralizedLinearModelFindingStrategy extends
 				    // set Multiple Comparison Adjustment type
 	                glmRequest.setMultiGrpComparisonAdjType(getQueryDTO().getMultiGroupComparisonAdjustmentTypeDE().getValueObject());
 				
-				    // set foldChange
-	                //glmRequest.setFoldChangeThreshold(getQueryDTO().getExprFoldChangeDE().getValueObject());
-				
-				    // set pvalue
-	                //glmRequest.setPValueThreshold(getQueryDTO().getStatisticalSignificanceDE().getValueObject());
-				
-				    // set arrayplat form, come back to this to figure out how to pass the platform
-	               // glmRequest.setArrayPlatform(getQueryDTO().getArrayPlatformDE().getValueObjectAsArrayPlatformType());
+	                // set gene variance 
+                    glmRequest.setGeneVariance(variance);
 				
 				    // go the correct matrix to fetch data			
 				
