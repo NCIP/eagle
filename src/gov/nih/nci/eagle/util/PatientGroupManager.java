@@ -55,6 +55,10 @@ public class PatientGroupManager {
                 while(line != null) {
                    String[] values = StringUtils.split(line, ",");
                    HashMap<String, String> patient = new HashMap<String, String>();
+                   if(values ==  null || values.length < 1) {
+                       line = br.readLine();
+                       continue;
+                   }
                    patient.put("patientId", values[0]);
                    String sex = null;
                    if(values[1].equals("1.00")) {
