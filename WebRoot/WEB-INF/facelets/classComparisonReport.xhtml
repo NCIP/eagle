@@ -14,6 +14,7 @@
 				<jsfExt:scripts />
 				<script type="text/javascript" src="js/lib/prototype.js"/>
 				<script type="text/javascript" src="js/lib/scriptaculous/effects.js"/>
+				<script type="text/javascript" src="js/eagle.js"/>
 
 				<h:form id="gueryForm">
 					<h:panelGrid>
@@ -22,7 +23,7 @@
 						<h:dataTable value="#{classComparisonReport.baselineGroups}"
 							var="group">
 							<h:column>
-								<a href="#" onclick="new Effect.toggle('baselinePatients');return false;">#{group}</a>
+								<a href="#" onclick="new Effect.toggle('baselinePatients', 'slide');return false;">#{group}</a>
 
 								<div id="baselinePatients" style="display:none">
 									<i:patientListTable
@@ -33,7 +34,7 @@
 						<h:dataTable value="#{classComparisonReport.comparisonGroups}"
 							var="group">
 							<h:column>
-								<a href="#" onclick="new Effect.toggle('comparisonPatients'); return false;">#{group}</a>
+								<a href="#" onclick="new Effect.toggle('comparisonPatients', 'slide'); return false;">#{group}</a>
 
 								<div id="comparisonPatients" style="display:none">
 									<i:patientListTable
@@ -53,16 +54,32 @@
 					</h:commandLink>
 					<br />
 					<br />
-
+					<style>
+						.<h:outputText value="#{classComparisonReport.sortedBy}" /> {
+							/* font-style:italic; */
+							font-weight:bold;	
+						}
+					</style>
+					
+					<script type="text/javascript">
+					
+						window.onload = function()	{
+							$$('.<h:outputText value="#{classComparisonReport.sortedBy}" />').each(
+							function(el)	{
+								badJSF(el, '<h:outputText value="#{classComparisonReport.sortAscending}" />');
+							});
+						};
+					</script>
+					
 					<i:pager dataTable="classComparisonTable" />
 					<div id="reportDiv">
 						<h:dataTable id="classComparisonTable"
-							style="border:1px solid #6EA667"
 							value="#{classComparisonReport.reportBeans}" var="entry"
 							rowClasses="rowOdd,rowEven" rows="50">
 							<h:column>
 								<f:facet name="header">
 									<h:commandLink
+										styleClass="reporterId" 
 										actionListener="#{classComparisonReport.sortDataList}"
 										immediate="false">
 										<f:attribute name="sortField" value="reporterId" />
@@ -70,11 +87,11 @@
 									</h:commandLink>
 								</f:facet>
 								<h:outputText value="#{entry.reporterId}" />
-
 							</h:column>
 							<h:column>
 								<f:facet name="header">
 									<h:commandLink
+										styleClass="pvalue" 
 										actionListener="#{classComparisonReport.sortDataList}"
 										immediate="false">
 										<f:attribute name="sortField" value="pvalue" />
@@ -89,6 +106,7 @@
 							<h:column>
 								<f:facet name="header">
 									<h:commandLink
+										styleClass="meanBaselineGrp" 
 										actionListener="#{classComparisonReport.sortDataList}"
 										immediate="false">
 										<f:attribute name="sortField" value="meanBaselineGrp" />
@@ -108,6 +126,7 @@
 							<h:column>
 								<f:facet name="header">
 									<h:commandLink
+										styleClass="absoluteFoldChange"
 										actionListener="#{classComparisonReport.sortDataList}"
 										immediate="false">
 										<f:attribute name="sortField" value="absoluteFoldChange" />
@@ -122,6 +141,7 @@
 							<h:column>
 								<f:facet name="header">
 									<h:commandLink
+										styleClass="geneSymbol"
 										actionListener="#{classComparisonReport.sortDataList}"
 										immediate="false">
 										<f:attribute name="sortField" value="geneSymbol" />
@@ -136,6 +156,9 @@
 
 						</h:dataTable>
 					</div>
+					<br/>
+					<a href="#" onclick="scroll(0,0);return false;">[top]</a>
+					<br/>
 				</h:form>
 
 
