@@ -5,8 +5,7 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 
 	<ui:composition>
-		<h:dataTable style="border:1px solid #6EA667"
-							value="#{patientList}" var="patient"
+		<h:dataTable value="#{patientList}" var="patient"
 							rowClasses="rowOdd,rowEven" rows="50">
 			<h:column>
 				<f:facet name="header">
