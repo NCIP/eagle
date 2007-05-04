@@ -26,6 +26,8 @@ public class ClassComparisonReport {
     private FTestComparator sortComparator;
     private Boolean sortAscending;
     private Map<String, List> patientInfoMap;
+    
+    private String sortedBy;
 
     public ClassComparisonReport() {
 
@@ -35,7 +37,8 @@ public class ClassComparisonReport {
         sortAscending = true;
         this.finding = finding;
         sortComparator = new FTestComparator("pvalue", sortAscending);
-
+        sortedBy = "pvalue";
+        
         reportBeans = new ArrayList();
 
         for (ClassComparisonResultEntry entry : finding.getResultEntries()) {
@@ -104,6 +107,7 @@ public class ClassComparisonReport {
     public void sortDataList(ActionEvent event) {
         String sortFieldAttribute = getAttribute(event, "sortField");
 
+        sortedBy = sortFieldAttribute;
         // Get and set sort field and sort order.
         if (sortFieldAttribute != null
                 && sortFieldAttribute.equals(sortComparator.getField())) {
@@ -160,5 +164,13 @@ public class ClassComparisonReport {
     public void setPatientInfoMap(Map<String, List> patientInfoMap) {
         this.patientInfoMap = patientInfoMap;
     }
+
+	public String getSortedBy() {
+		return sortedBy;
+	}
+
+	public void setSortedBy(String sortedBy) {
+		this.sortedBy = sortedBy;
+	}
 
 }
