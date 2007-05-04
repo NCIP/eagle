@@ -22,3 +22,11 @@ function spawnx(url, winw, winh, name) {
         w.focus();
     }
 }
+
+function badJSF(el, asc)	{
+ 	var htm = "up";
+ 	if("true" != asc)	{
+ 		htm = "down";
+ 	}
+	new Insertion.After(el," <img src=\"images/eagle/12-em-"+htm+".png\" />");
+}
