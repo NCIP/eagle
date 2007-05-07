@@ -42,10 +42,10 @@ public class EPIQueryDTOBuilder implements QueryDTOBuilder {
         populateTobaccoCrit(epiForm, tobaccoCrit);
         epiQueryDTO.setTobaccoConsumptionCriterion(tobaccoCrit);
 
-        TobaccoDependencyCriterion tobaccoDependCrit = new TobaccoDependencyCriterion();
+        BehavioralCriterion behaviorCrit = new BehavioralCriterion();
         if (epiForm.getFagerstromScore() != null)
-            tobaccoDependCrit.setFagerstromScore(Integer.parseInt(epiForm.getFagerstromScore()));
-        epiQueryDTO.setTobaccoDependencyCriterion(tobaccoDependCrit);
+            behaviorCrit.setFagerstromScore(Integer.parseInt(epiForm.getFagerstromScore()));
+        epiQueryDTO.setBehavioralCriterion(behaviorCrit);
 
         EnvironmentalTobaccoSmokeCriterion environCrit = new EnvironmentalTobaccoSmokeCriterion();
         pupulateEnvironmentalTobaccoCrit(epiForm, environCrit);
@@ -172,9 +172,9 @@ public class EPIQueryDTOBuilder implements QueryDTOBuilder {
 
 
         if (epiForm.getIntensityLower() != null && epiForm.getIntensityLower().trim().length() > 0)
-            tobaccoCrit.setIntensityLower(Integer.parseInt(epiForm.getIntensityLower()));
+            tobaccoCrit.setIntensityLower(Double.parseDouble(epiForm.getIntensityLower()));
         if (epiForm.getIntensityUpper() != null && epiForm.getIntensityUpper().trim().length() > 0)
-            tobaccoCrit.setIntensityUpper(Integer.parseInt(epiForm.getIntensityUpper()));
+            tobaccoCrit.setIntensityUpper(Double.parseDouble(epiForm.getIntensityUpper()));
 
 
         if (epiForm.getSmokingStatus() != null)
@@ -202,9 +202,9 @@ public class EPIQueryDTOBuilder implements QueryDTOBuilder {
         populateEducationLevelCrit(epiForm, patCharacterCrit);
 
         if(epiForm.getHeightLower() != null && epiForm.getHeightLower().trim().length() > 0)
-            patCharacterCrit.setHeightLowerLimit(Float.parseFloat(epiForm.getHeightLower()));
+            patCharacterCrit.setHeightLowerLimit(Double.parseDouble(epiForm.getHeightLower()));
         if(epiForm.getHeightUpper() != null && epiForm.getHeightUpper().trim().length() > 0)
-            patCharacterCrit.setHeightUpperLimit(Float.parseFloat(epiForm.getHeightUpper()));
+            patCharacterCrit.setHeightUpperLimit(Double.parseDouble(epiForm.getHeightUpper()));
 
         if (epiForm.getMaritalStatus() != null)
             patCharacterCrit.setMaritalStatus(Enum.valueOf(MaritalStatus.class, epiForm.getMaritalStatus()));
@@ -216,14 +216,14 @@ public class EPIQueryDTOBuilder implements QueryDTOBuilder {
             patCharacterCrit.setSocioEconomicStatus(Enum.valueOf(SocioEconomicStatus.class, epiForm.getSocioEconomicStatus()));
 
         if(epiForm.getWaistLower() != null && epiForm.getWaistLower().trim().length() > 0 )
-            patCharacterCrit.setWaistLowerLimit(Float.parseFloat(epiForm.getWaistLower()));
+            patCharacterCrit.setWaistLowerLimit(Double.parseDouble(epiForm.getWaistLower()));
         if(epiForm.getWaistUpper() != null && epiForm.getWaistUpper().trim().length() > 0)
-            patCharacterCrit.setWaisUpperLimit(Float.parseFloat(epiForm.getWaistUpper()));
+            patCharacterCrit.setWaisUpperLimit(Double.parseDouble(epiForm.getWaistUpper()));
 
         if(epiForm.getWeightLower() != null && epiForm.getWeightLower().trim().length() > 0)
-            patCharacterCrit.setWeightLowerLimit(Float.parseFloat(epiForm.getWeightLower()));
+            patCharacterCrit.setWeightLowerLimit(Double.parseDouble(epiForm.getWeightLower()));
         if(epiForm.getWeightUpper() != null && epiForm.getWeightUpper().trim().length() > 0)
-            patCharacterCrit.setWeightUpperLimit(Float.parseFloat(epiForm.getWeightUpper()));
+            patCharacterCrit.setWeightUpperLimit(Double.parseDouble(epiForm.getWeightUpper()));
 
         if(epiForm.getResidentialArea() != null && epiForm.getResidentialArea().length() > 0)
             patCharacterCrit.setResidentialArea(Enum.valueOf(ResidentialArea.class, epiForm.getResidentialArea() ));
@@ -242,12 +242,12 @@ public class EPIQueryDTOBuilder implements QueryDTOBuilder {
 
     private void populateAgeCriteria(EpiForm epiForm, PatientCharacteristicsCriterion patCharacterCrit) {
         if (epiForm.getAgeLower() != null && epiForm.getAgeLower().trim().length() > 0) {
-            Integer lowerLimit = Integer.parseInt(epiForm.getAgeLower());
+            Double lowerLimit = Double.parseDouble(epiForm.getAgeLower());
             patCharacterCrit.setAgeLowerLimit(lowerLimit);
         }
 
         if (epiForm.getAgeUpper() != null && epiForm.getAgeUpper().trim().length() > 0) {
-            Integer upperLimit = Integer.parseInt(epiForm.getAgeUpper());
+            Double upperLimit = Double.parseDouble(epiForm.getAgeUpper());
             patCharacterCrit.setAgeUpperLimit(upperLimit);
         }
     }
