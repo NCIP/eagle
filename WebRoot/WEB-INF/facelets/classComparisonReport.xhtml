@@ -55,7 +55,7 @@
 					<br />
 					<br />
 					<style>
-						.<h:outputText value="#{classComparisonReport.sortedBy}" /> {
+						.#{classComparisonReport.sortedBy} {
 							/* font-style:italic; */
 							font-weight:bold;	
 						}
@@ -64,9 +64,9 @@
 					<script type="text/javascript">
 					
 						window.onload = function()	{
-							$$('.<h:outputText value="#{classComparisonReport.sortedBy}" />').each(
+							$$('.#{classComparisonReport.sortedBy}').each(
 							function(el)	{
-								badJSF(el, '<h:outputText value="#{classComparisonReport.sortAscending}" />');
+								badJSF(el, '#{classComparisonReport.sortAscending}');
 							});
 						};
 					</script>
