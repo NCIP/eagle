@@ -63,11 +63,11 @@
 		                    + "<div style='cursor:pointer;margin-left:20px;width:200px;display:inline;' onclick='ManageListHelper.getDetails(\""
 		                    + theName
 		                    + "\");return false;'>"
-		                    + "<img src='images/arrowPane20.png' border='0' style='vertical-align:text-bottom'/>details" + status + "</div>"
+		                    + "<img src='images/eagle/24-tab-open.png' border='0' style='vertical-align:text-bottom'/>details" + status + "</div>"
 		                    + "<div style='cursor:pointer;margin-left:20px;width:200px;display:inline;'  onclick='ManageListHelper.deleteList(\""
 		                    + theName
 		                    + "\");return false;'>"
-		                    + "<img src='images/deleteCross20.png' border='0' style='vertical-align:text-bottom;'/>delete</div>"
+		                    + "<img src='images/eagle/24-em-cross.png' border='0' style='vertical-align:text-bottom;'/>delete</div>"
 		                    + "</div><br /><div id='"
 		                    + theName
 		                    + "details'></div>\n</div>\n";    
@@ -256,7 +256,7 @@
 					wDiv.innerHTML += tmp;
 					     
 					var eid = encodeURIComponent(listName);
-					wDiv.innerHTML += "<div onclick=\"location.href='listExport.jsp?list="+eid+"';\" style='margin:20px;cursor:pointer; height:20px'><img src='images/downArrow20.png'/><u>export list</u></div>";
+					wDiv.innerHTML += "<div onclick=\"location.href='listExport.jsp?list="+eid+"';\" style='margin:20px;cursor:pointer; height:20px'><img src='images/eagle/24-em-down.png'/><u>export list</u></div>";
 				}
 				else{
 			    	document.getElementById(listName + "details").appendChild(dDIV);
