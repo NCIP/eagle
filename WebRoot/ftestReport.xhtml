@@ -18,24 +18,24 @@
 			<ui:include src="/WEB-INF/facelets/reportHeader.xhtml"/>
 
 				<div style="width:100%; height:25px; background-color:#fff; text-align:right;">
-						<h:form id="csvForm">
-						<span style="float:left">
-							<h:outputText value="Query Name: #{ftestReport.queryDTO.queryName}" />
-						</span>
-						<span style="padding-right:20px; vertical-align:middle;">
-							<img src="images/eagle/24-columns.png" />
-							<h:commandLink actionListener="#{ftestReport.generateCSV}" immediate="false">
-					       		<h:outputText value="Download CSV" />	                    		
-					   		</h:commandLink> |
-					   		<img src="images/eagle/24-tab-close.png" />
-					   		<a href="#" onclick="javascript:window.close();">Close</a>
-				   		</span>
-						</h:form>		
-					</div>
+					<h:form id="csvForm">
+					<span style="float:left">
+						<h:outputText value="Query Name: #{ftestReport.queryDTO.queryName}" />
+					</span>
+					<span style="padding-right:20px; vertical-align:middle;">
+						<img src="images/eagle/24-columns.png" />
+						<h:commandLink actionListener="#{ftestReport.generateCSV}" immediate="false">
+				       		<h:outputText value="Download CSV" />	                    		
+				   		</h:commandLink> |
+				   		<img src="images/eagle/24-tab-close.png" />
+				   		<a href="#" onclick="javascript:window.close();">Close</a>
+			   		</span>
+					</h:form>		
+				</div>
 				
 				<h:form id="gueryForm">
 					Comparison Groups:
-				<div id="groupReportsContainer" style="">
+				<div id="groupReportsContainer" style="display:none;">
 						<h:dataTable value="#{ftestReport.comparisonGroups}"
 							var="group">
 
@@ -70,8 +70,10 @@
 	                    		<h:outputText value="Reporter" />	                    		
 	                		</h:commandLink>
         					</f:facet>
+        					<a href="#" onclick="spawnAnnotation('reporter', '#{entry.reporterId}');return false;">
 							<h:outputText
 								value="#{entry.reporterId}" />
+							</a>
 
 						</h:column>
 						<h:column>
@@ -121,11 +123,14 @@
 	                    		<h:outputText value="Gene Symbol" />	                    		
 	                		</h:commandLink>
         					</f:facet>
-							<a href="#" onclick="return false;"><h:outputText value="#{entry.geneSymbol}" /></a>
+							<a href="#" onclick="spawnAnnotation('gene', '#{entry.geneSymbol}');return false;"><h:outputText value="#{entry.geneSymbol}" /></a>
 
 						</h:column> 
 					</h:dataTable>
 					</div>
+					<br/>
+					<a href="#" onclick="scroll(0,0);return false;">[top]</a>
+					<br/>
 				</h:form>
 
 		</f:view>

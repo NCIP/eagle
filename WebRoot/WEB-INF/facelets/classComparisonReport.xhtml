@@ -14,16 +14,32 @@
 				<jsfExt:scripts />
  				<ui:include src="/WEB-INF/facelets/reportHeader.xhtml"/>
 
+				<div style="width:100%; height:25px; background-color:#fff; text-align:right;">
+					<h:form id="csvForm">
+					<span style="float:left">
+						<h:outputText value="Query Name: #{classComparisonReport.queryDTO.queryName}" />
+					</span>
+					<span style="padding-right:20px; vertical-align:middle;">
+						<img src="images/eagle/24-columns.png" />
+						<h:commandLink actionListener="#{classComparisonReport.generateCSV}" immediate="false">
+				       		<h:outputText value="Download CSV" />	                    		
+				   		</h:commandLink> |
+				   		<img src="images/eagle/24-tab-close.png" />
+				   		<a href="#" onclick="javascript:window.close();">Close</a>
+			   		</span>
+					</h:form>		
+				</div>
+				
 				<h:form id="gueryForm">
-					<h:panelGrid>
-						<h:outputText
-							value="Query Name: #{classComparisonReport.queryDTO.queryName}" />
+					Comparison Groups: (baseline) 
+					
+					<div id="groupReportsContainer" style="display:none;">
 						<h:dataTable value="#{classComparisonReport.baselineGroups}"
 							var="group">
 							<h:column>
-								<a href="#" onclick="new Effect.toggle('baselinePatients', 'slide');return false;">#{group}</a>
+								<a href="#" class="groupReportLinks" onclick="new Effect.toggle('baselinePatients', 'slide');return false;">#{group}</a>
 
-								<div id="baselinePatients" style="display:none">
+								<div id="comparisonPatients_#{group}" style="display:none">
 									<i:patientListTable
 										patientList="#{classComparisonReport.patientInfoMap[group]}" />
 								</div>
@@ -32,31 +48,26 @@
 						<h:dataTable value="#{classComparisonReport.comparisonGroups}"
 							var="group">
 							<h:column>
-								<a href="#" onclick="new Effect.toggle('comparisonPatients', 'slide'); return false;">#{group}</a>
+								<a href="#" class="groupReportLinks" onclick="new Effect.toggle('comparisonPatients', 'slide'); return false;">#{group}</a>
 
-								<div id="comparisonPatients" style="display:none">
+								<div id="comparisonPatients_#{group}" style="display:none">
 									<i:patientListTable
 										patientList="#{classComparisonReport.patientInfoMap[group]}" />
 								</div>
 							</h:column>
 						</h:dataTable>
-					</h:panelGrid>
+					</div>
 				</h:form>
+				
 				<h:form id="classComparisonForm">
-
-					<h:commandLink
-						actionListener="#{classComparisonReport.generateCSV}"
-						immediate="false">
-						<h:outputText value="Download CSV" />
-					</h:commandLink>
-					<br />
-					<br />
+					
 					<ui:include src="/WEB-INF/facelets/reportStyle.xhtml">
 						<ui:param name="sortedBy" value="#{classComparisonReport.sortedBy}"/>
 						<ui:param name="sortAscending" value="#{classComparisonReport.sortAscending}"/>
 					</ui:include>
 					
 					<i:pager dataTable="classComparisonTable" />
+					
 					<div id="reportDiv">
 						<h:dataTable id="classComparisonTable"
 							value="#{classComparisonReport.reportBeans}" var="entry"
@@ -71,7 +82,9 @@
 										<h:outputText value="Reporter" />
 									</h:commandLink>
 								</f:facet>
+								<a href="#" onclick="spawnAnnotation('reporter', '#{entry.reporterId}');return false;">
 								<h:outputText value="#{entry.reporterId}" />
+								</a>
 							</h:column>
 							<h:column>
 								<f:facet name="header">
@@ -133,8 +146,8 @@
 										<h:outputText value="Gene Symbol" />
 									</h:commandLink>
 								</f:facet>
-								<a href="#" onclick="return false;"><h:outputText
-										value="#{classComparisonReport.annotationMap[entry.reporterId].hugoGeneSymbol}" />
+								<a href="#" onclick="spawnAnnotation('gene', '#{classComparisonReport.annotationMap[entry.reporterId].hugoGeneSymbol}');return false;">
+								<h:outputText value="#{classComparisonReport.annotationMap[entry.reporterId].hugoGeneSymbol}" />
 								</a>
 
 							</h:column>
@@ -145,8 +158,6 @@
 					<a href="#" onclick="scroll(0,0);return false;">[top]</a>
 					<br/>
 				</h:form>
-
-
 		</f:view>
 	</ui:composition>
 </html>
