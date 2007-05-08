@@ -23,10 +23,29 @@ function spawnx(url, winw, winh, name) {
     }
 }
 
-function badJSF(el, asc)	{
+function initSortArrows(el, asc)	{
  	var htm = "up";
  	if("true" != asc)	{
  		htm = "down";
  	}
-	new Insertion.After(el," <img src=\"images/eagle/12-em-"+htm+".png\" />");
+	new Insertion.After(el," <img align='right' style='float:right;' src=\"images/eagle/12-em-"+htm+".png\" />");
+/*
+	new Insertion.After(el," <div id='sarr' style='float:right;width:20px; height:20px;'> </div>");
+	$('sarr').style.backgroundImage = "url(images/eagle/12-em-"+htm+".png)";
+	$('sarr').style.backgroundPosition = "0% 0%";
+	$('sarr').style.backgroundRepeat = "no-repeat";
+*/
+}
+
+function initGroupReports(el)	{
+	el.style.display = "none";
+	//alert(el.onclick);
+	//alert(el.innerHTML);
+	var htm = "<a href='#' id='"+el.innerHTML+"_button' >"+el.innerHTML+"</a> ";
+	new Insertion.Before($("groupReportsContainer"), htm);
+	//$(el.innerHTML+"_button").onclick = function()	{ el.onclick(); };
+	$(el.innerHTML+"_button").onmouseover = function()	{ overlib($('comparisonPatients_'+el.innerHTML).innerHTML, RIGHT, CAPTION, el.innerHTML+" Report", WIDTH, 300); };
+	$(el.innerHTML+"_button").onmouseout = function()	{ return nd(); };
+	$(el.innerHTML+"_button").onclick = function()	{ return false; };
+
 }
