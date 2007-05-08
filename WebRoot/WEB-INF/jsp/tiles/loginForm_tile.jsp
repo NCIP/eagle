@@ -1,7 +1,12 @@
 <%@ page language="java" %>
+<%@ page import="gov.nih.nci.eagle.util.EAGLEConstants,gov.nih.nci.eagle.bean.UserInfoBean" %>
 <%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
+
+<%
+if(session!=null && session.getAttribute(EAGLEConstants.userInfoBean)==null ) {
+%>
 <p>
 <!--  start login box -->
 <html:form action="login.do" styleId="loginForm">
@@ -24,5 +29,8 @@
 </table>
 </html:form>
 <!-- end login box -->
-
 </p>
+<% } else {%>
+
+<tiles:insert page="/WEB-INF/jsp/tiles/sideBar_tile.jsp"/>
+<% } %>

@@ -1,5 +1,3 @@
-<h2>EAGLE Application Text Here</h2>
-
-<p>
-	Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut in magna sit amet pede aliquet feugiat. Nunc ullamcorper mauris sed eros. Nunc at ante eget metus accumsan pharetra. Morbi metus lorem, ultrices nec, ultricies et, sodales eu, eros. Ut ultricies. Donec ac augue. Morbi viverra tellus non nisl luctus interdum. Maecenas augue purus, aliquet sit amet, blandit eu, placerat ac, nulla. Nam turpis sapien, venenatis nec, scelerisque a, condimentum vel, quam. Praesent viverra orci sit amet nulla. Etiam ac nisl. Morbi magna. Fusce posuere, nisl id adipiscing facilisis, massa nisi pulvinar ipsum, ac congue urna risus in sapien. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec fringilla lectus non neque. Fusce laoreet, arcu eu sodales accumsan, libero est dapibus est, ut congue est tellus ut massa. Sed cursus mattis pede.
-</p>
+<%@ page language="java" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+<tiles:insert page="/WEB-INF/jsp/tiles/splash_tile.jsp"></tiles:insert>

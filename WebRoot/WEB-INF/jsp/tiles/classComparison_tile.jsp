@@ -78,9 +78,11 @@ var CCForm = {
 			$('nonselectedGroups').style.border="1px solid red";
 			return false;
 		}
-		else	{
-		
-			
+		if($('statisticalMethod').selectedIndex == 0 && $('selectedGroups').length>1)	{
+			//need a baseline
+			alert("Please select only 1 baseline and 1 comparison group for this type of analysis");
+			$('selectedGroups').style.border="1px solid red";
+			return false;
 		}
 		
 		//save the selectedGroups
@@ -96,7 +98,7 @@ var CCForm = {
 
 <p>
 <div class="comments">
-<h2>Class Comparison Analysis</h2>
+<h2 style="text-align:center">Class Comparison Analysis</h2>
 <div>
 	<b>Analysis Name:</b>
 	<html:text property="analysisName" styleId="analysisName"/>

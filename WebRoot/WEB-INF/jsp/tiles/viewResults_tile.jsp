@@ -16,23 +16,20 @@
 <%@ page import="org.apache.commons.lang.StringEscapeUtils" %>
 <%@ page import="gov.nih.nci.caintegrator.enumeration.StatisticalMethodType" %>
 
-
-
 <script language="javascript">
 	if(location.href.indexOf("viewResults") == -1)	{
 		location.replace("viewResults.do");
 	}
 </script>
+<!--  
 <script type="text/javascript">Help.insertHelp("View_results_overview", " align='right'", "padding:2px;");</script>
-
-      
-           
-     <fieldset>
-     	<legend>Report Results</legend>
-       	<div id="loadingMsg" style="color:red;font-weight:bold;">&nbsp;</div>
+-->
+<h2 style="text-align:center">View the results of your queries</h2>
+     <div class="viewResultsBoxTop">Report Results</div>    
+     <div class="viewResultsBox">
+       	<div id="loadingMsg" style="color:#a90101;font-weight:bold;">&nbsp;</div>
        	<ul>
-     <%
-     			
+<%   			
 		PresentationTierCache ptc = CacheFactory.getPresentationTierCache();							
 		if(ptc!=null){
 			//get all tasks from presentation tier
@@ -75,7 +72,7 @@
 						currentStatus = "<b id=\"" + task.getId() + "_status\" ><script language=\"javascript\">document.write(showErrorHelp('"+comments+"','error'));</script></b> <img src='images/error.png' alt='error' id=\"" + task.getId() + "_image\" />";
 					}
 					
-					out.println("<span style='color:red; float:right'>" + currentStatus + "</span> ");					
+					out.println("<span style='color:#a90101; float:right'>" + currentStatus + "</span> ");					
 					String onclick="";					
 					if(task.getStatus()!= FindingStatus.Completed)	{
 						onclick = "javascript:alert('Analysis Not yet complete');return false;";
@@ -131,6 +128,9 @@
      (PCA) Principal Component Analysis
      </div>
      
-</fieldset>
+</div>
+<script type="text/javascript">
+	Nifty("div.viewResultsBoxTop","top");
+</script>
 <br /><br />
      
