@@ -12,9 +12,7 @@
 		<f:view id="classComparisonView">
 
 				<jsfExt:scripts />
-				<script type="text/javascript" src="js/lib/prototype.js"/>
-				<script type="text/javascript" src="js/lib/scriptaculous/effects.js"/>
-				<script type="text/javascript" src="js/eagle.js"/>
+ 				<ui:include src="/WEB-INF/facelets/reportHeader.xhtml"/>
 
 				<h:form id="gueryForm">
 					<h:panelGrid>
@@ -46,7 +44,6 @@
 				</h:form>
 				<h:form id="classComparisonForm">
 
-
 					<h:commandLink
 						actionListener="#{classComparisonReport.generateCSV}"
 						immediate="false">
@@ -54,22 +51,10 @@
 					</h:commandLink>
 					<br />
 					<br />
-					<style>
-						.#{classComparisonReport.sortedBy} {
-							/* font-style:italic; */
-							font-weight:bold;	
-						}
-					</style>
-					
-					<script type="text/javascript">
-					
-						window.onload = function()	{
-							$$('.#{classComparisonReport.sortedBy}').each(
-							function(el)	{
-								badJSF(el, '#{classComparisonReport.sortAscending}');
-							});
-						};
-					</script>
+					<ui:include src="/WEB-INF/facelets/reportStyle.xhtml">
+						<ui:param name="sortedBy" value="#{classComparisonReport.sortedBy}"/>
+						<ui:param name="sortAscending" value="#{classComparisonReport.sortAscending}"/>
+					</ui:include>
 					
 					<i:pager dataTable="classComparisonTable" />
 					<div id="reportDiv">

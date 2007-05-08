@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:i="http://caintegrator.nci.nih.gov/jsf"
+	xmlns:jsfExt="http://java.sun.com/jsf/extensions/dynafaces">
+
+	<ui:composition>
+
+					<style>
+						.#{sortedBy} {
+							font-weight:bold;	
+						}
+					</style>
+					
+					<script type="text/javascript">
+					
+						window.onload = function()	{
+							$$('.#{sortedBy}').each(
+							function(el)	{
+								initSortArrows(el, '#{sortAscending}');
+							});
+							
+							//alert($$(".groupReportLinks").length);
+							//re-arrange the group report links, since JSF can only iterate over tables
+							try	{
+							
+							var lnks="";
+							$$(".groupReportLinks").each(
+							function(el)	{
+								initGroupReports(el);
+							});
+							}
+							catch(err)	{
+								alert(err);
+							}
+						};
+					</script>
+</ui:composition>
+</html>				

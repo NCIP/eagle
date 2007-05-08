@@ -1,3 +1,5 @@
+html,body{margin:0;padding:0}
+
 body {
 	font: normal 12px auto "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
 	color: #4f6b72;
@@ -8,6 +10,13 @@ a {
 	color: #6085CC; /* c75f3e; */
 }
 
+form	{
+	padding-left:10px;		
+}
+	
+#reportDiv	{
+	background: #E6EAE9;	
+}
 #reportDiv table {
 	width: 700px;
 	padding: 0;
