@@ -87,11 +87,11 @@
 					else if(task.getQueryDTO() instanceof ClassComparisonQueryDTO){	
 						ClassComparisonQueryDTO dto = (ClassComparisonQueryDTO)task.getQueryDTO();
 						if(dto.getStatisticTypeDE().getValueObject().equals(StatisticalMethodType.TTest))
-							out.println("<li><a id=\"" + task.getId() + "_link\" href=\"javascript:spawnx('classComparisonReport.do?method=runReport&taskId=" + task.getId() + "&cacheId=" + task.getCacheId() + "', 750, 500,'copy_number_report');\" onclick=\"" + onclick + "\">" + qname + "</a> <i>(Class Comparison)</i> ");
+							out.println("<li><a id=\"" + task.getId() + "_link\" href=\"javascript:spawnx('classComparisonReport.do?method=runReport&taskId=" + task.getId() + "&cacheId=" + task.getCacheId() + "', 750, 500,'cc_report');\" onclick=\"" + onclick + "\">" + qname + "</a> <i>(Class Comparison)</i> ");
 						else if(dto.getStatisticTypeDE().getValueObject().equals(StatisticalMethodType.FTest))
-							out.println("<li><a id=\"" + task.getId() + "_link\" href=\"javascript:spawnx('ftestReport.do?method=runReport&taskId=" + task.getId() + "&cacheId=" + task.getCacheId() + "', 750, 500,'copy_number_report');\" onclick=\"" + onclick + "\">" + qname + "</a> <i>(Class Comparison)</i> ");
+							out.println("<li><a id=\"" + task.getId() + "_link\" href=\"javascript:spawnx('ftestReport.do?method=runReport&taskId=" + task.getId() + "&cacheId=" + task.getCacheId() + "', 750, 500,'cc_report');\" onclick=\"" + onclick + "\">" + qname + "</a> <i>(Class Comparison)</i> ");
 						else if(dto.getStatisticTypeDE().getValueObject().equals(StatisticalMethodType.GLM))
-							out.println("<li><a id=\"" + task.getId() + "_link\" href=\"javascript:spawnx('glmReport.do?method=runReport&taskId=" + task.getId() + "&cacheId=" + task.getCacheId() + "', 750, 500,'copy_number_report');\" onclick=\"" + onclick + "\">" + qname + "</a> <i>(Class Comparison)</i> ");
+							out.println("<li><a id=\"" + task.getId() + "_link\" href=\"javascript:spawnx('glmReport.do?method=runReport&taskId=" + task.getId() + "&cacheId=" + task.getCacheId() + "', 750, 500,'cc_report');\" onclick=\"" + onclick + "\">" + qname + "</a> <i>(Class Comparison)</i> ");
 						else	{
 								out.println("<li>" + qname + "  ");					
 						}
