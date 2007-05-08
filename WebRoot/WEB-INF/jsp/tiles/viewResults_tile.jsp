@@ -68,7 +68,7 @@
 					else if(task.getStatus() == FindingStatus.Running)
 						currentStatus = "<b id=\"" + task.getId() + "_status\" >running</b> <img src='images/circle.gif' alt='running' id=\"" + task.getId() + "_image\" />";
 					else if(task.getStatus() == FindingStatus.Error)	{					
-						comments = StringEscapeUtils.escapeJavaScript(comments);
+						comments = StringEscapeUtils.escapeJavaScript(task.getStatus().getComment());
 						currentStatus = "<b id=\"" + task.getId() + "_status\" ><script language=\"javascript\">document.write(showErrorHelp('"+comments+"','error'));</script></b> <img src='images/error.png' alt='error' id=\"" + task.getId() + "_image\" />";
 					}
 					
