@@ -14,8 +14,10 @@
 		<tiles:insert attribute="overlib" />
 		<tiles:insert attribute="nciHeader" />
 		<div id="header">
-			<h1>
-				<a href="index.jsp" style="text-decoration:none; color:#fff">EAGLE App [Logo will go Here]</a>
+			<h1 style="padding-left:100px;">
+				<a href="index.jsp" style="font-size:32px;text-decoration:none; font-family:Trebuchet MS, Verdana;color:#fff;">
+					EAGLE Data Portal
+				</a>
 			</h1>
 			<tiles:insert attribute="tabs" />
 		</div>
