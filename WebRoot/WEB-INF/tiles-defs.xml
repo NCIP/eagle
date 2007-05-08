@@ -33,16 +33,16 @@
 	<definition name="caintegrator.legal" extends="cssBaseDef">
       <put name="mainForm" value="/legal.jsp" />
 	  <put name="sideBar" value="/WEB-INF/jsp/tiles/blank_tile.jsp" />
-	  <put name="tabs" value="/WEB-INF/jsp/tiles/cssTabs_tile.jsp?s=0" />
+	  <put name="tabs" value="/WEB-INF/jsp/tiles/blank_tile.jsp" />
     </definition>
 
 	<definition name="caintegrator.splash" extends="cssBaseDef">
       <put name="mainForm" value="/WEB-INF/jsp/tiles/splash_tile.jsp" />
+	  <put name="tabs" value="/WEB-INF/jsp/tiles/cssTabs_tile.jsp?s=1" />
     </definition>
         	
 	<definition name="caintegrator.welcome" extends="cssBaseDef">
       <put name="mainForm" value="/WEB-INF/jsp/tiles/welcome_tile.jsp" />
-	  <put name="sideBar" value="/WEB-INF/jsp/tiles/blank_tile.jsp" />
 	  <put name="tabs" value="/WEB-INF/jsp/tiles/cssTabs_tile.jsp?s=1" />
     </definition>
     
