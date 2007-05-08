@@ -1,11 +1,11 @@
 body {
-	font: normal 11px auto "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	font: normal 12px auto "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
 	color: #4f6b72;
 	background: #E6EAE9;
 }
 
 a {
-	color: #c75f3e;
+	color: #6085CC; /* c75f3e; */
 }
 
 #reportDiv table {
@@ -22,7 +22,7 @@ a {
 }
 
 td a, th a	{
-	color: #4f6b72;
+	color: #000;
 	text-decoration:none;
 	font-weight:normal;
 }
@@ -30,14 +30,14 @@ td a, th a	{
 #reportDiv th {
 	font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
 	color: #4f6b72;
-	border-right: 1px solid #C1DAD7;
-	border-bottom: 1px solid #C1DAD7;
-	border-top: 1px solid #C1DAD7;
+	border-right: 1px solid #6085CC; /*C1DAD7*/
+	border-bottom: 1px solid #6085CC;
+	border-top: 1px solid #6085CC;
 	letter-spacing: 2px;
 	text-transform: uppercase;
 	text-align: left;
 	padding: 6px 6px 6px 12px;
-	background: #CAE8EA url(../images/eagle/bg_header.jpg) no-repeat;
+	background: #6085CC url(../images/eagle/bg_header.jpg) no-repeat; /*CAE8EA */
 }
 
 #reportDiv th.nobg {
@@ -48,8 +48,8 @@ td a, th a	{
 }
 
 #reportDiv td {
-	border-right: 1px solid #C1DAD7;
-	border-bottom: 1px solid #C1DAD7;
+	border-right: 1px solid #6085CC; /* C1DAD7 */
+	border-bottom: 1px solid #6085CC;
 	background: #fff;
 	padding: 6px 6px 6px 12px;
 	color: #4f6b72;

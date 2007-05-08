@@ -42,7 +42,41 @@ div.elementTile	{
 	border-bottom: 1px solid black;
 }
 
+/* CC form */
 #menuSwapperButtons input	{
 	width:70px;
 	font-size:10px;
+}
+
+/* listmgmt */
+.listboxtop, .viewResultsBoxTop	{
+	padding:5px;
+	color:#fff;
+	font-size:120%;
+	background-color: #6085CC;
+	font-weight:bold;
+}
+.listbox, .viewResultsBox, .hoaMenuBox	{
+	background-color:#E6EAE9;
+	padding:5px;
+	border-left:1px solid #6085CC;
+	border-right:1px solid #6085CC;
+	border-bottom:1px solid #6085CC;
+}
+.listfunctions input	{
+	width:100px;
+}
+.hoaMenuBox a	{
+	color: #6085CC;
+	font-size:16px;
+	font-weight:bold;
+	text-decoration:none;
+}
+.hoaMenuBox a:hover	{
+	color:#a90101;
+	border-bottom: 2px dotted #a90101;
+}
+.release p	{
+	padding-top:0px;
+	padding:5px;
 }
