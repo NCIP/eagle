@@ -1,14 +1,17 @@
 package gov.nih.nci.eagle.web.reports;
 
 import gov.nih.nci.caintegrator.analysis.messaging.FTestResultEntry;
+import gov.nih.nci.caintegrator.application.configuration.SpringContext;
 import gov.nih.nci.caintegrator.domain.annotation.gene.bean.GeneBiomarker;
 import gov.nih.nci.caintegrator.service.findings.FTestFinding;
 import gov.nih.nci.eagle.query.dto.ClassComparisonQueryDTOImpl;
 import gov.nih.nci.eagle.util.FTestComparator;
+import gov.nih.nci.eagle.util.PatientGroupManager;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -22,13 +25,18 @@ public class FTestReport {
     private Boolean sortAscending;
     private FTestComparator sortComparator;
     private List reportBeans;
+    
+    private Map<String, List> patientInfoMap;
+    
+    private String sortedBy;
+
 
     public FTestReport(FTestFinding finding) {
 
         this.finding = finding;
         sortAscending = true;
         sortComparator = new FTestComparator("pvalue", sortAscending);
-
+        sortedBy = "pvalue";
         reportBeans = new ArrayList<FTestReportBean>();
 
         for (FTestResultEntry entry : finding.getResultEntries()) {
@@ -37,12 +45,30 @@ public class FTestReport {
                     .getHugoGeneSymbol());
             reportBeans.add(bean);
         }
+        
+        patientInfoMap = new HashMap<String, List>();
+        PatientGroupManager man = (PatientGroupManager)SpringContext.getBean("patientManager");
+
+
+        for(String groupName : (List<String>)getComparisonGroups()) {
+            List patients = getQueryDTO().getComparisonGroupsMap().get(groupName);
+            List patientInfo = man.getPatientInfo(patients);
+            patientInfoMap.put(groupName, patientInfo);
+        }
     }
 
     public ClassComparisonQueryDTOImpl getQueryDTO() {
         return (ClassComparisonQueryDTOImpl)finding.getTask().getQueryDTO();
     }
-    
+
+    public List getBaselineGroups() {
+        return new ArrayList(getQueryDTO().getBaselineGroupMap().keySet());
+    }
+
+    public List getComparisonGroups() {
+        return new ArrayList(getQueryDTO().getComparisonGroupsMap().keySet());
+    }
+
     public Collection getReportBeans() {
         Collections.sort(reportBeans, sortComparator);
         return reportBeans;
@@ -58,7 +84,8 @@ public class FTestReport {
 
     public void sortDataList(ActionEvent event) {
         String sortFieldAttribute = getAttribute(event, "sortField");
-
+        //js doesnt like the [] notation, so had to use another Att with an underscore
+        sortedBy = getAttribute(event, "sortedBy") != null ? getAttribute(event, "sortedBy") : sortFieldAttribute.replace("[", "_").replace("]", "");
         // Get and set sort field and sort order.
         // Get and set sort field and sort order.
         if (sortFieldAttribute != null
@@ -122,5 +149,21 @@ public class FTestReport {
 		}
 
     }
+
+	public Map<String, List> getPatientInfoMap() {
+		return patientInfoMap;
+	}
+
+	public void setPatientInfoMap(Map<String, List> patientInfoMap) {
+		this.patientInfoMap = patientInfoMap;
+	}
+
+	public String getSortedBy() {
+		return sortedBy;
+	}
+
+	public void setSortedBy(String sortedBy) {
+		this.sortedBy = sortedBy;
+	}
 
 }

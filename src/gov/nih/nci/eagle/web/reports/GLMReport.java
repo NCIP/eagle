@@ -30,6 +30,7 @@ public class GLMReport {
     private List reportBeans;
 
     private Map<String, List> patientInfoMap;
+    private String sortedBy;
 
 
     public GLMReport(GeneralizedLinearModelFinding finding) {
@@ -37,7 +38,7 @@ public class GLMReport {
         this.finding = finding;
         sortAscending = true;
         sortComparator = new FTestComparator("pvalues[0]", sortAscending);
-
+        sortedBy = "pvalues[0]";
         reportBeans = new ArrayList<GLMReportBean>();
 
         for (GeneralizedLinearModelResultEntry entry : finding.getResultEntries()) {
@@ -95,6 +96,7 @@ public class GLMReport {
     public void sortDataList(ActionEvent event) {
         String sortFieldAttribute = getAttribute(event, "sortField");
 
+        sortedBy = sortFieldAttribute;
         // Get and set sort field and sort order.
         // Get and set sort field and sort order.
         if (sortFieldAttribute != null
@@ -165,6 +167,14 @@ public class GLMReport {
 
 	public void setPatientInfoMap(Map<String, List> patientInfoMap) {
 		this.patientInfoMap = patientInfoMap;
+	}
+
+	public String getSortedBy() {
+		return sortedBy;
+	}
+
+	public void setSortedBy(String sortedBy) {
+		this.sortedBy = sortedBy;
 	}
 
 }
