@@ -47,5 +47,16 @@ function initGroupReports(el)	{
 	$(el.innerHTML+"_button").onmouseover = function()	{ overlib($('comparisonPatients_'+el.innerHTML).innerHTML, RIGHT, CAPTION, el.innerHTML+" Report", WIDTH, 300); };
 	$(el.innerHTML+"_button").onmouseout = function()	{ return nd(); };
 	$(el.innerHTML+"_button").onclick = function()	{ return false; };
+}
 
+function spawnAnnotation(type, item)	{
+	switch(type)	{
+		case 'gene':
+			alert("I will link this gene ("+item+") to CGAP");
+		break;
+		case 'reporter':
+			alert("I will link this reporter ("+item+") to LPG");		
+		break;
+	
+	}
 }
