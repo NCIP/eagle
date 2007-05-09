@@ -53,13 +53,13 @@
 
 			<jsfExt:scripts />
 			
+			<i:querySummary backingBean="#{glmReport}"/>
+			
 			<script type="text/javascript" src="js/lib/prototype.js"/>
 			<script type="text/javascript" src="js/lib/scriptaculous/effects.js"/>
 
 				<h:form id="gueryForm">
 					<h:panelGrid>
-						<h:outputText
-							value="Query Name: #{glmReport.queryDTO.queryName}" />
 						Baseline Group: <br/>
 						<h:dataTable value="#{glmReport.baselineGroups}"
 							var="group">

@@ -11,4 +11,8 @@
 		<tag-name>patientListTable</tag-name>
 		<source>patientListTable.xhtml</source>
 	</tag>
+	<tag>
+		<tag-name>querySummary</tag-name>
+		<source>querySummary.xhtml</source>
+	</tag>
 </facelet-taglib>

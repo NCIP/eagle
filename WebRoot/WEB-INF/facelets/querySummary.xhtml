@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:x="http://myfaces.apache.org/tomahawk">
+
+
+	<ui:composition>
+		<ui:include src="/WEB-INF/facelets/reportHeader.xhtml"/>
+		<div
+			style="width:100%; height:25px; background-color:#fff; text-align:right;">
+			<h:form id="csvForm">
+				<span style="float:left"> <h:outputText
+						value="Query Name: #{backingBean.queryDTO.queryName}" /> </span>
+				<span style="padding-right:20px; vertical-align:middle;"> <img
+						src="images/eagle/24-columns.png" /> <h:commandLink
+						actionListener="#{backingBean.generateCSV}" immediate="false">
+						<h:outputText value="Download CSV" />
+					</h:commandLink> | <img src="images/eagle/24-tab-close.png" /> <a href="#"
+					onclick="javascript:window.close();">Close</a> </span>
+			</h:form>
+		</div>
+	</ui:composition>
+</html>

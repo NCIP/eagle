@@ -15,23 +15,8 @@
 		<f:view id="ftestView">
 
 			<jsfExt:scripts />
-			<ui:include src="/WEB-INF/facelets/reportHeader.xhtml"/>
 
-				<div style="width:100%; height:25px; background-color:#fff; text-align:right;">
-					<h:form id="csvForm">
-					<span style="float:left">
-						<h:outputText value="Query Name: #{ftestReport.queryDTO.queryName}" />
-					</span>
-					<span style="padding-right:20px; vertical-align:middle;">
-						<img src="images/eagle/24-columns.png" />
-						<h:commandLink actionListener="#{ftestReport.generateCSV}" immediate="false">
-				       		<h:outputText value="Download CSV" />	                    		
-				   		</h:commandLink> |
-				   		<img src="images/eagle/24-tab-close.png" />
-				   		<a href="#" onclick="javascript:window.close();">Close</a>
-			   		</span>
-					</h:form>		
-				</div>
+				<i:querySummary backingBean="#{ftestReport}"/>
 				
 				<h:form id="gueryForm">
 					Comparison Groups:
