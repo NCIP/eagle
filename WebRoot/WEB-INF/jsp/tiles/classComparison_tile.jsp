@@ -89,20 +89,27 @@ var CCForm = {
 			//need a baseline
 			alert("Please choose a baseline");
 			$('selectedBaseline').style.border="1px solid red";
+			$('selectedBaseline').style.backgroundColor = "yellow";
+			
 			$('nonselectedGroups').style.border="1px solid red";
+			$('nonselectedGroups').style.backgroundColor = "yellow";
 			return false;
 		}
 		if($('statisticalMethod').selectedIndex == 0 && $('selectedGroups').length!=1  )	{
 			//T-TEST is 1 and 1
 			alert("Please select only 1 baseline and 1 comparison group for this type of analysis");
 			$('selectedGroups').style.border="1px solid red";
+			$('selectedGroups').style.backgroundColor = "yellow";
 			return false;
 		}
 		if($('statisticalMethod').selectedIndex == 2 && ($('selectedBaseline').length<1 || $('selectedGroups').length<1) )	{
 			//GLM is 1 and M
 			alert("Please select only 1 baseline and 1 or more comparison groups for this type of analysis");
 			$('selectedBaseline').style.border="1px solid red";
+			$('selectedBaseline').style.backgroundColor = "yellow";
+			
 			$('nonselectedGroups').style.border="1px solid red";
+			$('nonselectedGroups').style.backgroundColor = "yellow";
 			return false;
 		}
 		
