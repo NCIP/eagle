@@ -10,12 +10,12 @@
 	for(int i=0; i<lts.length; i++)	{
 		String label = lts[i].toString();
 %>
-	<p style="text-align:left; margin-top:20px;">
+	<div style="text-align:left; margin-top:20px;">
 		<b><%=label%> Lists:</b>
-		<p id="sidebar<%=label%>UL">
-			<img src="images/indicator.gif"/>
-		</p>	
-	</p>
+		<div id="sidebar<%=label%>UL">
+			<img src="images/indicator.gif" />
+		</div>	
+	</div>
 <%
 	}
 %>
