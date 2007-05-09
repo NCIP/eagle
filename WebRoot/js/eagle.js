@@ -55,8 +55,8 @@ function initGroupReports(el)	{
 
 function spawnAnnotation(type, item)	{
 	var gl = "http://cgap.nci.nih.gov/Genes/RunUniGeneQuery?PAGE=1&SYM=&PATH=&ORG=Hs&TERM=";
-	gl = "http://lpgws.nci.nih.gov/cgi-bin/iview.cgi?query=";
-	var rl = "http://lpgws.nci.nih.gov/cgi-bin/AffyViewer.cgi?st=1&org=1&query=";
+	var rl = "http://lpgws.nci.nih.gov/cgi-bin/iview.cgi?query=";
+	rl = "http://lpgws.nci.nih.gov/cgi-bin/AffyViewer.cgi?st=1&org=1&query=";
 	switch(type)	{
 		case 'gene':
 			spawn
