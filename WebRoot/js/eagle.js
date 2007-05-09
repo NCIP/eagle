@@ -16,11 +16,15 @@ function spawnx(url, winw, winh, name) {
 		      document.getElementById('popup').innerHTML = "You have pop-ups blocked.  Click <a href="javascript:spawnx('"+url+"',"+winw+","+winh+",'"+name+"');">here</a> to view the report."; 	  
 		} 
 		*/
-        document.write("<Br><Br><span class=\"pop\">You have pop-ups blocked.  Click <a href=\"javascript:spawnx('" + url + "'," + winw + "," + winh + ",'" + name + "');\">here</a> to view the report.</span>");
+        document.write("<br/><br/><span class=\"pop\">You have pop-ups blocked.  Click <a href=\"javascript:spawnx('" + url + "'," + winw + "," + winh + ",'" + name + "');\">here</a> to view the report.</span>");
 		//scroll(0, 8000);
     } else {
         w.focus();
     }
+}
+
+function spawn(url, winw, winh, name) {
+    var w = window.open(url, name, "screenX=0,screenY=0,status=yes,toolbar=no,menubar=no,location=no,width=" + winw + ",height=" + winh + ",scrollbars=yes,resizable=yes");
 }
 
 function initSortArrows(el, asc)	{
@@ -50,12 +54,16 @@ function initGroupReports(el)	{
 }
 
 function spawnAnnotation(type, item)	{
+	var gl = "http://cgap.nci.nih.gov/Genes/RunUniGeneQuery?PAGE=1&SYM=&PATH=&ORG=Hs&TERM=";
+	gl = "http://lpgws.nci.nih.gov/cgi-bin/iview.cgi?query=";
+	var rl = "http://lpgws.nci.nih.gov/cgi-bin/AffyViewer.cgi?st=1&org=1&query=";
 	switch(type)	{
 		case 'gene':
-			alert("I will link this gene ("+item+") to CGAP");
+			spawn
+			spawn(gl+item, 700,500, "CGAP");
 		break;
 		case 'reporter':
-			alert("I will link this reporter ("+item+") to LPG");		
+			spawn(rl+item, 700,500, "LPG");	
 		break;
 	
 	}
