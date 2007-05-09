@@ -38,7 +38,7 @@ public class GLMReport {
         this.finding = finding;
         sortAscending = true;
         sortComparator = new FTestComparator("pvalues[0]", sortAscending);
-        sortedBy = "pvalues[0]";
+        sortedBy = "groupName_0";
         reportBeans = new ArrayList<GLMReportBean>();
 
         for (GeneralizedLinearModelResultEntry entry : finding.getResultEntries()) {
@@ -96,7 +96,9 @@ public class GLMReport {
     public void sortDataList(ActionEvent event) {
         String sortFieldAttribute = getAttribute(event, "sortField");
 
-        sortedBy = sortFieldAttribute;
+        //js doesnt like the [] notation, so had to use another Att with an underscore
+        sortedBy = getAttribute(event, "sortedBy") != null ? getAttribute(event, "sortedBy") : sortFieldAttribute.replace("[", "_").replace("]", "");
+     
         // Get and set sort field and sort order.
         // Get and set sort field and sort order.
         if (sortFieldAttribute != null
