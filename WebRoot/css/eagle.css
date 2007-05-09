@@ -43,6 +43,9 @@ div.elementTile	{
 }
 
 /* CC form */
+#menuSwapperButtons	{
+	width:75px;	
+}
 #menuSwapperButtons input	{
 	width:70px;
 	font-size:10px;
