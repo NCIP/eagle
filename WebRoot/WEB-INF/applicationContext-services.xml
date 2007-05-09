@@ -195,7 +195,7 @@
 
 	<!-- Bean to manage patient data from text file -->
 	<bean id="patientManager" class="gov.nih.nci.eagle.util.PatientGroupManager" >
-		<property name="patientFileName" value="${gov.nih.nci.eagleportal.patient_data}" />
+		<property name="patientFileName" value="${gov.nih.nci.eagleportal.patientData}" />
 	</bean>
 	<!--  Bean for thread pool -->
 	<bean id="taskExecutor"
