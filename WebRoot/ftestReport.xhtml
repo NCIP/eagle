@@ -18,24 +18,6 @@
 
 				<i:querySummary backingBean="#{ftestReport}"/>
 				
-				<h:form id="gueryForm">
-					Comparison Groups:
-				<div id="groupReportsContainer" style="display:none;">
-						<h:dataTable value="#{ftestReport.comparisonGroups}"
-							var="group">
-
-							<h:column>
-								<a href="#" class="groupReportLinks" onclick="new Effect.toggle('comparisonPatients_#{group}'); return false;">#{group}</a>
-
-								<div id="comparisonPatients_#{group}" style="display:none">
-									<i:patientListTable
-										patientList="#{ftestReport.patientInfoMap[group]}" />
-								</div>
-							</h:column>
-						</h:dataTable>
-				</div>
-				</h:form>
-							
 				<h:form id="ftestForm">
 				
 					<ui:include src="/WEB-INF/facelets/reportStyle.xhtml">

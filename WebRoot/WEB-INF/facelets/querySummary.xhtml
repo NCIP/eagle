@@ -5,11 +5,12 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:i="http://caintegrator.nci.nih.gov/jsf"
 	xmlns:x="http://myfaces.apache.org/tomahawk">
 
 
 	<ui:composition>
-		<ui:include src="/WEB-INF/facelets/reportHeader.xhtml"/>
+		<ui:include src="/WEB-INF/facelets/reportHeader.xhtml" />
 		<div
 			style="width:100%; height:25px; background-color:#fff; text-align:right;">
 			<h:form id="csvForm">
@@ -23,5 +24,38 @@
 					onclick="javascript:window.close();">Close</a> </span>
 			</h:form>
 		</div>
+
+		<h:form id="queryForm">
+			Comparison Groups: 
+			<c:if test="#{backingBean.baselineGroups != null}">
+				(baseline)
+			</c:if>
+			<div id="groupReportsContainer" style="display:none;">
+				<c:if test="#{backingBean.baselineGroups != null}">
+					<h:dataTable value="#{backingBean.baselineGroups}" var="group">
+						<h:column>
+							<a href="#" class="groupReportLinks"
+								onclick="new Effect.toggle('baselinePatients', 'slide');return false;">#{group}</a>
+
+							<div id="comparisonPatients_#{group}" style="display:none">
+								<i:patientListTable
+									patientList="#{backingBean.patientInfoMap[group]}" />
+							</div>
+						</h:column>
+					</h:dataTable>
+				</c:if>
+			<h:dataTable value="#{backingBean.comparisonGroups}" var="group">
+				<h:column>
+					<a href="#" class="groupReportLinks"
+						onclick="new Effect.toggle('comparisonPatients', 'slide'); return false;">#{group}</a>
+
+					<div id="comparisonPatients_#{group}" style="display:none">
+						<i:patientListTable
+							patientList="#{backingBean.patientInfoMap[group]}" />
+					</div>
+				</h:column>
+			</h:dataTable>
+			</div>
+		</h:form>
 	</ui:composition>
 </html>

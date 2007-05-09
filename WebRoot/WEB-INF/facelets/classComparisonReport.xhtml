@@ -15,35 +15,6 @@
 				
  				<i:querySummary backingBean="#{classComparisonReport}"/>
 				
-				<h:form id="gueryForm">
-					Comparison Groups: (baseline) 
-					
-					<div id="groupReportsContainer" style="display:none;">
-						<h:dataTable value="#{classComparisonReport.baselineGroups}"
-							var="group">
-							<h:column>
-								<a href="#" class="groupReportLinks" onclick="new Effect.toggle('baselinePatients', 'slide');return false;">#{group}</a>
-
-								<div id="comparisonPatients_#{group}" style="display:none">
-									<i:patientListTable
-										patientList="#{classComparisonReport.patientInfoMap[group]}" />
-								</div>
-							</h:column>
-						</h:dataTable>
-						<h:dataTable value="#{classComparisonReport.comparisonGroups}"
-							var="group">
-							<h:column>
-								<a href="#" class="groupReportLinks" onclick="new Effect.toggle('comparisonPatients', 'slide'); return false;">#{group}</a>
-
-								<div id="comparisonPatients_#{group}" style="display:none">
-									<i:patientListTable
-										patientList="#{classComparisonReport.patientInfoMap[group]}" />
-								</div>
-							</h:column>
-						</h:dataTable>
-					</div>
-				</h:form>
-				
 				<h:form id="classComparisonForm">
 					
 					<ui:include src="/WEB-INF/facelets/reportStyle.xhtml">

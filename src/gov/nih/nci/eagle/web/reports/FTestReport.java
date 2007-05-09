@@ -62,7 +62,7 @@ public class FTestReport {
     }
 
     public List getBaselineGroups() {
-        return new ArrayList(getQueryDTO().getBaselineGroupMap().keySet());
+        return null;
     }
 
     public List getComparisonGroups() {
