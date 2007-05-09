@@ -94,14 +94,17 @@ public class EpidemiologicalQueryHandler implements QueryHandler {
         /*  TODO:  Fix this so that it does not issue multiple SQL statements one for each finding */
         for (int i = 0; i < l.size(); i++) {
            EpidemiologicalStudyParticipant epidemiologicalStudyParticipant =  l.get(i);
-           epidemiologicalStudyParticipant.getTobaccoConsumptionCollection().size();
+            if (epidemiologicalStudyParticipant.getTobaccoConsumptionCollection() != null)
+                epidemiologicalStudyParticipant.getTobaccoConsumptionCollection().size();
            epidemiologicalStudyParticipant.getBehavioralAssessment();
           /*
            epidemiologicalStudyParticipant.getLungCancerRelativeCollection().size();
            epidemiologicalStudyParticipant.getSmokingRelativeCollection().size();
            */
-           epidemiologicalStudyParticipant.getDietaryConsumptionCollection().size();
-           epidemiologicalStudyParticipant.getEnvironmentalFactorCollection().size();
+          if (epidemiologicalStudyParticipant.getDietaryConsumptionCollection() != null)
+               epidemiologicalStudyParticipant.getDietaryConsumptionCollection().size();
+          if (epidemiologicalStudyParticipant.getEnvironmentalFactorCollection() != null)
+                epidemiologicalStudyParticipant.getEnvironmentalFactorCollection().size();
         }
     }
 
