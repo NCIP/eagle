@@ -10,6 +10,7 @@
 Event.observe(window, 'load',
       function() { 
       	$('ccForm').reset(); //force reset on soft refresh
+      	$('covariates').hide(); //this is for IE, it ignores the display:none
       }
     );
 
@@ -54,18 +55,31 @@ var CCForm = {
 		
 		if(el.selectedIndex != 0)	{
 			//tissue
-			$('nonselectedGroups').innerHTML = $('tissueGroupsOptions').innerHTML;
-			//$('bloodGroups').hide();
-			//$('tissueGroups').show();
+			//$('nonselectedGroups').innerHTML = $('tissueGroupsOptions').innerHTML;
+			// ^^ IE wont just inject the HTML, so need to create each option manually
+			var ops = $('tissueGroupsOptions').getElementsByTagName("option");
+			try	{
+				for(var ii=0; ii<ops.length; ii++)	{
+					$('nonselectedGroups').options[ii] = new Option(ops[ii].text, ops[ii].value);
+				}
+			}catch(e)	{ debug(e.message); }
+
 		}
 		else	{
-			//$('tissueGroups').hide();
-			//$('bloodGroups').show();	
-			$('nonselectedGroups').innerHTML = $('bloodGroupsOptions').innerHTML;	
+			//blood
+			//$('nonselectedGroups').innerHTML = $('bloodGroupsOptions').innerHTML;	
+
+			var ops = $('bloodGroupsOptions').getElementsByTagName("option");
+			try	{
+				for(var ii=0; ii<ops.length; ii++)	{
+					$('nonselectedGroups').options[ii] = new Option(ops[ii].text, ops[ii].value);
+				}
+			}catch(e)	{ debug(e.message); }
+			
 		}
 		
 	},
-	'validate': function()	{
+	'validate': function(fromwhere)	{
 		if($('analysisName').value == "")	{
 			alert("Please enter an Analysis Name");
 			$('analysisName').style.border="1px solid red";
@@ -78,22 +92,33 @@ var CCForm = {
 			$('nonselectedGroups').style.border="1px solid red";
 			return false;
 		}
-		if($('statisticalMethod').selectedIndex == 0 && $('selectedGroups').length>1)	{
-			//need a baseline
+		if($('statisticalMethod').selectedIndex == 0 && $('selectedGroups').length!=1  )	{
+			//T-TEST is 1 and 1
 			alert("Please select only 1 baseline and 1 comparison group for this type of analysis");
 			$('selectedGroups').style.border="1px solid red";
+			return false;
+		}
+		if($('statisticalMethod').selectedIndex == 2 && ($('selectedBaseline').length<1 || $('selectedGroups').length<1) )	{
+			//GLM is 1 and M
+			alert("Please select only 1 baseline and 1 or more comparison groups for this type of analysis");
+			$('selectedBaseline').style.border="1px solid red";
+			$('nonselectedGroups').style.border="1px solid red";
 			return false;
 		}
 		
 		//save the selectedGroups
 		MenuSwapper.saveMe( $('selectedGroups'),$('nonselectedGroups') );
-		return true;
+		
+		if(fromwhere == 'enter')
+			return true;
+		else
+			document.forms[0].submit();
 	
 	}
 
 }
 </script>
-<html:form action="classComparison.do?method=submit" onsubmit="return CCForm.validate(); " styleId="ccForm">
+<html:form action="classComparison.do?method=submit" onsubmit="return CCForm.validate('enter'); " styleId="ccForm">
 <html:errors property="queryErrors" />
 
 <p>
@@ -123,21 +148,13 @@ var CCForm = {
 </div>
 
 
-<div id="covariates" style="display:none">
+<div style="display:none;" id="covariates">
 	<b>Co-variates:</b>
-	<br/>
-	<!-- 
-	<input type="checkbox"/>Gender
-	<input type="checkbox"/>Smoking Status
-	<input type="checkbox"/>Age
-	<input type="checkbox"/>Residential Area
-	-->
-	
+	<br/>	
 		<html:checkbox property="selectedCovariates" value="age">Age</html:checkbox>
 		<html:checkbox property="selectedCovariates" value="gender">Gender</html:checkbox>
 		<html:checkbox property="selectedCovariates" value="smokingStatus">Smoking Status</html:checkbox>
-		<html:checkbox disabled="true" property="selectedCovariates" value="residentialArea">Residential Area</html:checkbox>
-			
+		<html:checkbox disabled="true" property="selectedCovariates" value="residentialArea">Residential Area</html:checkbox>	
 </div>
 
 <div>
@@ -184,14 +201,12 @@ var CCForm = {
 					</td>
 					<td style="vertical-align: middle;" id="menuSwapperButtons">
 						<b id="baselineButtons">
-						<input onclick="MenuSwapper.move($('selectedBaseline'),$('nonselectedGroups'));" value="&lt;&lt;Base" type="button">
-						<br/>	
+						<input onclick="MenuSwapper.move($('selectedBaseline'),$('nonselectedGroups'));" value="&lt;&lt;Base" type="button">	
 						<input onclick="if($('selectedBaseline').length && $('selectedBaseline').length>0){ alert('You have already selected a baseline.  Please unselect it first.'); return; }; MenuSwapper.move($('nonselectedGroups'),$('selectedBaseline'));" value="Base&gt;&gt;" type="button">
 						<br/><br/>
 						</b>
 						
 						<input onclick="MenuSwapper.move($('selectedGroups'),$('nonselectedGroups'));" value="&lt;&lt;" type="button" />
-						<br/>
 						<input onclick="MenuSwapper.move($('nonselectedGroups'),$('selectedGroups'));" value="&gt;&gt;" type="button" />
 					</td>
 					<td>
@@ -225,7 +240,7 @@ var CCForm = {
 
  
 <div style="text-align:center">
-	<button onclick="return CCForm.validate(); ">Submit Analysis</button>
+	<input type="button" onclick="return CCForm.validate(); " value="Submit Analysis" />
 </div>
 
 </div>
