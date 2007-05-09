@@ -24,7 +24,11 @@
 <!--  
 <script type="text/javascript">Help.insertHelp("View_results_overview", " align='right'", "padding:2px;");</script>
 -->
-<h2 style="text-align:center">View the results of your queries</h2>
+<h2 style="text-align:center">
+	<script type="text/javascript">Help.insertHelp("test", "align='right'");</script>
+	View the results of your queries
+</h2>
+
      <div class="viewResultsBoxTop">Report Results</div>    
      <div class="viewResultsBox">
        	<div id="loadingMsg" style="color:#a90101;font-weight:bold;">&nbsp;</div>

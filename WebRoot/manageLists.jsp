@@ -67,7 +67,11 @@
 <iframe id="RSIFrame" name="RSIFrame" style="width:0px; height:0px; border: 0px" src="blank.jsp"></iframe>
 <span id="info" style="display:none">&nbsp;</span>
 
-<h2 style="text-align:center">Manage Stored Application Lists</h2>
+<h2 style="text-align:center">
+<script type="text/javascript">Help.insertHelp("test", "align='right'");</script>
+Manage Stored Application Lists
+</h2>
+
 <!--  
 	<div style="text-align:center; font-size:11px;">
 	<%

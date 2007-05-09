@@ -1,5 +1,8 @@
 
-<h2 style="text-align:center">High Order Analysis</h2>
+<h2 style="text-align:center">
+<script type="text/javascript">Help.insertHelp("test", "align='right'");</script>
+High Order Analysis
+</h2>
 <div class="listboxtop">
 	Select an Analysis Type
 </div>
