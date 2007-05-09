@@ -87,14 +87,14 @@ th.specalt {
 
 .scroller	{
 	/* scroller table */
-	clear:both;
+	clear:right;
 }
 
 .standard{
 	float:right;
 	margin-right: 50px;
 	margin-top:10px;
-	}
+}
 .activePage a	{
 	text-decoration:underline;
 }
