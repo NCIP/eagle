@@ -84,3 +84,16 @@ th.specalt {
 	font: bold 10px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
 	color: #797268;
 }
+
+.scroller	{
+	/* scroller table */
+}
+
+.standard{
+	float:right;
+	margin-right: 50px;
+	margin-top:10px;
+	}
+.activePage a	{
+	text-decoration:underline;
+}
