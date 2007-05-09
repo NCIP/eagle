@@ -87,6 +87,7 @@ th.specalt {
 
 .scroller	{
 	/* scroller table */
+	clear:both;
 }
 
 .standard{
