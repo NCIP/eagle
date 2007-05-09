@@ -7,45 +7,8 @@
 	xmlns:i="http://caintegrator.nci.nih.gov/jsf"
 	xmlns:jsfExt="http://java.sun.com/jsf/extensions/dynafaces">
 	<head>
-		<style type="text/css">
-				body { font-family:arial; font-size: 11px; margin-top: 3px}
-				table{border: 1px; padding:0px; font-size:11px; }
-				.rowOdd {		
-				font-size: 11px;
-				background: #F2F2F2;
-				padding: 4px; 
-				border: 1px solid white;
-				color: #000000;
-				white-space:nowrap;		
-				}
-				.rowEven {		
-				font-size: 11px;
-				background: #D4D4D4;
-				padding: 4px; 
-				border: 1px solid white;
-				color: #000000;
-				white-space:nowrap;		
-				}
-				th{
-				background: #6EA667;
-				border: 1px solid white;
-				}
-				a { color:#2B2E4A;}
-				.listSize{margin:5px }
-				.boundary{
-				border:1px solid #6EA667;
-				background: #F2F2F2;
-				width:200px;
-				border-bottom:0px;
-				}
-				
-				#reportDiv table	{
-					width:100%;
-				}
-				#reportDiv table td	{
-					padding:3px;
-				}
-			</style>
+		<title>EAGLE Report</title>
+		<link rel="stylesheet" type="text/css" href="css/report.css" media="screen" />
 	</head>
 	<body>
 		
@@ -53,38 +16,40 @@
 
 			<jsfExt:scripts />
 			
-			<i:querySummary backingBean="#{glmReport}"/>
-			
-			<script type="text/javascript" src="js/lib/prototype.js"/>
-			<script type="text/javascript" src="js/lib/scriptaculous/effects.js"/>
-	
-			
+				<i:querySummary backingBean="#{glmReport}"/>
+						
 				<h:form id="glmForm">
 				
-		       		<br/><br/>
+		       		<ui:include src="/WEB-INF/facelets/reportStyle.xhtml">
+						<ui:param name="sortedBy" value="#{glmReport.sortedBy}"/>
+						<ui:param name="sortAscending" value="#{glmReport.sortAscending}"/>
+					</ui:include>
 		       		
 					<i:pager dataTable="glmTable" />
+					
 					<div id="reportDiv">
-					<h:dataTable id="glmTable" style="border:1px solid #6EA667"
+					<h:dataTable id="glmTable" style=""
 						value="#{glmReport.reportBeans}" var="entry"
 						rowClasses="rowOdd,rowEven" rows="50">
 						<h:column>
 							<f:facet name="header">
-							<h:commandLink actionListener="#{glmReport.sortDataList}" immediate="false">
+							<h:commandLink styleClass="reporterId" actionListener="#{glmReport.sortDataList}" immediate="false">
 	                    		<f:attribute name="sortField" value="reporterId" />
 	                    		<h:outputText value="Reporter" />	                    		
 	                		</h:commandLink>
         					</f:facet>
+        					<a href="#" onclick="spawnAnnotation('reporter', '#{entry.reporterId}');return false;">
 							<h:outputText
 								value="#{entry.reporterId}" />
-
+							</a>
 						</h:column>
 					
 						<c:forEach var="i" begin="1" end="#{glmReport.numberGroups}">
 							<h:column>
 								<f:facet name="header">
-								<h:commandLink actionListener="#{glmReport.sortDataList}" immediate="false">
+								<h:commandLink styleClass="groupName_#{i - 1}" actionListener="#{glmReport.sortDataList}" immediate="false">
 		                    		<f:attribute name="sortField" value="pvalues[#{i - 1}]" />
+		                    		<f:attribute name="sortedBy" value="groupName_#{i - 1}" />
 		                    		<h:outputText value="#{glmReport.groupNames[i - 1]}" />	                    		
 		                		</h:commandLink>
 	        					</f:facet>
@@ -96,12 +61,14 @@
 						
 						<h:column>
 							<f:facet name="header">
-							<h:commandLink actionListener="#{glmReport.sortDataList}" immediate="false">
+							<h:commandLink styleClass="geneSymbol" actionListener="#{glmReport.sortDataList}" immediate="false">
 	                    		<f:attribute name="sortField" value="geneSymbol" />
 	                    		<h:outputText value="Gene Symbol" />	                    		
 	                		</h:commandLink>
         					</f:facet>
-							<a href="#" onclick="return false;"><h:outputText value="#{entry.geneSymbol}" /></a>
+							<a href="#" onclick="spawnAnnotation('gene', '#{entry.geneSymbol}');return false;">
+								<h:outputText value="#{entry.geneSymbol}" />	
+							</a>
 
 						</h:column> 
 					</h:dataTable>

@@ -90,7 +90,9 @@
 	                    		<h:outputText value="Gene Symbol" />	                    		
 	                		</h:commandLink>
         					</f:facet>
-							<a href="#" onclick="spawnAnnotation('gene', '#{entry.geneSymbol}');return false;"><h:outputText value="#{entry.geneSymbol}" /></a>
+							<a href="#" onclick="spawnAnnotation('gene', '#{entry.geneSymbol}');return false;">
+								<h:outputText value="#{entry.geneSymbol}" />
+							</a>
 
 						</h:column> 
 					</h:dataTable>
