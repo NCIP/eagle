@@ -28,7 +28,7 @@ import org.hibernate.criterion.Expression;
 public class EpidemiologicalQueryHandler implements QueryHandler {
 
     private SessionFactory sessionFactory;
-    private static final String TARGET_FINDING_ALIAS = " finding";
+    //private static final String TARGET_FINDING_ALIAS = " finding";
 
     public Integer getResultCount(QueryDTO query) {
         throw new UnsupportedOperationException();
