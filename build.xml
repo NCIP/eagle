@@ -1,5 +1,6 @@
 <project name="target" default="build_war_anthill" basedir=".">
 	<property file="build.properties" />
+	<property file="test.properties" />
 
 	<!--
 		TARGET: COMPILE
@@ -137,10 +138,10 @@
 	</taskdef>
 	<selenese 
 	    suite="test\selenium\eagleTestSuite.html"
-	    browser="*firefox"
-	    results="test\selenium\results.html"
+	    browser="${browser}"
+	    results="${result_file}"
 	    multiWindow="false"
 	    timeoutInSeconds="60"
-		port="4442"
-	    startURL="http://localhost:8080"  />	
+		port="${server_port}"
+	    startURL="${test_url}"  />	
 </project>
