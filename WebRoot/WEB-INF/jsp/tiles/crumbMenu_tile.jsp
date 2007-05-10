@@ -2,9 +2,9 @@
 <%@ page import="gov.nih.nci.eagle.bean.UserInfoBean" %>
 <div id="crumb">
 <span style="float:left">
-<a style="" href="javascript:Help.popHelp('Welcome');">help</a>&nbsp;&nbsp;&nbsp;
+<a style="" href="javascript:Help.popHelp('Home_page');">help</a>&nbsp;&nbsp;&nbsp;
 <a style="" href="http://ncicb.nci.nih.gov/NCICB/support" target="_blank">support</a>&nbsp;&nbsp;&nbsp;
-<a style="" href="#f">user guide</a>&nbsp;&nbsp;&nbsp;
+<a style="" href="#" onclick="return false;" onmouseover="overlib('Coming soon...');" onmouseout="return nd();">user guide</a>&nbsp;&nbsp;&nbsp;
 </span>
 
 <% UserInfoBean userInfoBean = (UserInfoBean)session.getAttribute(EAGLEConstants.userInfoBean); %>

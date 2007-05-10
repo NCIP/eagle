@@ -6,7 +6,7 @@
 </ul>
 
 <h2>
-<script type="text/javascript">Help.insertHelp("test", "align='right'");</script>
+<script type="text/javascript">Help.insertHelp("Opening_page", "align='right'");</script>
 EAGLE Data Portal v 0.2
 </h2>
 

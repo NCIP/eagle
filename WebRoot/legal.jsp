@@ -1,6 +1,10 @@
 
 <div class="comments">
-<div class="odd"><p>LEGAL RULES OF THE ROAD</p></div>
+<div class="odd">
+<script type="text/javascript">Help.insertHelp("Rules_of_the_road", "align='right'");</script>
+
+<p>LEGAL RULES OF THE ROAD
+</p></div>
 <div>
 <p>
 The EAGLE database is provided as a public service by the National

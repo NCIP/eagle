@@ -21,11 +21,8 @@
 		location.replace("viewResults.do");
 	}
 </script>
-<!--  
-<script type="text/javascript">Help.insertHelp("View_results_overview", " align='right'", "padding:2px;");</script>
--->
 <h2 style="text-align:center">
-	<script type="text/javascript">Help.insertHelp("test", "align='right'");</script>
+	<script type="text/javascript">Help.insertHelp("View_results_overview", "align='right'");</script>
 	View the results of your queries
 </h2>
 

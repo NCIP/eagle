@@ -1,6 +1,6 @@
 
 <h2 style="text-align:center">
-<script type="text/javascript">Help.insertHelp("test", "align='right'");</script>
+<script type="text/javascript">Help.insertHelp("Analysis_overview", "align='right'");</script>
 High Order Analysis
 </h2>
 <div class="listboxtop">

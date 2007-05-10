@@ -131,7 +131,7 @@ var CCForm = {
 <p>
 <div class="comments">
 <h2 style="text-align:center">
-<script type="text/javascript">Help.insertHelp("test", "align='right'");</script>
+<script type="text/javascript">Help.insertHelp("Class_comparison", "align='right'");</script>
 Class Comparison Analysis
 </h2>
 <div>
