@@ -15,12 +15,14 @@ import gov.nih.nci.caintegrator.studyQueryService.FindingsManager;
 import gov.nih.nci.eagle.enumeration.SpecimenType;
 import gov.nih.nci.eagle.query.dto.ClassComparisonQueryDTOBuilder;
 import gov.nih.nci.eagle.query.dto.ClassComparisonQueryDTOImpl;
+import gov.nih.nci.eagle.util.CollisionDetector;
 import gov.nih.nci.eagle.web.reports.ClassComparisonReport;
 import gov.nih.nci.eagle.web.reports.FTestReport;
 import gov.nih.nci.eagle.web.reports.GLMReport;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -62,6 +64,14 @@ public class ClassComparisonAction extends DispatchAction{
 	
     public ActionForward submit(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response) throws IOException	{
+    		
+    		//verify the query name
+    		List<String> taskNames = new ArrayList<String>();
+    		Collection tasks = presentationCacheManager.getAllSessionTasks(request.getSession().getId());
+    		for(Object t : tasks){
+    			taskNames.add( ((Task)t).getId() );
+    		}
+    		((ClassComparisonForm)form).setAnalysisName(CollisionDetector.renameOnCollision( ((ClassComparisonForm)form).getAnalysisName() , taskNames ));
     	
     	      ccQueryDTO = (ClassComparisonQueryDTOImpl)dtoBuilder.buildQueryDTO(form, request.getSession().getId());  
     	      try {             
