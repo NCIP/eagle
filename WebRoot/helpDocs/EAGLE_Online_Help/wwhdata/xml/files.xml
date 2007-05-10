@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WebWorksHelpBook version="5.0" name="EAGLE Online Help" context="EAGLE_Online_Help" locale="en" xmlns="urn:WebWorks-Help-Book-Files-Schema">
+  <CommonWordsToSkip minlen="3">
+    a about after all also am an and another any are as at
+    be because been before being between both but by
+    came can come copyright corp corporation could
+    did do does
+    each etc
+    for from
+    get goes got
+    had has have he her here him himself his how
+    if in inc into is it its
+    let like
+    make many me might more most much must my
+    never nor not now
+    of off on one only or other our out over own
+    reserved rights
+    said same see set shall she should since so some still such
+    take than that the their them then there these they this those though through to too
+    under us use
+    very
+    was way we well were what when where which while who why will with would
+    yes yet you your
+   </CommonWordsToSkip>
+  <ScoringPrefs>
+    <meta name="keywords" weight="100" />
+    <meta name="description" weight="50" />
+    <meta name="summary" weight="50" />
+    <title weight="20" />
+    <h1 weight="15" />
+    <h2 weight="10" />
+    <caption weight="10" />
+    <h3 weight="7" />
+    <th weight="5" />
+    <h4 weight="5" />
+    <h5 weight="4" />
+    <h6 weight="3" />
+    <h7 weight="2" />
+  </ScoringPrefs>
+  <DocumentInfo>
+    <Document title="Welcome to the EAGLE Online Help" href="Welcome.1.1.html" />
+    <Document title="Online Help Tips" href="OnlineHelpBoilerplate.2.1.html" />
+    <Document title="Application Support" href="Application%20Support.3.1.html" />
+    <Document title="Getting Started with EAGLE" href="Eagle1.0_Getting_Started.4.1.html" />
+    <Document title="About EAGLE" href="Eagle1.0_Getting_Started.4.2.html" />
+    <Document title="EAGLE’s Opening Page" href="Eagle1.0_Getting_Started.4.3.html" />
+    <Document title="Logging In" href="Eagle1.0_Getting_Started.4.4.html" />
+    <Document title="Accepting EAGLE Provisions" href="Eagle1.0_Getting_Started.4.5.html" />
+    <Document title="EAGLE Home Page" href="Eagle1.0_Getting_Started.4.6.html" />
+    <Document title="EAGLE Menu" href="Eagle1.0_Getting_Started.4.7.html" />
+    <Document title="EAGLE Tabs" href="Eagle1.0_Getting_Started.4.8.html" />
+    <Document title="EAGLE Blue Panel" href="Eagle1.0_Getting_Started.4.9.html" />
+    <Document title="Application Support" href="Eagle1.0_Getting_Started.4.10.html" />
+    <Document title="Logging Out" href="Eagle1.0_Getting_Started.4.11.html" />
+    <Document title="Analysis" href="Eagle1.0_High_Order_Analysis.5.1.html" />
+    <Document title="Analysis Overview" href="Eagle1.0_High_Order_Analysis.5.2.html" />
+    <Document title="Performing a Class Comparison" href="Eagle1.0_High_Order_Analysis.5.3.html" />
+    <Document title="F-test: One Way ANOVA" href="Eagle1.0_High_Order_Analysis.5.4.html" />
+    <Document title="GLM or Generalized Linear Model Details" href="Eagle1.0_High_Order_Analysis.5.5.html" />
+    <Document title="Viewing Results" href="Eagle1.0_View%20Results.6.1.html" />
+    <Document title="Results Overview" href="Eagle1.0_View%20Results.6.2.html" />
+    <Document title="Class Comparison Report" href="Eagle1.0_View%20Results.6.3.html" />
+    <Document title="Resorting Column Results" href="Eagle1.0_View%20Results.6.4.html" />
+    <Document title="Showing Additional Information" href="Eagle1.0_View%20Results.6.5.html" />
+    <Document title="Downloading a Report" href="Eagle1.0_View%20Results.6.6.html" />
+    <Document title="Paging Through a Report" href="Eagle1.0_View%20Results.6.7.html" />
+    <Document title="Displaying Comparison Groups" href="Eagle1.0_View%20Results.6.8.html" />
+    <Document title="Managing Lists" href="Eagle1.0_Manage_Lists.7.1.html" />
+    <Document title="Managing Lists Overview" href="Eagle1.0_Manage_Lists.7.2.html" />
+    <Document title="Adding New Lists" href="Eagle1.0_Manage_Lists.7.3.html" />
+    <Document title="Combining Existing Lists to Create a New List" href="Eagle1.0_Manage_Lists.7.4.html" />
+    <Document title="Viewing the Data Items in a List" href="Eagle1.0_Manage_Lists.7.5.html" />
+    <Document title="Removing Data Items" href="Eagle1.0_Manage_Lists.7.6.html" />
+    <Document title="Deleting an Entire List" href="Eagle1.0_Manage_Lists.7.7.html" />
+    <Document title="Exporting a List" href="Eagle1.0_Manage_Lists.7.8.html" />
+    <Document title="Glossary" href="Eagle_Glossary.8.1.html" />
+  </DocumentInfo>
+  <TopicMap>
+    <Topic name="Welcome" href="Welcome.1.1.html#1052621" />
+    <Topic name="Opening_page" href="Eagle1.0_Getting_Started.4.3.html#1116016" />
+    <Topic name="Rules_of_the_road" href="Eagle1.0_Getting_Started.4.5.html#1125223" />
+    <Topic name="Home_page" href="Eagle1.0_Getting_Started.4.6.html#1124032" />
+    <Topic name="Analysis_overview" href="Eagle1.0_High_Order_Analysis.5.2.html#1067499" />
+    <Topic name="Class_comparison" href="Eagle1.0_High_Order_Analysis.5.3.html#1092908" />
+    <Topic name="View_results_overview" href="Eagle1.0_View%20Results.6.2.html#1067499" />
+    <Topic name="Class_comparison_report" href="Eagle1.0_View%20Results.6.3.html#1082972" />
+    <Topic name="Manage_lists_overview" href="Eagle1.0_Manage_Lists.7.2.html#1096151" />
+  </TopicMap>
+</WebWorksHelpBook>

@@ -1,0 +1,24 @@
+function FileData_Pairs(x)
+{
+x.t("getting","started");
+x.t("link","upper");
+x.t("upper","right-hand");
+x.t("steps.","eagle");
+x.t("right-hand","corner.");
+x.t("logging","getting");
+x.t("logging","logging");
+x.t("logging","log");
+x.t("started","eagle");
+x.t("eagle","logging");
+x.t("eagle","workspace");
+x.t("eagle","follow");
+x.t("eagle","opening");
+x.t("workspace","click");
+x.t("corner.","eagle");
+x.t("follow","steps.");
+x.t("click","logout");
+x.t("opening","page");
+x.t("page","appears.");
+x.t("logout","link");
+x.t("log","eagle");
+}

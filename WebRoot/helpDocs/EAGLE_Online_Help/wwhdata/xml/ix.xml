@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WebWorksHelpIX version="5.0" xmlns="urn:WebWorks-Help-Index-Schema">
+  <g t="A" o="002">
+    <i t="Adding">
+      <i t="list, combining">
+        <j l="30#1095145" />
+      </i>
+      <i t="new list (removing data items)">
+        <j l="32#1084855" />
+      </i>
+    </i>
+    <i t="Analyses">
+      <i t="Class Comparison">
+        <j l="16#1105110" />
+      </i>
+      <i t="High Order Analysis">
+        <j l="15" />
+      </i>
+    </i>
+    <i t="Application Support">
+      <j l="12#1125117" />
+    </i>
+    <i t="Application Support, caMOD">
+      <j l="2#1083528" />
+    </i>
+  </g>
+  <g t="B" o="002">
+    <i t="Baseline, assigning">
+      <j l="16#1104936" />
+    </i>
+    <i t="Blue panel">
+      <i t="manage list information">
+        <j l="31#1087880" />
+        <j l="34#1095711" />
+      </i>
+    </i>
+  </g>
+  <g t="C" o="002">
+    <i t="caArray">
+      <i t="glossary">
+        <j l="35#1056326" />
+      </i>
+    </i>
+    <i t="Class Comparison">
+      <i t="Analysis Form,description">
+        <j l="16#1105110" />
+      </i>
+      <i t="displaying groups">
+        <j l="26#1126882" />
+      </i>
+      <i t="High Order Analysis">
+        <j l="16#1105110" />
+      </i>
+      <i t="report description (View Results)">
+        <j l="21#1086398" />
+      </i>
+      <i t="report, downloading">
+        <j l="24#1126692" />
+      </i>
+      <i t="report, paging display">
+        <j l="25#1126927" />
+      </i>
+      <i t="report, sorting columns">
+        <j l="22#1126981" />
+      </i>
+    </i>
+    <i t="Class Comparison page, description">
+      <j l="16#1105112" />
+    </i>
+    <i t="Combining lists">
+      <j l="30#1095145" />
+    </i>
+    <i t="Creating">
+      <i t="lit, combining">
+        <j l="30#1095145" />
+      </i>
+      <i t="new list (removing data items)">
+        <j l="32#1084855" />
+      </i>
+    </i>
+  </g>
+  <g t="D" o="002">
+    <i t="Data items">
+      <i t="removing from a list">
+        <j l="32#1084855" />
+      </i>
+      <i t="viewing in a list">
+        <j l="31#1080938" />
+      </i>
+    </i>
+    <i t="Deleting">
+      <i t="list">
+        <j l="33#1082089" />
+      </i>
+    </i>
+    <i t="Difference option, description">
+      <j l="30#1092590" />
+    </i>
+    <i t="Downloading">
+      <i t="reports">
+        <j l="24#1126692" />
+      </i>
+    </i>
+  </g>
+  <g t="E" o="002">
+    <i t="EAGLE">
+      <i t="description of">
+        <j l="4#1123765" />
+      </i>
+      <i t="functions">
+        <j l="10#1123400" />
+      </i>
+      <i t="getting help">
+        <j l="9#1119007" />
+      </i>
+      <i t="logging in">
+        <j l="6#1094522" />
+      </i>
+      <i t="logging out">
+        <j l="13#1095031" />
+      </i>
+      <i t="menu">
+        <j l="9#1119007" />
+      </i>
+      <i t="stands for">
+        <j l="4#1123765" />
+      </i>
+      <i t="workspace">
+        <j l="7#1125243" />
+      </i>
+    </i>
+    <i t="Exporting">
+      <i t="list">
+        <j l="34#1095663" />
+      </i>
+    </i>
+  </g>
+  <g t="F" o="002">
+    <i t="F-test One Way ANOVA">
+      <i t="defined">
+        <j l="16#1106089" />
+        <j l="17" />
+      </i>
+      <i t="output">
+        <j l="21#1126583" />
+      </i>
+    </i>
+  </g>
+  <g t="G" o="002">
+    <i t="Generalized Linear Model (GLM)">
+      <i t="defined">
+        <j l="16#1105067" />
+      </i>
+    </i>
+    <i t="GLM, see Generalized Linear Model">
+      <j l="16#1105067" />
+    </i>
+    <i t="Glossary">
+      <j l="35#1056326" />
+    </i>
+  </g>
+  <g t="H" o="002">
+    <i t="Help">
+      <i t="obtaining">
+        <j l="9#1119007" />
+      </i>
+    </i>
+    <i t="Help link">
+      <j l="9#1124929" />
+    </i>
+    <i t="High Order Analysis">
+      <i t="Class Comparison">
+        <j l="16#1105110" />
+      </i>
+    </i>
+  </g>
+  <g t="I" o="002">
+    <i t="Intersect option, description">
+      <j l="30#1092588" />
+    </i>
+  </g>
+  <g t="J" o="002">
+    <i t="Join option, description">
+      <j l="30#1092586" />
+    </i>
+  </g>
+  <g t="L" o="002">
+    <i t="Legal Rules of the Road page">
+      <j l="7#1109711" />
+    </i>
+    <i t="Lists">
+      <i t="combining lists">
+        <j l="30#1095145" />
+      </i>
+      <i t="creating a new list">
+        <j l="32#1084855" />
+      </i>
+      <i t="deleting">
+        <j l="33#1082089" />
+      </i>
+      <i t="exporting">
+        <j l="34#1095663" />
+      </i>
+      <i t="removing data items">
+        <j l="32#1084855" />
+      </i>
+      <i t="viewing data items">
+        <j l="31#1080938" />
+      </i>
+    </i>
+    <i t="Logging in">
+      <i t="EAGLE">
+        <j l="6#1094522" />
+      </i>
+    </i>
+    <i t="Logging out">
+      <i t="EAGLE">
+        <j l="13#1095031" />
+      </i>
+    </i>
+    <i t="Logout link">
+      <j l="13#1100819" />
+    </i>
+  </g>
+  <g t="M" o="002">
+    <i t="Managing lists">
+      <i t="overview">
+        <j l="28#1079947" />
+      </i>
+    </i>
+  </g>
+  <g t="N" o="002">
+    <i t="NCICB Application Support">
+      <j l="2#1083528" />
+      <j l="12#1125117" />
+    </i>
+  </g>
+  <g t="O" o="002">
+    <i t="Overview">
+      <i t="high order analyses">
+        <j l="15#1079882" />
+      </i>
+      <i t="managing lists">
+        <j l="28#1079947" />
+      </i>
+      <i t="viewing output">
+        <j l="20#1108086" />
+      </i>
+    </i>
+  </g>
+  <g t="P" o="002">
+    <i t="Paging">
+      <i t="reports">
+        <j l="25#1126927" />
+      </i>
+    </i>
+  </g>
+  <g t="R" o="002">
+    <i t="Rembrandt Manage Lists page">
+      <i t="description">
+        <j l="28#1079947" />
+      </i>
+    </i>
+    <i t="Removing">
+      <i t="data items in a list">
+        <j l="32#1084855" />
+      </i>
+    </i>
+    <i t="Reports">
+      <i t="Class Comparison">
+        <j l="21#1086398" />
+      </i>
+    </i>
+  </g>
+  <g t="S" o="002">
+    <i t="Sorting">
+      <i t="report columns">
+        <j l="22#1126981" />
+      </i>
+    </i>
+    <i t="Support link">
+      <j l="9#1124954" />
+    </i>
+  </g>
+  <g t="T" o="002">
+    <i t="T-test Two Sample Test">
+      <i t="defined">
+        <j l="16#1105955" />
+      </i>
+      <i t="output">
+        <j l="21#1095939" />
+      </i>
+    </i>
+  </g>
+  <g t="U" o="002">
+    <i t="User guide link">
+      <j l="9#1124973" />
+    </i>
+  </g>
+  <g t="V" o="002">
+    <i t="View Results page">
+      <i t="description">
+        <j l="20#1108086" />
+      </i>
+    </i>
+    <i t="Viewing">
+      <i t="data items in a list">
+        <j l="31#1080938" />
+      </i>
+    </i>
+  </g>
+</WebWorksHelpIX>

@@ -1,0 +1,26 @@
+function FileData_Pairs(x)
+{
+x.t("creation","management");
+x.t("managing","lists");
+x.t("lists","managing");
+x.t("lists","lists");
+x.t("lists","overview");
+x.t("lists","further");
+x.t("lists","function");
+x.t("refine","queries");
+x.t("overview","managing");
+x.t("overview","eagle");
+x.t("centralizes","activities");
+x.t("patientdid","lists");
+x.t("further","refine");
+x.t("study-defined","patientdid");
+x.t("queries","facilitate");
+x.t("eagle","manage");
+x.t("function","centralizes");
+x.t("user-defined","study-defined");
+x.t("pertaining","creation");
+x.t("facilitate","analysis.");
+x.t("activities","pertaining");
+x.t("manage","lists");
+x.t("management","user-defined");
+}

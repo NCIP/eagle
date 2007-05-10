@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <!-- MOTW-DISABLED saved from url=(0014)about:internet -->
+    <title>GLM or Generalized Linear Model Details</title>
+    <link rel="StyleSheet" href="css/Eagle1.0_High_Order_Analysis.css" type="text/css" media="all" />
+    <link rel="StyleSheet" href="css/webworks.css" type="text/css" media="all" />
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/context.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/towwhdir.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="wwhdata/common/wwhpagef.js"></script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        var  WebWorksRootPath = "";
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        // Set reference to top level help frame
+        //
+        var  WWHFrame = WWHGetWWHFrame("", true);
+      // -->
+    </script>
+    <script type="text/javascript" language="JavaScript1.2" src="scripts/expand.js"></script>
+  </head>
+  <body style="" onLoad="WWHUpdate();" onUnload="WWHUnload();" onKeyDown="WWHHandleKeyDown((document.all||document.getElementById||document.layers)?event:null);" onKeyPress="WWHHandleKeyPress((document.all||document.getElementById||document.layers)?event:null);" onKeyUp="WWHHandleKeyUp((document.all||document.getElementById||document.layers)?event:null);">
+    <br />
+    <div class="WebWorks_Breadcrumbs" style="text-align: left;">
+      <a class="WebWorks_Breadcrumb_Link" href="Eagle1.0_High_Order_Analysis.5.1.html#1084442">Analysis</a> &gt; <a class="WebWorks_Breadcrumb_Link" href="Eagle1.0_High_Order_Analysis.5.3.html#1084442">Performing a Class Comparison</a> &gt; GLM or Generalized Linear Model Details</div>
+    <hr align="left" />
+    <blockquote>
+      <div class="Heading2"><a name="1084442">GLM or Generalized Linear Model Details</a></div>
+      <div class="Body_Text"><a name="1105987">A Generalized Linear Model is a linear regression model of the least squares for </a>multiple dependent variables. It works on non-normal data and is more flexible than a regular linear model. For a regular linear model, there is <span style="font-size: 12.0pt;">μ</span><span style="font-family: &quot;Times New Roman&quot;; font-size: 12.0pt;"> </span><span class="Emphasis" style="font-family: Arial; font-size: 11.0pt;">= X</span><span style="font-size: 12.0pt;">β</span>. Instead of using <span style="font-size: 12.0pt;">μ</span>, GLM uses <span class="Emphasis">g(</span><span style="font-size: 12.0pt;">μ</span><span class="Emphasis" style="font-family: Arial; font-size: 11.0pt; font-style: italic;">) = X</span><span style="font-size: 12.0pt;">β</span>, where <span class="Emphasis">g()</span> is usually a known monotonic function. This processing makes regression modeling more reliable and insensitive to the range of dependent variable. </div>
+      <div class="Body_Text"><a name="1106042">Most of time, </a><span class="Emphasis">g()</span> is a logarithm function. In multivariate regression, the effect of each variable on the right of the equal symbol can be captured by the model. Sometimes, the variables are not independent of each other, which means that a single variant regression can be significant when combined with other variables. The significance could be overlooked. GLM helps identify the most dominant variables and assists in revealing the significance after the adjustment of the known associated covariates.</div>
+      <div class="Body_Text"><a name="1105968">&nbsp;</a></div>
+      <script type="text/javascript" language="JavaScript1.2">
+        <!--
+          // Clear related topics
+          //
+          WWHClearRelatedTopics();
+
+          // Add related topics
+          //
+          WWHAddRelatedTopic("Performing a Class Comparison", "EAGLE_Online_Help", "Eagle1.0_High_Order_Analysis.5.3.html#1092908");
+          WWHAddRelatedTopic("Class Comparison Report", "EAGLE_Online_Help", "Eagle1.0_View%20Results.6.3.html#1082972");
+
+          document.writeln(WWHRelatedTopicsInlineHTML());
+        // -->
+      </script>
+    </blockquote>
+    <script type="text/javascript" language="JavaScript1.2">
+      <!--
+        document.write(WWHRelatedTopicsDivTag() + WWHPopupDivTag() + WWHALinksDivTag());
+      // -->
+    </script>
+  </body>
+</html>
