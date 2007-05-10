@@ -1,6 +1,5 @@
-<project name="target" default="build_war_anthill" basedir=".">
+<project name="eagle" default="build_war_anthill" basedir=".">
 	<property file="build.properties" />
-	<property file="test.properties" />
 
 	<!--
 		TARGET: COMPILE
@@ -130,18 +129,4 @@
 		</hibernatetool>
 	</target>
 	
-	<target name="selenese"/>
-	<taskdef resource="selenium-ant.properties">
-	    <classpath>
-	        <pathelement location="${source.nondeploy.lib.dir}/selenium-server.jar"/>
-	    </classpath>
-	</taskdef>
-	<selenese 
-	    suite="test\selenium\eagleTestSuite.html"
-	    browser="${browser}"
-	    results="${result_file}"
-	    multiWindow="false"
-	    timeoutInSeconds="60"
-		port="${server_port}"
-	    startURL="${test_url}"  />	
 </project>
