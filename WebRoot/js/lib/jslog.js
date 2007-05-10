@@ -32,7 +32,7 @@ ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF S
 4. MORE INFO/INSTRUCTIONS/UNCOMPRESSED VERSION: www.earthcode.com
 V.7
 */
-var config_enabled=true;
+var config_enabled=false;
 if(EC==null||typeof (EC)!="object"){
 var EC=new Object();
 }
