@@ -102,6 +102,13 @@ var CCForm = {
 			$('selectedGroups').style.backgroundColor = "yellow";
 			return false;
 		}
+		if($('statisticalMethod').selectedIndex == 1 && $('selectedGroups').length<2  )	{
+			//F-TEST, needs at least 2 grps
+			alert("Please select 2 or more comparison groups for this type of analysis");
+			$('selectedGroups').style.border="1px solid red";
+			$('selectedGroups').style.backgroundColor = "yellow";
+			return false;
+		}
 		if($('statisticalMethod').selectedIndex == 2 && ($('selectedBaseline').length<1 || $('selectedGroups').length<1) )	{
 			//GLM is 1 and M
 			alert("Please select only 1 baseline and 1 or more comparison groups for this type of analysis");
