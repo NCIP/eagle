@@ -14,7 +14,7 @@ var Help = {
 		document.write(htm);
 	},
 	popHelpMain: function(topic) {
-		var _url = "helpDocs/ISPY_Online_Help1.0/Welcome.1.1.html";
+		var _url = "helpDocs/EAGLE_Online_Help/Welcome.1.1.html";
 		window.open (_url+topic, "Help", "status,scrollbars,resizable,width=800,height=500");  
 		//use the below if you want the "always on top" feature, most dont like it		
 		window.open (_url+topic, "Help", "alwaysRaised,dependent,status,scrollbars,resizable,width=800,height=500");  
