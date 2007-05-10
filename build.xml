@@ -128,4 +128,19 @@
 			<hbm2ddl drop="true" create="true" export="false" outputfilename="target-ddl.sql" delimiter=";" format="true" />
 		</hibernatetool>
 	</target>
+	
+	<target name="selenese"/>
+	<taskdef resource="selenium-ant.properties">
+	    <classpath>
+	        <pathelement location="${source.nondeploy.lib.dir}/selenium-server.jar"/>
+	    </classpath>
+	</taskdef>
+	<selenese 
+	    suite="test\selenium\eagleTestSuite.html"
+	    browser="*firefox"
+	    results="test\selenium\results.html"
+	    multiWindow="false"
+	    timeoutInSeconds="60"
+		port="4442"
+	    startURL="http://localhost:8080"  />	
 </project>
