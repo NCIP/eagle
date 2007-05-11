@@ -11,11 +11,14 @@
 
 	<ui:composition>
 		<ui:include src="/WEB-INF/facelets/reportHeader.xhtml" />
-		<div
-			style="width:100%; height:25px; background-color:#fff; text-align:right;">
+		<div style="width:100%; height:25px; background-color:#fff; text-align:right;">
 			<h:form id="csvForm">
-				<span style="float:left"> <h:outputText
-						value="Query Name: #{backingBean.queryDTO.queryName}" /> </span>
+				<span style="float:left">
+					<a href="#" onclick="Effect.toggle('queryDetails');"> 
+						<h:outputText value="Query Name: #{backingBean.queryDTO.queryName}" /> 
+					</a>
+				</span>
+				
 				<span style="padding-right:20px; vertical-align:middle;"> 
 					<script type="text/javascript">Help.insertHelp("Class_comparison_report");</script>
 				
@@ -26,6 +29,24 @@
 					</h:commandLink> | <img src="images/eagle/24-tab-close.png" /> <a href="#"
 					onclick="javascript:window.close();">Close</a> </span>
 			</h:form>
+		</div>
+		<div style="background-color:#fff; padding-left:20px;" id="queryDetails">
+			<b>Specimen Type: </b> #{backingBean.queryDTO.specimenTypeEnum.name} <br/>
+			<b>Statistical Method: </b> #{backingBean.queryDTO.statisticTypeDE.valueObject} 
+
+			<c:if test="#{backingBean.queryDTO.coVariateDEs != null}">
+				<b>Covariates: </b>
+				<c:forEach var="covs" begin="0" items="#{backingBean.queryDTO.coVariateDEs}" varStatus="i"> 
+					#{covs.valueObject}
+					<c:if test="#{!i.last}">, </c:if> 
+				</c:forEach>
+			</c:if>
+			<c:if test="#{backingBean.queryDTO.exprFoldChangeDE != null}">
+				<b>Fold Change: </b> #{backingBean.queryDTO.exprFoldChangeDE.valueObject} 
+			</c:if>
+			<c:if test="#{backingBean.queryDTO.statisticalSignificanceDE != null}">
+				<b>p-Value: </b> #{backingBean.queryDTO.statisticalSignificanceDE.valueObject}<br/>
+			</c:if>
 		</div>
 
 		<h:form id="queryForm">
@@ -47,17 +68,17 @@
 						</h:column>
 					</h:dataTable>
 				</c:if>
-			<h:dataTable value="#{backingBean.comparisonGroups}" var="group">
-				<h:column>
-					<a href="#" class="groupReportLinks"
-						onclick="new Effect.toggle('comparisonPatients', 'slide'); return false;">#{group}</a>
-
-					<div id="comparisonPatients_#{group}" style="display:none">
-						<i:patientListTable
-							patientList="#{backingBean.patientInfoMap[group]}" />
-					</div>
-				</h:column>
-			</h:dataTable>
+				<h:dataTable value="#{backingBean.comparisonGroups}" var="group">
+					<h:column>
+						<a href="#" class="groupReportLinks"
+							onclick="new Effect.toggle('comparisonPatients', 'slide'); return false;">#{group}</a>
+	
+						<div id="comparisonPatients_#{group}" style="display:none">
+							<i:patientListTable
+								patientList="#{backingBean.patientInfoMap[group]}" />
+						</div>
+					</h:column>
+				</h:dataTable>
 			</div>
 		</h:form>
 	</ui:composition>
