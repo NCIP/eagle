@@ -99,6 +99,9 @@ th.specalt {
 	margin-right: 50px;
 	margin-top:10px;
 }
+.scroller a	{
+	text-decoration:none;
+}
 .activePage a	{
 	text-decoration:underline;
 }
