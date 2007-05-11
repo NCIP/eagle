@@ -20,7 +20,6 @@ var Help = {
 		var pth = arguments[3] ? arguments[3] : "";
 		var htm = "<img "+ ex + " style=\"cursor:pointer;border:0px;"+ exst + "\" src=\""+pth+"images/eagle/24-message-info.png\" alt=\"help\" id=\"helpIcon\" name=\"helpIcon\" onclick=\"Help.popHelp(\'"+topic+"\');\" />";
 		if($(eid))	{
-		alert(htm);
 			$(eid).innerHTML = htm;
 		}
 		return htm;
