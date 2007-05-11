@@ -53,6 +53,9 @@ var CCForm = {
 		//clear the baseline
 		MenuSwapper.move($('selectedBaseline'),$('nonselectedGroups'));
 		
+		//remove all options
+		$('nonselectedGroups').options.length = 0;
+		
 		if(el.selectedIndex != 0)	{
 			//tissue
 			//$('nonselectedGroups').innerHTML = $('tissueGroupsOptions').innerHTML;
