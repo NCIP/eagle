@@ -36,6 +36,10 @@ td a, th a	{
 	font-weight:normal;
 }
 
+td a 	{
+	text-decoration:underline;	
+}
+
 #reportDiv th {
 	font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
 	color: #4f6b72;
