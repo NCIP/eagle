@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.TreeMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -96,10 +97,18 @@ public class ClassComparisonAction extends DispatchAction{
     	UserListBeanHelper helper = new UserListBeanHelper(request.getSession());
         List<UserList> patientLists = helper.getLists(ListType.PatientDID);
         List<LabelValueBean> sampleGroups = new ArrayList<LabelValueBean>();
+        
+        TreeMap tm = new TreeMap();
         for(UserList patientList: patientLists){
+        	tm.put(patientList.getName(), patientList);
         	//sampleGroups.add(new LabelValueBean(patientList.getName(),patientList.getClass().getCanonicalName() + "#" + patientList.getName()));
-        	sampleGroups.add(new LabelValueBean(patientList.getName(),patientList.getName()));
+        	//sampleGroups.add(new LabelValueBean(patientList.getName(),patientList.getName()));
         }
+        for(Object u : tm.values()){
+        	UserList ul = (UserList)u;
+           	sampleGroups.add(new LabelValueBean(ul.getName(),ul.getName()));
+        }
+        
         ((ClassComparisonForm) form).setExistingGroups(sampleGroups); 
         
         //for tissue, we can not do case v control since its using seperate rbinary files for now
