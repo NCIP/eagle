@@ -13,6 +13,18 @@ var Help = {
 		var htm = "<img "+ ex + " style=\"cursor:pointer;border:0px;"+ exst + "\" src=\""+pth+"images/eagle/24-message-info.png\" alt=\"help\" id=\"helpIcon\" name=\"helpIcon\" onclick=\"Help.popHelp(\'"+topic+"\');\" />";
 		document.write(htm);
 	},
+	insertHelpInto: function(topic)	{
+		var eid = "helpC";
+		var ex = arguments[1] ? arguments[1] : "";
+		var exst = arguments[2] ? arguments[2] : "";
+		var pth = arguments[3] ? arguments[3] : "";
+		var htm = "<img "+ ex + " style=\"cursor:pointer;border:0px;"+ exst + "\" src=\""+pth+"images/eagle/24-message-info.png\" alt=\"help\" id=\"helpIcon\" name=\"helpIcon\" onclick=\"Help.popHelp(\'"+topic+"\');\" />";
+		if($(eid))	{
+		alert(htm);
+			$(eid).innerHTML = htm;
+		}
+		return htm;
+	},
 	popHelpMain: function(topic) {
 		var _url = "helpDocs/EAGLE_Online_Help/Welcome.1.1.html";
 		window.open (_url+topic, "Help", "status,scrollbars,resizable,width=800,height=500");  
