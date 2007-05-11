@@ -67,6 +67,14 @@
 			</fileset>
 		</copy>
 	</target>
+	<target name="copy_config_files" depends="compile">
+		<copy todir="${anthill.artifacts.dir}">
+			<fileset dir="conf">
+				<include name="*.xml"/>
+				<include name="*.properties"/>
+			</fileset>
+		</copy>
+	</target>
 		
 		<target name="config-jbossmq">
 			<copy file="conf\target-jbossmq-destinations-service.xml" todir="${jboss.deploy.dir}\jms"/>
@@ -76,7 +84,7 @@
 		This will build the war file and should be used instead of the 
 		build_war_anthill task (which is intended to be used by SCM)
 	-->
-	<target name="build_war_anthill" depends="copy_resources">
+	<target name="build_war_anthill" depends="copy_resources, copy_config_files">
 		<delete file="${app.war.name}.war"/>
 		<war destfile="${app.war.name}.war" webxml="${webapp.dir}/WEB-INF/web.xml">
 			<fileset file="${webapp.dir}/*.*"/>
