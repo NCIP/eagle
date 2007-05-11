@@ -67,7 +67,7 @@
 
 <h2 style="text-align:center">
 <script type="text/javascript">Help.insertHelp("Manage_lists_overview", "align='right'");</script>
-Manage Stored Application Lists
+Manage Lists
 </h2>
 
 <!--  
