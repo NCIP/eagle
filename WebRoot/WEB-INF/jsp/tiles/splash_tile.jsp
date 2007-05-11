@@ -7,7 +7,7 @@
 
 <h2>
 <script type="text/javascript">Help.insertHelp("Opening_page", "align='right'");</script>
-EAGLE Data Portal v 0.2
+EAGLE Data Portal v0.1
 </h2>
 
 <p>

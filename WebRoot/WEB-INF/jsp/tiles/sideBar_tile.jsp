@@ -3,7 +3,7 @@
 <div id="sidebar">
 
 <div class="release">
-	<p>EAGLE release v .02</p>
+	<p>EAGLE release v0.1</p>
 </div>
 <%
 	ListType[] lts = EAGLEListFilter.values();
