@@ -16,6 +16,11 @@
 	
 	<script language="javascript" src="js/lib/browserSniff.js"></script>
 	<script language="javascript" src="js/Help.js"></script>
+	<script type="text/javascript">
+		var ol_fgcolor = "#E0E0E0";
+		var ol_bgcolor = "#6085CC";
+		//var ol_capicon = "images/eagle/24-message-info.png";
+	</script>
 	<script language="javascript" src="js/lib/overlib_mini.js"></script>
 	<script language="javascript" src="js/lib/overlib_hideform_mini.js"></script>	
 	<script language="javascript" src="js/common/a_functions.js"></script>	
