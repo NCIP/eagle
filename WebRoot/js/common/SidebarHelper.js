@@ -26,6 +26,12 @@ var SidebarHelper = {
 					if($('sidebar'+listType+'UL'))
 						$('sidebar'+listType+'UL').innerHTML = ""; //wipe it first
 					
+					//sort these by name
+					//var compareText = function(a,b) { return a.listName - b.listName; }
+					var compareText = function(a,b) { x = 0; if (a.listName < b.listName) x=-1; else x=1; return x;}
+					var sortedLists = lists.sort(compareText);
+					lists = sortedLists;
+					
 					var tst = "";
 					tst = "<ul>";
 					for(var t=0; t<lists.length; t++)	{

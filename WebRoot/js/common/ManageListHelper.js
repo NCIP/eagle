@@ -26,6 +26,11 @@
 					
 					var lists = listContainer.listItems;
 					
+					//sort these by name
+					var compareText = function(a,b) { x = 0; if (a.listName < b.listName) x=-1; else x=1; return x;}
+					var sortedLists = lists.sort(compareText);
+					lists = sortedLists;
+					
 					//Note:  $('..'+"ListDiv") needs be be defined in the HTML src
 					// ^ now, should be auto generated 
 					
