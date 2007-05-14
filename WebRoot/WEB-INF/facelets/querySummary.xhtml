@@ -55,32 +55,23 @@
 			<c:if test="#{backingBean.baselineGroups != null}">
 				(baseline)
 			</c:if>
-			<div id="groupReportsContainer" style="display:none;">
+			
 				<c:if test="#{backingBean.baselineGroups != null}">
-					<h:dataTable value="#{backingBean.baselineGroups}" var="group">
-						<h:column>
-							<a href="#" class="groupReportLinks"
-								onclick="new Effect.toggle('baselinePatients', 'slide');return false;">#{group}</a>
-
-							<div id="comparisonPatients_#{group}" style="display:none">
-								<i:patientListTable
-									patientList="#{backingBean.patientInfoMap[group]}" />
-							</div>
-						</h:column>
-					</h:dataTable>
+					<c:forEach var="group" begin="0" items="#{backingBean.baselineGroups}" varStatus="i"> 
+						<h:commandLink value="#{group}" target="baselineWindow" action="#{backingBean.displayGroup}">
+							<f:param name="group" value="#{group}" /> 
+						</h:commandLink>
+					</c:forEach>
 				</c:if>
-				<h:dataTable value="#{backingBean.comparisonGroups}" var="group">
-					<h:column>
-						<a href="#" class="groupReportLinks"
-							onclick="new Effect.toggle('comparisonPatients', 'slide'); return false;">#{group}</a>
-	
-						<div id="comparisonPatients_#{group}" style="display:none">
-							<i:patientListTable
-								patientList="#{backingBean.patientInfoMap[group]}" />
-						</div>
-					</h:column>
-				</h:dataTable>
-			</div>
+				
+				<c:forEach var="group" begin="0" items="#{backingBean.comparisonGroups}" varStatus="i"> 
+					<span style="margin-left:5px;">
+					<h:commandLink value="#{group}" target="baselineWindow" action="#{backingBean.displayGroup}">
+						<f:param name="group" value="#{group}" /> 
+					</h:commandLink>	
+					</span>
+				</c:forEach>
+
 		</h:form>
 	</ui:composition>
 </html>

@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.el.ValueExpression;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.servlet.http.HttpServletResponse;
@@ -69,6 +70,31 @@ public class FTestReport {
         return new ArrayList(getQueryDTO().getComparisonGroupsMap().keySet());
     }
 
+    public String displayGroup() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        String val = (String) context.getExternalContext()
+                .getRequestParameterMap().get("group");
+        List<String> itemsFromList = null;
+        if(getQueryDTO().getBaselineGroupMap()!=null && getQueryDTO().getBaselineGroupMap().containsKey(val))
+            itemsFromList = getQueryDTO().getBaselineGroupMap().get(val);
+        else
+            itemsFromList = getQueryDTO().getComparisonGroupsMap().get(val);
+
+        ValueExpression vex = context.getApplication().getExpressionFactory()
+                .createValueExpression(context.getELContext(),
+                        "#{groupReport}", PatientGroupReport.class);
+        PatientGroupReport report = (PatientGroupReport) vex.getValue(context
+                .getELContext());
+        
+       // PatientGroupManager man = new PatientGroupManager();
+        PatientGroupManager man = (PatientGroupManager)SpringContext.getBean("patientManager");
+        
+        List patientInfo = man.getPatientInfo(itemsFromList);
+        report.setPatients(patientInfo);
+        report.setGroupName(val);
+        return "groupReport";
+    }
+    
     public Collection getReportBeans() {
         Collections.sort(reportBeans, sortComparator);
         return reportBeans;

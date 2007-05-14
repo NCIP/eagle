@@ -89,9 +89,12 @@ public class ClassComparisonReport {
         PatientGroupReport report = (PatientGroupReport) vex.getValue(context
                 .getELContext());
         
-        PatientGroupManager man = new PatientGroupManager();
+       // PatientGroupManager man = new PatientGroupManager();
+        PatientGroupManager man = (PatientGroupManager)SpringContext.getBean("patientManager");
+        
         List patientInfo = man.getPatientInfo(itemsFromList);
         report.setPatients(patientInfo);
+        report.setGroupName(val);
         return "groupReport";
     }
 
