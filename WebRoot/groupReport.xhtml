@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:i="http://caintegrator.nci.nih.gov/jsf"
+	xmlns:jsfExt="http://java.sun.com/jsf/extensions/dynafaces">
+	<head>
+		<title>EAGLE Report</title>
+		<link rel="stylesheet" type="text/css" href="css/report.css" media="screen" />
+	</head>
+	<body>
+		<ui:include src="/WEB-INF/facelets/reportHeader.xhtml" />
+		<f:view id="glmView">
+
+			<jsfExt:scripts />
+					<div style="width:100%; height:25px; background-color:#fff; text-align:right;">
+			<h:form id="csvForm">
+				<span style="float:left">
+					Group Name: #{groupReport.groupName}
+				</span>
+				
+				<span style="padding-right:20px; vertical-align:middle;"> 
+					<span id="helpC"></span>
+					<script type="text/javascript">try { Help.insertHelpInto("");}catch(e){}</script>
+				
+					<img src="images/eagle/24-columns.png" /> 
+					<h:commandLink
+						actionListener="#{groupReport.generateCSV}" immediate="false">
+						<h:outputText value="Download CSV" />
+					</h:commandLink> | <img src="images/eagle/24-tab-close.png" /> <a href="#"
+					onclick="javascript:window.close();">Close</a> </span>
+			</h:form>
+		</div>
+		<br/>
+			<div id="reportDiv">
+				<i:patientListTable patientList="#{groupReport.patients}" />			
+			</div>
+		</f:view>
+
+	</body>
+</html>
