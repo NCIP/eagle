@@ -90,6 +90,7 @@
 			<fileset file="${webapp.dir}/*.*"/>
 			<zipfileset dir="${webapp.dir}/css" prefix="css"/>
 			<zipfileset dir="${webapp.dir}/images" prefix="images"/>
+			<zipfileset dir="${webapp.dir}/helpDocs" prefix="helpDocs"/>
 			<zipfileset dir="${webapp.dir}/js" prefix="js"/>
 			<!-- <zipfileset dir="${webapp.dir}/tutorials" prefix="tutorials"/> needed for later -->
 			<!-- <zipfileset dir="${webapp.dir}/xsl" prefix="xsl"/> -->
