@@ -122,7 +122,10 @@ var CCForm = {
 			$('nonselectedGroups').style.backgroundColor = "yellow";
 			return false;
 		}
-		
+		//unselect all the "not moved over" lists
+		for (i=0;i<$('nonselectedGroups').options.length;i++){
+			$('nonselectedGroups').options[i].selected=false;
+		}
 		//save the selectedGroups
 		MenuSwapper.saveMe( $('selectedGroups'),$('nonselectedGroups') );
 		
