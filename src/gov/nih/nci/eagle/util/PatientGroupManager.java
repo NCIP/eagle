@@ -74,6 +74,8 @@ public class PatientGroupManager {
                        smoke = "FORMER";
                    } else if(values[2].equals("2.00")) {
                       smoke = "CURRENT";
+                   } else	{ //some are 9.0 == n/a
+                	   smoke = "N/A";
                    }
                    
                    patient.put("smoking_status", smoke);

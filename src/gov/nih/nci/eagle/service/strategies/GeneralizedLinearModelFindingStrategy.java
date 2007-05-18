@@ -128,9 +128,10 @@ public class GeneralizedLinearModelFindingStrategy extends
 		                    	annotationMap.put("sex", pm.get("sex").toString());
 		                    if(coVariateTypes.contains(CoVariateType.Age))
 		                    	annotationMap.put("age", pm.get("age").toString());
-		                    if(coVariateTypes.contains(CoVariateType.SmokingStatus))
-		                    	annotationMap.put("smoking_status", pm.get("smoking_status").toString());
-	
+		                    if(coVariateTypes.contains(CoVariateType.SmokingStatus))	{
+		                    	String ss = pm.get("smoking_status") != null ? pm.get("smoking_status").toString() : "N/A";
+		                    	annotationMap.put("smoking_status", ss);
+		                    }
 		                    baseline.addPatientData(name, annotationMap);
 	                	}
 	                }
@@ -150,8 +151,10 @@ public class GeneralizedLinearModelFindingStrategy extends
 		                    	annotationMap.put("sex", pm.get("sex").toString());
 		                    if(coVariateTypes.contains(CoVariateType.Age))
 		                    	annotationMap.put("age", pm.get("age").toString());
-		                    if(coVariateTypes.contains(CoVariateType.SmokingStatus))
-		                    	annotationMap.put("smoking_status", pm.get("smoking_status").toString());
+		                    if(coVariateTypes.contains(CoVariateType.SmokingStatus))	{
+		                    	String ss = pm.get("smoking_status") != null ? pm.get("smoking_status").toString() : "N/A";
+		                    	annotationMap.put("smoking_status", ss);
+		                    }
 		                    comparison.addPatientData(name, annotationMap);
 	                	}
 	                	glmsgs.add(comparison);
