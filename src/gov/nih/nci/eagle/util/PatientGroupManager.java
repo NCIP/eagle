@@ -80,8 +80,12 @@ public class PatientGroupManager {
                    
                    patient.put("smoking_status", smoke);
                    patient.put("age", values[3]);
-                   if(values.length > 4)
+                   if(values.length > 4)	{
                        patient.put("grade", values[4]);
+                   }
+                   else	{
+                	 patient.put("grade", "N/A");  //no grade for these  
+                   }
                    patientMap.put(values[0], patient);
                    line = br.readLine();
                 }
