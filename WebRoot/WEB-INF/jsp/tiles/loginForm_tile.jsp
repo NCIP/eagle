@@ -24,7 +24,7 @@ if(session!=null && session.getAttribute(EAGLEConstants.userInfoBean)==null ) {
 		<td>password:<br/><html:password styleId="password" property="password" /></td>
 	</tr>
 	<tr>
-		<td style="text-align:center"><button onclick="$('loginForm').submit();">Login</button></td>
+		<td style="text-align:center"><input type="submit" value="Login" /></td>
 	</tr>
 </table>
 </html:form>
