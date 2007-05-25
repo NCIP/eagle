@@ -76,6 +76,7 @@ var EpiQuery = {
 	<div>
 		<b>Patients</b>
 		<html:select property="patientGroup">
+			<option value="">All</option>
 			<html:optionsCollection property="existingGroups"/>
 		</html:select>
 	</div>
@@ -88,6 +89,7 @@ var EpiQuery = {
 	<div>
 		<b>Smoking Status (Cigarette)</b>
 		<html:select property="smokingStatus">
+			<option value="">Any</option>
 			<html:optionsCollection property="existingSmokingStatus"/>
 		</html:select>
 	</div>
@@ -120,6 +122,7 @@ var EpiQuery = {
 	<div>
 		<b>Fagerstrom</b>
 		<html:select property="fagerstromScore">
+			<option value="">Any</option>
 			<html:option value="1">1</html:option>
 			<html:option value="2">2</html:option>
 		</html:select>
@@ -133,12 +136,14 @@ var EpiQuery = {
 		<b>Age Range</b>
 		
 		<html:select property="ageLower" style="width:60px">
+			<option value="">N/A</option>
 			<html:option value="10">10</html:option>
 			<html:option value="20">20</html:option>
 			<html:option value="30">40</html:option>
 		</html:select>
 		 to 
 		<html:select property="ageUpper" style="width:60px">
+			<option value="">N/A</option>
 			<html:option value="80">80</html:option>
 			<html:option value="90">90</html:option>
 		</html:select>
@@ -148,6 +153,7 @@ var EpiQuery = {
 	<div>
 		<b>Self Reported Gender</b>
 		<html:select property="gender">
+			<option value="">Any</option>
 			<html:optionsCollection property="existingGender"/>
 		</html:select>
 	</div>
@@ -192,6 +198,7 @@ var EpiQuery = {
 	<div>
 		<b>Education Level (highest)</b><br/>
 		<html:select property="educationLevel">
+			<option value="">Any</option>
 			<html:optionsCollection property="existingEducationLevel"/>
 		</html:select>
 	</div>
@@ -211,6 +218,7 @@ var EpiQuery = {
 	<div>
 		<b>Residential Area</b>
 			<html:select property="residentialArea">
+				<option value="">Any</option>
 				<html:optionsCollection property="existingResidentialArea"/>
 			</html:select>
 	</div>
@@ -218,6 +226,7 @@ var EpiQuery = {
 	<div>
 		<b>Maritial Status</b>
 			<html:select property="maritalStatus">
+				<option value="">Any</option>
 				<html:optionsCollection property="existingMaritalStatus"/>
 			</html:select>
 	</div>
@@ -225,6 +234,7 @@ var EpiQuery = {
 	<div>
 		<b>Religion</b>
 			<html:select property="religion">
+				<option value="">Any</option>
 				<html:optionsCollection property="existingReligion"/>
 			</html:select>
 	</div>
@@ -377,6 +387,10 @@ var EpiQuery = {
 		<div>
 		<b>Relatives With Lung Cancer</b>
 		<br/>
+		Did one of your first-degree relatives (mother, father, siblings, or childred) have lung cancer?
+		<br/><html:checkbox property="familyLungCancer" value="yes" />yes
+		<br/>
+		<!--  
 		select which relatives had lung cancer
 		<br />
 		<logic:iterate id="epiForm" name="epiForm" property="existingRelatives" scope="request">
@@ -386,6 +400,7 @@ var EpiQuery = {
 			<bean:write name="epiForm" property="label"/> 
 		</logic:iterate>
 		<br />
+		-->
 	</div>
 	
 	<div>
