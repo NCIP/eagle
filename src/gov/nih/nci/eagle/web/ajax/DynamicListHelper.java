@@ -2,7 +2,10 @@ package gov.nih.nci.eagle.web.ajax;
 
 import gov.nih.nci.caintegrator.application.lists.ListSubType;
 import gov.nih.nci.caintegrator.application.lists.ListType;
+import gov.nih.nci.caintegrator.application.lists.UserListBeanHelper;
 import gov.nih.nci.caintegrator.application.lists.ajax.CommonListFunctions;
+import gov.nih.nci.eagle.enumeration.SpecimenType;
+import gov.nih.nci.eagle.service.validation.ListValidationService;
 import gov.nih.nci.eagle.util.EAGLEListFilter;
 import gov.nih.nci.eagle.util.EAGLEListValidator;
 
@@ -12,6 +15,15 @@ import java.util.List;
 
 import javax.naming.OperationNotSupportedException;
 import javax.servlet.http.HttpSession;
+
+import org.apache.commons.lang.StringUtils;
+import org.directwebremoting.WebContext;
+import org.directwebremoting.WebContextFactory;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
+
+import uk.ltd.getahead.dwr.ExecutionContext;
 
 public class DynamicListHelper {
 /**
@@ -23,7 +35,8 @@ public class DynamicListHelper {
 	
 	public DynamicListHelper() {}
 	
-    	
+    private ListValidationService listValidationService;
+   	
 	public static String createGenericList(String listType, List<String> list, String name) throws OperationNotSupportedException	{
         try {
             String[] tps = CommonListFunctions.parseListType(listType);
@@ -59,8 +72,63 @@ public class DynamicListHelper {
 		for(ListType l  : EAGLEListFilter.values())	{
 			listTypesList.add(l.toString());
 		}
+		
+		/*
 		//call CommonListFunctions.getAllLists(listTypesList);
+		//deconstruct the json array and add some attributes for each samples (blood-y/n, tissuetumor-y/n, tissuenormal-y/n, or 1 field called specimens with these enums)
+		JSONArray listContainerArray = new JSONArray();
+		Object o = JSONValue.parse(CommonListFunctions.getAllLists(listTypesList));
+		listContainerArray = (JSONArray)o;
+		for(Object lc : listContainerArray){
+			JSONObject listContainer = (JSONObject)lc;
+			//list container: [listType], [listItems ]
+			//listItems = JSONArray of JSONObjects
+			JSONArray listItems = new JSONArray();
+			Object li = listContainer.get("listItems");
+			listItems = (JSONArray)li;
+			for(Object l : listItems){
+				JSONObject myList = (JSONObject)l;
+				String items = myList.get("listItems").toString();
+				//items in comma seperated format
+			}
+		}
+		return listContainerArray.toString();
+		*/
+		
 		return CommonListFunctions.getAllLists(listTypesList);
+	}
+	
+	public String getDetailsFromList(String listName)	{
+		WebContext ctx = WebContextFactory.get();
+		String cacheId = ctx.getSession(false).getId();
+		UserListBeanHelper ulbh = new UserListBeanHelper(cacheId);
+		String jdetails = ulbh.getDetailsFromList(listName);
+		Object o = JSONValue.parse(jdetails);
+		//object [string -> listName], [string -> listType], [jsonArray->validItems]
+		//validItems array of JSONObjects [name], [notes], [rank]
+		JSONObject listDetails = (JSONObject)o;
+		Object oo = listDetails.get("validItems");
+		JSONArray validItems = (JSONArray)oo;
+		for(Object ooo : validItems){
+			JSONObject itemDesc = (JSONObject)ooo;
+			//see which specimens this item has
+			ArrayList specimens = new ArrayList();
+			for(SpecimenType sp : SpecimenType.values()){
+				List justone = new ArrayList();
+				justone.add(itemDesc.get("name"));
+				List shouldbeone = listValidationService.validateList(justone, sp);
+				if(shouldbeone.size()==1){
+					//hit
+					specimens.add(sp.toString());
+				}
+				else	{
+					specimens.add("");
+				}
+			}
+			itemDesc.put("specimens", StringUtils.join(specimens.toArray(), ","));
+		}
+
+		return listDetails.toString();
 	}
 	
 	public static String exportListasTxt(String name, HttpSession session){
@@ -70,5 +138,13 @@ public class DynamicListHelper {
 		
 	public static String uniteLists(String[] sLists, String groupName, String groupType, String action)	{	
 		return CommonListFunctions.uniteLists(sLists, groupName, groupType, action);
+	}
+
+	public ListValidationService getListValidationService() {
+		return listValidationService;
+	}
+
+	public void setListValidationService(ListValidationService listValidationService) {
+		this.listValidationService = listValidationService;
 	}
 }
