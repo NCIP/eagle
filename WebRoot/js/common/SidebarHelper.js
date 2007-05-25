@@ -40,8 +40,8 @@ var SidebarHelper = {
 						var shortName = lists[t].listName.length>25 ? lists[t].listName.substring(0,23) + "..." : lists[t].listName;
 						var theName = lists[t].listName;
 						var listItems = lists[t].listItems ? lists[t].listItems : "none";
-						var listSubTypes = (lists[t].listSubTypes && lists[t].listSubTypes.length > 0) ? lists[t].listSubTypes.join(",") : "";
-						var lstyle = listSubTypes.indexOf(listContainer.highlightType)== -1 ? "color:#A90101;" : "";			
+						var listSubType = lists[t].listSubType;
+						var lstyle = lists[t].highlightType;			
 						//generate the LIs
 						tst += "<li style=\""+lstyle+"\" id=\""+theName+"\" title=\"" + theName + ":<br/>" +listItems+"\">" + shortName + "</li>\n";
 					}
@@ -98,6 +98,7 @@ var SidebarHelper = {
 				//this = the li we want
 				//alert(this.innerHTML); 
 			};
+
 			lis[i].onmouseover = function() { 				
 				tmpp[this.id] = this.title;
 				this.title = "";				

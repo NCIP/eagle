@@ -35,11 +35,11 @@ public class DynamicListHelper {
                 ArrayList<ListSubType> lst = new ArrayList();
                 lst.add(ListSubType.valueOf(tps[1]));
                 EAGLEListValidator lv = new EAGLEListValidator(ListType.valueOf(tps[0]), ListSubType.valueOf(tps[1]), list);
-                return CommonListFunctions.createGenericList(lt, lst, list, name, lv);
+                return CommonListFunctions.createGenericList(lt, lst.get(0), list, name, lv);
             }
             else if(tps.length >0 && tps[0] != null)    {
                 //no subtype, only a primary type - typically a PatientDID then
-                EAGLEListValidator lv = new EAGLEListValidator(ListType.valueOf(tps[0]), ListSubType.Custom, list);
+                EAGLEListValidator lv = new EAGLEListValidator(ListType.valueOf(tps[0]), list);
                 return CommonListFunctions.createGenericList(lt, list, name, lv);
             }
             else    {

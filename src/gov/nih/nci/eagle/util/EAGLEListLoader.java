@@ -3,6 +3,7 @@ package gov.nih.nci.eagle.util;
 import gov.nih.nci.caintegrator.application.configuration.SpringContext;
 import gov.nih.nci.caintegrator.application.lists.ListLoader;
 import gov.nih.nci.caintegrator.application.lists.ListManager;
+import gov.nih.nci.caintegrator.application.lists.ListOrigin;
 import gov.nih.nci.caintegrator.application.lists.ListSubType;
 import gov.nih.nci.caintegrator.application.lists.ListType;
 import gov.nih.nci.caintegrator.application.lists.UserList;
@@ -46,9 +47,9 @@ public class EAGLEListLoader extends ListLoader {
             List<String> sampleList = new ArrayList<String>();
             String samples = props.getProperty(listName.toString());
             sampleList = Arrays.asList( StringUtils.split(samples, ",") );
-            EAGLEListValidator listValidator = new EAGLEListValidator(ListType.PatientDID, ListSubType.Default, sampleList);
+            EAGLEListValidator listValidator = new EAGLEListValidator(ListType.PatientDID, sampleList);
             UserList mySampleList = listManager.createList(ListType.PatientDID,listName.toString(),sampleList,listValidator); 
-            mySampleList.setListSubType(ListSubType.Default);
+            mySampleList.setListOrigin(ListOrigin.Default);
             userListBean.addList(mySampleList);
         }
 //        List<String> oligoSamplesList = new ArrayList<String>();

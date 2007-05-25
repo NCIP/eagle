@@ -42,7 +42,8 @@ public class EAGLEListValidator extends ListValidator{
     @Override
     public void validate(ListType listType, List<String> unvalidatedList) throws OperationNotSupportedException {
         // TODO Auto-generated method stub
-        
+        validList.addAll(unvalidatedList);
+       
     }
 
     @Override
