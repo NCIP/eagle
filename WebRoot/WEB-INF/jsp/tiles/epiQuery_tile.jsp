@@ -183,10 +183,11 @@ var EpiQuery = {
 	</div>
 
 	<div>
+	<!--  
 		<b>Waist Circumference Range</b>
 			<html:text property="waistLower" size="5" /> to
 			<html:text property="waistUpper" size="5" /> cm
- 
+	--> 
 <!--  
 		<html:select property="waistMeasure">
 			<html:option value="inches">inches</html:option>
