@@ -273,7 +273,9 @@
 				wDiv.innerHTML += legend;
 				
 		 		if(items.length > 0)	{
-		 			var tmp = "";		 				 			
+		 			var tmp = "";	
+		 			
+		 			var isodd = false;	 				 			
 					for(var i=0; i<items.length; i++)	{
 						itemId = items[i].name;
 						itemRank = "";
@@ -288,8 +290,11 @@
 							specimens = items[i].specimens ? items[i].specimens : "n/a";
 						var aspecimens = new Array();
 						aspecimens = specimens.split(","); //now an array
-												
-						tmp += "<li id='"+listName + itemId + "_div"+"' class='detailsList'>";
+						
+						var bcolor = isodd==false ? "#fff" : "";
+						tmp += "<li id='"+listName + itemId + "_div"+"' class='detailsList' style='background-color: "+ bcolor + ";'>";
+						isodd = !isodd;
+						
 						tmp += "<div style='text-align:right; width:90%;' ><span style='float:left'>";
 						tmp += (i+1) +") " +listType + " " + itemId + itemRank + itemNotes;						
 						var oc = new Function("deleteItem('"+listName+ "','" + itemId + "');return false;");
