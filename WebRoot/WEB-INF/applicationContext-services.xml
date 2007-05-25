@@ -189,6 +189,11 @@
 			ref="presentationCacheManager" />
 	</bean>
 	
+	<bean id="DynamicListHelper" class="gov.nih.nci.eagle.web.ajax.DynamicListHelper">
+		<dwr:remote javascript="DynamicListHelper" />
+		<property name="listValidationService" ref="listValidationService" />
+	</bean>
+	
 	<bean id="listValidationService" class="gov.nih.nci.eagle.service.validation.ListValidationServiceImpl" >
 	
 	</bean>

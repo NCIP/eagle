@@ -11,10 +11,12 @@
 				java.util.HashMap,
 				java.util.List,
 				org.dom4j.Document"%>
- 
+<!--   
 <script type='text/javascript' src='dwr/engine.js'></script>
 <script type='text/javascript' src='dwr/interface/DynamicListHelper.js'></script>
+-->
 <script type='text/javascript' src='js/common/ManageListHelper.js'></script>
+
 <script type='text/javascript' src='dwr/interface/UserListHelper.js'></script>
 <script type='text/javascript' src='js/common/TextFormList.js'></script>
 <script type='text/javascript' src='js/common/FormChanger.js'></script>
@@ -59,6 +61,11 @@
 
 	li.detailsList	{
 		padding:3px;
+	}
+	
+	acronym	{
+		text-decoration:underline;
+		cursor:pointer;
 	}
 </style>
 
