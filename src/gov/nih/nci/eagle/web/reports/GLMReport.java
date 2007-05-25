@@ -1,14 +1,11 @@
 package gov.nih.nci.eagle.web.reports;
 
-import gov.nih.nci.caintegrator.analysis.messaging.FTestResultEntry;
-import gov.nih.nci.caintegrator.analysis.messaging.GeneralizedLinearModelResult;
 import gov.nih.nci.caintegrator.analysis.messaging.GeneralizedLinearModelResultEntry;
 import gov.nih.nci.caintegrator.application.configuration.SpringContext;
 import gov.nih.nci.caintegrator.domain.annotation.gene.bean.GeneBiomarker;
-import gov.nih.nci.caintegrator.service.findings.FTestFinding;
 import gov.nih.nci.caintegrator.service.findings.GeneralizedLinearModelFinding;
-import gov.nih.nci.eagle.query.dto.ClassComparisonQueryDTOImpl;
-import gov.nih.nci.eagle.util.FTestComparator;
+import gov.nih.nci.caintegrator.service.task.TaskResult;
+import gov.nih.nci.eagle.util.ClassComparisonComparator;
 import gov.nih.nci.eagle.util.PatientGroupManager;
 
 import java.util.ArrayList;
@@ -16,101 +13,54 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import javax.el.ValueExpression;
+import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.servlet.http.HttpServletResponse;
 
-public class GLMReport {
-
-    private GeneralizedLinearModelFinding finding;
-    private Boolean sortAscending;
-    private FTestComparator sortComparator;
-    private List reportBeans;
-
-    private Map<String, List> patientInfoMap;
-    private String sortedBy;
+public class GLMReport extends BaseReport {
 
 
-    public GLMReport(GeneralizedLinearModelFinding finding) {
 
-        this.finding = finding;
+    @PostConstruct
+    protected void init() {
+
+        TaskResult result = (TaskResult)findingsManager.getTaskResult(task);
+        this.results = (GeneralizedLinearModelFinding)result;
         sortAscending = true;
-        sortComparator = new FTestComparator("pvalues[0]", sortAscending);
+        sortComparator = new ClassComparisonComparator("pvalues[0]", sortAscending);
         sortedBy = "groupName_0";
         reportBeans = new ArrayList<GLMReportBean>();
 
-        for (GeneralizedLinearModelResultEntry entry : finding.getResultEntries()) {
-            GLMReportBean bean = new GLMReportBean(entry, ((GeneBiomarker)finding
+        for (GeneralizedLinearModelResultEntry entry : ((GeneralizedLinearModelFinding)result).getResultEntries()) {
+            GLMReportBean bean = new GLMReportBean(entry, ((GeneBiomarker)((GeneralizedLinearModelFinding)result)
                     .getReporterAnnotationsMap().get(entry.getReporterId()))
                     .getHugoGeneSymbol());
             reportBeans.add(bean);
         }
         
         patientInfoMap = new HashMap<String, List>();
-        PatientGroupManager man = (PatientGroupManager)SpringContext.getBean("patientManager");
         for(String groupName : (List<String>)getBaselineGroups()) {
             List patients = getQueryDTO().getBaselineGroupMap().get(groupName);
-            List patientInfo = man.getPatientInfo(patients);
+            List patientInfo = patientManager.getPatientInfo(patients);
             patientInfoMap.put(groupName, patientInfo);
         }
         for(String groupName : (List<String>)getComparisonGroups()) {
             List patients = getQueryDTO().getComparisonGroupsMap().get(groupName);
-            List patientInfo = man.getPatientInfo(patients);
+            List patientInfo = patientManager.getPatientInfo(patients);
             patientInfoMap.put(groupName, patientInfo);
         }
     }
 
-    public ClassComparisonQueryDTOImpl getQueryDTO() {
-        return (ClassComparisonQueryDTOImpl)finding.getTask().getQueryDTO();
-    }
-    
-    public List getBaselineGroups() {
-        return new ArrayList(getQueryDTO().getBaselineGroupMap().keySet());
-    }
 
-    public List getComparisonGroups() {
-        return new ArrayList(getQueryDTO().getComparisonGroupsMap().keySet());
-    }
-
-    public String displayGroup() {
-        FacesContext context = FacesContext.getCurrentInstance();
-        String val = (String) context.getExternalContext()
-                .getRequestParameterMap().get("group");
-        List<String> itemsFromList = null;
-        if(getQueryDTO().getBaselineGroupMap().containsKey(val))
-            itemsFromList = getQueryDTO().getBaselineGroupMap().get(val);
-        else
-            itemsFromList = getQueryDTO().getComparisonGroupsMap().get(val);
-
-        ValueExpression vex = context.getApplication().getExpressionFactory()
-                .createValueExpression(context.getELContext(),
-                        "#{groupReport}", PatientGroupReport.class);
-        PatientGroupReport report = (PatientGroupReport) vex.getValue(context
-                .getELContext());
-        
-       // PatientGroupManager man = new PatientGroupManager();
-        PatientGroupManager man = (PatientGroupManager)SpringContext.getBean("patientManager");
-        
-        List patientInfo = man.getPatientInfo(itemsFromList);
-        report.setPatients(patientInfo);
-        report.setGroupName(val);
-        return "groupReport";
-    }
-    
-    public Collection getReportBeans() {
-        Collections.sort(reportBeans, sortComparator);
-        return reportBeans;
-    }
 
     public int getNumberGroups() {
-    	return (finding.getGroupNames() != null ? finding.getGroupNames().size() : 0);
+    	return (((GeneralizedLinearModelFinding)results).getGroupNames() != null ? ((GeneralizedLinearModelFinding)results).getGroupNames().size() : 0);
     }
 
     public Collection getGroupNames() {
-    	List<String> gnames = finding.getGroupNames();
+    	List<String> gnames = ((GeneralizedLinearModelFinding)results).getGroupNames();
     	List<String> newgnames = new ArrayList<String>();
     	for(String s : gnames)	{
     		newgnames.add(s.replace("_afterAdjustment", " (after adjustment)").replaceAll("_beforeAdjustment", " (before adjustment)"));
@@ -134,22 +84,10 @@ public class GLMReport {
             sortAscending = true;
         }
         if (sortFieldAttribute != null) {
-            sortComparator = new FTestComparator(sortFieldAttribute,
+            sortComparator = new ClassComparisonComparator(sortFieldAttribute,
                     sortAscending);
         }
 
-    }
-
-    private static String getAttribute(ActionEvent event, String name) {
-        return (String) event.getComponent().getAttributes().get(name);
-    }
-
-    public boolean getSortAscending() {
-        return sortAscending;
-    }
-
-    public void setSortAscending(boolean sortAscending) {
-        this.sortAscending = sortAscending;
     }
     
     public void generateCSV(ActionEvent event)	{
@@ -188,21 +126,4 @@ public class GLMReport {
 		}
 
     }
-
-	public Map<String, List> getPatientInfoMap() {
-		return patientInfoMap;
-	}
-
-	public void setPatientInfoMap(Map<String, List> patientInfoMap) {
-		this.patientInfoMap = patientInfoMap;
-	}
-
-	public String getSortedBy() {
-		return sortedBy;
-	}
-
-	public void setSortedBy(String sortedBy) {
-		this.sortedBy = sortedBy;
-	}
-
 }

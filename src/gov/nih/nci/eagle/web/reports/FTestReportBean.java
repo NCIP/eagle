@@ -5,7 +5,7 @@ import java.util.List;
 
 import gov.nih.nci.caintegrator.analysis.messaging.FTestResultEntry;
 
-public class FTestReportBean {
+public class FTestReportBean implements ReportBean {
 
     private FTestResultEntry entry;
     private String geneSymbol;

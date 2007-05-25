@@ -139,23 +139,10 @@ public class ClassComparisonAction extends DispatchAction{
         
         try{            
                Task task = (Task) presentationCacheManager.getNonPersistableObjectFromSessionCache(session.getId(),request.getParameter("taskId"));
-               TaskResult result = findingsManager.getTaskResult(task);
-               if(result != null){   
-                
-                if(result instanceof ClassComparisonFinding) {
-                    ClassComparisonReport report = new ClassComparisonReport(((ClassComparisonFinding)result));            
-                    session.setAttribute("classComparisonReport",report);
-                } else if(result instanceof FTestFinding) {
-                    FTestReport report = new FTestReport(((FTestFinding)result));            
-                    session.setAttribute("ftestReport",report);
-                } else if(result instanceof GeneralizedLinearModelFinding) {
-                    GLMReport report = new GLMReport(((GeneralizedLinearModelFinding)result));            
-                    session.setAttribute("glmReport",report);
-                }
+ 
+                session.setAttribute("task", task);
 
-            
-            }
-            
+
             return (mapping.findForward("success"));
             
         }

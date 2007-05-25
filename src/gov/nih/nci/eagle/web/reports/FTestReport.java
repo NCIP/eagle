@@ -4,110 +4,51 @@ import gov.nih.nci.caintegrator.analysis.messaging.FTestResultEntry;
 import gov.nih.nci.caintegrator.application.configuration.SpringContext;
 import gov.nih.nci.caintegrator.domain.annotation.gene.bean.GeneBiomarker;
 import gov.nih.nci.caintegrator.service.findings.FTestFinding;
-import gov.nih.nci.eagle.query.dto.ClassComparisonQueryDTOImpl;
-import gov.nih.nci.eagle.util.FTestComparator;
+import gov.nih.nci.caintegrator.service.task.TaskResult;
+import gov.nih.nci.eagle.util.ClassComparisonComparator;
 import gov.nih.nci.eagle.util.PatientGroupManager;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import javax.el.ValueExpression;
+import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.servlet.http.HttpServletResponse;
 
-public class FTestReport {
-
-    private FTestFinding finding;
-    private Boolean sortAscending;
-    private FTestComparator sortComparator;
-    private List reportBeans;
-    
-    private Map<String, List> patientInfoMap;
-    
-    private String sortedBy;
+public class FTestReport extends BaseReport {
 
 
-    public FTestReport(FTestFinding finding) {
 
-        this.finding = finding;
+    @PostConstruct
+    protected void init() {
+
+        TaskResult result = (TaskResult)findingsManager.getTaskResult(task);
+        this.results = (FTestFinding)result;
         sortAscending = true;
-        sortComparator = new FTestComparator("pvalue", sortAscending);
+        sortComparator = new ClassComparisonComparator("pvalue", sortAscending);
         sortedBy = "pvalue";
         reportBeans = new ArrayList<FTestReportBean>();
 
-        for (FTestResultEntry entry : finding.getResultEntries()) {
-            FTestReportBean bean = new FTestReportBean(entry, ((GeneBiomarker)finding
+        for (FTestResultEntry entry : ((FTestFinding)result).getResultEntries()) {
+            FTestReportBean bean = new FTestReportBean(entry, ((GeneBiomarker)((FTestFinding)results)
                     .getReporterAnnotationsMap().get(entry.getReporterId()))
                     .getHugoGeneSymbol());
             reportBeans.add(bean);
         }
         
         patientInfoMap = new HashMap<String, List>();
-        PatientGroupManager man = (PatientGroupManager)SpringContext.getBean("patientManager");
 
 
         for(String groupName : (List<String>)getComparisonGroups()) {
             List patients = getQueryDTO().getComparisonGroupsMap().get(groupName);
-            List patientInfo = man.getPatientInfo(patients);
+            List patientInfo = patientManager.getPatientInfo(patients);
             patientInfoMap.put(groupName, patientInfo);
         }
     }
-
-    public ClassComparisonQueryDTOImpl getQueryDTO() {
-        return (ClassComparisonQueryDTOImpl)finding.getTask().getQueryDTO();
-    }
-
-    public List getBaselineGroups() {
-        return null;
-    }
-
-    public List getComparisonGroups() {
-        return new ArrayList(getQueryDTO().getComparisonGroupsMap().keySet());
-    }
-
-    public String displayGroup() {
-        FacesContext context = FacesContext.getCurrentInstance();
-        String val = (String) context.getExternalContext()
-                .getRequestParameterMap().get("group");
-        List<String> itemsFromList = null;
-        if(getQueryDTO().getBaselineGroupMap()!=null && getQueryDTO().getBaselineGroupMap().containsKey(val))
-            itemsFromList = getQueryDTO().getBaselineGroupMap().get(val);
-        else
-            itemsFromList = getQueryDTO().getComparisonGroupsMap().get(val);
-
-        ValueExpression vex = context.getApplication().getExpressionFactory()
-                .createValueExpression(context.getELContext(),
-                        "#{groupReport}", PatientGroupReport.class);
-        PatientGroupReport report = (PatientGroupReport) vex.getValue(context
-                .getELContext());
-        
-       // PatientGroupManager man = new PatientGroupManager();
-        PatientGroupManager man = (PatientGroupManager)SpringContext.getBean("patientManager");
-        
-        List patientInfo = man.getPatientInfo(itemsFromList);
-        report.setPatients(patientInfo);
-        report.setGroupName(val);
-        return "groupReport";
-    }
     
-    public Collection getReportBeans() {
-        Collections.sort(reportBeans, sortComparator);
-        return reportBeans;
-    }
-
-    public int getNumberGroups() {
-        return finding.getGroupNames().size();
-    }
-
-    public Collection getGroupNames() {
-        return finding.getGroupNames();
-    }
-
     public void sortDataList(ActionEvent event) {
         String sortFieldAttribute = getAttribute(event, "sortField");
         //js doesnt like the [] notation, so had to use another Att with an underscore
@@ -121,24 +62,21 @@ public class FTestReport {
             sortAscending = true;
         }
         if (sortFieldAttribute != null) {
-            sortComparator = new FTestComparator(sortFieldAttribute,
+            sortComparator = new ClassComparisonComparator(sortFieldAttribute,
                     sortAscending);
         }
 
     }
 
-    private static String getAttribute(ActionEvent event, String name) {
-        return (String) event.getComponent().getAttributes().get(name);
+    public int getNumberGroups() {
+        return ((FTestFinding)results).getGroupNames().size();
     }
 
-    public boolean getSortAscending() {
-        return sortAscending;
-    }
-
-    public void setSortAscending(boolean sortAscending) {
-        this.sortAscending = sortAscending;
+    public Collection getGroupNames() {
+        return ((FTestFinding)results).getGroupNames();
     }
     
+    @Override
     public void generateCSV(ActionEvent event)	{
     	Collection reportBeans = this.getReportBeans();
     	List<List> csv = new ArrayList<List>();
@@ -175,21 +113,5 @@ public class FTestReport {
 		}
 
     }
-
-	public Map<String, List> getPatientInfoMap() {
-		return patientInfoMap;
-	}
-
-	public void setPatientInfoMap(Map<String, List> patientInfoMap) {
-		this.patientInfoMap = patientInfoMap;
-	}
-
-	public String getSortedBy() {
-		return sortedBy;
-	}
-
-	public void setSortedBy(String sortedBy) {
-		this.sortedBy = sortedBy;
-	}
 
 }

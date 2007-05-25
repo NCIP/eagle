@@ -8,7 +8,7 @@ import org.apache.commons.lang.StringUtils;
 
 import gov.nih.nci.caintegrator.analysis.messaging.ClassComparisonResultEntry;
 
-public class ClassComparisonReportBean {
+public class ClassComparisonReportBean implements ReportBean{
 
     private ClassComparisonResultEntry entry;
     private String geneSymbol;

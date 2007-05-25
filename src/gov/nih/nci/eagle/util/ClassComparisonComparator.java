@@ -4,11 +4,11 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Comparator;
 
-public class FTestComparator implements Comparator {
+public class ClassComparisonComparator implements Comparator {
 
     private String field;
     private Boolean ascending;
-    public FTestComparator(String field, Boolean ascending) {
+    public ClassComparisonComparator(String field, Boolean ascending) {
         this.field = field;
         this.ascending = ascending;
     }

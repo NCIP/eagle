@@ -6,7 +6,7 @@ import java.util.List;
 import gov.nih.nci.caintegrator.analysis.messaging.FTestResultEntry;
 import gov.nih.nci.caintegrator.analysis.messaging.GeneralizedLinearModelResultEntry;
 
-public class GLMReportBean {
+public class GLMReportBean implements ReportBean {
 
     private GeneralizedLinearModelResultEntry entry;
     private String geneSymbol;
