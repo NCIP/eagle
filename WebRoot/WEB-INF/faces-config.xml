@@ -25,7 +25,7 @@
 		<description>Class comparison report that holds report beans</description>
 		<managed-bean-name>classComparisonReport</managed-bean-name>
 		<managed-bean-class>gov.nih.nci.eagle.web.reports.ClassComparisonReport</managed-bean-class>
-		<managed-bean-scope>request</managed-bean-scope>
+		<managed-bean-scope>session</managed-bean-scope>
 		<managed-property>
 			<property-name>patientManager</property-name>
 			<value>#{patientManager}</value>
@@ -47,7 +47,7 @@
 		<description>FTest report that holds report beans</description>
 		<managed-bean-name>ftestReport</managed-bean-name>
 		<managed-bean-class>gov.nih.nci.eagle.web.reports.FTestReport</managed-bean-class>
-		<managed-bean-scope>request</managed-bean-scope>
+		<managed-bean-scope>session</managed-bean-scope>
 		<managed-property>
 			<property-name>patientManager</property-name>
 			<value>#{patientManager}</value>
@@ -69,7 +69,7 @@
 		<description>GLM report that holds report beans</description>
 		<managed-bean-name>glmReport</managed-bean-name>
 		<managed-bean-class>gov.nih.nci.eagle.web.reports.GLMReport</managed-bean-class>
-		<managed-bean-scope>request</managed-bean-scope>
+		<managed-bean-scope>session</managed-bean-scope>
 		<managed-property>
 			<property-name>patientManager</property-name>
 			<value>#{patientManager}</value>
@@ -86,6 +86,20 @@
 			<property-name>groupReport</property-name>
 			<value>#{groupReport}</value>
 		</managed-property>		
+	</managed-bean>	
+	<managed-bean>
+		<description>EPI Report</description>
+		<managed-bean-name>epiReport</managed-bean-name>
+		<managed-bean-class>gov.nih.nci.eagle.web.reports.EpiReport</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>findingsManager</property-name>
+			<value>#{eagleFindingsManager}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>task</property-name>
+			<value>#{sessionScope["task"]}</value>
+		</managed-property>
 	</managed-bean>	
 	<managed-bean>
 		<description>Report to show patient groups</description>

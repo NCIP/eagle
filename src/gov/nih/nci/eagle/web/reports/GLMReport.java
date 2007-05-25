@@ -5,7 +5,7 @@ import gov.nih.nci.caintegrator.application.configuration.SpringContext;
 import gov.nih.nci.caintegrator.domain.annotation.gene.bean.GeneBiomarker;
 import gov.nih.nci.caintegrator.service.findings.GeneralizedLinearModelFinding;
 import gov.nih.nci.caintegrator.service.task.TaskResult;
-import gov.nih.nci.eagle.util.ClassComparisonComparator;
+import gov.nih.nci.eagle.util.FieldBasedComparator;
 import gov.nih.nci.eagle.util.PatientGroupManager;
 
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.servlet.http.HttpServletResponse;
 
-public class GLMReport extends BaseReport {
+public class GLMReport extends BaseClassComparisonReport {
 
 
 
@@ -27,9 +27,9 @@ public class GLMReport extends BaseReport {
     protected void init() {
 
         TaskResult result = (TaskResult)findingsManager.getTaskResult(task);
-        this.results = (GeneralizedLinearModelFinding)result;
+        this.taskResult = (GeneralizedLinearModelFinding)result;
         sortAscending = true;
-        sortComparator = new ClassComparisonComparator("pvalues[0]", sortAscending);
+        sortComparator = new FieldBasedComparator("pvalues[0]", sortAscending);
         sortedBy = "groupName_0";
         reportBeans = new ArrayList<GLMReportBean>();
 
@@ -56,11 +56,11 @@ public class GLMReport extends BaseReport {
 
 
     public int getNumberGroups() {
-    	return (((GeneralizedLinearModelFinding)results).getGroupNames() != null ? ((GeneralizedLinearModelFinding)results).getGroupNames().size() : 0);
+    	return (((GeneralizedLinearModelFinding)taskResult).getGroupNames() != null ? ((GeneralizedLinearModelFinding)taskResult).getGroupNames().size() : 0);
     }
 
     public Collection getGroupNames() {
-    	List<String> gnames = ((GeneralizedLinearModelFinding)results).getGroupNames();
+    	List<String> gnames = ((GeneralizedLinearModelFinding)taskResult).getGroupNames();
     	List<String> newgnames = new ArrayList<String>();
     	for(String s : gnames)	{
     		newgnames.add(s.replace("_afterAdjustment", " (after adjustment)").replaceAll("_beforeAdjustment", " (before adjustment)"));
@@ -84,7 +84,7 @@ public class GLMReport extends BaseReport {
             sortAscending = true;
         }
         if (sortFieldAttribute != null) {
-            sortComparator = new ClassComparisonComparator(sortFieldAttribute,
+            sortComparator = new FieldBasedComparator(sortFieldAttribute,
                     sortAscending);
         }
 

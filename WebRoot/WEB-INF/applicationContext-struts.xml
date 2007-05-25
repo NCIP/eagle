@@ -65,9 +65,9 @@
 		<property name="presentationCacheManager" ref="presentationCacheManager" />
 		<property name="dtoBuilder" ref="epiDTOBuilder" />
 	</bean>	
-	<!-- bean name="/epiReport"
+	<bean name="/epiReport"
 		class="gov.nih.nci.eagle.web.struts.EpiAction" scope="prototype">	
-		<property name="cacheManager" ref="businessCacheManager" />	
-	</bean -->
+		<property name="presentationCacheManager" ref="presentationCacheManager" />
+	</bean>
 	
 </beans>

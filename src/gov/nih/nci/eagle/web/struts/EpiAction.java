@@ -20,6 +20,7 @@ import gov.nih.nci.caintegrator.studyQueryService.dto.epi.SmokingStatus;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.TobaccoType;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.SmokingExposure;
 import gov.nih.nci.caintegrator.dto.query.QueryDTO;
+import gov.nih.nci.eagle.util.ManagedBeanUtil;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
@@ -161,6 +163,24 @@ public class EpiAction extends DispatchAction {
         
         return mapping.findForward("success");
     }
+    
+    public ActionForward runReport(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+    throws Exception {
+        
+        HttpSession session = request.getSession();
+        
+        try{            
+               Task task = (Task) presentationCacheManager.getNonPersistableObjectFromSessionCache(session.getId(),request.getParameter("taskId"));
+                session.setAttribute("task", task);
+                ManagedBeanUtil.clearReport(session, task);
+            return (mapping.findForward("success"));
+            
+        }
+        catch(Exception e){            
+            return (mapping.findForward("failure"));
+        }
+    }        
 
     public FindingsManager getFindingsManager() {
         return findingsManager;

@@ -5,7 +5,7 @@ import gov.nih.nci.caintegrator.service.task.Task;
 import gov.nih.nci.caintegrator.service.task.TaskResult;
 import gov.nih.nci.caintegrator.studyQueryService.FindingsManager;
 import gov.nih.nci.eagle.query.dto.ClassComparisonQueryDTOImpl;
-import gov.nih.nci.eagle.util.ClassComparisonComparator;
+import gov.nih.nci.eagle.util.FieldBasedComparator;
 import gov.nih.nci.eagle.util.PatientGroupManager;
 
 import java.util.ArrayList;
@@ -18,26 +18,18 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.servlet.http.HttpServletResponse;
 
-public abstract class BaseReport {
+public abstract class BaseClassComparisonReport extends SortableReport {
 
-    protected TaskResult results;
+
     protected PatientGroupManager patientManager;
-    protected Task task;
     protected PatientGroupReport groupReport;
-    protected FindingsManager findingsManager;
     protected Map<String, List> patientInfoMap;
-
-    protected String sortedBy;
-
-    protected ClassComparisonComparator sortComparator;
-    protected Boolean sortAscending;
-    protected List reportBeans;
     
-    protected abstract void init();
+
     
     public ClassComparisonQueryDTOImpl getQueryDTO() {
 
-        return (ClassComparisonQueryDTOImpl) results.getTask().getQueryDTO();
+        return (ClassComparisonQueryDTOImpl) taskResult.getTask().getQueryDTO();
     }
     
     public String displayGroup() {
@@ -55,24 +47,6 @@ public abstract class BaseReport {
         groupReport.setGroupName(val);
         return "groupReport";
     }
-    
-    public void sortDataList(ActionEvent event) {
-        String sortFieldAttribute = getAttribute(event, "sortField");
-
-        sortedBy = sortFieldAttribute;
-        // Get and set sort field and sort order.
-        if (sortFieldAttribute != null
-                && sortFieldAttribute.equals(sortComparator.getField())) {
-            sortAscending = !sortAscending;
-        } else {
-            sortAscending = true;
-        }
-        if (sortFieldAttribute != null) {
-            sortComparator = new ClassComparisonComparator(sortFieldAttribute,
-                    sortAscending);
-        }
-
-    }    
     
     public void generateCSV(ActionEvent event)  {
         List reportBeans = this.getReportBeans();
@@ -98,12 +72,7 @@ public abstract class BaseReport {
     }    
 
     public Map getAnnotationMap() {
-        return ((ReporterBasedFinding)results).getReporterAnnotationsMap();
-    }
-
-    public List getReportBeans() {
-        Collections.sort(reportBeans, sortComparator);
-        return reportBeans;
+        return ((ReporterBasedFinding)taskResult).getReporterAnnotationsMap();
     }
     
     public List getBaselineGroups() {
@@ -131,41 +100,6 @@ public abstract class BaseReport {
         this.patientManager = patientManager;
     }
 
-    public TaskResult getResults() {
-        return results;
-    }
-
-    public void setResults(TaskResult results) {
-        this.results = results;
-    }
-
-    public Task getTask() {
-        return task;
-    }
-
-    public void setTask(Task task) {
-        this.task = task;
-    }    
-    protected static String getAttribute(ActionEvent event, String name) {
-        return (String) event.getComponent().getAttributes().get(name);
-    }
-
-    public boolean getSortAscending() {
-        return sortAscending;
-    }
-
-    public void setSortAscending(boolean sortAscending) {
-        this.sortAscending = sortAscending;
-    }
-
-    public FindingsManager getFindingsManager() {
-        return findingsManager;
-    }
-
-    public void setFindingsManager(FindingsManager findingsManager) {
-        this.findingsManager = findingsManager;
-    }
-
     public Map<String, List> getPatientInfoMap() {
         return patientInfoMap;
     }
@@ -173,28 +107,4 @@ public abstract class BaseReport {
     public void setPatientInfoMap(Map<String, List> patientInfoMap) {
         this.patientInfoMap = patientInfoMap;
     }
-
-    public ClassComparisonComparator getSortComparator() {
-        return sortComparator;
-    }
-
-    public void setSortComparator(ClassComparisonComparator sortComparator) {
-        this.sortComparator = sortComparator;
-    }
-
-    public String getSortedBy() {
-        return sortedBy;
-    }
-
-    public void setSortedBy(String sortedBy) {
-        this.sortedBy = sortedBy;
-    }
-
-    public void setSortAscending(Boolean sortAscending) {
-        this.sortAscending = sortAscending;
-    }
-
-    public void setReportBeans(List reportBeans) {
-        this.reportBeans = reportBeans;
-    }    
 }

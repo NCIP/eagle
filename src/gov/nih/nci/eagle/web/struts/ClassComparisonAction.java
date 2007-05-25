@@ -16,6 +16,7 @@ import gov.nih.nci.eagle.enumeration.SpecimenType;
 import gov.nih.nci.eagle.query.dto.ClassComparisonQueryDTOBuilder;
 import gov.nih.nci.eagle.query.dto.ClassComparisonQueryDTOImpl;
 import gov.nih.nci.eagle.util.CollisionDetector;
+import gov.nih.nci.eagle.util.ManagedBeanUtil;
 import gov.nih.nci.eagle.web.reports.ClassComparisonReport;
 import gov.nih.nci.eagle.web.reports.FTestReport;
 import gov.nih.nci.eagle.web.reports.GLMReport;
@@ -141,7 +142,7 @@ public class ClassComparisonAction extends DispatchAction{
                Task task = (Task) presentationCacheManager.getNonPersistableObjectFromSessionCache(session.getId(),request.getParameter("taskId"));
  
                 session.setAttribute("task", task);
-
+                ManagedBeanUtil.clearReport(session, task);
 
             return (mapping.findForward("success"));
             

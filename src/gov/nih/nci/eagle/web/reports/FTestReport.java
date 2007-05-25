@@ -5,7 +5,7 @@ import gov.nih.nci.caintegrator.application.configuration.SpringContext;
 import gov.nih.nci.caintegrator.domain.annotation.gene.bean.GeneBiomarker;
 import gov.nih.nci.caintegrator.service.findings.FTestFinding;
 import gov.nih.nci.caintegrator.service.task.TaskResult;
-import gov.nih.nci.eagle.util.ClassComparisonComparator;
+import gov.nih.nci.eagle.util.FieldBasedComparator;
 import gov.nih.nci.eagle.util.PatientGroupManager;
 
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.servlet.http.HttpServletResponse;
 
-public class FTestReport extends BaseReport {
+public class FTestReport extends BaseClassComparisonReport {
 
 
 
@@ -26,14 +26,14 @@ public class FTestReport extends BaseReport {
     protected void init() {
 
         TaskResult result = (TaskResult)findingsManager.getTaskResult(task);
-        this.results = (FTestFinding)result;
+        this.taskResult = (FTestFinding)result;
         sortAscending = true;
-        sortComparator = new ClassComparisonComparator("pvalue", sortAscending);
+        sortComparator = new FieldBasedComparator("pvalue", sortAscending);
         sortedBy = "pvalue";
         reportBeans = new ArrayList<FTestReportBean>();
 
         for (FTestResultEntry entry : ((FTestFinding)result).getResultEntries()) {
-            FTestReportBean bean = new FTestReportBean(entry, ((GeneBiomarker)((FTestFinding)results)
+            FTestReportBean bean = new FTestReportBean(entry, ((GeneBiomarker)((FTestFinding)taskResult)
                     .getReporterAnnotationsMap().get(entry.getReporterId()))
                     .getHugoGeneSymbol());
             reportBeans.add(bean);
@@ -62,18 +62,18 @@ public class FTestReport extends BaseReport {
             sortAscending = true;
         }
         if (sortFieldAttribute != null) {
-            sortComparator = new ClassComparisonComparator(sortFieldAttribute,
+            sortComparator = new FieldBasedComparator(sortFieldAttribute,
                     sortAscending);
         }
 
     }
 
     public int getNumberGroups() {
-        return ((FTestFinding)results).getGroupNames().size();
+        return ((FTestFinding)taskResult).getGroupNames().size();
     }
 
     public Collection getGroupNames() {
-        return ((FTestFinding)results).getGroupNames();
+        return ((FTestFinding)taskResult).getGroupNames();
     }
     
     @Override

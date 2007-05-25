@@ -83,7 +83,7 @@
 						out.println("<li><a id=\"" + task.getId() + "_link\" href=\"javascript:spawnx('clinicalReport.do?method=runReport&taskId=" + task.getId() + "&cacheId=" + task.getCacheId() + "', 750, 500,'clinical_report');\" onclick=\"" + onclick + "\">" + qname + "</a> <i>(Clinical)</i> ");
 					}
 					else if(task.getQueryDTO() instanceof EPIQueryDTO){						
-						out.println("<li><a id=\"" + task.getId() + "_link\" href=\"javascript:spawnx('copyNumberReport.do?method=runReport&taskId=" + task.getId() + "&cacheId=" + task.getCacheId() + "', 750, 500,'copy_number_report');\" onclick=\"" + onclick + "\">" + qname + "</a> <i>(Epi)</i> ");
+						out.println("<li><a id=\"" + task.getId() + "_link\" href=\"javascript:spawnx('epiReport.do?method=runReport&taskId=" + task.getId() + "&cacheId=" + task.getCacheId() + "', 750, 500,'copy_number_report');\" onclick=\"" + onclick + "\">" + qname + "</a> <i>(Epi)</i> ");
 					} 
 					else if(task.getQueryDTO() instanceof ClassComparisonQueryDTO){	
 						ClassComparisonQueryDTO dto = (ClassComparisonQueryDTO)task.getQueryDTO();
