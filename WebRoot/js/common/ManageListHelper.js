@@ -62,8 +62,9 @@
 								  "Date Created: " + lists[t].listDate 	+ "<br />" +
 								  "Notes: <br />"  + lists[t].notes;
 						
-						var listSubType = lists[t].listSubType;		
-						
+						var listSubType = lists[t].listSubType;	
+							
+						//var specimens = lists[t].specimens ? lists[t].specimens : "none";
 																
 																
 						// += or =
@@ -92,6 +93,7 @@
 			}
 			catch(err)	{
 				//alert("ERR: " + err);
+				debug(err + ": " + err.message);
 			}
 			 
 		},
@@ -188,7 +190,7 @@
 			if(document.getElementById(name+ "detailsDiv")==null){	    
 				if($(name+"status"))
 					$(name+"status").style.display = "";
-		    	UserListHelper.getDetailsFromList(name,ManageListHelper.putDetailsIHTML);	    
+		    	DynamicListHelper.getDetailsFromList(name,ManageListHelper.putDetailsIHTML);	    
 		   	}
 		   	else	{
 		    	Element.remove(name+"detailsDiv");	     
@@ -251,6 +253,9 @@
 				var itemRank = "";
 				var itemNotes = "";
 		 		var value;
+		 		
+		 		var specimens = "";
+		 		
 		 		var dDIV = document.createElement("div");
 		 		dDIV.setAttribute("id",listName + "detailsDiv");
 		 		dDIV.setAttribute("class", "listItemsDiv");
@@ -261,7 +266,12 @@
 		 		var wDiv = $(listName + "detailsDiv");
 		 		wDiv.style.borderLeft = "1px dashed red";
 		 		wDiv.style.marginLeft = "20px";
-				wDiv.style.width="300px";
+				//wDiv.style.width="300px";
+				
+				var legend = "<div style='text-align:right;margin-right:55px; _margin-right:40px;'>Specimens for this sample: <acronym title='blood'>BL</acronym> ";
+				legend += "<acronym title='tissue normal'>TN</acronym> <acronym title='tissue cancer'>TC</asronym></div>\n";
+				wDiv.innerHTML += legend;
+				
 		 		if(items.length > 0)	{
 		 			var tmp = "";		 				 			
 					for(var i=0; i<items.length; i++)	{
@@ -273,10 +283,33 @@
 							}
 							if(items[i].notes!=null){
 								itemNotes = " notes: " + items[i].notes;
-							}						
-						tmp += "<li id='"+listName + itemId + "_div"+"' class='detailsList'>"+(i+1) +") " +listType + " " + itemId + itemRank + itemNotes;						
+							}	
+							
+							specimens = items[i].specimens ? items[i].specimens : "n/a";
+						var aspecimens = new Array();
+						aspecimens = specimens.split(","); //now an array
+												
+						tmp += "<li id='"+listName + itemId + "_div"+"' class='detailsList'>";
+						tmp += "<div style='text-align:right; width:90%;' ><span style='float:left'>";
+						tmp += (i+1) +") " +listType + " " + itemId + itemRank + itemNotes;						
 						var oc = new Function("deleteItem('"+listName+ "','" + itemId + "');return false;");
-						tmp += "<a href=\"#\" onclick=\"ManageListHelper.deleteItem('"+listName+ "','" + itemId + "');return false;\">[delete]</a></li>";
+						tmp += "<a href=\"#\" onclick=\"ManageListHelper.deleteItem('"+listName+ "','" + itemId + "');return false;\">[delete]</a>";
+						
+						tmp += "</span>";
+						if(aspecimens.length>0 && aspecimens.length < 5)	{ 
+							for(var iii=0; iii<aspecimens.length; iii++)	{
+								if(aspecimens[iii]!="")	{
+									tmp += "<img src='images/eagle/24-tag-check.png' title='"+aspecimens[iii]+"'/>";
+								}
+								else	{
+									tmp += "<img src='images/eagle/24-tag-cold.png' title='"+aspecimens[iii]+"'/>";
+								}
+								
+								//tmp += aspecimens[iii] + " ";
+							}
+						}
+						tmp += "</div>";
+						tmp +="</li>";
 					}  
 					wDiv.innerHTML += tmp;
 					     
@@ -312,6 +345,7 @@
 					$("details").innerHTML = err;
 					$("details").style.display = "";
 				}
+				debug(err);
 			}
 		 		
 			if($(listName+"status"))	{
