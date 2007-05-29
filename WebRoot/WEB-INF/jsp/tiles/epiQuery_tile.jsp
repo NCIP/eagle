@@ -388,7 +388,7 @@ var EpiQuery = {
 		<div>
 		<b>Relatives With Lung Cancer</b>
 		<br/>
-		Did one of your first-degree relatives (mother, father, siblings, or childred) have lung cancer?
+		Did one of your first-degree relatives (mother, father, siblings, or children) have lung cancer?
 		<br/><html:checkbox property="familyLungCancer" value="yes" />yes
 		<br/>
 		<!--  
