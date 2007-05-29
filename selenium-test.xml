@@ -1,19 +1,22 @@
 <project name="eagle-test" default="selenese" basedir=".">
 	<property file="build.properties" />
-	<property file="test.properties" />
+	<property file="test.properties" />	
 
 	<target name="selenese"/>
+	
 	<taskdef resource="selenium-ant.properties">
 	    <classpath>
 	        <pathelement location="${source.nondeploy.lib.dir}/selenium-server.jar"/>
 	    </classpath>
 	</taskdef>
-	<selenese 
+	
+	<selenese
 	    suite="test\selenium\eagleTestSuite.html"
 	    browser="${browser}"
+	    port="${qa_server_port}"
 	    results="${result_file}"
 	    multiWindow="false"
 	    timeoutInSeconds="60"
-		port="${server_port}"
-	    startURL="${test_url}"  />	
+	    startURL="${qa_test_url}"/>    
+		    
 </project>
