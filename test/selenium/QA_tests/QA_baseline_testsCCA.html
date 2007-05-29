@@ -6,7 +6,7 @@
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">QA tier classComparisonTest</td></tr>
+<tr><td rowspan="1" colspan="3">QA tier classComparisonTest TC3_1 to TC3_2</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
@@ -41,26 +41,26 @@
 <tr>
 	<td>type</td>
 	<td>analysisName</td>
-	<td>test cc</td>
+	<td>TC3_1</td>
 </tr>
 <tr>
 	<td>addSelection</td>
 	<td>nonselectedGroups</td>
-	<td>label=smoking_non_smokers</td>
+	<td>label=all_case</td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>//input[@value='Base&gt;&gt;']</td>
+	<td>//input[@value='Base>>']</td>
 	<td></td>
 </tr>
 <tr>
 	<td>addSelection</td>
 	<td>nonselectedGroups</td>
-	<td>label=smoking_current_smokers</td>
+	<td>label=all_control</td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>//input[@value='&gt;&gt;']</td>
+	<td>//input[@value='>>']</td>
 	<td></td>
 </tr>
 <tr>
@@ -75,7 +75,7 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>test cc_link</td>
+	<td>TC3_1_link</td>
 	<td></td>
 </tr>
 <tr>
@@ -95,7 +95,37 @@
 </tr>
 <tr>
 	<td>verifyTextPresent</td>
-	<td>209840_s_at</td>
+	<td>Query Name: TC3_1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Reporter</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>P-value</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Group Avg</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Fold Change</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Gene Symbol</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>206494_s_at</td>
 	<td></td>
 </tr>
 <tr>
@@ -110,7 +140,47 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Logout</td>
+	<td>link=Analysis</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Class Comparison Analysis</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>analysisName</td>
+	<td>TC3_2</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=all_case</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Base>>']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=gender_females</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='>>']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit Analysis']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>TC3_2 (Class Comparison)</td>
 	<td></td>
 </tr>
 </tbody></table>
