@@ -268,8 +268,8 @@
 		 		wDiv.style.marginLeft = "20px";
 				//wDiv.style.width="300px";
 				
-				var legend = "<div style='text-align:right;margin-right:55px; _margin-right:40px;'>Specimens for this sample: <acronym title='blood'>BL</acronym> ";
-				legend += "<acronym title='tissue normal'>TN</acronym> <acronym title='tissue cancer'>TC</asronym></div>\n";
+				var legend = "<div style='text-align:right;margin-right:55px; _margin-right:40px;'>Specimens for this sample: <a href='#' onclick='return false;' name='blood' onmouseover='overlib(this.name)' onmouseout='return nd();'>BL</a> ";
+				legend += "<a href='#' onclick='return false;' onmouseover='overlib(this.name);' onmouseout=''return nd();' name='tissue normal'>TN</a> <a href='#' onclick='return false;' onmouseover='overlib(this.name);' onmouseout='return nd();' name='tissue cancer'>TC</a></div>\n";
 				wDiv.innerHTML += legend;
 				
 		 		if(items.length > 0)	{
