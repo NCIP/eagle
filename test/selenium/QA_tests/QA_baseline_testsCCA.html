@@ -1,0 +1,118 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>classComparisonTest</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">QA tier classComparisonTest</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/eagle/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>username</td>
+	<td>NCIISPYguest</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>password</td>
+	<td>!spy1234</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Login']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=CLICKING HERE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Class Comparison Analysis</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>analysisName</td>
+	<td>test cc</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=smoking_non_smokers</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Base&gt;&gt;']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=smoking_current_smokers</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit Analysis']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>10000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>test cc_link</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>10000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForPopUp</td>
+	<td>cc_report</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>cc_report</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>209840_s_at</td>
+	<td></td>
+</tr>
+<tr>
+	<td>close</td>
+	<td>cc_report</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Logout</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>
