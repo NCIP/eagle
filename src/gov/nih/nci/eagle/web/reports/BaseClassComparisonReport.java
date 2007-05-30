@@ -42,6 +42,7 @@ public abstract class BaseClassComparisonReport extends SortableReport {
 
         EPIQueryDTO dto = new EPIQueryDTO();
         dto.setQueryName(val);
+        dto.setPatientGroupName(val);
         dto.setPatientIds(itemsFromList);
         Collection patientInfo = null;
         try {

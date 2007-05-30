@@ -58,7 +58,7 @@ public class EpiAction extends DispatchAction {
             HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         //EPIQueryDTO dto = new EPIQueryDTO();
-        QueryDTO dto = dtoBuilder.buildQueryDTO(form, null);
+        QueryDTO dto = dtoBuilder.buildQueryDTO(form, request.getSession().getId());
         dto.setQueryName(((EpiForm)form).getQueryName());
         try {
             Task task = findingsManager.submitQuery(dto);

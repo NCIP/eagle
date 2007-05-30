@@ -1,6 +1,7 @@
 package gov.nih.nci.eagle.query.dto;
 
 import gov.nih.nci.caintegrator.application.dtobuilder.QueryDTOBuilder;
+import gov.nih.nci.caintegrator.application.lists.UserListBeanHelper;
 import gov.nih.nci.caintegrator.dto.query.QueryDTO;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.*;
 import gov.nih.nci.eagle.web.struts.EpiForm;
@@ -56,6 +57,13 @@ public class EPIQueryDTOBuilder implements QueryDTOBuilder {
         FamilyHistoryCriterion familyHistCrit = new FamilyHistoryCriterion();
         populateFamilyHistoryCrit(epiForm, familyHistCrit);
         epiQueryDTO.setFamilyHistoryCriterion(familyHistCrit);
+
+        //Populate the patient group
+        UserListBeanHelper ulbh = new UserListBeanHelper(cacheId);
+
+        String myGroupName = epiForm.getPatientGroup();
+        List myGroupValues = ulbh.getItemsFromList(myGroupName);
+        epiQueryDTO.setPatientIds(myGroupValues);
 
         return epiQueryDTO;
     }
