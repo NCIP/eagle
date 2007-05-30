@@ -30,20 +30,22 @@ public class EPIQueryDTOBuilder implements QueryDTOBuilder {
         if(epiForm.getQueryName() != null)
             epiQueryDTO.setQueryName(epiForm.getQueryName());
 
+        // this contains most of StudyPart and Lifestyle
         PatientCharacteristicsCriterion patCharacterCrit = new PatientCharacteristicsCriterion();
         populatePatientCharactersticsCrit(epiForm, patCharacterCrit);
         epiQueryDTO.setPatientCharacteristicsCriterion(patCharacterCrit);
 
-        BehavioralCriterion behaveCrit = new BehavioralCriterion();
-        populateBehaviorCrit(epiForm, behaveCrit);
-        epiQueryDTO.setBehavioralCriterion(behaveCrit);
-
+//	this is only for depression and anxiety, fagerstrom was done seperately below (dont know why)        
+//        BehavioralCriterion behaveCrit = new BehavioralCriterion();
+//        populateBehaviorCrit(epiForm, behaveCrit);
+//        epiQueryDTO.setBehavioralCriterion(behaveCrit);
+		
         TobaccoConsumptionCriterion tobaccoCrit = new TobaccoConsumptionCriterion();
         populateTobaccoCrit(epiForm, tobaccoCrit);
         epiQueryDTO.setTobaccoConsumptionCriterion(tobaccoCrit);
 
         BehavioralCriterion behaviorCrit = new BehavioralCriterion();
-        if (epiForm.getFagerstromScore() != null)
+        if (epiForm.getFagerstromScore() != null && epiForm.getFagerstromScore().length()>0)
             behaviorCrit.setFagerstromScore(Integer.parseInt(epiForm.getFagerstromScore()));
         epiQueryDTO.setBehavioralCriterion(behaviorCrit);
 
@@ -177,9 +179,15 @@ public class EPIQueryDTOBuilder implements QueryDTOBuilder {
             tobaccoCrit.setIntensityUpper(Double.parseDouble(epiForm.getIntensityUpper()));
 
 
-        if (epiForm.getSmokingStatus() != null)
-            tobaccoCrit.setSmokingStatus(Enum.valueOf(SmokingStatus.class, epiForm.getSmokingStatus()));
-
+        if (epiForm.getSmokingStatus() != null)	{
+            try {
+				tobaccoCrit.setSmokingStatus(SmokingStatus.valueOf(epiForm.getSmokingStatus()));
+			} catch (RuntimeException e) {
+				// TODO Auto-generated catch block
+				//e.printStackTrace();
+			}
+        }
+        
         /*  default it to CIGARETTE for this release */
         tobaccoCrit.setTobaccoType(TobaccoType.CIGARETTE);
         if (epiForm.getYearsSinceQuittingLower() != null && epiForm.getYearsSinceQuittingLower().trim().length() > 0)
@@ -206,37 +214,68 @@ public class EPIQueryDTOBuilder implements QueryDTOBuilder {
         if(epiForm.getHeightUpper() != null && epiForm.getHeightUpper().trim().length() > 0)
             patCharacterCrit.setHeightUpperLimit(Double.parseDouble(epiForm.getHeightUpper()));
 
-        if (epiForm.getMaritalStatus() != null)
-            patCharacterCrit.setMaritalStatus(Enum.valueOf(MaritalStatus.class, epiForm.getMaritalStatus()));
+        if (epiForm.getMaritalStatus() != null)	{
+            try {
+				patCharacterCrit.setMaritalStatus(MaritalStatus.valueOf(epiForm.getMaritalStatus()));
+			} catch (RuntimeException e) {
+				// TODO Auto-generated catch block
+				//e.printStackTrace();
+			}            
+        }
 
-        if(epiForm.getGender() != null)
-            patCharacterCrit.setSelfReportedgender(Enum.valueOf(Gender.class, epiForm.getGender()));
+        if(epiForm.getGender() != null)	{
+            try {
+				patCharacterCrit.setSelfReportedgender(Gender.valueOf(epiForm.getGender()));
+			} catch (RuntimeException e) {
+				// TODO Auto-generated catch block
+				//e.printStackTrace();
+			}
+        }
 
-        if (epiForm.getSocioEconomicStatus() != null)
-            patCharacterCrit.setSocioEconomicStatus(Enum.valueOf(SocioEconomicStatus.class, epiForm.getSocioEconomicStatus()));
-
-        if(epiForm.getWaistLower() != null && epiForm.getWaistLower().trim().length() > 0 )
-            patCharacterCrit.setWaistLowerLimit(Double.parseDouble(epiForm.getWaistLower()));
-        if(epiForm.getWaistUpper() != null && epiForm.getWaistUpper().trim().length() > 0)
-            patCharacterCrit.setWaisUpperLimit(Double.parseDouble(epiForm.getWaistUpper()));
+//	dont have this data now
+//        if (epiForm.getSocioEconomicStatus() != null)
+//            patCharacterCrit.setSocioEconomicStatus(Enum.valueOf(SocioEconomicStatus.class, epiForm.getSocioEconomicStatus()));
+//
+//        if(epiForm.getWaistLower() != null && epiForm.getWaistLower().trim().length() > 0 )
+//            patCharacterCrit.setWaistLowerLimit(Double.parseDouble(epiForm.getWaistLower()));
+//        if(epiForm.getWaistUpper() != null && epiForm.getWaistUpper().trim().length() > 0)
+//            patCharacterCrit.setWaisUpperLimit(Double.parseDouble(epiForm.getWaistUpper()));
 
         if(epiForm.getWeightLower() != null && epiForm.getWeightLower().trim().length() > 0)
             patCharacterCrit.setWeightLowerLimit(Double.parseDouble(epiForm.getWeightLower()));
         if(epiForm.getWeightUpper() != null && epiForm.getWeightUpper().trim().length() > 0)
             patCharacterCrit.setWeightUpperLimit(Double.parseDouble(epiForm.getWeightUpper()));
 
-        if(epiForm.getResidentialArea() != null && epiForm.getResidentialArea().length() > 0)
-            patCharacterCrit.setResidentialArea(Enum.valueOf(ResidentialArea.class, epiForm.getResidentialArea() ));
-
+        if(epiForm.getResidentialArea() != null && epiForm.getResidentialArea().length() > 0)	{
+            try {
+				patCharacterCrit.setResidentialArea(ResidentialArea.valueOf(epiForm.getResidentialArea() ));
+			} catch (RuntimeException e) {
+				// TODO Auto-generated catch block
+				//e.printStackTrace();
+			}
+        }
+        
         if(epiForm.getReligion() != null && epiForm.getReligion().length() > 0)
-            patCharacterCrit.setReligion(Enum.valueOf(Religion.class, epiForm.getReligion() ));
+			try {
+				patCharacterCrit.setReligion(Religion.valueOf(epiForm.getReligion() ));
+			} catch (RuntimeException e) {
+				// TODO Auto-generated catch block
+				//e.printStackTrace();
+			}
 
     }
 
     private void populateEducationLevelCrit(EpiForm epiForm, PatientCharacteristicsCriterion patCharacterCrit) {
         if (epiForm.getEducationLevel() != null) {
-            EducationLevel eduLevel = Enum.valueOf(EducationLevel.class, epiForm.getEducationLevel());
-            patCharacterCrit.setEducationLevel(eduLevel);
+            //EducationLevel eduLevel = Enum.valueOf(EducationLevel.class, epiForm.getEducationLevel());
+            EducationLevel eduLevel;
+			try {
+				eduLevel = EducationLevel.valueOf(epiForm.getEducationLevel());
+				patCharacterCrit.setEducationLevel(eduLevel);
+			} catch (RuntimeException e) {
+				// TODO Auto-generated catch block
+				//e.printStackTrace();
+			}
         }
     }
 
