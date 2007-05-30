@@ -1,0 +1,622 @@
+<html>
+<head><style type='text/css'>
+body, table {
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 12;
+}
+
+table {
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+}
+
+a {
+    text-decoration: none;
+}
+
+.title {
+    font-style: italic;
+}
+
+.selected {
+    background-color: #ffffcc;
+}
+
+.status_done {
+    background-color: #eeffee;
+}
+
+.status_passed {
+    background-color: #ccffcc;
+}
+
+.status_failed {
+    background-color: #ffcccc;
+}
+
+.breakpoint {
+    background-color: #cccccc;
+    border: 1px solid black;
+}
+</style><title>Test suite results</title></head>
+<body>
+<h1>Test suite results </h1>
+
+<table>
+<tr>
+<td>result:</td>
+<td>passed</td>
+</tr>
+<tr>
+<td>totalTime:</td>
+<td>38</td>
+</tr>
+<tr>
+<td>numTestPasses:</td>
+<td>1</td>
+</tr>
+<tr>
+<td>numTestFailures:</td>
+<td>0</td>
+</tr>
+<tr>
+<td>numCommandPasses:</td>
+<td>17</td>
+</tr>
+<tr>
+<td>numCommandFailures:</td>
+<td>0</td>
+</tr>
+<tr>
+<td>numCommandErrors:</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Selenium Version:</td>
+<td>0.8.2-SNAPSHOT</td>
+</tr>
+<tr>
+<td>Selenium Revision:</td>
+<td>1726</td>
+</tr>
+<tr>
+<td><table>
+	<tbody><tr class="title status_passed">
+		<td>
+			Test suite for the EAGLE application
+		</td>
+	</tr>
+	<!-- 
+	<tr>
+		<td>
+			<a href="classComparisonTest.html">Class Comparison Test</a>
+		</td>
+	</tr>
+	-->
+	<tr class="status_passed">
+		<td>
+			<a href="#testresult0">QA tier Class Comparison Test</a>
+		</td>
+	</tr>
+</tbody></table>
+</td>
+<td>&nbsp;</td>
+</tr>
+</table><table><tr>
+<td><a name="testresult0">QA_tests/QA_baseline_testsCCA.html</a><br/><div>
+<table border="1" cellpadding="1" cellspacing="1">
+<thead>
+<tr class="title status_passed"><td rowspan="1" colspan="3">QA tier classComparisonTest Test Case 3</td></tr>
+</thead><tbody>
+<tr class="status_done" style="cursor: pointer;">
+	<td>open</td>
+	<td>http://cbiovqa5013.nci.nih.gov:59380/eagle/</td>
+	<td></td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>type</td>
+	<td>username</td>
+	<td>NCIISPYguest</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>type</td>
+	<td>password</td>
+	<td>!spy1234</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>clickAndWait</td>
+	<td>//input[@value='Login']</td>
+	<td></td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>clickAndWait</td>
+	<td>link=CLICKING HERE</td>
+	<td></td>
+</tr>
+<!--  Test Case 3 Data Set 1 -->
+<tr class="status_done" style="cursor: pointer;">
+	<td>clickAndWait</td>
+	<td>link=Class Comparison Analysis</td>
+	<td></td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>type</td>
+	<td>analysisName</td>
+	<td>TC3_1</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=all_case</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>click</td>
+	<td>//input[@value='Base&gt;&gt;']</td>
+	<td></td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=all_control</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>click</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td></td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit Analysis']</td>
+	<td></td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>pause</td>
+	<td>10000</td>
+	<td></td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>click</td>
+	<td>TC3_1_link</td>
+	<td></td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>pause</td>
+	<td>10000</td>
+	<td></td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>waitForPopUp</td>
+	<td>cc_report</td>
+	<td>10000</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>selectWindow</td>
+	<td>cc_report</td>
+	<td></td>
+</tr>
+<tr class="status_passed" style="cursor: pointer;">
+	<td>verifyTextPresent</td>
+	<td>Query Name: TC3_1</td>
+	<td></td>
+</tr>
+<tr class="status_passed" style="cursor: pointer;">
+	<td>verifyTextPresent</td>
+	<td>Reporter</td>
+	<td></td>
+</tr>
+<tr class="status_passed" style="cursor: pointer;">
+	<td>verifyTextPresent</td>
+	<td>P-value</td>
+	<td></td>
+</tr>
+<tr class="status_passed" style="cursor: pointer;">
+	<td>verifyTextPresent</td>
+	<td>Group Avg</td>
+	<td></td>
+</tr>
+<tr class="status_passed" style="cursor: pointer;">
+	<td>verifyTextPresent</td>
+	<td>Fold Change</td>
+	<td></td>
+</tr>
+<tr class="status_passed" style="cursor: pointer;">
+	<td>verifyTextPresent</td>
+	<td>Gene Symbol</td>
+	<td></td>
+</tr>
+<tr class="status_passed" style="cursor: pointer;">
+	<td>verifyTextPresent</td>
+	<td>206494_s_at</td>
+	<td></td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>close</td>
+	<td>cc_report</td>
+	<td></td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>clickAndWait</td>
+	<td>link=Analysis</td>
+	<td>10000</td>
+</tr>
+<!--  end of TC3_1 -->
+
+<!--  test navigation between tabs and CCA error handling -->
+<tr class="status_done" style="cursor: pointer;">
+	<td>clickAndWait</td>
+	<td>link=Analysis</td>
+	<td></td>
+</tr>
+<tr class="status_passed" style="cursor: pointer;">
+	<td>verifyTextPresent</td>
+	<td>Select an Analysis Type</td>
+	<td></td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>clickAndWait</td>
+	<td>link=Class Comparison Analysis</td>
+	<td></td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>type</td>
+	<td>analysisName</td>
+	<td>TC3_1a</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>click</td>
+	<td>//input[@value='Submit Analysis']</td>
+	<td></td>
+</tr>
+<tr class="status_passed" style="cursor: pointer;">
+	<td>assertAlert</td>
+	<td>Please choose a baseline</td>
+	<td></td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=all_case</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>click</td>
+	<td>//input[@value='Base&gt;&gt;']</td>
+	<td></td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=all_control</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>click</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td></td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit Analysis']</td>
+	<td></td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>clickAndWait</td>
+	<td>link=Analysis</td>
+	<td></td>
+</tr>
+<tr class="status_passed" style="cursor: pointer;">
+	<td>verifyTextPresent</td>
+	<td>Select an Analysis Type</td>
+	<td>10000</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>clickAndWait</td>
+	<td>link=Class Comparison Analysis</td>
+	<td></td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>type</td>
+	<td>analysisName</td>
+	<td>TC3_1b</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=all_case</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>click</td>
+	<td>//input[@value='Base&gt;&gt;']</td>
+	<td>10000</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=gender_females</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>click</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td>10000</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit Analysis']</td>
+	<td></td>
+</tr>
+<tr class="status_passed" style="cursor: pointer;">
+	<td>verifyTextPresent</td>
+	<td>Report Results</td>
+	<td></td>
+</tr>
+<tr class="status_passed" style="cursor: pointer;">
+	<td>verifyTextPresent</td>
+	<td>Analysis</td>
+	<td></td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>clickAndWait</td>
+	<td>link=Analysis</td>
+	<td>10000</td>
+</tr>
+<tr class="status_passed" style="cursor: pointer;">
+	<td>verifyTextPresent</td>
+	<td>Select an Analysis Type</td>
+	<td></td>
+</tr>
+
+<!--  Test Case 3 Data Set 2 -->
+<tr class="status_done" style="cursor: pointer;">
+	<td>clickAndWait</td>
+	<td>link=Class Comparison Analysis</td>
+	<td></td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>type</td>
+	<td>analysisName</td>
+	<td>TC3_2</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=all_case</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>click</td>
+	<td>//input[@value='Base&gt;&gt;']</td>
+	<td>10000</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=gender_females</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>click</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td>10000</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit Analysis']</td>
+	<td></td>
+</tr>
+<tr class="status_passed" style="cursor: pointer;">
+	<td>verifyTextPresent</td>
+	<td>TC3_2 (Class Comparison)</td>
+	<td></td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>clickAndWait</td>
+	<td>link=Analysis</td>
+	<td>10000</td>
+</tr>
+
+<!--  Test Case 3 Data Set 38 -->
+<tr class="status_done" style="cursor: pointer;">
+	<td>clickAndWait</td>
+	<td>link=Class Comparison Analysis</td>
+	<td></td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>type</td>
+	<td>analysisName</td>
+	<td>TC3_38</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>select</td>
+	<td>platform</td>
+	<td>label=Tissue - Normal</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>select</td>
+	<td>statisticalMethod</td>
+	<td>label=Generalized Linear Model with/without covariate adjustment</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>click</td>
+	<td>selectedCovariates</td>
+	<td></td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>click</td>
+	<td>document.classComparisonForm.selectedCovariates[1]</td>
+	<td></td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>click</td>
+	<td>document.classComparisonForm.selectedCovariates[2]</td>
+	<td></td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=smoking_non_smokers</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>click</td>
+	<td>//input[@value='Base&gt;&gt;']</td>
+	<td>10000</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=stage_IV</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>click</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td>10000</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit Analysis']</td>
+	<td></td>
+</tr>
+<tr class="status_passed" style="cursor: pointer;">
+	<td>verifyTextPresent</td>
+	<td>TC3_38 (Class Comparison)</td>
+	<td>10000</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>clickAndWait</td>
+	<td>link=Analysis</td>
+	<td>10000</td>
+</tr>
+
+<!--  Test Case 3 Data Set 39 -->
+<tr class="status_done" style="cursor: pointer;">
+	<td>clickAndWait</td>
+	<td>link=Class Comparison Analysis</td>
+	<td></td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>type</td>
+	<td>analysisName</td>
+	<td>TC3_39</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>select</td>
+	<td>platform</td>
+	<td>label=Tissue - Cancer</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>select</td>
+	<td>statisticalMethod</td>
+	<td>label=Generalized Linear Model with/without covariate adjustment</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=stage_IA</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>click</td>
+	<td>//input[@value='Base&gt;&gt;']</td>
+	<td>1000</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=stage_IV</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>click</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td>1000</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit Analysis']</td>
+	<td></td>
+</tr>
+<tr class="status_passed" style="cursor: pointer;">
+	<td>verifyElementPresent</td>
+	<td>TC3_39_link</td>
+	<td>10000</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>clickAndWait</td>
+	<td>link=Analysis</td>
+	<td>10000</td>
+</tr>
+
+<!--  Test Case 3 Data Set 40 -->
+<tr class="status_done" style="cursor: pointer;">
+	<td>clickAndWait</td>
+	<td>link=Class Comparison Analysis</td>
+	<td></td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>type</td>
+	<td>analysisName</td>
+	<td>TC3_40</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>select</td>
+	<td>platform</td>
+	<td>label=Tissue - Cancer</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>select</td>
+	<td>statisticalMethod</td>
+	<td>label=Generalized Linear Model with/without covariate adjustment</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>click</td>
+	<td>selectedCovariates</td>
+	<td></td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>click</td>
+	<td>document.classComparisonForm.selectedCovariates[1]</td>
+	<td>1000</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>click</td>
+	<td>document.classComparisonForm.selectedCovariates[2]</td>
+	<td>1000</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=smoking_non_smokers</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>click</td>
+	<td>//input[@value='Base&gt;&gt;']</td>
+	<td>1000</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=stage_IV</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>click</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td>1000</td>
+</tr>
+<tr class="status_done" style="cursor: pointer;">
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit Analysis']</td>
+	<td></td>
+</tr>
+<tr class="status_passed" style="cursor: pointer;">
+	<td>verifyTextPresent</td>
+	<td>TC3_40</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</div></td>
+<td>&nbsp;</td>
+</tr></table></body></html>
