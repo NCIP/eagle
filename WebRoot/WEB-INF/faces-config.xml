@@ -21,6 +21,12 @@
 			<to-view-id>/groupReport.jsf</to-view-id>
 		</navigation-case>
 	</navigation-rule>	
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>epiReport</from-outcome>
+			<to-view-id>/epiReport.jsf</to-view-id>
+		</navigation-case>
+	</navigation-rule>	
 	<managed-bean>
 		<description>Class comparison report that holds report beans</description>
 		<managed-bean-name>classComparisonReport</managed-bean-name>
@@ -41,6 +47,10 @@
 		<managed-property>
 			<property-name>groupReport</property-name>
 			<value>#{groupReport}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>epiReport</property-name>
+			<value>#{epiReport}</value>
 		</managed-property>
 	</managed-bean>	
 	<managed-bean>
@@ -64,6 +74,10 @@
 			<property-name>groupReport</property-name>
 			<value>#{groupReport}</value>
 		</managed-property>		
+		<managed-property>
+			<property-name>epiReport</property-name>
+			<value>#{epiReport}</value>
+		</managed-property>		
 	</managed-bean>	
 	<managed-bean>
 		<description>GLM report that holds report beans</description>
@@ -85,7 +99,11 @@
 		<managed-property>
 			<property-name>groupReport</property-name>
 			<value>#{groupReport}</value>
-		</managed-property>		
+		</managed-property>	
+		<managed-property>
+			<property-name>epiReport</property-name>
+			<value>#{epiReport}</value>
+		</managed-property>			
 	</managed-bean>	
 	<managed-bean>
 		<description>EPI Report</description>
@@ -98,7 +116,7 @@
 		</managed-property>
 		<managed-property>
 			<property-name>task</property-name>
-			<value>#{sessionScope["task"]}</value>
+			<value>#{sessionScope["epiTask"]}</value>
 		</managed-property>
 	</managed-bean>	
 	<managed-bean>

@@ -172,7 +172,7 @@ public class EpiAction extends DispatchAction {
         
         try{            
                Task task = (Task) presentationCacheManager.getNonPersistableObjectFromSessionCache(session.getId(),request.getParameter("taskId"));
-                session.setAttribute("task", task);
+                session.setAttribute("epiTask", task);
                 ManagedBeanUtil.clearReport(session, task);
             return (mapping.findForward("success"));
             

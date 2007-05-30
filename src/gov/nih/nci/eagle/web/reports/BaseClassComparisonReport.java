@@ -1,16 +1,13 @@
 package gov.nih.nci.eagle.web.reports;
 
+import gov.nih.nci.caintegrator.exceptions.FindingsQueryException;
 import gov.nih.nci.caintegrator.service.findings.ReporterBasedFinding;
-import gov.nih.nci.caintegrator.service.task.Task;
-import gov.nih.nci.caintegrator.service.task.TaskResult;
-import gov.nih.nci.caintegrator.studyQueryService.FindingsManager;
+import gov.nih.nci.caintegrator.studyQueryService.dto.epi.EPIQueryDTO;
 import gov.nih.nci.eagle.query.dto.ClassComparisonQueryDTOImpl;
-import gov.nih.nci.eagle.util.FieldBasedComparator;
 import gov.nih.nci.eagle.util.PatientGroupManager;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -22,6 +19,7 @@ public abstract class BaseClassComparisonReport extends SortableReport {
 
 
     protected PatientGroupManager patientManager;
+    protected EpiReport epiReport;
     protected PatientGroupReport groupReport;
     protected Map<String, List> patientInfoMap;
     
@@ -42,10 +40,18 @@ public abstract class BaseClassComparisonReport extends SortableReport {
         else
             itemsFromList = getQueryDTO().getComparisonGroupsMap().get(val);
 
-        List patientInfo = patientManager.getPatientInfo(itemsFromList);
-        groupReport.setPatients(patientInfo);
-        groupReport.setGroupName(val);
-        return "groupReport";
+        EPIQueryDTO dto = new EPIQueryDTO();
+        dto.setQueryName(val);
+        dto.setPatientIds(itemsFromList);
+        Collection patientInfo = null;
+        try {
+            patientInfo = findingsManager.getFindings(dto);
+        } catch (FindingsQueryException e) {
+            e.printStackTrace();
+        }
+        epiReport.setPatientData(patientInfo);
+        epiReport.setQueryDTO(dto);
+        return "epiReport";
     }
     
     public void generateCSV(ActionEvent event)  {
@@ -106,5 +112,13 @@ public abstract class BaseClassComparisonReport extends SortableReport {
 
     public void setPatientInfoMap(Map<String, List> patientInfoMap) {
         this.patientInfoMap = patientInfoMap;
+    }
+
+    public EpiReport getEpiReport() {
+        return epiReport;
+    }
+
+    public void setEpiReport(EpiReport epiReport) {
+        this.epiReport = epiReport;
     }
 }

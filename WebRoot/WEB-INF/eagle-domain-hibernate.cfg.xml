@@ -12,7 +12,6 @@
 			oracle.jdbc.driver.OracleDriver
 		</property>
 		<property name="hibernate.show_sql">false</property>
-		<property name="hibernate.max_fetch_depth">1</property>
 		<property name="hibernate.jdbc.use_streams_for_binary">
 			true
 		</property>
@@ -47,7 +46,7 @@
 		<mapping
 			resource="gov/nih/nci/caintegrator/domain/finding/clinical/bean/ClinicalFinding.hbm.xml" />
 		<mapping
-			resource="gov/nih/nci/caintegrator/domain/epidemiology/bean/EpidemiologicalStudyParticipant.hbm.xml" />
+			resource="gov/nih/nci/caintegrator/domain/epidemiology/bean/EpidemiologicalFinding.hbm.xml" />
 		<mapping
 			resource="gov/nih/nci/caintegrator/domain/epidemiology/bean/DietaryConsumption.hbm.xml" />
 		<mapping
@@ -67,7 +66,7 @@
 		<mapping
 			resource="gov/nih/nci/caintegrator/domain/study/bean/Study.hbm.xml" />
 		<mapping
-			resource="gov/nih/nci/caintegrator/domain/study/bean/StudyParticipant.hbm.xml" />
+			resource="gov/nih/nci/caintegrator/domain/study/bean/EpidemiologicalStudyParticipant.hbm.xml" />
 		<mapping
 			resource="gov/nih/nci/caintegrator/domain/study/bean/Specimen.hbm.xml" />
 		<mapping
