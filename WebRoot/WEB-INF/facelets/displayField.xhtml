@@ -11,7 +11,12 @@
 
 	<ui:composition>
 		<c:if test="#{fieldValue != null}">
-			<b>#{fieldName}: </b> #{fieldValue} <br />
+			<b>#{fieldName}: </b> #{fieldValue} 
+				<c:if test="#{secondFieldValue != null}"> 
+				to #{secondFieldValue} 
+				</c:if>
+			<br />
+
 		</c:if>
 	</ui:composition>
 </html>

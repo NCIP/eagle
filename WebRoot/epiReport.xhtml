@@ -8,176 +8,207 @@
 	xmlns:jsfExt="http://java.sun.com/jsf/extensions/dynafaces">
 	<head>
 		<title>EAGLE Report</title>
-		<link rel="stylesheet" type="text/css" href="css/report.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="css/report.css"
+			media="screen" />
 	</head>
 	<body>
-		
+
 		<f:view id="epiView">
 
 			<jsfExt:scripts />
 
-		<ui:include src="/WEB-INF/facelets/reportHeader.xhtml" />
-		<div style="width:100%; height:25px; background-color:#fff; text-align:right;">
-			<h:form id="csvForm">
-				<span style="float:left">
-					<a href="#" onclick="Effect.toggle('queryDetails');"> 
-						<h:outputText value="Query Name: #{epiReport.queryDTO.queryName}" /> 
-					</a>
-				</span>
-				
-				<span style="padding-right:20px; vertical-align:middle;"> 
-					<span id="helpC"></span>
-					<script type="text/javascript">try { Help.insertHelpInto("Class_comparison_report");}catch(e){}</script>
-				
-					<img src="images/eagle/24-columns.png" /> 
-					<h:commandLink
-						actionListener="#{epiReport.generateCSV}" immediate="false">
-						<h:outputText value="Download CSV" />
-					</h:commandLink> | <img src="images/eagle/24-tab-close.png" /> <a href="#"
-					onclick="javascript:window.close();">Close</a> </span>
-			</h:form>
-		</div>
-		<div style="background-color:#fff; padding-left:20px;" id="queryDetails">
-			<i:displayField fieldName="Patient Group" fieldValue="#{epiReport.queryDTO.patientGroupName}" />
-			<i:displayField fieldName="Smoking Status" fieldValue="#{epiReport.queryDTO.tobaccoConsumptionCriterion.smokingStatus.name}" />
-			<i:displayField fieldName="Intensity" fieldValue="#{epiReport.queryDTO.tobaccoConsumptionCriterion.intensityLower} to #{epiReport.queryDTO.tobaccoConsumptionCriterion.intensityUpper}" />
-			<i:displayField fieldName="Duration" fieldValue="#{epiReport.queryDTO.tobaccoConsumptionCriterion.durationLower} to #{epiReport.queryDTO.tobaccoConsumptionCriterion.durationUpper}" />
-			<i:displayField fieldName="Age at Initiation" fieldValue="#{epiReport.queryDTO.tobaccoConsumptionCriterion.ageAtInitiationLower} to #{epiReport.queryDTO.tobaccoConsumptionCriterion.ageAtInitiationUpper}" />
-			<i:displayField fieldName="Years Since Quitting" fieldValue="#{epiReport.queryDTO.tobaccoConsumptionCriterion.yearsSinceQuittingLower} to #{epiReport.queryDTO.tobaccoConsumptionCriterion.yearsSinceQuittingUpper}" />
-			<i:displayField fieldName="Fagerstrom Score" fieldValue="#{epiReport.queryDTO.behavioralCriterion.fagerstromScore}" />
-			<i:displayField fieldName="Age Range" fieldValue="#{epiReport.queryDTO.patientCharacteristicsCriterion.ageLowerLimit} to #{epiReport.queryDTO.patientCharacteristicsCriterion.ageUpperLimit}" />
-			<i:displayField fieldName="Gender" fieldValue="#{epiReport.queryDTO.patientCharacteristicsCriterion.selfReportedgender.name}" />
-			<i:displayField fieldName="Weight Range" fieldValue="#{epiReport.queryDTO.patientCharacteristicsCriterion.weightLowerLimit} to #{epiReport.queryDTO.patientCharacteristicsCriterion.weightUpperLimit}" />
-			<i:displayField fieldName="Height Range" fieldValue="#{epiReport.queryDTO.patientCharacteristicsCriterion.heightLowerLimit} to #{epiReport.queryDTO.patientCharacteristicsCriterion.heightUpperLimit}" />
-			<i:displayField fieldName="Education Level" fieldValue="#{epiReport.queryDTO.patientCharacteristicsCriterion.educationLevel.name}" />
-			<i:displayField fieldName="Marital Status" fieldValue="#{epiReport.queryDTO.patientCharacteristicsCriterion.maritalStatus.name}" />
-			<i:displayField fieldName="Religion" fieldValue="#{epiReport.queryDTO.patientCharacteristicsCriterion.religion.name}" />
-		</div>		
-				
-				<h:form id="epiForm">
-				
-					<ui:include src="/WEB-INF/facelets/reportStyle.xhtml">
-						<ui:param name="sortedBy" value="#{epiReport.sortedBy}"/>
-						<ui:param name="sortAscending" value="#{epiReport.sortAscending}"/>
-					</ui:include>
+			<ui:include src="/WEB-INF/facelets/reportHeader.xhtml" />
+			<div
+				style="width:100%; height:25px; background-color:#fff; text-align:right;">
+				<h:form id="csvForm">
+					<span style="float:left"> <a href="#"
+						onclick="Effect.toggle('queryDetails');"> <h:outputText
+								value="Query Name: #{epiReport.queryDTO.queryName}" /> </a> </span>
 
-					<i:pager dataTable="epiTable" />
-					
-					<div id="reportDiv">
-					<h:dataTable id="epiTable" value="#{epiReport.reportBeans}" var="entry"
-						rowClasses="rowOdd,rowEven" rows="50">
+					<span style="padding-right:20px; vertical-align:middle;"> <span
+						id="helpC"></span> <script type="text/javascript">try { Help.insertHelpInto("Class_comparison_report");}catch(e){}</script>
+
+						<img src="images/eagle/24-columns.png" /> <h:commandLink
+							actionListener="#{epiReport.generateCSV}" immediate="false">
+							<h:outputText value="Download CSV" />
+						</h:commandLink> | <img src="images/eagle/24-tab-close.png" /> <a href="#"
+						onclick="javascript:window.close();">Close</a> </span>
+				</h:form>
+			</div>
+			<div style="background-color:#fff; padding-left:20px;"
+				id="queryDetails">
+				<i:displayField fieldName="Patient Group"
+					fieldValue="#{epiReport.queryDTO.patientGroupName}" />
+				<i:displayField fieldName="Smoking Status"
+					fieldValue="#{epiReport.queryDTO.tobaccoConsumptionCriterion.smokingStatus.name}" />
+				<i:displayField fieldName="Intensity"
+					fieldValue="#{epiReport.queryDTO.tobaccoConsumptionCriterion.intensityLower}"
+					secondFieldValue="#{epiReport.queryDTO.tobaccoConsumptionCriterion.intensityUpper}" />
+				<i:displayField fieldName="Duration"
+					fieldValue="#{epiReport.queryDTO.tobaccoConsumptionCriterion.durationLower}"
+					secondFieldValue="#{epiReport.queryDTO.tobaccoConsumptionCriterion.durationUpper}" />
+				<i:displayField fieldName="Age at Initiation"
+					fieldValue="#{epiReport.queryDTO.tobaccoConsumptionCriterion.ageAtInitiationLower}"
+					secondFieldValue="#{epiReport.queryDTO.tobaccoConsumptionCriterion.ageAtInitiationUpper}" />
+				<i:displayField fieldName="Years Since Quitting"
+					fieldValue="#{epiReport.queryDTO.tobaccoConsumptionCriterion.yearsSinceQuittingLower}"
+					secondFieldValue="#{epiReport.queryDTO.tobaccoConsumptionCriterion.yearsSinceQuittingUpper}" />
+				<i:displayField fieldName="Fagerstrom Score"
+					fieldValue="#{epiReport.queryDTO.behavioralCriterion.fagerstromScore}" />
+				<i:displayField fieldName="Age Range"
+					fieldValue="#{epiReport.queryDTO.patientCharacteristicsCriterion.ageLowerLimit}"
+					secondFieldValue="#{epiReport.queryDTO.patientCharacteristicsCriterion.ageUpperLimit}" />
+				<i:displayField fieldName="Gender"
+					fieldValue="#{epiReport.queryDTO.patientCharacteristicsCriterion.selfReportedgender.name}" />
+				<i:displayField fieldName="Weight Range"
+					fieldValue="#{epiReport.queryDTO.patientCharacteristicsCriterion.weightLowerLimit}"
+					secondFieldValue="#{epiReport.queryDTO.patientCharacteristicsCriterion.weightUpperLimit}" />
+				<i:displayField fieldName="Height Range"
+					fieldValue="#{epiReport.queryDTO.patientCharacteristicsCriterion.heightLowerLimit}"
+					secondFieldValue="#{epiReport.queryDTO.patientCharacteristicsCriterion.heightUpperLimit}" />
+				<i:displayField fieldName="Education Level"
+					fieldValue="#{epiReport.queryDTO.patientCharacteristicsCriterion.educationLevel.name}" />
+				<i:displayField fieldName="Marital Status"
+					fieldValue="#{epiReport.queryDTO.patientCharacteristicsCriterion.maritalStatus.name}" />
+				<i:displayField fieldName="Religion"
+					fieldValue="#{epiReport.queryDTO.patientCharacteristicsCriterion.religion.name}" />
+			</div>
+
+			<h:form id="epiForm">
+
+				<ui:include src="/WEB-INF/facelets/reportStyle.xhtml">
+					<ui:param name="sortedBy" value="#{epiReport.sortedBy}" />
+					<ui:param name="sortAscending" value="#{epiReport.sortAscending}" />
+				</ui:include>
+
+				<i:pager dataTable="epiTable" />
+
+				<div id="reportDiv">
+					<h:dataTable id="epiTable" value="#{epiReport.reportBeans}"
+						var="entry" rowClasses="rowOdd,rowEven" rows="50">
 						<h:column>
 							<f:facet name="header">
-							<h:commandLink styleClass="patientId" actionListener="#{epiReport.sortDataList}" immediate="false">
-	                    		<f:attribute name="sortField" value="patientId" />
-	                    		<h:outputText value="Patient ID" />	                    		
-	                		</h:commandLink>
-        					</f:facet>
-							<h:outputText
-								value="#{entry.patientId}" />
+								<h:commandLink styleClass="patientId"
+									actionListener="#{epiReport.sortDataList}" immediate="false">
+									<f:attribute name="sortField" value="patientId" />
+									<h:outputText value="Patient ID" />
+								</h:commandLink>
+							</f:facet>
+							<h:outputText value="#{entry.patientId}" />
 
 						</h:column>
 
 						<h:column>
 							<f:facet name="header">
-							<h:commandLink styleClass="gender" actionListener="#{epiReport.sortDataList}" immediate="false">
-	                    		<f:attribute name="sortField" value="gender" />
-	                    		<h:outputText value="Gender" />	                    		
-	                		</h:commandLink>
-        					</f:facet>
-							<h:outputText value="#{entry.gender}"/>
+								<h:commandLink styleClass="gender"
+									actionListener="#{epiReport.sortDataList}" immediate="false">
+									<f:attribute name="sortField" value="gender" />
+									<h:outputText value="Gender" />
+								</h:commandLink>
+							</f:facet>
+							<h:outputText value="#{entry.gender}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-							<h:commandLink styleClass="smokingStatus" actionListener="#{epiReport.sortDataList}" immediate="false">
-	                    		<f:attribute name="sortField" value="smokingStatus" />
-	                    		<h:outputText value="Smoking Status" />	                    		
-	                		</h:commandLink>
-        					</f:facet>
-							<h:outputText value="#{entry.smokingStatus}"/>
+								<h:commandLink styleClass="smokingStatus"
+									actionListener="#{epiReport.sortDataList}" immediate="false">
+									<f:attribute name="sortField" value="smokingStatus" />
+									<h:outputText value="Smoking Status" />
+								</h:commandLink>
+							</f:facet>
+							<h:outputText value="#{entry.smokingStatus}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-							<h:commandLink styleClass="caseStatus" actionListener="#{epiReport.sortDataList}" immediate="false">
-	                    		<f:attribute name="sortField" value="caseStatus" />
-	                    		<h:outputText value="Case Control Status" />	                    		
-	                		</h:commandLink>
-        					</f:facet>
-							<h:outputText value="#{entry.caseStatus}"/>
+								<h:commandLink styleClass="caseStatus"
+									actionListener="#{epiReport.sortDataList}" immediate="false">
+									<f:attribute name="sortField" value="caseStatus" />
+									<h:outputText value="Case Control Status" />
+								</h:commandLink>
+							</f:facet>
+							<h:outputText value="#{entry.caseStatus}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-							<h:commandLink styleClass="maritalStatus" actionListener="#{epiReport.sortDataList}" immediate="false">
-	                    		<f:attribute name="sortField" value="maritalStatus" />
-	                    		<h:outputText value="Marital Status" />	                    		
-	                		</h:commandLink>
-        					</f:facet>
-							<h:outputText value="#{entry.maritalStatus}"/>
+								<h:commandLink styleClass="maritalStatus"
+									actionListener="#{epiReport.sortDataList}" immediate="false">
+									<f:attribute name="sortField" value="maritalStatus" />
+									<h:outputText value="Marital Status" />
+								</h:commandLink>
+							</f:facet>
+							<h:outputText value="#{entry.maritalStatus}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-							<h:commandLink styleClass="religion" actionListener="#{epiReport.sortDataList}" immediate="false">
-	                    		<f:attribute name="sortField" value="religion" />
-	                    		<h:outputText value="Religion" />	                    		
-	                		</h:commandLink>
-        					</f:facet>
-							<h:outputText value="#{entry.religion}"/>
+								<h:commandLink styleClass="religion"
+									actionListener="#{epiReport.sortDataList}" immediate="false">
+									<f:attribute name="sortField" value="religion" />
+									<h:outputText value="Religion" />
+								</h:commandLink>
+							</f:facet>
+							<h:outputText value="#{entry.religion}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-							<h:commandLink styleClass="educationLevel" actionListener="#{epiReport.sortDataList}" immediate="false">
-	                    		<f:attribute name="sortField" value="educationLevel" />
-	                    		<h:outputText value="Education Level" />	                    		
-	                		</h:commandLink>
-        					</f:facet>
-							<h:outputText value="#{entry.educationLevel}"/>
+								<h:commandLink styleClass="educationLevel"
+									actionListener="#{epiReport.sortDataList}" immediate="false">
+									<f:attribute name="sortField" value="educationLevel" />
+									<h:outputText value="Education Level" />
+								</h:commandLink>
+							</f:facet>
+							<h:outputText value="#{entry.educationLevel}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-							<h:commandLink styleClass="intensity" actionListener="#{epiReport.sortDataList}" immediate="false">
-	                    		<f:attribute name="sortField" value="intensity" />
-	                    		<h:outputText value="Intensity" />	                    		
-	                		</h:commandLink>
-        					</f:facet>
-							<h:outputText value="#{entry.intensity}"/>
+								<h:commandLink styleClass="intensity"
+									actionListener="#{epiReport.sortDataList}" immediate="false">
+									<f:attribute name="sortField" value="intensity" />
+									<h:outputText value="Intensity" />
+								</h:commandLink>
+							</f:facet>
+							<h:outputText value="#{entry.intensity}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-							<h:commandLink styleClass="duration" actionListener="#{epiReport.sortDataList}" immediate="false">
-	                    		<f:attribute name="sortField" value="duration" />
-	                    		<h:outputText value="Duration" />	                    		
-	                		</h:commandLink>
-        					</f:facet>
-							<h:outputText value="#{entry.duration}"/>
+								<h:commandLink styleClass="duration"
+									actionListener="#{epiReport.sortDataList}" immediate="false">
+									<f:attribute name="sortField" value="duration" />
+									<h:outputText value="Duration" />
+								</h:commandLink>
+							</f:facet>
+							<h:outputText value="#{entry.duration}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-							<h:commandLink styleClass="ageAtInitiation" actionListener="#{epiReport.sortDataList}" immediate="false">
-	                    		<f:attribute name="sortField" value="ageAtInitiation" />
-	                    		<h:outputText value="Age At Initiation" />	                    		
-	                		</h:commandLink>
-        					</f:facet>
-							<h:outputText value="#{entry.ageAtInitiation}"/>
+								<h:commandLink styleClass="ageAtInitiation"
+									actionListener="#{epiReport.sortDataList}" immediate="false">
+									<f:attribute name="sortField" value="ageAtInitiation" />
+									<h:outputText value="Age At Initiation" />
+								</h:commandLink>
+							</f:facet>
+							<h:outputText value="#{entry.ageAtInitiation}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-							<h:commandLink styleClass="yearsSinceQuitting" actionListener="#{epiReport.sortDataList}" immediate="false">
-	                    		<f:attribute name="sortField" value="yearsSinceQuitting" />
-	                    		<h:outputText value="Years Since Quitting" />	                    		
-	                		</h:commandLink>
-        					</f:facet>
-							<h:outputText value="#{entry.yearsSinceQuitting}"/>
+								<h:commandLink styleClass="yearsSinceQuitting"
+									actionListener="#{epiReport.sortDataList}" immediate="false">
+									<f:attribute name="sortField" value="yearsSinceQuitting" />
+									<h:outputText value="Years Since Quitting" />
+								</h:commandLink>
+							</f:facet>
+							<h:outputText value="#{entry.yearsSinceQuitting}" />
 						</h:column>
 						<h:column>
 							<f:facet name="header">
-							<h:commandLink styleClass="fagerstrom" actionListener="#{epiReport.sortDataList}" immediate="false">
-	                    		<f:attribute name="sortField" value="fagerstrom" />
-	                    		<h:outputText value="Fagerstrom Score" />	                    		
-	                		</h:commandLink>
-        					</f:facet>
-							<h:outputText value="#{entry.fagerstrom}"/>
+								<h:commandLink styleClass="fagerstrom"
+									actionListener="#{epiReport.sortDataList}" immediate="false">
+									<f:attribute name="sortField" value="fagerstrom" />
+									<h:outputText value="Fagerstrom Score" />
+								</h:commandLink>
+							</f:facet>
+							<h:outputText value="#{entry.fagerstrom}" />
 						</h:column>
-												
+
 						<!--  
 						<h:column>
 							<f:facet name="header">
@@ -205,11 +236,11 @@
 						</h:column> 
 						-->
 					</h:dataTable>
-					</div>
-					<br/>
-					<a href="#" onclick="scroll(0,0);return false;">[top]</a>
-					<br/>
-				</h:form>
+				</div>
+				<br />
+				<a href="#" onclick="scroll(0,0);return false;">[top]</a>
+				<br />
+			</h:form>
 
 		</f:view>
 
