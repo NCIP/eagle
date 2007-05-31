@@ -65,6 +65,7 @@ public class EPIQueryDTOBuilder implements QueryDTOBuilder {
         if(myGroupName != null && !"".equals(myGroupName)) {
             List myGroupValues = ulbh.getItemsFromList(myGroupName);
             epiQueryDTO.setPatientIds(myGroupValues);
+            epiQueryDTO.setPatientGroupName(myGroupName);
         }
 
         return epiQueryDTO;
