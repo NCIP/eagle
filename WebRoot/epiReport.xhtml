@@ -209,32 +209,6 @@
 							<h:outputText value="#{entry.fagerstrom}" />
 						</h:column>
 
-						<!--  
-						<h:column>
-							<f:facet name="header">
-							<h:commandLink styleClass="maximumFoldChange" actionListener="#{ftestReport.sortDataList}" immediate="false">
-	                    		<f:attribute name="sortField" value="maximumFoldChange" />
-	                    		<h:outputText value="Fold Change" />	                    		
-	                		</h:commandLink>
-        					</f:facet>
-							<h:outputText value="#{entry.maximumFoldChange}" >
-								<f:convertNumber pattern="0.0000" />
-							</h:outputText>
-
-						</h:column>
-						<h:column>
-							<f:facet name="header">
-							<h:commandLink styleClass="geneSymbol" actionListener="#{ftestReport.sortDataList}" immediate="false">
-	                    		<f:attribute name="sortField" value="geneSymbol" />
-	                    		<h:outputText value="Gene Symbol" />	                    		
-	                		</h:commandLink>
-        					</f:facet>
-							<a href="#" onclick="spawnAnnotation('gene', '#{entry.geneSymbol}');return false;">
-								<h:outputText value="#{entry.geneSymbol}" />
-							</a>
-
-						</h:column> 
-						-->
 					</h:dataTable>
 				</div>
 				<br />
