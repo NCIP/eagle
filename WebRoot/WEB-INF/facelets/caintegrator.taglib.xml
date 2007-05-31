@@ -15,4 +15,8 @@
 		<tag-name>querySummary</tag-name>
 		<source>querySummary.xhtml</source>
 	</tag>
+	<tag>
+		<tag-name>displayField</tag-name>
+		<source>displayField.xhtml</source>
+	</tag>
 </facelet-taglib>
