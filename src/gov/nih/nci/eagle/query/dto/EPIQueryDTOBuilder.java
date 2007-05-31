@@ -62,8 +62,10 @@ public class EPIQueryDTOBuilder implements QueryDTOBuilder {
         UserListBeanHelper ulbh = new UserListBeanHelper(cacheId);
 
         String myGroupName = epiForm.getPatientGroup();
-        List myGroupValues = ulbh.getItemsFromList(myGroupName);
-        epiQueryDTO.setPatientIds(myGroupValues);
+        if(myGroupName != null && !"".equals(myGroupName)) {
+            List myGroupValues = ulbh.getItemsFromList(myGroupName);
+            epiQueryDTO.setPatientIds(myGroupValues);
+        }
 
         return epiQueryDTO;
     }
