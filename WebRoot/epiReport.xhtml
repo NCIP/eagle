@@ -37,6 +37,22 @@
 					onclick="javascript:window.close();">Close</a> </span>
 			</h:form>
 		</div>
+		<div style="background-color:#fff; padding-left:20px;" id="queryDetails">
+			<i:displayField fieldName="Patient Group" fieldValue="#{epiReport.queryDTO.patientGroupName}" />
+			<i:displayField fieldName="Smoking Status" fieldValue="#{epiReport.queryDTO.tobaccoConsumptionCriterion.smokingStatus.name}" />
+			<i:displayField fieldName="Intensity" fieldValue="#{epiReport.queryDTO.tobaccoConsumptionCriterion.intensityLower} to #{epiReport.queryDTO.tobaccoConsumptionCriterion.intensityUpper}" />
+			<i:displayField fieldName="Duration" fieldValue="#{epiReport.queryDTO.tobaccoConsumptionCriterion.durationLower} to #{epiReport.queryDTO.tobaccoConsumptionCriterion.durationUpper}" />
+			<i:displayField fieldName="Age at Initiation" fieldValue="#{epiReport.queryDTO.tobaccoConsumptionCriterion.ageAtInitiationLower} to #{epiReport.queryDTO.tobaccoConsumptionCriterion.ageAtInitiationUpper}" />
+			<i:displayField fieldName="Years Since Quitting" fieldValue="#{epiReport.queryDTO.tobaccoConsumptionCriterion.yearsSinceQuittingLower} to #{epiReport.queryDTO.tobaccoConsumptionCriterion.yearsSinceQuittingUpper}" />
+			<i:displayField fieldName="Fagerstrom Score" fieldValue="#{epiReport.queryDTO.behavioralCriterion.fagerstromScore}" />
+			<i:displayField fieldName="Age Range" fieldValue="#{epiReport.queryDTO.patientCharacteristicsCriterion.ageLowerLimit} to #{epiReport.queryDTO.patientCharacteristicsCriterion.ageUpperLimit}" />
+			<i:displayField fieldName="Gender" fieldValue="#{epiReport.queryDTO.patientCharacteristicsCriterion.selfReportedgender.name}" />
+			<i:displayField fieldName="Weight Range" fieldValue="#{epiReport.queryDTO.patientCharacteristicsCriterion.weightLowerLimit} to #{epiReport.queryDTO.patientCharacteristicsCriterion.weightUpperLimit}" />
+			<i:displayField fieldName="Height Range" fieldValue="#{epiReport.queryDTO.patientCharacteristicsCriterion.heightLowerLimit} to #{epiReport.queryDTO.patientCharacteristicsCriterion.heightUpperLimit}" />
+			<i:displayField fieldName="Education Level" fieldValue="#{epiReport.queryDTO.patientCharacteristicsCriterion.educationLevel.name}" />
+			<i:displayField fieldName="Marital Status" fieldValue="#{epiReport.queryDTO.patientCharacteristicsCriterion.maritalStatus.name}" />
+			<i:displayField fieldName="Religion" fieldValue="#{epiReport.queryDTO.patientCharacteristicsCriterion.religion.name}" />
+		</div>		
 				
 				<h:form id="epiForm">
 				
