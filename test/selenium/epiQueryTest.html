@@ -1,0 +1,164 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>epiQueryTest</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">epiQueryTest</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/eagle/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>username</td>
+	<td>NCIISPYguest</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>password</td>
+	<td>!spy1234</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Login']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=CLICKING HERE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Advanced Search</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=EPI Query</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>queryName</td>
+	<td>epi test</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>smokingStatus</td>
+	<td>label=Current Smoker</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>intensityLower</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>intensityUpper</td>
+	<td>100</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>durationLower</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>durationUpper</td>
+	<td>100</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>ageAtInitiationLower</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>ageAtInitiationUpper</td>
+	<td>100</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>yearsSinceQuittingLower</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>yearsSinceQuittingUpper</td>
+	<td>100</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>fagerstromScore</td>
+	<td>label=2</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>document.epiForm.elements[46]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>10000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>epi test_link</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>10000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForPopUp</td>
+	<td>epi_report</td>
+	<td>30000</td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>epi_report</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>epi_report</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>IGC-01-1004</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>43 records found</td>
+	<td></td>
+</tr>
+<tr>
+	<td>close</td>
+	<td>epi_report</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Logout</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
