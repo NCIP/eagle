@@ -10,7 +10,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>http://cbiovqa5013.nci.nih.gov:59380/eagle/</td>
+	<td>http://cbiovqa5013.nci.nih.gov:59380/eagle/</td>  <!--  Target by open command set by qa_test_url in test.properties -->
 	<td></td>
 </tr>
 <tr>
@@ -37,8 +37,7 @@
 <!--  Insert new test sequences for debugging here -->
 
 
-
-<!--  Test Case 3 Data Set 29 -->
+<!--  Test Case 3 Data Set 3 -->
 <tr>
 	<td>clickAndWait</td>
 	<td>link=Class Comparison Analysis</td>
@@ -47,17 +46,7 @@
 <tr>
 	<td>type</td>
 	<td>analysisName</td>
-	<td>TC3_29</td>
-</tr>
-<tr>
-	<td>select</td>
-	<td>statisticalMethod</td>
-	<td>label=F-Test: One Way ANOVA</td>
-</tr>
-<tr>
-	<td>addSelection</td>
-	<td>nonselectedGroups</td>
-	<td>label=stage_IV</td>
+	<td>TC3_3</td>
 </tr>
 <tr>
 	<td>addSelection</td>
@@ -65,24 +54,157 @@
 	<td>label=all_case</td>
 </tr>
 <tr>
-	<td>removeSelection</td>
-	<td>nonselectedGroups</td>
-	<td>label=stage_IV</td>
+	<td>clickAndWait</td>
+	<td>//input[@value='Base>>']</td>
+	<td>10000</td>
 </tr>
 <tr>
-	<td>removeSelection</td>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=gender_males</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit Analysis']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='>>']</td>
+	<td>10000</td>
+</tr>
+
+<!--  Test Case 3 Data Set 4 -->
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Class Comparison Analysis</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>analysisName</td>
+	<td>TC3_4</td>
+</tr>
+<tr>
+	<td>addSelection</td>
 	<td>nonselectedGroups</td>
 	<td>label=all_case</td>
 </tr>
 <tr>
-	<td>addSelection</td>
-	<td>nonselectedGroups</td>
-	<td>label=stage_IV</td>
+	<td>clickAndWait</td>
+	<td>//input[@value='Base>>']</td>
+	<td>10000</td>
 </tr>
 <tr>
-	<td>click</td>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=smoking_current_smokers</td>
+</tr>
+
+<tr>
+	<td>clickAndWait</td>
 	<td>//input[@value='&gt;&gt;']</td>
-	<td>1000</td>
+	<td></td>
+</tr>
+
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit Analysis']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>TC3_4_link</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Analysis</td>
+	<td>10000</td>
+</tr>
+
+<!--  Test Case 3 Data Set 5 -->
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Class Comparison Analysis</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>analysisName</td>
+	<td>TC3_5</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=all_case</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Base>>']</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=smoking_former_smokers</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit Analysis']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>TC3_5_link</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Analysis</td>
+	<td>10000</td>
+</tr>
+
+<!--  Test Case 3 Data Set 6 -->
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Class Comparison Analysis</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>analysisName</td>
+	<td>TC3_6</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=all_case</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Base>>']</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=smoking_current_smokers</td>
+</tr>
+<tr>
+	<td>removeSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=smoking_current_smokers</td>
 </tr>
 <tr>
 	<td>addSelection</td>
@@ -90,9 +212,9 @@
 	<td>label=smoking_non_smokers</td>
 </tr>
 <tr>
-	<td>click</td>
+	<td>clickAndWait</td>
 	<td>//input[@value='&gt;&gt;']</td>
-	<td>1000</td>
+	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -101,58 +223,7 @@
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
-	<td>TC3_29_link</td>
-	<td>10000</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Analysis</td>
-	<td>10000</td>
-</tr>
-<!--  Test Case 3 Data Set 30 -->
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Class Comparison Analysis</td>
-	<td></td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>analysisName</td>
-	<td>TC3_30</td>
-</tr>
-<tr>
-	<td>select</td>
-	<td>statisticalMethod</td>
-	<td>label=F-Test: One Way ANOVA</td>
-</tr>
-<tr>
-	<td>addSelection</td>
-	<td>nonselectedGroups</td>
-	<td>label=all_control</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>//input[@value='&gt;&gt;']</td>
-	<td>1000</td>
-</tr>
-<tr>
-	<td>addSelection</td>
-	<td>nonselectedGroups</td>
-	<td>label=stage_IIB</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>//input[@value='&gt;&gt;']</td>
-	<td>1000</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>//input[@value='Submit Analysis']</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>TC3_30_link</td>
+	<td>TC3_6_link</td>
 	<td>10000</td>
 </tr>
 <tr>
@@ -161,7 +232,7 @@
 	<td>10000</td>
 </tr>
 
-<!--  Test Case 3 Data Set 31 -->
+<!--  Test Case 3 Data Set 7 -->
 <tr>
 	<td>clickAndWait</td>
 	<td>link=Class Comparison Analysis</td>
@@ -170,348 +241,17 @@
 <tr>
 	<td>type</td>
 	<td>analysisName</td>
-	<td>TC3_31</td>
-</tr>
-<tr>
-	<td>select</td>
-	<td>platform</td>
-	<td>label=Tissue - Normal</td>
-</tr>
-<tr>
-	<td>select</td>
-	<td>statisticalMethod</td>
-	<td>label=F-Test: One Way ANOVA</td>
+	<td>TC3_7</td>
 </tr>
 <tr>
 	<td>addSelection</td>
 	<td>nonselectedGroups</td>
-	<td>label=stage_IV</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>//input[@value='&gt;&gt;']</td>
-	<td>1000</td>
-</tr>
-<tr>
-	<td>addSelection</td>
-	<td>nonselectedGroups</td>
-	<td>label=smoking_non_smokers</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>//input[@value='&gt;&gt;']</td>
-	<td>1000</td>
+	<td>label=all_case</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>//input[@value='Submit Analysis']</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>TC3_31_link</td>
+	<td>//input[@value='Base>>']</td>
 	<td>10000</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Analysis</td>
-	<td>10000</td>
-</tr>
-<!--  Test Case 3 Data Set 32 -->
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Class Comparison Analysis</td>
-	<td></td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>analysisName</td>
-	<td>TC3_32</td>
-</tr>
-<tr>
-	<td>select</td>
-	<td>platform</td>
-	<td>label=Tissue - Normal</td>
-</tr>
-<tr>
-	<td>select</td>
-	<td>statisticalMethod</td>
-	<td>label=F-Test: One Way ANOVA</td>
-</tr>
-<tr>
-	<td>addSelection</td>
-	<td>nonselectedGroups</td>
-	<td>label=gender_females</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>//input[@value='&gt;&gt;']</td>
-	<td>1000</td>
-</tr>
-<tr>
-	<td>addSelection</td>
-	<td>nonselectedGroups</td>
-	<td>label=gender_males</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>//input[@value='&gt;&gt;']</td>
-	<td>1000</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>//input[@value='Submit Analysis']</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>TC3_32_link</td>
-	<td>10000</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Analysis</td>
-	<td>10000</td>
-</tr>
-
-<!--  Test Case 3 Data Set 33 -->
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Class Comparison Analysis</td>
-	<td></td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>analysisName</td>
-	<td>TC3_33</td>
-</tr>
-<tr>
-	<td>select</td>
-	<td>platform</td>
-	<td>label=Tissue - Cancer</td>
-</tr>
-<tr>
-	<td>select</td>
-	<td>statisticalMethod</td>
-	<td>label=F-Test: One Way ANOVA</td>
-</tr>
-<tr>
-	<td>addSelection</td>
-	<td>nonselectedGroups</td>
-	<td>label=stage_IV</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>//input[@value='&gt;&gt;']</td>
-	<td>1000</td>
-</tr>
-<tr>
-	<td>addSelection</td>
-	<td>nonselectedGroups</td>
-	<td>label=smoking_non_smokers</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>//input[@value='&gt;&gt;']</td>
-	<td>1000</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>//input[@value='Submit Analysis']</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>TC3_33_link</td>
-	<td>10000</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Analysis</td>
-	<td>10000</td>
-</tr>
-
-<!--  Test Case 3 Data Set 34 -->
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Class Comparison Analysis</td>
-	<td></td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>analysisName</td>
-	<td>TC3_34</td>
-</tr>
-<tr>
-	<td>select</td>
-	<td>platform</td>
-	<td>label=Tissue - Cancer</td>
-</tr>
-<tr>
-	<td>select</td>
-	<td>statisticalMethod</td>
-	<td>label=F-Test: One Way ANOVA</td>
-</tr>
-<tr>
-	<td>addSelection</td>
-	<td>nonselectedGroups</td>
-	<td>label=gender_females</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>//input[@value='&gt;&gt;']</td>
-	<td>1000</td>
-</tr>
-<tr>
-	<td>addSelection</td>
-	<td>nonselectedGroups</td>
-	<td>label=gender_males</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>//input[@value='&gt;&gt;']</td>
-	<td>1000</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>//input[@value='Submit Analysis']</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>TC3_34_link</td>
-	<td>10000</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Analysis</td>
-	<td>10000</td>
-</tr>
-
-<!--  Test Case 3 Data Set 35 -->
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Class Comparison Analysis</td>
-	<td></td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>analysisName</td>
-	<td>TC3_35</td>
-</tr>
-<tr>
-	<td>select</td>
-	<td>statisticalMethod</td>
-	<td>label=Generalized Linear Model with/without covariate adjustment</td>
-</tr>
-<tr>
-	<td>addSelection</td>
-	<td>nonselectedGroups</td>
-	<td>label=all_control</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>//input[@value='Base&gt;&gt;']</td>
-	<td>1000</td>
-</tr>
-<tr>
-	<td>addSelection</td>
-	<td>nonselectedGroups</td>
-	<td>label=stage_IIB</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>//input[@value='&gt;&gt;']</td>
-	<td>1000</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>//input[@value='Submit Analysis']</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>TC3_35_link</td>
-	<td>10000</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Analysis</td>
-	<td>10000</td>
-</tr>
-
-<!--  Test Case 3 Data Set 36 -->
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Class Comparison Analysis</td>
-	<td></td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>analysisName</td>
-	<td>TC3_36</td>
-</tr>
-<tr>
-	<td>select</td>
-	<td>statisticalMethod</td>
-	<td>label=Generalized Linear Model with/without covariate adjustment</td>
-</tr>
-<tr>
-	<td>addSelection</td>
-	<td>nonselectedGroups</td>
-	<td>label=all_control</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>//input[@value='Base&gt;&gt;']</td>
-	<td>1000</td>
-</tr>
-<tr>
-	<td>addSelection</td>
-	<td>nonselectedGroups</td>
-	<td>label=stage_IIIA</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>//input[@value='&gt;&gt;']</td>
-	<td>1000</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>//input[@value='Submit Analysis']</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>TC3_36_link</td>
-	<td>10000</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Analysis</td>
-	<td>10000</td>
-</tr>
-
-<!--  Test Case 3 Data Set 37 -->
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Class Comparison Analysis</td>
-	<td></td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>analysisName</td>
-	<td>TC3_37</td>
-</tr>
-<tr>
-	<td>select</td>
-	<td>platform</td>
-	<td>label=Tissue - Normal</td>
-</tr>
-<tr>
-	<td>select</td>
-	<td>statisticalMethod</td>
-	<td>label=Generalized Linear Model with/without covariate adjustment</td>
 </tr>
 <tr>
 	<td>addSelection</td>
@@ -519,19 +259,9 @@
 	<td>label=stage_IA</td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>//input[@value='Base&gt;&gt;']</td>
-	<td>1000</td>
-</tr>
-<tr>
-	<td>addSelection</td>
-	<td>nonselectedGroups</td>
-	<td>label=stage_IV</td>
-</tr>
-<tr>
-	<td>click</td>
+	<td>clickAndWait</td>
 	<td>//input[@value='&gt;&gt;']</td>
-	<td>1000</td>
+	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -540,7 +270,431 @@
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
-	<td>TC3_37_link</td>
+	<td>TC3_7_link</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Analysis</td>
+	<td>10000</td>
+</tr>
+
+<!--  Test Case 3 Data Set 8 -->
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Class Comparison Analysis</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>analysisName</td>
+	<td>TC3_8</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=all_case</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Base>>']</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=stage_IB</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit Analysis']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>TC3_8_link</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Analysis</td>
+	<td>10000</td>
+</tr>
+
+<!--  Test Case 3 Data Set 9 -->
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Class Comparison Analysis</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>analysisName</td>
+	<td>TC3_9</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=all_case</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Base>>']</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=stage_IIA</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit Analysis']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>TC3_9_link</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Analysis</td>
+	<td>10000</td>
+</tr>
+
+<!--  Test Case 3 Data Set 10 -->
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Class Comparison Analysis</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>analysisName</td>
+	<td>TC3_10</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=all_case</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Base>>']</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=stage_IIB</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit Analysis']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>TC3_10_link</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Analysis</td>
+	<td>10000</td>
+</tr>
+
+<!--  Test Case 3 Data Set 11 -->
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Class Comparison Analysis</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>analysisName</td>
+	<td>TC3_11</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=all_case</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Base>>']</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=stage_IIIA</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit Analysis']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>TC3_11_link</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Analysis</td>
+	<td>10000</td>
+</tr>
+
+<!--  Test Case 3 Data Set 12 -->
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Class Comparison Analysis</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>analysisName</td>
+	<td>TC3_12</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=all_case</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Base>>']</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=stage_IIIB</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit Analysis']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>TC3_12_link</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Analysis</td>
+	<td>10000</td>
+</tr>
+
+<!--  Test Case 3 Data Set 13 -->
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Class Comparison Analysis</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>analysisName</td>
+	<td>TC3_13</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=all_case</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Base>>']</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=stage_IV</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit Analysis']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>TC3_13_link</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Analysis</td>
+	<td>10000</td>
+</tr>
+
+<!--  Test Case 3 Data Set 14 -->
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Class Comparison Analysis</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>analysisName</td>
+	<td>TC3_14</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=all_control</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Base>>']</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=smoking_current_smokers</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit Analysis']</td>
+	<td></td>
+</tr>
+
+<tr>
+	<td>verifyElementPresent</td>
+	<td>TC3_14_link</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Analysis</td>
+	<td>10000</td>
+</tr>
+
+<!--  Test Case 3 Data Set 15 -->
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Class Comparison Analysis</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>analysisName</td>
+	<td>TC3_15</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=all_control</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Base>>']</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=smoking_former_smokers</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit Analysis']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>TC3_15_link</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Analysis</td>
+	<td>10000</td>
+</tr>
+
+<!--  Test Case 3 Data Set 16 -->
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Class Comparison Analysis</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>analysisName</td>
+	<td>TC3_16</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=all_control</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Base>>']</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=smoking_non_smokers</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit Analysis']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>TC3_16_link</td>
 	<td>10000</td>
 </tr>
 <tr>

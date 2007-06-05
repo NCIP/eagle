@@ -6,11 +6,12 @@
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">QA tier classComparisonTest Test Case 3</td></tr>
+<tr><td rowspan="1" colspan="3">QA tier debug test shell</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>http://cbiovqa5013.nci.nih.gov:59380/eagle/</td>
+	<!--  Target by open command set by qa_test_url in test.properties -->
+	<td>http://cbiovqa5013.nci.nih.gov:59380/eagle/</td>	
 	<td></td>
 </tr>
 <tr>
@@ -33,117 +34,8 @@
 	<td>link=CLICKING HERE</td>
 	<td></td>
 </tr>
-<!--  Test Case 3 Data Set 1 -->
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Class Comparison Analysis</td>
-	<td></td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>analysisName</td>
-	<td>TC3_1</td>
-</tr>
-<tr>
-	<td>addSelection</td>
-	<td>nonselectedGroups</td>
-	<td>label=all_case</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>//input[@value='Base>>']</td>
-	<td></td>
-</tr>
-<tr>
-	<td>addSelection</td>
-	<td>nonselectedGroups</td>
-	<td>label=all_control</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>//input[@value='>>']</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>//input[@value='Submit Analysis']</td>
-	<td></td>
-</tr>
-<tr>
-	<td>pause</td>
-	<td>10000</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>TC3_1_link</td>
-	<td></td>
-</tr>
-<tr>
-	<td>pause</td>
-	<td>10000</td>
-	<td></td>
-</tr>
-<tr>
-	<td>waitForPopUp</td>
-	<td>cc_report</td>
-	<td>10000</td>
-</tr>
-<tr>
-	<td>selectWindow</td>
-	<td>cc_report</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyTextPresent</td>
-	<td>Query Name: TC3_1</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyTextPresent</td>
-	<td>Reporter</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyTextPresent</td>
-	<td>P-value</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyTextPresent</td>
-	<td>Group Avg</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyTextPresent</td>
-	<td>Fold Change</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyTextPresent</td>
-	<td>Gene Symbol</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyTextPresent</td>
-	<td>206494_s_at</td>
-	<td></td>
-</tr>
-<tr>
-	<td>close</td>
-	<td>cc_report</td>
-	<td></td>
-</tr>
-<tr>
-	<td>selectWindow</td>
-	<td>null</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Analysis</td>
-	<td>10000</td>
-</tr>
+
+<!--  Begin individual test cases for CCA -->
 
 <!--  Test Case 3 Data Set 2 -->
 <tr>
@@ -196,6 +88,8 @@
 	<td>link=Analysis</td>
 	<td>10000</td>
 </tr>
+
+
 
 <!--  Test Case 3 Data Set 17 -->
 <tr>
@@ -800,7 +694,6 @@
 	<td>link=Analysis</td>
 	<td>10000</td>
 </tr>
-
 <!--  Test Case 3 Data Set 28 -->
 <tr>
 	<td>clickAndWait</td>
@@ -858,6 +751,516 @@
 	<td>10000</td>
 </tr>
 
+<!--  Test Case 3 Data Set 29 -->
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Class Comparison Analysis</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>analysisName</td>
+	<td>TC3_29</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>statisticalMethod</td>
+	<td>label=F-Test: One Way ANOVA</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=stage_IV</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=all_case</td>
+</tr>
+<tr>
+	<td>removeSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=stage_IV</td>
+</tr>
+<tr>
+	<td>removeSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=all_case</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=stage_IV</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td>1000</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=smoking_non_smokers</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td>1000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit Analysis']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>TC3_29_link</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Analysis</td>
+	<td>10000</td>
+</tr>
+<!--  Test Case 3 Data Set 30 -->
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Class Comparison Analysis</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>analysisName</td>
+	<td>TC3_30</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>statisticalMethod</td>
+	<td>label=F-Test: One Way ANOVA</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=all_control</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td>1000</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=stage_IIB</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td>1000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit Analysis']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>TC3_30_link</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Analysis</td>
+	<td>10000</td>
+</tr>
+
+<!--  Test Case 3 Data Set 31 -->
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Class Comparison Analysis</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>analysisName</td>
+	<td>TC3_31</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>platform</td>
+	<td>label=Tissue - Normal</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>statisticalMethod</td>
+	<td>label=F-Test: One Way ANOVA</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=stage_IV</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td>1000</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=smoking_non_smokers</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td>1000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit Analysis']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>TC3_31_link</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Analysis</td>
+	<td>10000</td>
+</tr>
+<!--  Test Case 3 Data Set 32 -->
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Class Comparison Analysis</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>analysisName</td>
+	<td>TC3_32</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>platform</td>
+	<td>label=Tissue - Normal</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>statisticalMethod</td>
+	<td>label=F-Test: One Way ANOVA</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=gender_females</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td>1000</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=gender_males</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td>1000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit Analysis']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>TC3_32_link</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Analysis</td>
+	<td>10000</td>
+</tr>
+
+<!--  Test Case 3 Data Set 33 -->
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Class Comparison Analysis</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>analysisName</td>
+	<td>TC3_33</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>platform</td>
+	<td>label=Tissue - Cancer</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>statisticalMethod</td>
+	<td>label=F-Test: One Way ANOVA</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=stage_IV</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td>1000</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=smoking_non_smokers</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td>1000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit Analysis']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>TC3_33_link</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Analysis</td>
+	<td>10000</td>
+</tr>
+
+<!--  Test Case 3 Data Set 34 -->
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Class Comparison Analysis</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>analysisName</td>
+	<td>TC3_34</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>platform</td>
+	<td>label=Tissue - Cancer</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>statisticalMethod</td>
+	<td>label=F-Test: One Way ANOVA</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=gender_females</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td>1000</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=gender_males</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td>1000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit Analysis']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>TC3_34_link</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Analysis</td>
+	<td>10000</td>
+</tr>
+
+<!--  Test Case 3 Data Set 35 -->
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Class Comparison Analysis</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>analysisName</td>
+	<td>TC3_35</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>statisticalMethod</td>
+	<td>label=Generalized Linear Model with/without covariate adjustment</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=all_control</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Base&gt;&gt;']</td>
+	<td>1000</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=stage_IIB</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td>1000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit Analysis']</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>TC3_35_link</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Analysis</td>
+	<td>10000</td>
+</tr>
+
+<!--  Test Case 3 Data Set 36 -->
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Class Comparison Analysis</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>analysisName</td>
+	<td>TC3_36</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>statisticalMethod</td>
+	<td>label=Generalized Linear Model with/without covariate adjustment</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=all_control</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Base&gt;&gt;']</td>
+	<td>1000</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=stage_IIIA</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td>1000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit Analysis']</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>TC3_36_link</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Analysis</td>
+	<td>10000</td>
+</tr>
+
+<!--  Test Case 3 Data Set 37 -->
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Class Comparison Analysis</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>analysisName</td>
+	<td>TC3_37</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>platform</td>
+	<td>label=Tissue - Normal</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>statisticalMethod</td>
+	<td>label=Generalized Linear Model with/without covariate adjustment</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=stage_IA</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Base&gt;&gt;']</td>
+	<td>1000</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=stage_IV</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td>1000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit Analysis']</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>TC3_37_link</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Analysis</td>
+	<td>10000</td>
+</tr>
 <!--  Test Case 3 Data Set 38 -->
 <tr>
 	<td>clickAndWait</td>
@@ -934,7 +1337,6 @@
 	<td>link=Analysis</td>
 	<td>10000</td>
 </tr>
-
 <!--  Test Case 3 Data Set 39 -->
 <tr>
 	<td>clickAndWait</td>
@@ -996,7 +1398,6 @@
 	<td>link=Analysis</td>
 	<td>10000</td>
 </tr>
-
 <!--  Test Case 3 Data Set 40 -->
 <tr>
 	<td>clickAndWait</td>
@@ -1068,6 +1469,17 @@
 	<td>TC3_40</td>
 	<td></td>
 </tr>
+
+
+
+<!-- Logout -->
+
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Logout</td>
+	<td></td>
+</tr>
+
 
 </tbody></table>
 </body>

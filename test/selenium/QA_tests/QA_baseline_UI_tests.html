@@ -6,10 +6,11 @@
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">QA tier UI Test Case 3</td></tr>
+<tr><td rowspan="1" colspan="3">QA tier UI Test Cases</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
+	<!--  Target by open command set by qa_test_url in test.properties -->
 	<td>http://cbiovqa5013.nci.nih.gov:59380/eagle/</td>
 	<td></td>
 </tr>
@@ -155,6 +156,117 @@
 	<td></td>
 </tr>
 
+<!--  Test Case 3 Data Set 1; verifies the results pop-up window -->
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Class Comparison Analysis</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>analysisName</td>
+	<td>TC3_1</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=all_case</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Base>>']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=all_control</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='>>']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit Analysis']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>10000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>TC3_1_link</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>10000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForPopUp</td>
+	<td>cc_report</td>
+	<td>10000</td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>cc_report</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Query Name: TC3_1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Reporter</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>P-value</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Group Avg</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Fold Change</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Gene Symbol</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>206494_s_at</td>
+	<td></td>
+</tr>
+<tr>
+	<td>close</td>
+	<td>cc_report</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Analysis</td>
+	<td>10000</td>
+</tr>
 
 <!-- Logout -->
 
