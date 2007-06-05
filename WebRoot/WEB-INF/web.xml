@@ -41,7 +41,18 @@
             <param-value>/err.jsp</param-value>
         </init-param>
     </filter>
-    <filter-mapping>
+	<filter>
+		<filter-name>DwrFacesFilter</filter-name>
+		<filter-class>
+			org.directwebremoting.faces.FacesExtensionFilter
+		</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>DwrFacesFilter</filter-name>
+		<url-pattern>/dwr/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
         <filter-name>CheckLoginFilter</filter-name>
 		<url-pattern>*.do</url-pattern>
     </filter-mapping>  

@@ -11,6 +11,10 @@
     </create>
     <create creator="new" javascript="DynamicListHelper">
       <param name="class" value="gov.nih.nci.eagle.web.ajax.DynamicListHelper"/>
-    </create>  
+    </create>
+    <create creator="jsf" javascript="EpiReport">
+      <param name="managedBeanName" value="epiReport" />
+      <param name="class" value="gov.nih.nci.eagle.web.reports.EpiReport" />
+    </create>
   </allow>
 </dwr>

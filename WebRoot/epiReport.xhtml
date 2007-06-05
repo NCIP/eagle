@@ -13,6 +13,21 @@
 	</head>
 	<body>
 
+		<script type="text/JavaScript">
+			function updateSidebar(num){	
+					$('statusMessage').innerHTML = num + " patients saved in list";		
+					new Effect.Highlight('statusMessage', {endcolor: '#E6EAE9'});	
+					try	{
+						if(!window.opener.closed)	{											
+						  window.opener.SidebarHelper.loadSidebar();
+						}						
+					}
+					catch(err)	{
+						alert("cant update sidebar: " + err);
+					}					
+				
+			}
+		</script>
 		<f:view id="epiView">
 
 			<jsfExt:scripts />
@@ -75,7 +90,10 @@
 			</div>
 
 			<h:form id="epiForm">
-
+				<h:inputText id="listName" value="#{epiReport.listName}"/>
+				<h:commandButton onclick="EpiReport.saveList($('epiForm:listName').value, updateSidebar);return false;" value="Save Patient List"/>
+				<br/>
+				<span id="statusMessage"></span>
 				<ui:include src="/WEB-INF/facelets/reportStyle.xhtml">
 					<ui:param name="sortedBy" value="#{epiReport.sortedBy}" />
 					<ui:param name="sortAscending" value="#{epiReport.sortAscending}" />
@@ -86,6 +104,12 @@
 				<div id="reportDiv">
 					<h:dataTable id="epiTable" value="#{epiReport.reportBeans}"
 						var="entry" rowClasses="rowOdd,rowEven" rows="50">
+						<h:column>
+							<f:facet name="header">
+								Test
+							</f:facet>
+							<h:selectBooleanCheckbox readonly="true"  value="#{entry.selected}" onclick="EpiReport.selectPatient('#{entry.patientId}', this.checked);"/>
+						</h:column>
 						<h:column>
 							<f:facet name="header">
 								<h:commandLink styleClass="patientId"
