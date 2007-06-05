@@ -37,6 +37,7 @@
 				
 				var c = chk == true ? "true" : "false";
 				//console.log(c);
+				$('indicator').show();
 				$('epiForm:savePatientsButton').disabled = true;
 				EpiReport.toggleAllPatients(c , A_toggleAllPatients_cb);
 				
@@ -52,6 +53,7 @@
 			function A_toggleAllPatients_cb()	{
 				//console.log("toggle complete");
 				//how, did we check or uncheck them?
+				$('indicator').hide();
 				$('epiForm:savePatientsButton').disabled = false;
 				
 			}
@@ -118,6 +120,7 @@
 				<h:commandButton id="savePatientsButton" onclick="EpiReport.saveList($('epiForm:listName').value, updateSidebar);return false;" value="Save Patient List"/>
 				
 				<h:selectBooleanCheckbox id="checkAllBox" value="Toggle All" onclick="A_toggleAllPatients(this.checked);"/>Toggle All?
+				<img src="images/eagle/indicator.gif" id="indicator" style="display:none"/>
 				
 				<br/>
 				<span id="statusMessage"></span>
