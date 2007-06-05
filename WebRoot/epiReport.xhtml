@@ -12,8 +12,12 @@
 			media="screen" />
 	</head>
 	<body>
+		<f:view id="epiView">
 
-		<script type="text/JavaScript">
+			
+
+			<ui:include src="/WEB-INF/facelets/reportHeader.xhtml" />
+					<script type="text/JavaScript">
 			function updateSidebar(num){	
 					$('statusMessage').innerHTML = num + " patients saved in list";		
 					new Effect.Highlight('statusMessage', {endcolor: '#E6EAE9'});	
@@ -24,15 +28,33 @@
 					}
 					catch(err)	{
 						alert("cant update sidebar: " + err);
-					}					
+					}		
+					//uncheck them all after the save
+					A_toggleAllPatients(false);			
 				
 			}
+			function A_toggleAllPatients(chk)	{
+				
+				var c = chk == true ? "true" : "false";
+				//console.log(c);
+				
+				EpiReport.toggleAllPatients(c , A_toggleAllPatients_cb);
+				
+				//console.log("total: " + $$('.rowOdd td input', '.rowEven td input').length);
+				$$('.rowOdd td input', '.rowEven td input').each( 
+				function(el)	{
+					el.checked = chk;
+				} );
+				$('epiForm:checkAllBox').checked = chk;
+				
+			}
+			
+			function A_toggleAllPatients_cb()	{
+				//console.log("toggle complete");
+				//how, did we check or uncheck them?
+			}
 		</script>
-		<f:view id="epiView">
-
-			<jsfExt:scripts />
-
-			<ui:include src="/WEB-INF/facelets/reportHeader.xhtml" />
+		
 			<div
 				style="width:100%; height:25px; background-color:#fff; text-align:right;">
 				<h:form id="csvForm">
@@ -92,6 +114,9 @@
 			<h:form id="epiForm">
 				<h:inputText id="listName" value="#{epiReport.listName}"/>
 				<h:commandButton onclick="EpiReport.saveList($('epiForm:listName').value, updateSidebar);return false;" value="Save Patient List"/>
+				
+				<h:selectBooleanCheckbox id="checkAllBox" value="Toggle All" onclick="A_toggleAllPatients(this.checked);"/>Toggle All?
+				
 				<br/>
 				<span id="statusMessage"></span>
 				<ui:include src="/WEB-INF/facelets/reportStyle.xhtml">
@@ -106,9 +131,9 @@
 						var="entry" rowClasses="rowOdd,rowEven" rows="50">
 						<h:column>
 							<f:facet name="header">
-								Test
+								-
 							</f:facet>
-							<h:selectBooleanCheckbox readonly="true"  value="#{entry.selected}" onclick="EpiReport.selectPatient('#{entry.patientId}', this.checked);"/>
+							<h:selectBooleanCheckbox  value="#{entry.selected}" onclick="EpiReport.selectPatient('#{entry.patientId}', this.checked);"/>
 						</h:column>
 						<h:column>
 							<f:facet name="header">

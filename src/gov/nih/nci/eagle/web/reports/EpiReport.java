@@ -96,6 +96,13 @@ public class EpiReport extends SortableReport{
         }
     }
     
+    public void toggleAllPatients(String toggle)	{
+    	boolean selected = toggle.equals("false") ? false : true; //in case something else gets passed
+    	for(EpiReportBean bean : (Collection<EpiReportBean>) reportBeans){
+    		selectPatient(bean.getPatientId(), selected);
+    	}
+    }
+    
     public String getListName() {
         return listName;
     }
