@@ -19,6 +19,8 @@ public class EpiReportBean implements ReportBean {
     private Lifestyle lifestyle;
     private TobaccoConsumption cigaretteConsumption;
     private BehavioralAssessment behavioralAssessment;
+    private boolean selected;
+
 
     public EpiReportBean(StudyParticipant participant) {
         this.studyParticipant = participant;
@@ -31,6 +33,14 @@ public class EpiReportBean implements ReportBean {
             }
         } 
     }
+    
+    public boolean getSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }    
 
     public String getPatientId() {
         return studyParticipant.getStudySubjectIdentifier();
