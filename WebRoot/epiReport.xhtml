@@ -37,11 +37,11 @@
 				
 				var c = chk == true ? "true" : "false";
 				//console.log(c);
-				
+				$('epiForm:savePatientsButton').disabled = true;
 				EpiReport.toggleAllPatients(c , A_toggleAllPatients_cb);
 				
 				//console.log("total: " + $$('.rowOdd td input', '.rowEven td input').length);
-				$$('.rowOdd td input', '.rowEven td input').each( 
+				$$('td input[type=checkbox]').each( 
 				function(el)	{
 					el.checked = chk;
 				} );
@@ -52,6 +52,8 @@
 			function A_toggleAllPatients_cb()	{
 				//console.log("toggle complete");
 				//how, did we check or uncheck them?
+				$('epiForm:savePatientsButton').disabled = false;
+				
 			}
 		</script>
 		
@@ -113,7 +115,7 @@
 
 			<h:form id="epiForm">
 				<h:inputText id="listName" value="#{epiReport.listName}"/>
-				<h:commandButton onclick="EpiReport.saveList($('epiForm:listName').value, updateSidebar);return false;" value="Save Patient List"/>
+				<h:commandButton id="savePatientsButton" onclick="EpiReport.saveList($('epiForm:listName').value, updateSidebar);return false;" value="Save Patient List"/>
 				
 				<h:selectBooleanCheckbox id="checkAllBox" value="Toggle All" onclick="A_toggleAllPatients(this.checked);"/>Toggle All?
 				
