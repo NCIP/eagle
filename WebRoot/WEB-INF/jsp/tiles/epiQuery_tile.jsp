@@ -499,7 +499,7 @@ var EpiQuery = {
 	</div>
 
 	<div style="text-align:center">
-		<button>Submit Query </button>
+		<button onclick="document.forms[0].submit();">Submit Query </button>
 	</div>
 </div>
 </p>
