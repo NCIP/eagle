@@ -1,14 +1,14 @@
 package gov.nih.nci.eagle.web.struts;
 
 import gov.nih.nci.caintegrator.application.cache.PresentationCacheManager;
+import gov.nih.nci.caintegrator.application.dtobuilder.QueryDTOBuilder;
 import gov.nih.nci.caintegrator.application.lists.ListType;
 import gov.nih.nci.caintegrator.application.lists.UserList;
 import gov.nih.nci.caintegrator.application.lists.UserListBeanHelper;
-import gov.nih.nci.caintegrator.application.dtobuilder.QueryDTOBuilder;
+import gov.nih.nci.caintegrator.dto.query.QueryDTO;
 import gov.nih.nci.caintegrator.exceptions.FindingsQueryException;
 import gov.nih.nci.caintegrator.service.task.Task;
 import gov.nih.nci.caintegrator.studyQueryService.FindingsManager;
-import gov.nih.nci.caintegrator.studyQueryService.dto.epi.EPIQueryDTO;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.EducationLevel;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.ExposureLevel;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.Gender;
@@ -16,11 +16,11 @@ import gov.nih.nci.caintegrator.studyQueryService.dto.epi.MaritalStatus;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.Relative;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.Religion;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.ResidentialArea;
+import gov.nih.nci.caintegrator.studyQueryService.dto.epi.SmokingExposure;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.SmokingStatus;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.TobaccoType;
-import gov.nih.nci.caintegrator.studyQueryService.dto.epi.SmokingExposure;
-import gov.nih.nci.caintegrator.dto.query.QueryDTO;
 import gov.nih.nci.eagle.util.ManagedBeanUtil;
+import gov.nih.nci.eagle.util.UILookupLoader;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -52,6 +52,7 @@ import org.apache.struts.util.LabelValueBean;
 public class EpiAction extends DispatchAction {
     private FindingsManager findingsManager;
     private PresentationCacheManager presentationCacheManager;
+    private UILookupLoader lookupLoader;
     private QueryDTOBuilder dtoBuilder;
 
     public ActionForward submit(ActionMapping mapping, ActionForm form,
@@ -114,8 +115,8 @@ public class EpiAction extends DispatchAction {
 
         //set the residentialArea
         lvbeans = new ArrayList<LabelValueBean>();
-        for(ResidentialArea s : ResidentialArea.values())	{
-        	lvbeans.add(new LabelValueBean(s.getName(), s.toString()));
+        for(String s : lookupLoader.getLookupValues(UILookupLoader.RESIDENTIAL_AREA))	{
+        	lvbeans.add(new LabelValueBean(s, s));
         }
         eform.setExistingResidentialArea(lvbeans);
  
@@ -205,5 +206,13 @@ public class EpiAction extends DispatchAction {
 
     public void setDtoBuilder(QueryDTOBuilder dtoBuilder) {
         this.dtoBuilder = dtoBuilder;
+    }
+
+    public UILookupLoader getLookupLoader() {
+        return lookupLoader;
+    }
+
+    public void setLookupLoader(UILookupLoader lookupLoader) {
+        this.lookupLoader = lookupLoader;
     }
 }

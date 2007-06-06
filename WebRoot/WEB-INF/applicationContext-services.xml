@@ -167,13 +167,6 @@
 		class="gov.nih.nci.caintegrator.application.cache.PresentationCacheManager"
 		factory-method="getInstance">
 	</bean>
-	<!-- Beans for analysis server -->
-	<!--  
-		<bean id="analysisServerClientManager"
-		class="gov.nih.nci.caintegrator.application.analysis.AnalysisServerClientManager"
-		factory-method="getInstance">
-		</bean>
-	-->
 
 	<!-- Beans for DTO builders -->
 	<bean id="classComparisonQueryDTOBuilder"
@@ -188,10 +181,6 @@
         </bean>
 
 	<!--  Beans for DWR -->
-	<!-- >bean id="annotationHelper" class="gov.nih.nci.eagle.web.ajax.AnnotationHelper">
-		<dwr:remote javascript="AnnotationService"/>
-		<property name="annotationManager" ref="annotationManager" />
-		</bean-->
 	<bean id="inbox"
 		class="gov.nih.nci.caintegrator.application.inbox.QueryInbox">
 		<dwr:remote javascript="Inbox" />
@@ -211,7 +200,15 @@
 	<bean id="listValidationService" class="gov.nih.nci.eagle.service.validation.ListValidationServiceImpl" >
 	
 	</bean>
+	
+	<bean name="lookupLoader" class="gov.nih.nci.eagle.util.UILookupLoader" scope="session" >
+		<property name="hibernateTemplate" ref="hibernateTemplate"/>
+	</bean>
 
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate" >
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
 	<!-- Bean to manage patient data from text file -->
 	<bean id="patientManager" class="gov.nih.nci.eagle.util.PatientGroupManager" >
 		<property name="patientFileName" value="${gov.nih.nci.eagleportal.patientData}" />

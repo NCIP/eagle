@@ -57,6 +57,7 @@
 
 	<bean name="/epiQueryInit"
 		class="gov.nih.nci.eagle.web.struts.EpiAction" scope="prototype">		
+		<property name="lookupLoader" ref="lookupLoader"/>
 	</bean>
 	
 	<bean name="/epiQuery"

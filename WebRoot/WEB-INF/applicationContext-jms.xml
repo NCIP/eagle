@@ -85,5 +85,8 @@
 		<property name="destination" ref="receiveDestination" />
 		<property name="messageListener"
 			ref="analysisServerClientManager" />
+		<property name="recoveryInterval">
+			<value>30000</value>
+		</property>
 	</bean>
 </beans>

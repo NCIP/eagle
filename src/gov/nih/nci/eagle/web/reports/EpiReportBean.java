@@ -3,6 +3,7 @@ package gov.nih.nci.eagle.web.reports;
 import gov.nih.nci.caintegrator.domain.epidemiology.bean.BehavioralAssessment;
 import gov.nih.nci.caintegrator.domain.epidemiology.bean.Lifestyle;
 import gov.nih.nci.caintegrator.domain.epidemiology.bean.TobaccoConsumption;
+import gov.nih.nci.caintegrator.domain.study.bean.Histology;
 import gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.EducationLevel;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.MaritalStatus;
@@ -19,6 +20,7 @@ public class EpiReportBean implements ReportBean {
     private Lifestyle lifestyle;
     private TobaccoConsumption cigaretteConsumption;
     private BehavioralAssessment behavioralAssessment;
+    private Histology histology;
     private boolean selected;
 
 
@@ -26,6 +28,7 @@ public class EpiReportBean implements ReportBean {
         this.studyParticipant = participant;
         this.lifestyle = participant.getEpidemiologicalFinding().getLifestyle();
         this.behavioralAssessment = participant.getEpidemiologicalFinding().getBehavioralAssessment();
+        this.histology = participant.getHistology();
         Collection<TobaccoConsumption> tobaccoConsumptionCollection = participant.getEpidemiologicalFinding().getTobaccoConsumptionCollection();
         for(TobaccoConsumption c : tobaccoConsumptionCollection) {
             if("CIGT".equals(c.getTobaccoType())) {
@@ -121,6 +124,20 @@ public class EpiReportBean implements ReportBean {
     public String getFagerstrom() {
         if (behavioralAssessment != null && behavioralAssessment.getFagerstromScore() != null) {
             return behavioralAssessment.getFagerstromScore().toString();
+        }
+        return "N/A";
+    }
+    
+    public String getStage() {
+        if(histology != null && histology.getStage() != null) {
+            return histology.getStage();
+        }
+        return "N/A";
+    }
+    
+    public String getResidentialArea() {
+        if(lifestyle != null && lifestyle.getResidentialArea() != null) {
+             return lifestyle.getResidentialArea();
         }
         return "N/A";
     }

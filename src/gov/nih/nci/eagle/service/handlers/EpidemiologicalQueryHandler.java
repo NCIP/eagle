@@ -254,9 +254,9 @@ public class EpidemiologicalQueryHandler implements QueryHandler {
             targetCrit.add(Expression.eq("ls.religion", new Integer(religion
                     .getValue()).toString()));
 
-        ResidentialArea ra = patCharacterCrit.getResidentialArea();
+        String ra = patCharacterCrit.getResidentialArea();
         if (ra != null)
-            targetCrit.add(Expression.eq("ls.residentialArea", ra.getValue()));
+            targetCrit.add(Expression.eq("ls.residentialArea", ra));
 
         EducationLevel el = patCharacterCrit.getEducationLevel();
         if (el != null)

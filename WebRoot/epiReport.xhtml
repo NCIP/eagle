@@ -262,6 +262,26 @@
 							</f:facet>
 							<h:outputText value="#{entry.fagerstrom}" />
 						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:commandLink styleClass="stage"
+									actionListener="#{epiReport.sortDataList}" immediate="false">
+									<f:attribute name="sortField" value="stage" />
+									<h:outputText value="Stage" />
+								</h:commandLink>
+							</f:facet>
+							<h:outputText value="#{entry.stage}" />
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:commandLink styleClass="residentialArea"
+									actionListener="#{epiReport.sortDataList}" immediate="false">
+									<f:attribute name="sortField" value="residentialArea" />
+									<h:outputText value="Residential Area" />
+								</h:commandLink>
+							</f:facet>
+							<h:outputText value="#{entry.residentialArea}" />
+						</h:column>
 
 					</h:dataTable>
 				</div>
