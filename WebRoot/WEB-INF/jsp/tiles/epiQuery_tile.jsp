@@ -429,8 +429,10 @@ var EpiQuery = {
 	<h4 class="underlineRight">
 		Environmental Tobacco Smoke
 	</h4>
+	<!-- 
 	<div>
 		<b>Occupational Exposure to smoking</b><br/>
+	-->
 		<!--  
 		<b id="jobs">
 			<html:text property="jobs(name_1)" value="job name" />
@@ -446,16 +448,19 @@ var EpiQuery = {
 			*All Items will be combined with an "AND"
 		</div>
 		-->
+	<!-- 
 		<br/>
 		<logic:iterate id="epiForm" name="epiForm" property="existingSmokiness" scope="request">
 			years worked in <bean:write name="epiForm" property="label"/> smoke:
 			<html:text property="<%="jobs(" +((LabelValueBean) epiForm).getValue()+ ")" %>" size="5"/><br/>
 		</logic:iterate>
 	</div>
-	
+	-->
+	<!-- 
 	<div>
 		<b>Living Companions who smoked</b><br/>
-		<!--  -
+	-->
+		<!--  
 		<b id="living">
 			<html:select property="livingCompanions(livingCompanion_1)">
 				<html:optionsCollection property="existingRelatives"/>
@@ -475,6 +480,7 @@ var EpiQuery = {
 			*All Items will be combined with an "AND"
 		</div>
 		-->
+	<!-- 
 		<br/>
 		<logic:iterate id="epiForm" name="epiForm" property="existingTobaccoType" scope="request">
 			Companions who smoked <bean:write name="epiForm" property="label"/>s:
@@ -482,6 +488,7 @@ var EpiQuery = {
 			<html:text property="<%="livingCompanions(" +((LabelValueBean) epiForm).getValue()+ "_yrs)" %>" size="5"/>yrs<br/>
 		</logic:iterate>
 	</div>
+	-->
 	
 	<div>
 		<b>Exposure to smoke</b>
