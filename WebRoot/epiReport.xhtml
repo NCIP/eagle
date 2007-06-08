@@ -116,10 +116,27 @@
 			</div>
 
 			<h:form id="epiForm">
+			<div id="filterButtons">
+			Filter:
+				<h:commandButton id="filterBlood" value="Blood" actionListener="#{epiReport.applyFilter}" immediate="false" disabled="#{epiReport.currentFilter == 'BLOOD'}"> 
+					<f:attribute name="specimen" value="BLOOD"/>
+				</h:commandButton>
+				<h:commandButton id="filterTissueNormal" value="Tissue Normal" actionListener="#{epiReport.applyFilter}" immediate="false" disabled="#{epiReport.currentFilter == 'TISSUE_NORMAL'}"> 
+					<f:attribute name="specimen" value="TISSUE_NORMAL"/>
+				</h:commandButton>
+				<h:commandButton id="filterTissueCancer" value="Tissue Cancer" actionListener="#{epiReport.applyFilter}" immediate="false" disabled="#{epiReport.currentFilter == 'TISSUE_CANCER'}"> 
+					<f:attribute name="specimen" value="TISSUE_CANCER"/>
+				</h:commandButton>
+				<h:commandButton id="filterNone" value="Show All" actionListener="#{epiReport.applyFilter}" immediate="false" disabled="#{epiReport.currentFilter == 'all'}"> 
+					<f:attribute name="specimen" value="all"/>
+				</h:commandButton>
+				( Currently showing: #{epiReport.currentFilter} )
+			</div>
+			<br/>
 				<h:inputText id="listName" value="#{epiReport.listName}"/>
 				<h:commandButton id="savePatientsButton" onclick="EpiReport.saveList($('epiForm:listName').value, updateSidebar);return false;" value="Save Patient List"/>
 				
-				<h:selectBooleanCheckbox id="checkAllBox" value="Toggle All" onclick="A_toggleAllPatients(this.checked);"/>Toggle All?
+				<h:selectBooleanCheckbox id="checkAllBox" value="Toggle All" onclick="A_toggleAllPatients(this.checked);"/>Check All?
 				<img src="images/eagle/indicator.gif" id="indicator" style="display:none"/>
 				
 				<br/>
@@ -133,7 +150,7 @@
 
 				<div id="reportDiv">
 					<h:dataTable id="epiTable" value="#{epiReport.reportBeans}"
-						var="entry" rowClasses="rowOdd,rowEven" rows="50">
+						var="entry" rowClasses="rowOdd,rowEven" rows="50" binding="#{epiReport.reportUIData}">
 						<h:column>
 							<f:facet name="header">
 								-

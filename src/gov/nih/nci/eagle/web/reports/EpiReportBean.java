@@ -9,8 +9,11 @@ import gov.nih.nci.caintegrator.studyQueryService.dto.epi.EducationLevel;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.MaritalStatus;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.Religion;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.SmokingStatus;
+import gov.nih.nci.eagle.enumeration.SpecimenType;
+import gov.nih.nci.eagle.service.validation.ListValidationService;
 import gov.nih.nci.eagle.util.IntegerEnumResolver;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -22,7 +25,7 @@ public class EpiReportBean implements ReportBean {
     private BehavioralAssessment behavioralAssessment;
     private Histology histology;
     private boolean selected;
-
+    private List availableSpecimens;
 
     public EpiReportBean(StudyParticipant participant) {
         this.studyParticipant = participant;
@@ -34,7 +37,7 @@ public class EpiReportBean implements ReportBean {
             if("CIGT".equals(c.getTobaccoType())) {
                 this.cigaretteConsumption = c;
             }
-        } 
+        } 	
     }
     
     public boolean getSelected() {
@@ -151,5 +154,14 @@ public class EpiReportBean implements ReportBean {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException();
     }
+
+	public List getAvailableSpecimens() {
+		return availableSpecimens;
+	}
+
+	public void setAvailableSpecimens(List availableSpecimens) {
+		this.availableSpecimens = availableSpecimens;
+	}
+
 
 }
