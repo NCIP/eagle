@@ -118,6 +118,10 @@
 			<property-name>task</property-name>
 			<value>#{sessionScope["epiTask"]}</value>
 		</managed-property>
+		<managed-property>
+			<property-name>listValidationService</property-name>
+			<value>#{listValidationService}</value>
+		</managed-property>
 	</managed-bean>	
 	<managed-bean>
 		<description>Report to show patient groups</description>
