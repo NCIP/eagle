@@ -193,8 +193,16 @@
 	</bean>
 	
 	<bean id="DynamicListHelper" class="gov.nih.nci.eagle.web.ajax.DynamicListHelper">
-		<dwr:remote javascript="DynamicListHelper" />
+		<dwr:remote javascript="DynamicListHelper"/>
 		<property name="listValidationService" ref="listValidationService" />
+	</bean>
+	
+	<bean id="ChromosomeBrowserHelper" class="gov.nih.nci.eagle.web.ajax.ChromosomeBrowserHelper">
+		<dwr:remote javascript="ChromosomeBrowserHelper" >
+			<dwr:convert type="collection" class="java.util.Collection"/>
+			<dwr:convert type="bean" class="gov.nih.nci.eagle.web.ajax.ChromosomeCytoband"/>
+		</dwr:remote>
+		<property name="hibernateTemplate" ref="hibernateTemplate"/>
 	</bean>
 	
 	<bean id="listValidationService" class="gov.nih.nci.eagle.service.validation.ListValidationServiceImpl" >

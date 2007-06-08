@@ -1,0 +1,187 @@
+<html>
+	<head>
+		<title>Dojo: Hello World!</title>
+
+		<!-- SECTION 1 -->
+		<script type="text/javascript" src="js/dojo/dojo.js"></script>
+		<script type='text/javascript' src='dwrspring/engine.js'></script>
+		<script type='text/javascript'
+			src='dwrspring/interface/ChromosomeBrowserHelper.js'></script>
+		<script type='text/javascript' src='dwrspring/util.js'></script>
+		<script type="text/javascript" src="js/lib/prototype.js"></script>
+		<!-- SECTION 2 -->
+		<script type="text/javascript">
+			dojo.require("dojo.gfx.*");
+			dojo.require("dojo.event.*");
+			dojo.require("dojo.html.layout");
+			dojo.require("dojo.html.style");
+			var container = null;
+			var container_position = null;
+			var surface = null;
+			var surface_size = null;
+			var current_shape = null;
+			var current_shape_window = null;
+			var last_position = null;	
+			var box_start = 20;
+			var box_height = 40;	
+			var chromosome = '1';
+				
+			function initGfx() {
+				dwr.util.useLoadingMessage();
+				container = dojo.byId("gfx_holder");
+				container_position = dojo.html.abs(container);
+				surface = dojo.gfx.createSurface(container, 100, 650);
+				console.log(surface.getDimensions());
+				surface_size = surface.getDimensions();
+				surface_size.width  = parseInt(surface_size.width);
+				surface_size.height = parseInt(surface_size.height);
+				ChromosomeBrowserHelper.getChromosomeArms(chromosome, drawArms);
+
+
+			
+				dojo.event.connect(container, 'onmousedown', handleMouseDown);
+				dojo.event.connect(container, 'onmousemove', handleMouseMove);
+				dojo.event.connect(container, 'onmouseup',   handleMouseUp);
+			}
+			var bands = {};
+			var all_arms = {};
+			function drawBands(cytobands) {
+				var startY = 10;
+				var shade = false;
+				var rec;
+				for (var index = 0; index < cytobands.length; ++index) {
+					var heightY = (cytobands[index].end - cytobands[index].start);
+					rec = { x: 30, y: startY, width: 30, height: heightY}; 
+					drawBand(rec, cytobands[index].name, shade);
+					shade = !shade;
+					startY = startY + heightY;
+				}
+				drawDraggableWindow();
+			}
+			function drawArms(arms) {
+
+			 var rec;
+			 var armHeight;
+			 var armStart = 10;
+			 for (var index = 0; index < arms.length; ++index) {
+			 	armHeight = (arms[index].end - arms[index].start);
+			 	rec = { x: 30, y: armStart, width: 30, height: armHeight, r:15 };
+			 	all_arms[index] = surface.createRect(rec)  
+			 	.setStroke({color: [0, 0, 0, 1],   
+			     width: 2,  
+			     cap: "butt",  
+			     join: 2})  
+			     .setFill([0, 0, 0, .01])
+			 	.applyTransform(dojo.gfx.matrix.identity);  
+			 	all_arms[index].getEventSource().setAttribute('bandid', arms[index].name);
+			 	
+			 	armStart = armStart + armHeight;
+			 }
+				ChromosomeBrowserHelper.getChromosomeCytobands(chromosome, drawBands);
+
+			}
+			
+			function drawDraggableWindow() {
+				var box = { x: 25, y: box_start, width: 40, height: box_height};  
+				draggable = surface.createRect(box)  
+				 .setStroke({color: [255, 0, 0, 1],   
+				     width: 2,  
+				     cap: "butt",  
+				     join: 2})  
+					.setFill([255, 0, 0, .5])			     
+				 .applyTransform(dojo.gfx.matrix.identity);  
+				 draggable.getEventSource().setAttribute('box', 'box');
+				 draggable.getEventSource().setAttribute('bandid', 'box');
+				 dojo.html.setClass(draggable.getEventSource(), "movable");
+				  bands['box'] = draggable;
+			}		
+			var draggable;
+			function drawBand(rec, name, black) {
+							console.log(all_arms[0]);
+				var fill;
+				if(black)
+					fill = .9;
+				else 
+					fill = .1
+				var band = surface.createRect(rec)  
+				 .setStroke({color: [0, 0, 0, fill],   
+				     width: 2,  
+				     cap: "butt",  
+				     join: 2})  
+				 .setFill([0, 0, 0, fill])
+				 .applyTransform(dojo.gfx.matrix.identity); 
+				 
+				 band.getEventSource().setAttribute('bandid', name);
+				 
+				 bands[name] = band;
+			
+			
+			}
+			function handleMouseDown(event)
+			{
+				var shape = getShape(event);
+				if (shape && (event.target.getAttribute('bandid') == 'box')) {
+					current_shape = shape;
+					last_position = {
+						y: event.clientY - container_position.y
+					};
+					var params = shape.getShape();
+					var topY = shape.matrix.dy + 15;
+					var dy = last_position.y - topY;
+					current_shape_window = {
+						y1:  dy,
+						y2: 625  + dy
+					};
+				}
+				
+				dojo.event.browser.stopEvent(event);
+			}		
+			function handleMouseUp(event)
+			{
+				// Log out the height of the box since the box started at
+				// 20
+				if(current_shape != null) {
+					ChromosomeBrowserHelper.getDataForRange((current_shape.matrix.dy + box_start - 10), (current_shape.matrix.dy + box_start + box_height - 10), renderGraph);
+				}
+				current_shape = null;
+				dojo.event.browser.stopEvent(event);
+			}		
+			function getShape(event)
+			{
+				var id = event.target.getAttribute('bandid');
+				var s  = id ? bands[id] : null;
+				return s;
+			}		
+			function handleMouseMove(event)
+			{
+				if(!current_shape) return;
+				var y = Math.min(Math.max(event.clientY - container_position.y, current_shape_window.y1), current_shape_window.y2);
+				//var y = event.clientY - container_position.y;
+				current_shape.applyTransform({dy: y - last_position.y});
+				last_position = {y: y};
+				dojo.event.browser.stopEvent(event);
+			}	
+			
+			function renderGraph(returnVal) {
+				$('dataGraph').innerHTML = '<b>' + returnVal + '</b>';
+			}	
+			dojo.addOnLoad(initGfx);
+    	</script>
+		<style type="text/css">
+			.movable { cursor: pointer; }
+			</style>
+	</head>
+
+	<body>
+		<table>
+			<tr>
+				<td>
+					<div id="gfx_holder" style="width: 100px; height: 650px;"></div>
+				</td>
+				<td>
+					<div id="dataGraph"></div>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
