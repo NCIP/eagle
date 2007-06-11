@@ -27,7 +27,10 @@
 						}						
 					}
 					catch(err)	{
-						alert("cant update sidebar: " + err);
+						try {
+							window.opener.opener.SidebarHelper.loadSidebar();
+						} catch(err2) {
+						}
 					}		
 					//uncheck them all after the save
 					A_toggleAllPatients(false);			
