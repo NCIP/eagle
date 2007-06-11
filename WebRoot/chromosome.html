@@ -25,17 +25,21 @@
 			var box_start = 20;
 			var box_height = 40;	
 			var chromosome = '1';
+			var topY = 20;
+			var group;
 				
 			function initGfx() {
 				dwr.util.useLoadingMessage();
 				container = dojo.byId("gfx_holder");
 				container_position = dojo.html.abs(container);
-				surface = dojo.gfx.createSurface(container, 100, 650);
-				console.log(surface.getDimensions());
+				surface = dojo.gfx.createSurface(container, 100, 675);
+				
+				group = surface.createGroup();
 				surface_size = surface.getDimensions();
 				surface_size.width  = parseInt(surface_size.width);
 				surface_size.height = parseInt(surface_size.height);
-				ChromosomeBrowserHelper.getChromosomeArms(chromosome, drawArms);
+				
+ChromosomeBrowserHelper.getChromosomeArms(chromosome, drawArms);
 
 
 			
@@ -46,7 +50,7 @@
 			var bands = {};
 			var all_arms = {};
 			function drawBands(cytobands) {
-				var startY = 10;
+				var startY = topY;
 				var shade = false;
 				var rec;
 				for (var index = 0; index < cytobands.length; ++index) {
@@ -56,17 +60,17 @@
 					shade = !shade;
 					startY = startY + heightY;
 				}
-				drawDraggableWindow();
+				
 			}
 			function drawArms(arms) {
 
 			 var rec;
 			 var armHeight;
-			 var armStart = 10;
+			 var armStart = topY;
 			 for (var index = 0; index < arms.length; ++index) {
 			 	armHeight = (arms[index].end - arms[index].start);
 			 	rec = { x: 30, y: armStart, width: 30, height: armHeight, r:15 };
-			 	all_arms[index] = surface.createRect(rec)  
+			 	all_arms[index] = group.createRect(rec)  
 			 	.setStroke({color: [0, 0, 0, 1],   
 			     width: 2,  
 			     cap: "butt",  
@@ -77,8 +81,47 @@
 			 	
 			 	armStart = armStart + armHeight;
 			 }
-				ChromosomeBrowserHelper.getChromosomeCytobands(chromosome, drawBands);
+			 ChromosomeBrowserHelper.getChromosomeCytobands(chromosome, drawBands);
+			 
+			     var g1 = surface.createGroup();
 
+    var startPoint = {x: 28, y: topY + 15 };
+    var endPoint   = {x: 62,   y: topY + 15};
+
+    var re1 = g1.createPath()
+		.moveTo(startPoint)
+		.arcTo(17, 15, 0, false, true, endPoint)
+		.lineTo(62, 5)
+		.lineTo(28, 5)
+		.lineTo(28, topY + 15)
+		.setStroke({color: [255, 255, 255, 1]})
+		.setFill([255, 255, 255, 1])
+		;
+		var startHeight = (arms[0].end - arms[0].start);
+    startPoint = {x: 28, y: startHeight + 35 };
+    endPoint   = {x: 62,   y: startHeight + 35};		
+    var re2 = g1.createPath()
+		.moveTo(startPoint)
+		.arcTo(17, 15, 0, false, true, endPoint)
+		.lineTo(62, startHeight + 6)
+		.arcTo(17, 15, 0, false, true, {x: 28,   y: startHeight + 6})
+		.setStroke({color: [255, 255, 255, 1]})
+		.setFill([255, 255, 255, 1])
+		;		
+		    startPoint = {x: 28, y: armStart - 13};
+    endPoint   = {x: 62,   y: armStart - 13};		
+    var re3 = g1.createPath()
+		.moveTo(startPoint)
+		.arcTo(17, 15, 0, false, false, endPoint)
+		.lineTo(62, armStart + 6)
+		.arcTo(17, 15, 0, false, true, {x: 28,   y: armStart + 6})
+		.setStroke({color: [255, 255, 255, 1]})
+		.setFill([255, 255, 255, 1])
+		;	
+		
+			 
+				
+		drawDraggableWindow();
 			}
 			
 			function drawDraggableWindow() {
@@ -97,13 +140,12 @@
 			}		
 			var draggable;
 			function drawBand(rec, name, black) {
-							console.log(all_arms[0]);
 				var fill;
 				if(black)
 					fill = .9;
 				else 
 					fill = .1
-				var band = surface.createRect(rec)  
+				var band = group.createRect(rec)  
 				 .setStroke({color: [0, 0, 0, fill],   
 				     width: 2,  
 				     cap: "butt",  
@@ -176,7 +218,7 @@
 		<table>
 			<tr>
 				<td>
-					<div id="gfx_holder" style="width: 100px; height: 650px;"></div>
+					<div id="gfx_holder" style="width: 100px; height: 675px;"></div>
 				</td>
 				<td>
 					<div id="dataGraph"></div>
