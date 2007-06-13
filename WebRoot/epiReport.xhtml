@@ -163,153 +163,153 @@
 				<div id="reportDiv">
 					<h:dataTable id="epiTable" value="#{epiReport.reportBeans}"
 						var="entry" rowClasses="rowOdd,rowEven" rows="50" binding="#{epiReport.reportUIData}">
-						<h:column>
-							<f:facet name="header">
+						<h:column id="sampleBoxesHeader">
+							<f:facet name="header" id="sampleBoxesHeader1">
 								-
 							</f:facet>
-							<h:selectBooleanCheckbox  value="#{entry.selected}" onclick="EpiReport.selectPatient('#{entry.patientId}', this.checked);"/>
+							<h:selectBooleanCheckbox id="sampleBoxesHeader2" value="#{entry.selected}" onclick="EpiReport.selectPatient('#{entry.patientId}', this.checked);"/>
 						</h:column>
-						<h:column>
+						<h:column id="sampleBoxes">
 							<f:facet name="header">
 								<h:commandLink styleClass="patientId"
-									actionListener="#{epiReport.sortDataList}" immediate="false">
+									actionListener="#{epiReport.sortDataList}" immediate="false" id="sampleBox">
 									<f:attribute name="sortField" value="patientId" />
 									<h:outputText value="Patient ID" />
 								</h:commandLink>
 							</f:facet>
-							<h:outputText value="#{entry.patientId}" />
+							<h:outputText value="#{entry.patientId}" id="patientBox" />
 
 						</h:column>
 
-						<h:column>
+						<h:column id="genderHeader">
 							<f:facet name="header">
-								<h:commandLink styleClass="gender"
+								<h:commandLink styleClass="gender" id="genderHeaderLink"
 									actionListener="#{epiReport.sortDataList}" immediate="false">
 									<f:attribute name="sortField" value="gender" />
 									<h:outputText value="Gender" />
 								</h:commandLink>
 							</f:facet>
-							<h:outputText value="#{entry.gender}" />
+							<h:outputText value="#{entry.gender}" id="genderHeaderText" />
 						</h:column>
-						<h:column>
-							<f:facet name="header">
-								<h:commandLink styleClass="smokingStatus"
+						<h:column id="smokingStatusCol">
+							<f:facet name="header" id="smokingStatusHeader">
+								<h:commandLink styleClass="smokingStatus" id="smokingStatusLink"
 									actionListener="#{epiReport.sortDataList}" immediate="false">
 									<f:attribute name="sortField" value="smokingStatus" />
 									<h:outputText value="Smoking Status" />
 								</h:commandLink>
 							</f:facet>
-							<h:outputText value="#{entry.smokingStatus}" />
+							<h:outputText value="#{entry.smokingStatus}" id="smokingStatusText" />
 						</h:column>
-						<h:column>
+						<h:column id="caseCol">
 							<f:facet name="header">
-								<h:commandLink styleClass="caseStatus"
+								<h:commandLink styleClass="caseStatus" id="caseLink"
 									actionListener="#{epiReport.sortDataList}" immediate="false">
 									<f:attribute name="sortField" value="caseStatus" />
 									<h:outputText value="Case Control Status" />
 								</h:commandLink>
 							</f:facet>
-							<h:outputText value="#{entry.caseStatus}" />
+							<h:outputText value="#{entry.caseStatus}" id="caseText" />
 						</h:column>
-						<h:column>
+						<h:column id="maritalCol">
 							<f:facet name="header">
-								<h:commandLink styleClass="maritalStatus"
+								<h:commandLink styleClass="maritalStatus" id="maritalLink"
 									actionListener="#{epiReport.sortDataList}" immediate="false">
 									<f:attribute name="sortField" value="maritalStatus" />
 									<h:outputText value="Marital Status" />
 								</h:commandLink>
 							</f:facet>
-							<h:outputText value="#{entry.maritalStatus}" />
+							<h:outputText value="#{entry.maritalStatus}" id="maritalText" />
 						</h:column>
-						<h:column>
+						<h:column id="religionCol">
 							<f:facet name="header">
-								<h:commandLink styleClass="religion"
+								<h:commandLink styleClass="religion" id="religionLink"
 									actionListener="#{epiReport.sortDataList}" immediate="false">
 									<f:attribute name="sortField" value="religion" />
 									<h:outputText value="Religion" />
 								</h:commandLink>
 							</f:facet>
-							<h:outputText value="#{entry.religion}" />
+							<h:outputText value="#{entry.religion}" id="religionText" />
 						</h:column>
-						<h:column>
+						<h:column id="eductaionCol">
 							<f:facet name="header">
-								<h:commandLink styleClass="educationLevel"
+								<h:commandLink styleClass="educationLevel" id="educationLink"
 									actionListener="#{epiReport.sortDataList}" immediate="false">
 									<f:attribute name="sortField" value="educationLevel" />
 									<h:outputText value="Education Level" />
 								</h:commandLink>
 							</f:facet>
-							<h:outputText value="#{entry.educationLevel}" />
+							<h:outputText value="#{entry.educationLevel}" id="educationText" />
 						</h:column>
-						<h:column>
+						<h:column id="intensityCol">
 							<f:facet name="header">
-								<h:commandLink styleClass="intensity"
+								<h:commandLink styleClass="intensity" id="intensityLink"
 									actionListener="#{epiReport.sortDataList}" immediate="false">
 									<f:attribute name="sortField" value="intensity" />
 									<h:outputText value="Intensity" />
 								</h:commandLink>
 							</f:facet>
-							<h:outputText value="#{entry.intensity}" />
+							<h:outputText value="#{entry.intensity}" id="intensityText" />
 						</h:column>
-						<h:column>
+						<h:column id="durationCol">
 							<f:facet name="header">
-								<h:commandLink styleClass="duration"
+								<h:commandLink styleClass="duration" id="durationLink"
 									actionListener="#{epiReport.sortDataList}" immediate="false">
 									<f:attribute name="sortField" value="duration" />
 									<h:outputText value="Duration" />
 								</h:commandLink>
 							</f:facet>
-							<h:outputText value="#{entry.duration}" />
+							<h:outputText value="#{entry.duration}" id="durationText" />
 						</h:column>
-						<h:column>
+						<h:column id="ageAtInitCol">
 							<f:facet name="header">
-								<h:commandLink styleClass="ageAtInitiation"
+								<h:commandLink styleClass="ageAtInitiation" id="ageAtInitLink"
 									actionListener="#{epiReport.sortDataList}" immediate="false">
 									<f:attribute name="sortField" value="ageAtInitiation" />
 									<h:outputText value="Age At Initiation" />
 								</h:commandLink>
 							</f:facet>
-							<h:outputText value="#{entry.ageAtInitiation}" />
+							<h:outputText value="#{entry.ageAtInitiation}"  id="ageAtInitText"/>
 						</h:column>
-						<h:column>
+						<h:column id="yrsSinceQuittingCol">
 							<f:facet name="header">
-								<h:commandLink styleClass="yearsSinceQuitting"
+								<h:commandLink styleClass="yearsSinceQuitting" id="yrsSinceQuittingLink"
 									actionListener="#{epiReport.sortDataList}" immediate="false">
 									<f:attribute name="sortField" value="yearsSinceQuitting" />
 									<h:outputText value="Years Since Quitting" />
 								</h:commandLink>
 							</f:facet>
-							<h:outputText value="#{entry.yearsSinceQuitting}" />
+							<h:outputText value="#{entry.yearsSinceQuitting}" id="yrsSinceQuittingText" />
 						</h:column>
-						<h:column>
+						<h:column id="fagerstromCol">
 							<f:facet name="header">
-								<h:commandLink styleClass="fagerstrom"
+								<h:commandLink styleClass="fagerstrom"  id="fagerstromLink"
 									actionListener="#{epiReport.sortDataList}" immediate="false">
 									<f:attribute name="sortField" value="fagerstrom" />
 									<h:outputText value="Fagerstrom Score" />
 								</h:commandLink>
 							</f:facet>
-							<h:outputText value="#{entry.fagerstrom}" />
+							<h:outputText value="#{entry.fagerstrom}" id="fagerstromText" />
 						</h:column>
-						<h:column>
+						<h:column id="stageCol">
 							<f:facet name="header">
-								<h:commandLink styleClass="stage"
+								<h:commandLink styleClass="stage" id="stageLink"
 									actionListener="#{epiReport.sortDataList}" immediate="false">
 									<f:attribute name="sortField" value="stage" />
 									<h:outputText value="Stage" />
 								</h:commandLink>
 							</f:facet>
-							<h:outputText value="#{entry.stage}" />
+							<h:outputText value="#{entry.stage}" id="stageText" />
 						</h:column>
-						<h:column>
+						<h:column id="raCol">
 							<f:facet name="header">
-								<h:commandLink styleClass="residentialArea"
+								<h:commandLink styleClass="residentialArea" id="raLink"
 									actionListener="#{epiReport.sortDataList}" immediate="false">
 									<f:attribute name="sortField" value="residentialArea" />
 									<h:outputText value="Residential Area" />
 								</h:commandLink>
 							</f:facet>
-							<h:outputText value="#{entry.residentialArea}" />
+							<h:outputText value="#{entry.residentialArea}" id="raText"/>
 						</h:column>
 
 					</h:dataTable>
