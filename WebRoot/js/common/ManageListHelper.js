@@ -304,10 +304,10 @@
 						if(aspecimens.length>0 && aspecimens.length < 5)	{ 
 							for(var iii=0; iii<aspecimens.length; iii++)	{
 								if(aspecimens[iii]!="")	{
-									tmp += "<img src='images/eagle/24-tag-check.png' title='"+aspecimens[iii]+"'/>";
+									tmp += "<img src='images/eagle/24blueCheck.png' title='"+aspecimens[iii]+"'/>";
 								}
 								else	{
-									tmp += "<img src='images/eagle/24-tag-cold.png' title='"+aspecimens[iii]+"'/>";
+									tmp += "<img src='images/eagle/24fadeX.png' title='"+aspecimens[iii]+"'/>";
 								}
 								
 								//tmp += aspecimens[iii] + " ";
