@@ -10,10 +10,17 @@ a {
 	color: #6085CC; /* c75f3e; */
 }
 
-form	{
+#reportDiv	{
 	padding-left:10px;		
 }
-	
+
+form div	{
+	padding-left: 10px;	
+}
+
+form, style	{
+	padding:0px; margin:0px;	
+}
 #reportDiv	{
 	background: #E6EAE9;	
 }
