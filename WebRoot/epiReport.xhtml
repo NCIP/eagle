@@ -4,8 +4,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:c="http://java.sun.com/jstl/core"
-	xmlns:i="http://caintegrator.nci.nih.gov/jsf"
-	xmlns:jsfExt="http://java.sun.com/jsf/extensions/dynafaces">
+	xmlns:i="http://caintegrator.nci.nih.gov/jsf">
 	<head>
 		<title>EAGLE Report</title>
 		<link rel="stylesheet" type="text/css" href="css/report.css"
@@ -119,29 +118,39 @@
 			</div>
 
 			<h:form id="epiForm">
-			<div id="filterButtons">
-			Filter:
-				<h:commandButton id="filterBlood" value="Blood" actionListener="#{epiReport.applyFilter}" immediate="false" disabled="#{epiReport.currentFilter == 'BLOOD'}"> 
+			
+			<style>
+				@import url("css/macButtons.css");
+				a.#{epiReport.currentFilter} { color:red; }
+			</style>
+			<div class="clear" style="padding-bottom: 15px; background-color:#fff; line-height:25px;padding-top:10px;">
+			<span style="float:left; padding-right:10px;">Filter Results:</span>
+				<h:commandLink id="filterBlood" styleClass="button BLOOD" actionListener="#{epiReport.applyFilter}" immediate="false"> 
 					<f:attribute name="specimen" value="BLOOD"/>
-				</h:commandButton>
-				<h:commandButton id="filterTissueNormal" value="Tissue Normal" actionListener="#{epiReport.applyFilter}" immediate="false" disabled="#{epiReport.currentFilter == 'TISSUE_NORMAL'}"> 
+					<span>Blood</span>
+				</h:commandLink>
+				<h:commandLink id="filterTissueNormal" styleClass="button TISSUE_NORMAL" actionListener="#{epiReport.applyFilter}" immediate="false" > 
 					<f:attribute name="specimen" value="TISSUE_NORMAL"/>
-				</h:commandButton>
-				<h:commandButton id="filterTissueCancer" value="Tissue Cancer" actionListener="#{epiReport.applyFilter}" immediate="false" disabled="#{epiReport.currentFilter == 'TISSUE_CANCER'}"> 
+					<span>Tissue Normal</span>
+				</h:commandLink>
+				<h:commandLink id="filterTissueCancer" styleClass="button TISSUE_CANCER" actionListener="#{epiReport.applyFilter}" immediate="false"> 
 					<f:attribute name="specimen" value="TISSUE_CANCER"/>
-				</h:commandButton>
-				<h:commandButton id="filterNone" value="Show All" actionListener="#{epiReport.applyFilter}" immediate="false" disabled="#{epiReport.currentFilter == 'all'}"> 
+					<span>Tissue Cancer</span>
+				</h:commandLink>
+				<h:commandLink id="filterNone" styleClass="button all" actionListener="#{epiReport.applyFilter}" immediate="false"> 
 					<f:attribute name="specimen" value="all"/>
-				</h:commandButton>
+					<span>Show All</span>
+				</h:commandLink>
 				( Currently showing: #{epiReport.currentFilter} )
 			</div>
-			<br/>
-				<h:inputText id="listName" value="#{epiReport.listName}"/>
-				<h:commandButton id="savePatientsButton" onclick="EpiReport.saveList($('epiForm:listName').value, updateSidebar);return false;" value="Save Patient List"/>
-				
+			<div class="clear" style="background-color:#fff;padding-bottom:5px;">
+				<h:inputText id="listName" value="#{epiReport.listName}" style="float:left;margin-right:10px;"/>
+				<h:commandLink styleClass="button" id="savePatientsButton" onclick="EpiReport.saveList($('epiForm:listName').value, updateSidebar);return false;">
+					<span>Save Patient List</span>
+				</h:commandLink>
 				<h:selectBooleanCheckbox id="checkAllBox" value="Toggle All" onclick="A_toggleAllPatients(this.checked);"/>Check All?
 				<img src="images/eagle/indicator.gif" id="indicator" style="display:none"/>
-				
+			</div>				
 				<br/>
 				<span id="statusMessage"></span>
 				<ui:include src="/WEB-INF/facelets/reportStyle.xhtml">
