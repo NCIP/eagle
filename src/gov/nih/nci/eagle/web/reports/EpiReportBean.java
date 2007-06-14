@@ -7,13 +7,11 @@ import gov.nih.nci.caintegrator.domain.study.bean.Histology;
 import gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.EducationLevel;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.MaritalStatus;
+import gov.nih.nci.caintegrator.studyQueryService.dto.epi.RelativeLungCancer;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.Religion;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.SmokingStatus;
-import gov.nih.nci.eagle.enumeration.SpecimenType;
-import gov.nih.nci.eagle.service.validation.ListValidationService;
 import gov.nih.nci.eagle.util.IntegerEnumResolver;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -162,6 +160,15 @@ public class EpiReportBean implements ReportBean {
 	public void setAvailableSpecimens(List availableSpecimens) {
 		this.availableSpecimens = availableSpecimens;
 	}
+    
+    public String getRelativeWithLungCancer() {
+        RelativeLungCancer cancer = IntegerEnumResolver.resolveEnum(RelativeLungCancer.class, studyParticipant.getEpidemiologicalFinding().getRelativeWithLungCancer());
+        if(cancer != null) {
+            return cancer.getName();
+        }
+        return "N/A";
+        
+    }
 
 
 }

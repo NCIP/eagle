@@ -13,8 +13,8 @@ import gov.nih.nci.caintegrator.studyQueryService.dto.epi.MaritalStatus;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.OccupationalExposure;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.PatientCharacteristicsCriterion;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.Relative;
+import gov.nih.nci.caintegrator.studyQueryService.dto.epi.RelativeLungCancer;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.Religion;
-import gov.nih.nci.caintegrator.studyQueryService.dto.epi.ResidentialArea;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.SmokingStatus;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.TobaccoConsumptionCriterion;
 
@@ -100,50 +100,25 @@ public class EpidemiologicalQueryHandler implements QueryHandler {
         targetCrit.addOrder(Order.asc("id"));
         List<StudyParticipant> l = targetCrit.list();
 
-        initializeProxies(l);
         return l;
     }
 
     private void populateFamilyHistoryCrit(
             FamilyHistoryCriterion familyHistcrit, Criteria targetCrit) {
-        Collection<Relative> lungCancerrelativeCrit = familyHistcrit
-                .getLungCancerRelativeCollection();
+        Integer lungCancerrelativeCrit = familyHistcrit
+                .getFamilyLungCancer();
         if (lungCancerrelativeCrit != null) {
-            targetCrit.createAlias("lungCancerRelativeCollection", "lcr");
-            targetCrit.add(Restrictions.in("lungCancerRelativeCollection",
-                    lungCancerrelativeCrit));
+
+            targetCrit.add(Restrictions.eq("finding.relativeWithLungCancer",
+                    lungCancerrelativeCrit.toString()));
         }
         Collection<Relative> smokingRelativeCrit = familyHistcrit
-                .getLungCancerRelativeCollection();
+                .getSmokingRelativeCollection();
         if (smokingRelativeCrit != null) {
             targetCrit.createAlias("smokingRelativeCollection", "srCol");
             targetCrit.add(Restrictions.in("smokingRelativeCollection",
                     smokingRelativeCrit));
         }
-    }
-
-    private void initializeProxies(List<StudyParticipant> l) {
-
-        // /* TODO: Fix this so that it does not issue multiple SQL statements
-        // one for each finding */
-        // for (int i = 0; i < l.size(); i++) {
-        // StudyParticipant epidemiologicalStudyParticipant = l.get(i);
-        // if (epidemiologicalStudyParticipant.getTobaccoConsumptionCollection()
-        // != null)
-        // epidemiologicalStudyParticipant.getTobaccoConsumptionCollection().size();
-        // epidemiologicalStudyParticipant.getBehavioralAssessment();
-        // /*
-        // epidemiologicalStudyParticipant.getLungCancerRelativeCollection().size();
-        // epidemiologicalStudyParticipant.getSmokingRelativeCollection().size();
-        // */
-        // if (epidemiologicalStudyParticipant.getDietaryConsumptionCollection()
-        // != null)
-        // epidemiologicalStudyParticipant.getDietaryConsumptionCollection().size();
-        // if
-        // (epidemiologicalStudyParticipant.getEnvironmentalFactorCollection()
-        // != null)
-        // epidemiologicalStudyParticipant.getEnvironmentalFactorCollection().size();
-        // }
     }
 
     private void populateTobaccoConsumptionCrit(

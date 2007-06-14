@@ -311,6 +311,16 @@
 							</f:facet>
 							<h:outputText value="#{entry.residentialArea}" id="raText"/>
 						</h:column>
+						<h:column id="fcCol">
+							<f:facet name="header">
+								<h:commandLink styleClass="relativeWithLungCancer" id="fcLink"
+									actionListener="#{epiReport.sortDataList}" immediate="false">
+									<f:attribute name="sortField" value="relativeWithLungCancer" />
+									<h:outputText value="Relative with Lung Cancer" />
+								</h:commandLink>
+							</f:facet>
+							<h:outputText value="#{entry.relativeWithLungCancer}" id="fcText"/>
+						</h:column>
 
 					</h:dataTable>
 				</div>

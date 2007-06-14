@@ -79,7 +79,7 @@ public class EpiForm extends ValidatorForm{
 	 */
 	
 	private String [] relativesWithCancer;
-	private String familyLungCancer;
+	private Integer familyLungCancer;
 	
 	private String [] relativesWhoSmoked;
 	
@@ -507,11 +507,11 @@ public class EpiForm extends ValidatorForm{
 		this.yearsSinceQuittingUpper = yearsSinceQuittingUpper;
 	}
 
-	public String getFamilyLungCancer() {
+	public Integer getFamilyLungCancer() {
 		return familyLungCancer;
 	}
 
-	public void setFamilyLungCancer(String familyLungCancer) {
+	public void setFamilyLungCancer(Integer familyLungCancer) {
 		this.familyLungCancer = familyLungCancer;
 	}
 	

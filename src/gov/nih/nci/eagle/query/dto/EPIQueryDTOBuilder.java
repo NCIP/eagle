@@ -85,14 +85,10 @@ public class EPIQueryDTOBuilder implements QueryDTOBuilder {
         }
 
         /*  2. handle Smoking Relatives */
-        String[] lungCancerRelatives = epiForm.getRelativesWithCancer();
-        if (lungCancerRelatives != null && lungCancerRelatives.length > 0) {
-            final Collection<Relative> lungCancerRelativeCol = new ArrayList<Relative>();
-            for (int i = 0; i < lungCancerRelatives.length; i++) {
-                Relative  lungCancerRelative = Enum.valueOf(Relative.class, lungCancerRelatives[i]);
-                lungCancerRelativeCol.add(lungCancerRelative);
-            }
-            familyHistCrit.setLungCancerRelativeCollection(lungCancerRelativeCol);
+        Integer lungCancerRelatives = epiForm.getFamilyLungCancer();
+        if (lungCancerRelatives != null ) {
+            familyHistCrit.setFamilyLungCancer(lungCancerRelatives);
+            
         }
 
     }
