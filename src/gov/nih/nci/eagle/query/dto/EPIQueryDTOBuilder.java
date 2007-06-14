@@ -86,7 +86,7 @@ public class EPIQueryDTOBuilder implements QueryDTOBuilder {
 
         /*  2. handle Smoking Relatives */
         Integer lungCancerRelatives = epiForm.getFamilyLungCancer();
-        if (lungCancerRelatives != null ) {
+        if (lungCancerRelatives != null && lungCancerRelatives != -1 ) {
             familyHistCrit.setFamilyLungCancer(lungCancerRelatives);
             
         }
