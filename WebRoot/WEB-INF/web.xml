@@ -10,6 +10,10 @@
 			classpath*:/applicationContext-services.xml
 		</param-value>
 	</context-param>
+<context-param>
+    <param-name>facelets.DEVELOPMENT</param-name>
+    <param-value>true</param-value>
+ </context-param>	
 	<context-param>
 		<param-name>facelets.LIBRARIES</param-name>
 		<param-value>/WEB-INF/facelets/tomahawk.taglib.xml; /WEB-INF/facelets/caintegrator.taglib.xml</param-value>
@@ -110,10 +114,6 @@
 	<servlet>
 		<servlet-name>facesServlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
-		<init-param>
-			<param-name>javax.faces.LIFECYCLE_ID</param-name>
-			<param-value>com.sun.faces.lifecycle.PARTIAL</param-value>
-		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
