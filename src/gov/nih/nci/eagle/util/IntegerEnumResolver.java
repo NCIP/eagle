@@ -11,6 +11,8 @@ public class IntegerEnumResolver {
                 int value = Integer.parseInt(val);
                 if(((IntegerValueEnum)enumConstants[i]).getValue() == value)
                     return enumConstants[i];
+            } else {
+                throw new RuntimeException("Enum must implement IntegerValueEnum interface to use this utility");
             }
         }
         return null;
