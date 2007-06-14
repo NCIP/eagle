@@ -9,12 +9,15 @@
 			src='dwrspring/interface/ChromosomeBrowserHelper.js'></script>
 		<script type='text/javascript' src='dwrspring/util.js'></script>
 		<script type="text/javascript" src="js/lib/prototype.js"></script>
+		<script type="text/javascript" src="js/chromosomeBrowser.js"></script>
 		<!-- SECTION 2 -->
 		<script type="text/javascript">
 			dojo.require("dojo.gfx.*");
 			dojo.require("dojo.event.*");
+			dojo.require("dojo.widget.*");
 			dojo.require("dojo.html.layout");
 			dojo.require("dojo.html.style");
+			/*
 			var container = null;
 			var container_position = null;
 			var surface = null;
@@ -39,7 +42,7 @@
 				surface_size.width  = parseInt(surface_size.width);
 				surface_size.height = parseInt(surface_size.height);
 				
-ChromosomeBrowserHelper.getChromosomeArms(chromosome, drawArms);
+				ChromosomeBrowserHelper.getChromosomeArms(chromosome, drawArms);
 
 
 			
@@ -85,43 +88,43 @@ ChromosomeBrowserHelper.getChromosomeArms(chromosome, drawArms);
 			 
 			     var g1 = surface.createGroup();
 
-    var startPoint = {x: 28, y: topY + 15 };
-    var endPoint   = {x: 62,   y: topY + 15};
-
-    var re1 = g1.createPath()
-		.moveTo(startPoint)
-		.arcTo(17, 15, 0, false, true, endPoint)
-		.lineTo(62, 5)
-		.lineTo(28, 5)
-		.lineTo(28, topY + 15)
-		.setStroke({color: [255, 255, 255, 1]})
-		.setFill([255, 255, 255, 1])
-		;
-		var startHeight = (arms[0].end - arms[0].start);
-    startPoint = {x: 28, y: startHeight + 35 };
-    endPoint   = {x: 62,   y: startHeight + 35};		
-    var re2 = g1.createPath()
-		.moveTo(startPoint)
-		.arcTo(17, 15, 0, false, true, endPoint)
-		.lineTo(62, startHeight + 6)
-		.arcTo(17, 15, 0, false, true, {x: 28,   y: startHeight + 6})
-		.setStroke({color: [255, 255, 255, 1]})
-		.setFill([255, 255, 255, 1])
-		;		
-		    startPoint = {x: 28, y: armStart - 13};
-    endPoint   = {x: 62,   y: armStart - 13};		
-    var re3 = g1.createPath()
-		.moveTo(startPoint)
-		.arcTo(17, 15, 0, false, false, endPoint)
-		.lineTo(62, armStart + 6)
-		.arcTo(17, 15, 0, false, true, {x: 28,   y: armStart + 6})
-		.setStroke({color: [255, 255, 255, 1]})
-		.setFill([255, 255, 255, 1])
-		;	
+		    var startPoint = {x: 28, y: topY + 15 };
+		    var endPoint   = {x: 62,   y: topY + 15};
 		
+		    var re1 = g1.createPath()
+				.moveTo(startPoint)
+				.arcTo(17, 15, 0, false, true, endPoint)
+				.lineTo(62, 5)
+				.lineTo(28, 5)
+				.lineTo(28, topY + 15)
+				.setStroke({color: [255, 255, 255, 1]})
+				.setFill([255, 255, 255, 1])
+				;
+				var startHeight = (arms[0].end - arms[0].start);
+		    startPoint = {x: 28, y: startHeight + 35 };
+		    endPoint   = {x: 62,   y: startHeight + 35};		
+		    var re2 = g1.createPath()
+				.moveTo(startPoint)
+				.arcTo(17, 15, 0, false, true, endPoint)
+				.lineTo(62, startHeight + 6)
+				.arcTo(17, 15, 0, false, true, {x: 28,   y: startHeight + 6})
+				.setStroke({color: [255, 255, 255, 1]})
+				.setFill([255, 255, 255, 1])
+				;		
+				    startPoint = {x: 28, y: armStart - 13};
+		    endPoint   = {x: 62,   y: armStart - 13};		
+		    var re3 = g1.createPath()
+				.moveTo(startPoint)
+				.arcTo(17, 15, 0, false, false, endPoint)
+				.lineTo(62, armStart + 6)
+				.arcTo(17, 15, 0, false, true, {x: 28,   y: armStart + 6})
+				.setStroke({color: [255, 255, 255, 1]})
+				.setFill([255, 255, 255, 1])
+				;	
+				
 			 
 				
-		drawDraggableWindow();
+				drawDraggableWindow();
 			}
 			
 			function drawDraggableWindow() {
@@ -140,18 +143,24 @@ ChromosomeBrowserHelper.getChromosomeArms(chromosome, drawArms);
 			}		
 			var draggable;
 			function drawBand(rec, name, black) {
+			var band;
 				var fill;
-				if(black)
+				if(black) {
 					fill = .9;
-				else 
-					fill = .1
-				var band = group.createRect(rec)  
-				 .setStroke({color: [0, 0, 0, fill],   
-				     width: 2,  
-				     cap: "butt",  
-				     join: 2})  
+					band = group.createRect(rec)  
+				 .setStroke({color: [0, 0, 0, fill]})  
 				 .setFill([0, 0, 0, fill])
 				 .applyTransform(dojo.gfx.matrix.identity); 
+				} else { 
+					fill = .1
+				
+					band = group.createRect(rec)  
+				 .setStroke({color: [0, 0, 0, fill]})  
+				 .setFill([0, 0, 0, fill])
+				 .applyTransform(dojo.gfx.matrix.identity); 
+
+            
+				}
 				 
 				 band.getEventSource().setAttribute('bandid', name);
 				 
@@ -206,8 +215,14 @@ ChromosomeBrowserHelper.getChromosomeArms(chromosome, drawArms);
 			
 			function renderGraph(returnVal) {
 				$('dataGraph').innerHTML = '<b>' + returnVal + '</b>';
-			}	
-			dojo.addOnLoad(initGfx);
+			}	*/
+			dojo.addOnLoad(init);
+			
+			function init() {
+				var chromosome = dojo.widget.byId('chromosomeBrowser');
+				chromosome.chromosome = "X";
+				chromosome.render();
+			}
     	</script>
 		<style type="text/css">
 			.movable { cursor: pointer; }
@@ -218,7 +233,7 @@ ChromosomeBrowserHelper.getChromosomeArms(chromosome, drawArms);
 		<table>
 			<tr>
 				<td>
-					<div id="gfx_holder" style="width: 100px; height: 675px;"></div>
+					<div id="chromosomeBrowser" dojoType="ChromosomeBrowser" style="width: 100px; height: 675px;"></div>
 				</td>
 				<td>
 					<div id="dataGraph"></div>
