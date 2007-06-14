@@ -394,7 +394,12 @@ var EpiQuery = {
 		<b>Relatives With Lung Cancer</b>
 		<br/>
 		Did one of your first-degree relatives (mother, father, siblings, or children) have lung cancer?
-		<br/><html:checkbox property="familyLungCancer" value="yes" />yes
+		<br/>
+		<input type="radio" name="familyLungCancer" value="-1" checked="true" />any
+		<html:radio property="familyLungCancer" value="1" />yes
+		<html:radio property="familyLungCancer" value="0" />no
+		<html:radio property="familyLungCancer" value="9" />unknown
+
 		<br/>
 		<!--  
 		select which relatives had lung cancer
