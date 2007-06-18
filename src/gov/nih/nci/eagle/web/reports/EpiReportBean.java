@@ -1,6 +1,7 @@
 package gov.nih.nci.eagle.web.reports;
 
 import gov.nih.nci.caintegrator.domain.epidemiology.bean.BehavioralAssessment;
+import gov.nih.nci.caintegrator.domain.epidemiology.bean.EnvironmentalFactor;
 import gov.nih.nci.caintegrator.domain.epidemiology.bean.Lifestyle;
 import gov.nih.nci.caintegrator.domain.epidemiology.bean.Relative;
 import gov.nih.nci.caintegrator.domain.epidemiology.bean.TobaccoConsumption;
@@ -13,8 +14,13 @@ import gov.nih.nci.caintegrator.studyQueryService.dto.epi.Religion;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.SmokingStatus;
 import gov.nih.nci.eagle.util.IntegerEnumResolver;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang.StringUtils;
 
 public class EpiReportBean implements ReportBean {
 
@@ -70,14 +76,43 @@ public class EpiReportBean implements ReportBean {
     
     public String getRelativesWhoSmoked()	{
     	String rel = "";
+    	List<String> extypes = new ArrayList<String>();
     	for(Relative r : studyParticipant.getEpidemiologicalFinding().getRelativeCollection())	{
     		if(r.getSmokingStatus().equals("1"))	{
-    			rel += r.getRelationshipType() + " ";
+    			extypes.add(r.getRelationshipType());
     		}
     	}
-    	return rel;
+    	
+       	Map<String, Integer> m = CollectionUtils.getCardinalityMap(extypes);
+    	for(String s : m.keySet()){
+    		rel += " " + s;
+    		if(m.get(s) > 1)	{
+    			rel+= "(" + m.get(s) + ") ";
+    		}
+    	}
+//    	rel = StringUtils.join(extypes.toArray(), " ");
+    	
+    	return (!rel.equals("")) ? rel : "-";
     }
     
+    public String getEtsExposure()	{
+    	String ets = "";
+    	List<String> extypes = new ArrayList<String>();
+    	for(EnvironmentalFactor ef : studyParticipant.getEpidemiologicalFinding().getEnvironmentalFactorCollection())	{
+    		extypes.add(ef.getExposureType());
+    	} 
+
+//		int hit = StringUtils.countMatches(ets, ef.getExposureType());
+    	Map<String, Integer> m = CollectionUtils.getCardinalityMap(extypes);
+    	for(String s : m.keySet()){
+    		
+    		ets += " " + s;
+    		if(m.get(s) > 1)	{
+    			ets+= "(" + m.get(s) + ") ";
+    		}
+    	}
+    	return (!ets.equals("")) ? ets : "-";
+    }
     public String getMaritalStatus() {
         if(lifestyle != null) {
             MaritalStatus status = IntegerEnumResolver.resolveEnum(MaritalStatus.class, lifestyle.getMaritalStatus());
