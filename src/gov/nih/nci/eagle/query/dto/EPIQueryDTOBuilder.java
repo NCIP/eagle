@@ -110,60 +110,60 @@ public class EPIQueryDTOBuilder implements QueryDTOBuilder {
     }
 
     private void prepareAndSetOccupationalExposureCrit(EpiForm epiForm, EnvironmentalTobaccoSmokeCriterion environCrit) {
-         Map exposureMap = epiForm.getJobsMap();
-         Set exposureLevels = exposureMap.keySet();
-         Collection<OccupationalExposure>  exposureObjs = new ArrayList<OccupationalExposure>();
-         for (Iterator iterator = exposureLevels.iterator(); iterator.hasNext();) {
-             ExposureLevel expLevel = Enum.valueOf(ExposureLevel.class, (String)iterator.next());
-             OccupationalExposure exposureObj = new OccupationalExposure();
-             exposureObj.setSmokingExposure(expLevel);
-             if (exposureMap.get(expLevel.toString()) != null) {
-                String value = (String)exposureMap.get(expLevel.toString());
-                if (value.trim().length() > 0) {
-                    exposureObj.setYearsExposed(Float.parseFloat(value.trim()));
-                    exposureObjs.add(exposureObj);
-                }
-             }
-         }
-         environCrit.setOccupationalExposureCollection(exposureObjs);
+//         Map exposureMap = epiForm.getJobsMap();
+//         Set exposureLevels = exposureMap.keySet();
+//         Collection<OccupationalExposure>  exposureObjs = new ArrayList<OccupationalExposure>();
+//         for (Iterator iterator = exposureLevels.iterator(); iterator.hasNext();) {
+//             ExposureLevel expLevel = Enum.valueOf(ExposureLevel.class, (String)iterator.next());
+//             OccupationalExposure exposureObj = new OccupationalExposure();
+//             exposureObj.setSmokingExposure(expLevel);
+//             if (exposureMap.get(expLevel.toString()) != null) {
+//                String value = (String)exposureMap.get(expLevel.toString());
+//                if (value.trim().length() > 0) {
+//                    exposureObj.setYearsExposed(Float.parseFloat(value.trim()));
+//                    exposureObjs.add(exposureObj);
+//                }
+//             }
+//         }
+//         environCrit.setOccupationalExposureCollection(exposureObjs);
      }
 
     private void prepareAndSetLicingCompanionExposureCrit(EpiForm epiForm, EnvironmentalTobaccoSmokeCriterion environCrit) {
-         Map exposureMap = epiForm.getLivingCompanionsMap();
-         Set tobaccoTypes = exposureMap.keySet();
-         Map<TobaccoType, LivingCompanionExposure>  exposureObjs = new HashMap<TobaccoType,LivingCompanionExposure>();
-         for (Iterator iterator = tobaccoTypes.iterator(); iterator.hasNext();) {
-             String key = (String)iterator.next();
-             int endIndex = key.indexOf('_');
-             String enumString = key.substring(0, endIndex);
-             TobaccoType tobaccoType = Enum.valueOf(TobaccoType.class, enumString);
-             LivingCompanionExposure exposureObj = exposureObjs.get(tobaccoType);
-             if (exposureObj == null) {
-                 exposureObj = new LivingCompanionExposure(); // create a new one
-                 exposureObjs.put(tobaccoType, exposureObj);
-             }
-             exposureObj.setTobaccoType(tobaccoType);
-             if(exposureMap.get(tobaccoType.toString() + "_yrs") != null) {
-                String tobaccoYears = (String)exposureMap.get(tobaccoType.toString() + "_yrs");
-                if (tobaccoYears != null && tobaccoYears.trim().length() > 0)
-                    exposureObj.setYearsExposued(Float.parseFloat(tobaccoYears.trim()));
-             }
-             if(exposureMap.get(tobaccoType.toString() + "_hrs") != null) {
-                String tobaccoHoursPerDay = (String)exposureMap.get(tobaccoType.toString() + "_hrs");
-                if (tobaccoHoursPerDay != null && tobaccoHoursPerDay.trim().length() > 0)
-                    exposureObj.setHoursPerDayExposed(Float.parseFloat(tobaccoHoursPerDay.trim()));
-             }
-
-         }
-        Collection<LivingCompanionExposure> allExposureObjs = exposureObjs.values();
-        Collection <LivingCompanionExposure> results = new ArrayList<LivingCompanionExposure>();
-        for (Iterator<LivingCompanionExposure> iterator = allExposureObjs.iterator(); iterator.hasNext();) {
-            LivingCompanionExposure exposureObj =  iterator.next();
-            if (exposureObj.getHoursPerDayExposed() != null || exposureObj.getYearsExposued() != null)
-                results.add(exposureObj);
-        }
-
-        environCrit.setLivingCompanionExposureCollection(results);
+//         Map exposureMap = epiForm.getLivingCompanionsMap();
+//         Set tobaccoTypes = exposureMap.keySet();
+//         Map<TobaccoType, LivingCompanionExposure>  exposureObjs = new HashMap<TobaccoType,LivingCompanionExposure>();
+//         for (Iterator iterator = tobaccoTypes.iterator(); iterator.hasNext();) {
+//             String key = (String)iterator.next();
+//             int endIndex = key.indexOf('_');
+//             String enumString = key.substring(0, endIndex);
+//             TobaccoType tobaccoType = Enum.valueOf(TobaccoType.class, enumString);
+//             LivingCompanionExposure exposureObj = exposureObjs.get(tobaccoType);
+//             if (exposureObj == null) {
+//                 exposureObj = new LivingCompanionExposure(); // create a new one
+//                 exposureObjs.put(tobaccoType, exposureObj);
+//             }
+//             exposureObj.setTobaccoType(tobaccoType);
+//             if(exposureMap.get(tobaccoType.toString() + "_yrs") != null) {
+//                String tobaccoYears = (String)exposureMap.get(tobaccoType.toString() + "_yrs");
+//                if (tobaccoYears != null && tobaccoYears.trim().length() > 0)
+//                    exposureObj.setYearsExposued(Float.parseFloat(tobaccoYears.trim()));
+//             }
+//             if(exposureMap.get(tobaccoType.toString() + "_hrs") != null) {
+//                String tobaccoHoursPerDay = (String)exposureMap.get(tobaccoType.toString() + "_hrs");
+//                if (tobaccoHoursPerDay != null && tobaccoHoursPerDay.trim().length() > 0)
+//                    exposureObj.setHoursPerDayExposed(Float.parseFloat(tobaccoHoursPerDay.trim()));
+//             }
+//
+//         }
+//        Collection<LivingCompanionExposure> allExposureObjs = exposureObjs.values();
+//        Collection <LivingCompanionExposure> results = new ArrayList<LivingCompanionExposure>();
+//        for (Iterator<LivingCompanionExposure> iterator = allExposureObjs.iterator(); iterator.hasNext();) {
+//            LivingCompanionExposure exposureObj =  iterator.next();
+//            if (exposureObj.getHoursPerDayExposed() != null || exposureObj.getYearsExposued() != null)
+//                results.add(exposureObj);
+//        }
+//
+//        environCrit.setLivingCompanionExposureCollection(results);
      }
 
 

@@ -10,15 +10,15 @@ import gov.nih.nci.caintegrator.studyQueryService.dto.epi.EnvironmentalTobaccoSm
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.FamilyHistoryCriterion;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.Gender;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.MaritalStatus;
-import gov.nih.nci.caintegrator.studyQueryService.dto.epi.OccupationalExposure;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.PatientCharacteristicsCriterion;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.Relative;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.Religion;
+import gov.nih.nci.caintegrator.studyQueryService.dto.epi.SmokingExposure;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.SmokingStatus;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.TobaccoConsumptionCriterion;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -30,7 +30,6 @@ import org.hibernate.criterion.Disjunction;
 import org.hibernate.criterion.Expression;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
-import org.hibernate.transform.ResultTransformer;
 
 public class EpidemiologicalQueryHandler implements QueryHandler {
 
@@ -57,6 +56,7 @@ public class EpidemiologicalQueryHandler implements QueryHandler {
         targetCrit.createAlias("finding.behavioralAssessment", "ba");
         targetCrit.createAlias("finding.lifestyle", "ls");
         targetCrit.createAlias("finding.relativeCollection", "relatives", CriteriaSpecification.LEFT_JOIN);
+        targetCrit.createAlias("finding.environmentalFactorCollection", "factors", CriteriaSpecification.LEFT_JOIN);
 
         /* 1. Handle PatientCharacteristics Criterion */
         PatientCharacteristicsCriterion patCharacterCrit = epiQueryDTO
@@ -84,13 +84,13 @@ public class EpidemiologicalQueryHandler implements QueryHandler {
         EnvironmentalTobaccoSmokeCriterion envCrit = epiQueryDTO
                 .getEnvironmentalTobaccoSmokeCriterion();
         if (envCrit != null) {
-            Collection<OccupationalExposure> ocExp = envCrit
-                    .getOccupationalExposureCollection();
-            for (Iterator<OccupationalExposure> iterator = ocExp.iterator(); iterator
-                    .hasNext();) {
-                OccupationalExposure occupationalExposure = iterator.next();
-
+            Collection<SmokingExposure> exposure = envCrit
+                    .getSmokingExposureCollection();
+            List<String> exposures = new ArrayList<String>();
+            for (SmokingExposure ex : exposure) {
+                exposures.add(ex.toString());
             }
+            targetCrit.add(Restrictions.in("factors.exposureType", exposures));
 
         }
 
