@@ -2,6 +2,7 @@ package gov.nih.nci.eagle.web.reports;
 
 import gov.nih.nci.caintegrator.domain.epidemiology.bean.BehavioralAssessment;
 import gov.nih.nci.caintegrator.domain.epidemiology.bean.Lifestyle;
+import gov.nih.nci.caintegrator.domain.epidemiology.bean.Relative;
 import gov.nih.nci.caintegrator.domain.epidemiology.bean.TobaccoConsumption;
 import gov.nih.nci.caintegrator.domain.study.bean.Histology;
 import gov.nih.nci.caintegrator.domain.study.bean.StudyParticipant;
@@ -65,6 +66,16 @@ public class EpiReportBean implements ReportBean {
     
     public String getCaseStatus() {
         return studyParticipant.getCaseControlStatus();
+    }
+    
+    public String getRelativesWhoSmoked()	{
+    	String rel = "";
+    	for(Relative r : studyParticipant.getEpidemiologicalFinding().getRelativeCollection())	{
+    		if(r.getSmokingStatus().equals("1"))	{
+    			rel += r.getRelationshipType() + " ";
+    		}
+    	}
+    	return rel;
     }
     
     public String getMaritalStatus() {
