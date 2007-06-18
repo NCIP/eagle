@@ -13,7 +13,6 @@ import gov.nih.nci.caintegrator.studyQueryService.dto.epi.MaritalStatus;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.OccupationalExposure;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.PatientCharacteristicsCriterion;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.Relative;
-import gov.nih.nci.caintegrator.studyQueryService.dto.epi.RelativeLungCancer;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.Religion;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.SmokingStatus;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.TobaccoConsumptionCriterion;
@@ -25,10 +24,13 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Conjunction;
 import org.hibernate.criterion.CriteriaSpecification;
+import org.hibernate.criterion.Disjunction;
 import org.hibernate.criterion.Expression;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.transform.ResultTransformer;
 
 public class EpidemiologicalQueryHandler implements QueryHandler {
 
@@ -54,6 +56,7 @@ public class EpidemiologicalQueryHandler implements QueryHandler {
                 CriteriaSpecification.LEFT_JOIN);
         targetCrit.createAlias("finding.behavioralAssessment", "ba");
         targetCrit.createAlias("finding.lifestyle", "ls");
+        targetCrit.createAlias("finding.relativeCollection", "relatives");
 
         /* 1. Handle PatientCharacteristics Criterion */
         PatientCharacteristicsCriterion patCharacterCrit = epiQueryDTO
@@ -98,7 +101,7 @@ public class EpidemiologicalQueryHandler implements QueryHandler {
                     epiQueryDTO.getPatientIds()));
         }
         targetCrit.addOrder(Order.asc("id"));
-        List<StudyParticipant> l = targetCrit.list();
+        List<StudyParticipant> l = targetCrit.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
 
         return l;
     }
@@ -115,9 +118,14 @@ public class EpidemiologicalQueryHandler implements QueryHandler {
         Collection<Relative> smokingRelativeCrit = familyHistcrit
                 .getSmokingRelativeCollection();
         if (smokingRelativeCrit != null) {
-            targetCrit.createAlias("smokingRelativeCollection", "srCol");
-            targetCrit.add(Restrictions.in("smokingRelativeCollection",
-                    smokingRelativeCrit));
+            Disjunction dis = Restrictions.disjunction();
+            for(Relative r : smokingRelativeCrit) {
+                Conjunction con = Restrictions.conjunction();
+                con.add(Restrictions.eq("relatives.relationshipType", r.getName().toUpperCase()));
+                con.add(Restrictions.eq("relatives.smokingStatus", "1"));
+                dis.add(con);
+            }
+            targetCrit.add(dis);
         }
     }
 
