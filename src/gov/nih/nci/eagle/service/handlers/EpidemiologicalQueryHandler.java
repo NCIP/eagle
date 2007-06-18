@@ -56,7 +56,7 @@ public class EpidemiologicalQueryHandler implements QueryHandler {
                 CriteriaSpecification.LEFT_JOIN);
         targetCrit.createAlias("finding.behavioralAssessment", "ba");
         targetCrit.createAlias("finding.lifestyle", "ls");
-        targetCrit.createAlias("finding.relativeCollection", "relatives");
+        targetCrit.createAlias("finding.relativeCollection", "relatives", CriteriaSpecification.LEFT_JOIN);
 
         /* 1. Handle PatientCharacteristics Criterion */
         PatientCharacteristicsCriterion patCharacterCrit = epiQueryDTO
