@@ -213,6 +213,17 @@
 							<h:outputText value="#{entry.relativesWhoSmoked}" id="relativeSmokingStatusText" />
 						</h:column>
 						
+						<h:column id="etsExposureCol">
+							<f:facet name="header" id="etsExposureHeader">
+								<h:commandLink styleClass="etsExposure" id="etsExposureLink"
+									actionListener="#{epiReport.sortDataList}" immediate="false">
+									<f:attribute name="sortField" value="etsExposure" />
+									<h:outputText value="ETS" />
+								</h:commandLink> 
+							</f:facet>
+							<h:outputText value="#{entry.etsExposure}" id="etsExposureText" />
+						</h:column>
+						
 						<h:column id="caseCol">
 							<f:facet name="header">
 								<h:commandLink styleClass="caseStatus" id="caseLink"
