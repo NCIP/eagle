@@ -47,6 +47,9 @@ var EpiQuery = {
 				new Insertion.Before(whichElement, '<b>'+newhtml+'</b>');
 			}
 		}
+	},
+	'validate': function()	{
+	
 	}
 
 };
@@ -190,8 +193,9 @@ var EpiQuery = {
 -->
 	</div>
 
+	<!-- 
 	<div>
-	<!--  
+ 
 		<b>Waist Circumference Range</b>
 			<html:text property="waistLower" size="5" /> to
 			<html:text property="waistUpper" size="5" /> cm
@@ -201,8 +205,9 @@ var EpiQuery = {
 			<html:option value="inches">inches</html:option>
 			<html:option value="cm">cm</html:option>
 		</html:select>
--->
+
 	</div>
+-->
 
 	<div>
 		<b>Education Level (highest)</b><br/>
