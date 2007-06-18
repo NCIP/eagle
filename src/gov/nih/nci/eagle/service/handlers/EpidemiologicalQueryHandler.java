@@ -83,7 +83,8 @@ public class EpidemiologicalQueryHandler implements QueryHandler {
 
         EnvironmentalTobaccoSmokeCriterion envCrit = epiQueryDTO
                 .getEnvironmentalTobaccoSmokeCriterion();
-        if (envCrit != null) {
+        if (envCrit != null && envCrit
+                .getSmokingExposureCollection() != null) {
             Collection<SmokingExposure> exposure = envCrit
                     .getSmokingExposureCollection();
             List<String> exposures = new ArrayList<String>();
