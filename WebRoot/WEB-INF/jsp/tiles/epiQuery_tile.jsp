@@ -48,14 +48,85 @@ var EpiQuery = {
 			}
 		}
 	},
-	'validate': function()	{
+	'validate': function(fromwhere)	{
+	//return false;
 	
+		var errors = new Array();
+		var estyle = "1px solid red";
+		if($('queryName').value == "")	{
+			errors.push("Please Enter a Query Name");
+			debug("error found");
+			$('queryName').style.border=estyle;
+		}
+		
+		
+		try	{
+			//check the ranges	
+			var ranges = new Array();
+			ranges.push('intensity');
+			ranges.push('duration');
+			ranges.push('ageAtInitiation');
+			ranges.push('yearsSinceQuitting');
+			ranges.push('fagerstromScore');
+			ranges.push('age');
+			ranges.push('weight');
+			ranges.push('height');
+			for(var i=0; i<ranges.length; i++)	{
+				//debug(ranges[i]);
+				var low = $(ranges[i]+"Lower").value;
+				var high = $(ranges[i]+"Upper").value;
+				if(high==low)	{
+					//debug("dont check " + ranges[i]);
+					continue; //both equal to "" or set to equal
+				}
+				//debug("check " + ranges[i]);
+				if( (low!="" && high=="") || (low=="" && high!="")  || (low>high) )	{
+					//havent filled in both fields
+					errors.push(ranges[i].underscore().replace(/[_]+/g, " ").capitalize() + " range is incorrect");
+					$(ranges[i]+"Lower").style.color = "red";
+					$(ranges[i]+"Upper").style.color = "red";
+				}
+				else	{
+					$(ranges[i]+"Lower").style.color = "#000";
+					$(ranges[i]+"Upper").style.color = "#000";
+				}
+			}
+			
+					
+			if(errors.length>0)	{
+				//dont submit
+				//debug("dont submit");
+				var ehtml = "";
+				for(var i=0; i<errors.length; i++)	{
+					ehtml += "-" + errors[i] + "<br/>";
+				}
+				//errors.each(function()	{ ehtml += e + "<br/>";} );	
+				$('errors').innerHTML = "<b>Please fix the following errors:</b><br/>" + ehtml;
+				scroll(0,0);
+				return false;
+			}
+			else	{
+				//debug("SUBMIT FORM");
+				//return false; //never submit;		
+				
+				if(fromwhere == 'enter')	{
+					return true;
+				}
+				else	{
+					document.forms[0].submit();
+				}
+			}
+		}
+		catch(err)	{
+			debug("caught: " + err);
+			return false;
+		}
 	}
 
 };
 </script>
 
-<html:form action="epiQuery.do?method=submit" >
+<html:form action="epiQuery.do?method=submit" onsubmit="return EpiQuery.validate('enter');" >
 <html:errors property="queryErrors" />
 
 <p>
@@ -70,6 +141,8 @@ var EpiQuery = {
 			<a href="#familyHistory">Family History</a> |
 			<a href="#occupation">Environmental Tobacco Smoke</a>
 	</p>
+	
+	<span id="errors" style="color:red"></span>
 	<div>
 		<b>Query Name</b>
 			<html:text property="queryName" styleId="queryName" />
@@ -100,37 +173,37 @@ var EpiQuery = {
 	<div>
 		<b>Cigarette Smoking</b><br/>
 		Intensity Range: 
-		<html:select property="intensityLower" style="width:60px">
+		<html:select property="intensityLower" styleId="intensityLower" style="width:60px">
 			<option value="">N/A</option>
 			<html:options collection="avIntensity" property="value" labelProperty="label"/>
 		</html:select>
 		to
-		<html:select property="intensityUpper" style="width:60px">
+		<html:select property="intensityUpper" styleId="intensityUpper" style="width:60px">
 			<option value="">N/A</option>
 			<html:options collection="avIntensity" property="value" labelProperty="label"/>
 		</html:select>
 		(cigarettes per day)
 		<br />
 		Duration Range: 
-		<html:select property="durationLower" style="width:60px">
+		<html:select property="durationLower" styleId="durationLower" style="width:60px">
 			<option value="">N/A</option>
 			<html:options collection="avDur" property="value" labelProperty="label"/>
 		</html:select>
 		to
-		<html:select property="durationUpper" style="width:60px">
+		<html:select property="durationUpper" styleId="durationUpper" style="width:60px">
 			<option value="">N/A</option>
 			<html:options collection="avDur" property="value" labelProperty="label"/>
 		</html:select>
 		(years smoked)
 		<br />
 		Age at Initiation:	
-		<html:select property="ageAtInitiationLower" style="width:60px">
+		<html:select property="ageAtInitiationLower" styleId="ageAtInitiationLower" style="width:60px">
 			<option value="">N/A</option>
 			<option value="1">1</option>
 			<html:options collection="avAgeInit" property="value" labelProperty="label"/>
 		</html:select>
 		to
-		<html:select property="ageAtInitiationUpper" style="width:60px">
+		<html:select property="ageAtInitiationUpper" styleId="ageAtInitiationUpper" style="width:60px">
 			<option value="">N/A</option>
 			<option value="1">1</option>
 			<html:options collection="avAgeInit" property="value" labelProperty="label"/>
@@ -138,12 +211,12 @@ var EpiQuery = {
 		(years)
 		<br />
 		Years Since Quitting: 
-		<html:select property="yearsSinceQuittingLower" style="width:60px">
+		<html:select property="yearsSinceQuittingLower" styleId="yearsSinceQuittingLower" style="width:60px">
 			<option value="">N/A</option>
 			<html:options collection="avYrsQuit" property="value" labelProperty="label"/>
 		</html:select>
 		to
-		<html:select property="yearsSinceQuittingUpper" style="width:60px">
+		<html:select property="yearsSinceQuittingUpper" styleId="yearsSinceQuittingUpper" style="width:60px">
 			<option value="">N/A</option>
 			<html:options collection="avYrsQuit" property="value" labelProperty="label"/>
 		</html:select>
@@ -157,7 +230,7 @@ var EpiQuery = {
 	</h4>
 	<div>
 		<b>Fagerstrom Range</b>
-		<html:select property="fagerstromScoreLower">
+		<html:select property="fagerstromScoreLower" styleId="fagerstromScoreLower">
 			<option value="">Any</option>
 			<html:option value="1">1</html:option>
 			<html:option value="2">2</html:option>
@@ -171,7 +244,7 @@ var EpiQuery = {
 			<html:option value="10">10</html:option>
 		</html:select>
 		to
-		<html:select property="fagerstromScoreUpper">
+		<html:select property="fagerstromScoreUpper" styleId="fagerstromScoreUpper">
 			<option value="">Any</option>
 			<html:option value="1">1</html:option>
 			<html:option value="2">2</html:option>
@@ -193,12 +266,12 @@ var EpiQuery = {
 	<div>
 		<b>Age Range</b>
 		
-		<html:select property="ageLower" style="width:60px">
+		<html:select property="ageLower" styleId="ageLower" style="width:60px">
 			<option value="">N/A</option>
 			<html:options collection="avAges" property="value" labelProperty="label"/>
 		</html:select>
 		 to 
-		<html:select property="ageUpper" style="width:60px">
+		<html:select property="ageUpper" styleId="ageUpper" style="width:60px">
 			<option value="">N/A</option>
 			<html:options collection="avAges" property="value" labelProperty="label"/>
 		</html:select>
@@ -215,12 +288,12 @@ var EpiQuery = {
 
 	<div>
 		<b>Weight Range</b>
-		<html:select property="weightLower" style="width:60px">
+		<html:select property="weightLower" styleId="weightLower" style="width:60px">
 			<option value="">N/A</option>
 			<html:options collection="avWeight" property="value" labelProperty="label"/>
 		</html:select>
 		to
-		<html:select property="weightUpper" style="width:60px">
+		<html:select property="weightUpper" styleId="weightUpper" style="width:60px">
 			<option value="">N/A</option>
 			<html:options collection="avWeight" property="value" labelProperty="label"/>
 		</html:select> kg
@@ -235,12 +308,12 @@ var EpiQuery = {
 
 	<div>
 		<b>Height Range</b>
-		<html:select property="heightLower" style="width:60px">
+		<html:select property="heightLower" styleId="heightLower" style="width:60px">
 			<option value="">N/A</option>
 			<html:options collection="avHeight" property="value" labelProperty="label"/>
 		</html:select>
 		to
-		<html:select property="heightUpper" style="width:60px">
+		<html:select property="heightUpper" styleId="heightUpper" style="width:60px">
 			<option value="">N/A</option>
 			<html:options collection="avHeight" property="value" labelProperty="label"/>
 		</html:select> cm
@@ -575,7 +648,7 @@ var EpiQuery = {
 	</div>
 
 	<div style="text-align:center">
-		<button onclick="document.forms[0].submit();">Submit Query </button>
+		<input type="button" onclick="EpiQuery.validate();" value="Submit Query" />
 	</div>
 </div>
 </p>
