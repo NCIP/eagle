@@ -72,7 +72,7 @@ var EpiQuery = {
 	</p>
 	<div>
 		<b>Query Name</b>
-			<html:text property="queryName" />
+			<html:text property="queryName" styleId="queryName" />
 			(should be unique)
 	</div>
 
@@ -100,20 +100,53 @@ var EpiQuery = {
 	<div>
 		<b>Cigarette Smoking</b><br/>
 		Intensity Range: 
-		<html:text size="5" property="intensityLower" /> to
-		<html:text size="5" property="intensityUpper" />
+		<html:select property="intensityLower" style="width:60px">
+			<option value="">N/A</option>
+			<html:options collection="avIntensity" property="value" labelProperty="label"/>
+		</html:select>
+		to
+		<html:select property="intensityUpper" style="width:60px">
+			<option value="">N/A</option>
+			<html:options collection="avIntensity" property="value" labelProperty="label"/>
+		</html:select>
 		(cigarettes per day)
 		<br />
-		Duration Range: <html:text size="5" property="durationLower" /> to
-		<html:text size="5" property="durationUpper" />
+		Duration Range: 
+		<html:select property="durationLower" style="width:60px">
+			<option value="">N/A</option>
+			<html:options collection="avDur" property="value" labelProperty="label"/>
+		</html:select>
+		to
+		<html:select property="durationUpper" style="width:60px">
+			<option value="">N/A</option>
+			<html:options collection="avDur" property="value" labelProperty="label"/>
+		</html:select>
 		(years smoked)
 		<br />
-		Age at Initiation:	<html:text size="5" property="ageAtInitiationLower" /> to
-		<html:text size="5" property="ageAtInitiationUpper" />
+		Age at Initiation:	
+		<html:select property="ageAtInitiationLower" style="width:60px">
+			<option value="">N/A</option>
+			<option value="1">1</option>
+			<html:options collection="avAgeInit" property="value" labelProperty="label"/>
+		</html:select>
+		to
+		<html:select property="ageAtInitiationUpper" style="width:60px">
+			<option value="">N/A</option>
+			<option value="1">1</option>
+			<html:options collection="avAgeInit" property="value" labelProperty="label"/>
+		</html:select>
 		(years)
 		<br />
-		Years Since Quitting: <html:text size="5" property="yearsSinceQuittingLower" /> to
-		<html:text size="5" property="yearsSinceQuittingUpper" />
+		Years Since Quitting: 
+		<html:select property="yearsSinceQuittingLower" style="width:60px">
+			<option value="">N/A</option>
+			<html:options collection="avYrsQuit" property="value" labelProperty="label"/>
+		</html:select>
+		to
+		<html:select property="yearsSinceQuittingUpper" style="width:60px">
+			<option value="">N/A</option>
+			<html:options collection="avYrsQuit" property="value" labelProperty="label"/>
+		</html:select>
 		(years)
 		<br />
 	</div>
@@ -182,8 +215,15 @@ var EpiQuery = {
 
 	<div>
 		<b>Weight Range</b>
-		<html:text property="weightLower" size="5" /> to
-		<html:text property="weightUpper" size="5" /> kg
+		<html:select property="weightLower" style="width:60px">
+			<option value="">N/A</option>
+			<html:options collection="avWeight" property="value" labelProperty="label"/>
+		</html:select>
+		to
+		<html:select property="weightUpper" style="width:60px">
+			<option value="">N/A</option>
+			<html:options collection="avWeight" property="value" labelProperty="label"/>
+		</html:select> kg
 		
 	<!--
 		<html:select property="weightMeasure">
@@ -195,8 +235,16 @@ var EpiQuery = {
 
 	<div>
 		<b>Height Range</b>
-			<html:text property="heightLower" size="5" /> to
-			<html:text property="heightUpper" size="5" /> cm
+		<html:select property="heightLower" style="width:60px">
+			<option value="">N/A</option>
+			<html:options collection="avHeight" property="value" labelProperty="label"/>
+		</html:select>
+		to
+		<html:select property="heightUpper" style="width:60px">
+			<option value="">N/A</option>
+			<html:options collection="avHeight" property="value" labelProperty="label"/>
+		</html:select> cm
+		
 <!-- 		<html:select property="heightMeasure">
 				<html:option value="inches">Inches</html:option>
 				<html:option value="cm">CM</html:option>

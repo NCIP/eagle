@@ -171,13 +171,47 @@ public class EpiAction extends DispatchAction {
         request.setAttribute("avAges", lvbeans);
         
         //height 120-220
+        lvbeans = new ArrayList<LabelValueBean>();
+        for(int i=110; i<230; i+=5){
+        	lvbeans.add(new LabelValueBean(String.valueOf(i), String.valueOf(i)));
+        }
+        request.setAttribute("avHeight", lvbeans);
         
         //weight 20-220
+        lvbeans = new ArrayList<LabelValueBean>();
+        for(int i=20; i<230; i+=5){
+        	lvbeans.add(new LabelValueBean(String.valueOf(i), String.valueOf(i)));
+        }
+        request.setAttribute("avWeight", lvbeans);
         
         //intensity: 0-5 (6)
+        lvbeans = new ArrayList<LabelValueBean>();
+        for(int i=0; i<6; i++){
+        	lvbeans.add(new LabelValueBean(String.valueOf(i), String.valueOf(i)));
+        }
+        request.setAttribute("avIntensity", lvbeans);
+        
         //duration: 0-75
+        lvbeans = new ArrayList<LabelValueBean>();
+        for(int i=0; i<85; i+=5){
+        	lvbeans.add(new LabelValueBean(String.valueOf(i), String.valueOf(i)));
+        }
+        request.setAttribute("avDur", lvbeans);
+        
         //age at init: 1-75
+        lvbeans = new ArrayList<LabelValueBean>();
+        for(int i=5; i<85; i+=5){
+        	lvbeans.add(new LabelValueBean(String.valueOf(i), String.valueOf(i)));
+        }
+        request.setAttribute("avAgeInit", lvbeans);
+        
         //yrs since quitting: 1-95
+        lvbeans = new ArrayList<LabelValueBean>();
+        for(int i=0; i<100; i+=5){
+        	lvbeans.add(new LabelValueBean(String.valueOf(i), String.valueOf(i)));
+        }
+        request.setAttribute("avYrsQuit", lvbeans);
+        
         
         return mapping.findForward("success");
     }
