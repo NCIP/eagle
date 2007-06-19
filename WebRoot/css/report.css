@@ -70,7 +70,7 @@ td a 	{
 #reportDiv td {
 	border-right: 1px solid #6085CC; /* C1DAD7 */
 	border-bottom: 1px solid #6085CC;
-	background: #fff;
+	background-color: #fff;
 	padding: 6px 6px 6px 12px;
 	color: #4f6b72;
 }
@@ -115,4 +115,32 @@ th.specalt {
 
 #filterButtons input	{
 	font-size:12px;
+}
+
+/* n,n,tc,tc,tc,tc,tc,td,pc,pc,pc,pc,pc,pc,pc,fh,fh, ets */
+
+td.tc {
+	background: #fff url(../images/eagle/triangles/triangle_blue.png);
+	background-position:bottom right;
+	background-repeat:no-repeat;
+}
+td.td {
+	background: #fff url(../images/eagle/triangles/triangle_tan.png);
+	background-position:bottom right;
+	background-repeat:no-repeat;
+}
+td.pc {
+	background: #fff url(../images/eagle/triangles/triangle_green.png);
+	background-position:bottom right;
+	background-repeat:no-repeat;
+}
+td.fh {
+	background: #fff url(../images/eagle/triangles/triangle_brown.png);
+	background-position:bottom right;
+	background-repeat:no-repeat;
+}
+td.ets {
+	background: #fff url(../images/eagle/triangles/triangle_violet.png);
+	background-position:bottom right;
+	background-repeat:no-repeat;
 }
