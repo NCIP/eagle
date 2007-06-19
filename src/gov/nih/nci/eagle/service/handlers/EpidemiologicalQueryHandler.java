@@ -22,6 +22,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Conjunction;
@@ -50,12 +51,12 @@ public class EpidemiologicalQueryHandler implements QueryHandler {
         EPIQueryDTO epiQueryDTO = (EPIQueryDTO) queryDTO;
         Session session = sessionFactory.getCurrentSession();
         Criteria targetCrit = session.createCriteria(StudyParticipant.class);
-        targetCrit.createAlias("epidemiologicalFinding", "finding");
+        targetCrit.createCriteria("epidemiologicalFinding", "finding").setFetchMode("relativeCollection", FetchMode.JOIN);
         targetCrit.createAlias("finding.tobaccoConsumptionCollection", "tc",
                 CriteriaSpecification.LEFT_JOIN);
         targetCrit.createAlias("finding.behavioralAssessment", "ba");
         targetCrit.createAlias("finding.lifestyle", "ls");
-        targetCrit.createAlias("finding.relativeCollection", "relatives");
+
         targetCrit.createAlias("finding.environmentalFactorCollection", "factors", CriteriaSpecification.LEFT_JOIN);
 
         /* 1. Handle PatientCharacteristics Criterion */
@@ -119,6 +120,7 @@ public class EpidemiologicalQueryHandler implements QueryHandler {
         Collection<Relative> smokingRelativeCrit = familyHistcrit
                 .getSmokingRelativeCollection();
         if (smokingRelativeCrit != null) {
+            targetCrit.createAlias("finding.relativeCollection", "relatives");
             Disjunction dis = Restrictions.disjunction();
             for(Relative r : smokingRelativeCrit) {
                 Conjunction con = Restrictions.conjunction();
