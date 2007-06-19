@@ -1,3 +1,5 @@
+<%@ page language="java" %>
+<%@ page import="gov.nih.nci.eagle.util.EAGLEConstants" %>
 
 <ul id="intro">
 <li id="mission" style="background-image: url(images/eagle/one.jpg);">&nbsp;</li>
@@ -7,7 +9,7 @@
 
 <h2>
 <script type="text/javascript">Help.insertHelp("Opening_page", "align='right'");</script>
-EAGLE Data Portal v0.1
+EAGLE Data Portal v<%=EAGLEConstants.appVersion %>
 </h2>
 
 <p>

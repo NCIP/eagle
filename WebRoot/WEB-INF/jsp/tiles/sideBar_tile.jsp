@@ -3,7 +3,7 @@
 <div id="sidebar">
 
 <div class="release">
-	<p>EAGLE release v0.1</p>
+	<p>EAGLE release v<%=gov.nih.nci.eagle.util.EAGLEConstants.appVersion %></p>
 </div>
 <%
 	ListType[] lts = EAGLEListFilter.values();
