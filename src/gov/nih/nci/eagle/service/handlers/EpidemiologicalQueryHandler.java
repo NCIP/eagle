@@ -169,9 +169,11 @@ public class EpidemiologicalQueryHandler implements QueryHandler {
     private void populateBehaviorCriterion(BehavioralCriterion behaviorCrit,
             Criteria targetCrit) {
 
-        Integer fScore = behaviorCrit.getFagerstromScore();
-        if (fScore != null)
-            targetCrit.add(Expression.eq("ba.fagerstromScore", fScore));
+        Integer fLower = behaviorCrit.getFagerstromScoreLower();
+        Integer fUpper = behaviorCrit.getFagerstromScoreUpper();
+        
+        if (fLower != null && fUpper != null)
+            targetCrit.add(Expression.between("ba.fagerstromScore", fLower, fUpper));
 
         Integer dScore = behaviorCrit.getDepressionScore();
         if (dScore != null)
