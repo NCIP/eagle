@@ -191,12 +191,48 @@ public class EpiReportBean implements ReportBean {
 
     public List getRow() {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException();
+    	List row = new ArrayList();
+    	row.add(this.getPatientId());
+    	row.add(this.getSmokingStatus());
+    	row.add(this.getIntensity());
+    	row.add(this.getDuration());
+    	row.add(this.getAgeAtInitiation());
+    	row.add(this.getYearsSinceQuitting());
+    	row.add(this.getFagerstrom());
+    	row.add(this.getCaseStatus());
+    	row.add(this.getStage());
+    	row.add(this.getGender());
+    	row.add(this.getEducationLevel().replace(",", " "));
+    	row.add(this.getResidentialArea());
+    	row.add(this.getMaritalStatus());
+    	row.add(this.getReligion());
+    	row.add(this.getRelativeWithLungCancer());
+    	row.add(this.getRelativesWhoSmoked().trim());
+    	row.add(this.getEtsExposure().trim());
+    	return row; 
     }
 
     public List getRowLabels() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException();
+//    	this is here only to keep the CSV column config in one class
+       	List row = new ArrayList();
+    	row.add("patient id");
+    	row.add("smoking status");
+    	row.add("intensity");
+    	row.add("duration");
+    	row.add("age at init");
+    	row.add("yrs since quitting");
+    	row.add("fagerstrom");
+    	row.add("case status");
+    	row.add("stage");
+    	row.add("gender");
+    	row.add("highest education");
+    	row.add("residential area");
+    	row.add("marital status");
+    	row.add("religion");
+    	row.add("relative with cancer");
+    	row.add("relateves who smoked");
+    	row.add("ets exposure");
+    	return row; 
     }
 
 	public List getAvailableSpecimens() {

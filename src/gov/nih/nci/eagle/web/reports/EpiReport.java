@@ -154,6 +154,28 @@ public class EpiReport extends SortableReport{
 
     }
     
+    public void generateCSV(ActionEvent event)  {
+        List reportBeans = this.getReportBeans();
+        List<List> csv = new ArrayList<List>();
+        
+        for(ReportBean ccrb : (List<ReportBean>)reportBeans){
+            if(csv.size()==0){
+                csv.add(ccrb.getRowLabels());
+            }
+            csv.add(ccrb.getRow());
+        }
+        
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        HttpServletResponse response = (HttpServletResponse) facesContext.getExternalContext().getResponse();
+        try {
+            CSVUtil.renderCSV(response, csv);
+        } catch (Exception e) {
+            // TODO: handle exception
+        } finally   {
+            FacesContext.getCurrentInstance().responseComplete();
+        }
+    }    
+    
     public void toggleAllPatients(String toggle)	{
     	boolean selected = toggle.equals("false") ? false : true; //in case something else gets passed
     	for(EpiReportBean bean : (Collection<EpiReportBean>) reportBeans){
