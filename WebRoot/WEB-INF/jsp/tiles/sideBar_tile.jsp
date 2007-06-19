@@ -3,14 +3,16 @@
 <div id="sidebar">
 
 <div class="release">
-	<p>EAGLE release v<%=gov.nih.nci.eagle.util.EAGLEConstants.appVersion %></p>
+	<p>
+		<b>EAGLE release v<%=gov.nih.nci.eagle.util.EAGLEConstants.appVersion %></b>
+	</p>
 </div>
 <%
 	ListType[] lts = EAGLEListFilter.values();
 	for(int i=0; i<lts.length; i++)	{
 		String label = lts[i].toString();
 %>
-	<div style="text-align:left; margin-top:20px;">
+	<div style="text-align:left; margin-top:10px;padding-left:5px;">
 		<b><%=label%> Lists:</b>
 		<div id="sidebar<%=label%>UL">
 			<img src="images/indicator.gif" />
