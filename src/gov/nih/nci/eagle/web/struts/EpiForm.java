@@ -29,7 +29,8 @@ public class EpiForm extends ValidatorForm{
 	private String yearsSinceQuittingUpper;
 
 	//tobacco dependency
-	private String fagerstromScore;
+	private String fagerstromScoreLower;
+	private String fagerstromScoreUpper;
 	
 	//patient characteristics
 	private String ageLower;
@@ -155,12 +156,20 @@ public class EpiForm extends ValidatorForm{
 		this.educationLevel = educationLevel;
 	}
 
-	public String getFagerstromScore() {
-		return fagerstromScore;
+	public String getFagerstromScoreLower() {
+		return fagerstromScoreLower;
 	}
 
-	public void setFagerstromScore(String fagerstromScore) {
-		this.fagerstromScore = fagerstromScore;
+	public void setFagerstromScoreLower(String fagerstromScoreLower) {
+		this.fagerstromScoreLower = fagerstromScoreLower;
+	}
+
+	public String getFagerstromScoreUpper() {
+		return fagerstromScoreUpper;
+	}
+
+	public void setFagerstromScoreUpper(String fagerstromScoreUpper) {
+		this.fagerstromScoreUpper = fagerstromScoreUpper;
 	}
 
 	public Object getFoodItems(String key) {

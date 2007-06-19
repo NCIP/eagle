@@ -162,6 +162,23 @@ public class EpiAction extends DispatchAction {
         }
         eform.setExistingSmokingAreas(lvbeans);
         
+        
+        //set the age ranges, properly without a placeholder field
+        lvbeans = new ArrayList<LabelValueBean>();
+        for(int i=5; i<115; i+=5){
+        	lvbeans.add(new LabelValueBean(String.valueOf(i), String.valueOf(i)));
+        }
+        request.setAttribute("avAges", lvbeans);
+        
+        //height 120-220
+        
+        //weight 20-220
+        
+        //intensity: 0-5 (6)
+        //duration: 0-75
+        //age at init: 1-75
+        //yrs since quitting: 1-95
+        
         return mapping.findForward("success");
     }
     

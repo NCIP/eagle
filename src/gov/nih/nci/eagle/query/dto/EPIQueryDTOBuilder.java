@@ -46,8 +46,11 @@ public class EPIQueryDTOBuilder implements QueryDTOBuilder {
         epiQueryDTO.setTobaccoConsumptionCriterion(tobaccoCrit);
 
         BehavioralCriterion behaviorCrit = new BehavioralCriterion();
-        if (epiForm.getFagerstromScore() != null && epiForm.getFagerstromScore().length()>0)
-            behaviorCrit.setFagerstromScore(Integer.parseInt(epiForm.getFagerstromScore()));
+        if (epiForm.getFagerstromScoreLower() != null && epiForm.getFagerstromScoreLower().length()>0)
+            behaviorCrit.setFagerstromScoreLower(Integer.parseInt(epiForm.getFagerstromScoreLower()));
+        if (epiForm.getFagerstromScoreUpper() != null && epiForm.getFagerstromScoreUpper().length()>0)
+            behaviorCrit.setFagerstromScoreUpper(Integer.parseInt(epiForm.getFagerstromScoreUpper()));
+
         epiQueryDTO.setBehavioralCriterion(behaviorCrit);
 
         EnvironmentalTobaccoSmokeCriterion environCrit = new EnvironmentalTobaccoSmokeCriterion();
