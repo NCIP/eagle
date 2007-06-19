@@ -110,6 +110,8 @@
     <action path="/analysisHome" forward="caintegrator.analysisHome"/>
     
     <action path="/advancedHome" forward="caintegrator.advancedHome"/>
+ 
+    <action path="/mainMenu" forward="caintegrator.mainMenu"/>
     
     <action path="/viewResults" forward="caintegrator.viewResults"/>
     

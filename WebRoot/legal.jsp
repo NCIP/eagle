@@ -28,7 +28,7 @@ Use Guidelines by clicking on the link below.
 <p style="color:#002185;font-weight:bold;">
 I HAVE READ AND UNDERSTOOD THE ABOVE PROVISIONS,
 AND SIGNIFY MY AGREEMENT BY 
-<a href="analysisHome.do">CLICKING HERE</a> 
+<a href="mainMenu.do">CLICKING HERE</a> 
 </p>		
 </div>
 </div>

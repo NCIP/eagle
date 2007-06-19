@@ -57,7 +57,13 @@
 	  <put name="sideBar" value="/WEB-INF/jsp/tiles/sideBar_tile.jsp" />
 	  <put name="tabs" value="/WEB-INF/jsp/tiles/cssTabs_tile.jsp?s=2" />
     </definition>
-    
+
+    <definition name="caintegrator.mainMenu" extends="cssBaseDef">
+      <put name="mainForm" value="/WEB-INF/jsp/tiles/mainMenu_tile.jsp" />
+	  <put name="sideBar" value="/WEB-INF/jsp/tiles/sideBar_tile.jsp" />
+	  <put name="tabs" value="/WEB-INF/jsp/tiles/cssTabs_tile.jsp?s=1" />
+    </definition>
+        
     <definition name="caintegrator.viewResults" extends="cssBaseDef">
       <put name="mainForm" value="/WEB-INF/jsp/tiles/viewResults_tile.jsp" />
 	  <put name="sideBar" value="/WEB-INF/jsp/tiles/sideBar_tile.jsp" />
