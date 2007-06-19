@@ -123,8 +123,22 @@ var EpiQuery = {
 		Tobacco Dependency
 	</h4>
 	<div>
-		<b>Fagerstrom</b>
-		<html:select property="fagerstromScore">
+		<b>Fagerstrom Range</b>
+		<html:select property="fagerstromScoreLower">
+			<option value="">Any</option>
+			<html:option value="1">1</html:option>
+			<html:option value="2">2</html:option>
+			<html:option value="3">3</html:option>
+			<html:option value="4">	4</html:option>
+			<html:option value="5">	5</html:option>
+			<html:option value="6">	6</html:option>
+			<html:option value="7">	7</html:option>
+			<html:option value="8">	8</html:option>
+			<html:option value="9">	9</html:option>
+			<html:option value="10">10</html:option>
+		</html:select>
+		to
+		<html:select property="fagerstromScoreUpper">
 			<option value="">Any</option>
 			<html:option value="1">1</html:option>
 			<html:option value="2">2</html:option>
@@ -148,15 +162,12 @@ var EpiQuery = {
 		
 		<html:select property="ageLower" style="width:60px">
 			<option value="">N/A</option>
-			<html:option value="10">10</html:option>
-			<html:option value="20">20</html:option>
-			<html:option value="30">40</html:option>
+			<html:options collection="avAges" property="value" labelProperty="label"/>
 		</html:select>
 		 to 
 		<html:select property="ageUpper" style="width:60px">
 			<option value="">N/A</option>
-			<html:option value="80">80</html:option>
-			<html:option value="90">90</html:option>
+			<html:options collection="avAges" property="value" labelProperty="label"/>
 		</html:select>
 		&nbsp;years
 	</div>
