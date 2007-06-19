@@ -59,6 +59,20 @@
 				$('epiForm:savePatientsButton').disabled = false;
 				
 			}
+			
+			var showdLegend = true;
+			function hideLegend()	{
+				if(showdLegend)	{
+					$$('td.tc', 'td.td', 'td.pc', 'td.fh', 'td.ets').each( function(el)	{ el.style.backgroundPosition = "150% 150%"; } );
+					$('legendSpan').hide();
+					showdLegend = false;
+				}
+				else	{
+					$$('td.tc', 'td.td', 'td.pc', 'td.fh', 'td.ets').each( function(el)	{ el.style.backgroundPosition = "bottom right"; } );
+					$('legendSpan').show();
+					showdLegend = true;				
+				}		
+			}
 		</script>
 		
 			<div
@@ -151,6 +165,18 @@
 				</h:commandLink>
 				<h:selectBooleanCheckbox id="checkAllBox" value="Toggle All" onclick="A_toggleAllPatients(this.checked);"/>Check All?
 				<img src="images/eagle/indicator.gif" id="indicator" style="display:none"/>
+				<br clear="all" />
+				<div id="legend" style="padding-top:5px">
+					<a href="#" onclick="hideLegend();return false;">Legend</a>: 
+					<span id="legendSpan">
+					<img src="images/eagle/triangles/triangle_blue.png"/> Tobacco Consumption
+					<img src="images/eagle/triangles/triangle_tan.png"/> Tobacco Dependency
+					<img src="images/eagle/triangles/triangle_green.png"/> Patient Characteristics
+					<img src="images/eagle/triangles/triangle_brown.png"/> Family History
+					<img src="images/eagle/triangles/triangle_violet.png"/> ETS
+					</span>
+				</div>
+				
 			</div>				
 				<br/>
 				<span id="statusMessage"></span>
@@ -163,7 +189,8 @@
 
 				<div id="reportDiv">
 					<h:dataTable id="epiTable" value="#{epiReport.reportBeans}"
-						var="entry" rowClasses="rowOdd,rowEven" rows="50" binding="#{epiReport.reportUIData}">
+						var="entry" rowClasses="rowOdd,rowEven" rows="50" binding="#{epiReport.reportUIData}"
+						columnClasses="n,n,tc,tc,tc,tc,tc,td,pc,pc,pc,pc,pc,pc,pc,fh,fh, ets">
 						<h:column id="sampleBoxesHeader">
 							<f:facet name="header" id="sampleBoxesHeader1">
 								-
@@ -179,19 +206,8 @@
 								</h:commandLink>
 							</f:facet>
 							<h:outputText value="#{entry.patientId}" id="patientBox" />
-
 						</h:column>
 
-						<h:column id="genderHeader">
-							<f:facet name="header">
-								<h:commandLink styleClass="gender" id="genderHeaderLink"
-									actionListener="#{epiReport.sortDataList}" immediate="false">
-									<f:attribute name="sortField" value="gender" />
-									<h:outputText value="Gender" />
-								</h:commandLink>
-							</f:facet>
-							<h:outputText value="#{entry.gender}" id="genderHeaderText" />
-						</h:column>
 						<h:column id="smokingStatusCol">
 							<f:facet name="header" id="smokingStatusHeader">
 								<h:commandLink styleClass="smokingStatus" id="smokingStatusLink"
@@ -203,68 +219,6 @@
 							<h:outputText value="#{entry.smokingStatus}" id="smokingStatusText" />
 						</h:column>
 						
-						<h:column id="relativeSmokingStatusCol">
-							<f:facet name="header" id="relativeSmokingStatusHeader">
-								<h:commandLink styleClass="smokingStatus" id="relativeSmokingStatusLink"
-									actionListener="#{epiReport.sortDataList}" immediate="false">
-									<f:attribute name="sortField" value="relativesWhoSmoked" />
-									<h:outputText value="Smoking Relatives" />
-								</h:commandLink>
-							</f:facet>
-							<h:outputText value="#{entry.relativesWhoSmoked}" id="relativeSmokingStatusText" />
-						</h:column>
-						
-						<h:column id="etsExposureCol">
-							<f:facet name="header" id="etsExposureHeader">
-								<h:commandLink styleClass="etsExposure" id="etsExposureLink"
-									actionListener="#{epiReport.sortDataList}" immediate="false">
-									<f:attribute name="sortField" value="etsExposure" />
-									<h:outputText value="ETS" />
-								</h:commandLink> 
-							</f:facet>
-							<h:outputText value="#{entry.etsExposure}" id="etsExposureText" />
-						</h:column>
-						
-						<h:column id="caseCol">
-							<f:facet name="header">
-								<h:commandLink styleClass="caseStatus" id="caseLink"
-									actionListener="#{epiReport.sortDataList}" immediate="false">
-									<f:attribute name="sortField" value="caseStatus" />
-									<h:outputText value="Case Control Status" />
-								</h:commandLink>
-							</f:facet>
-							<h:outputText value="#{entry.caseStatus}" id="caseText" />
-						</h:column>
-						<h:column id="maritalCol">
-							<f:facet name="header">
-								<h:commandLink styleClass="maritalStatus" id="maritalLink"
-									actionListener="#{epiReport.sortDataList}" immediate="false">
-									<f:attribute name="sortField" value="maritalStatus" />
-									<h:outputText value="Marital Status" />
-								</h:commandLink>
-							</f:facet>
-							<h:outputText value="#{entry.maritalStatus}" id="maritalText" />
-						</h:column>
-						<h:column id="religionCol">
-							<f:facet name="header">
-								<h:commandLink styleClass="religion" id="religionLink"
-									actionListener="#{epiReport.sortDataList}" immediate="false">
-									<f:attribute name="sortField" value="religion" />
-									<h:outputText value="Religion" />
-								</h:commandLink>
-							</f:facet>
-							<h:outputText value="#{entry.religion}" id="religionText" />
-						</h:column>
-						<h:column id="eductaionCol">
-							<f:facet name="header">
-								<h:commandLink styleClass="educationLevel" id="educationLink"
-									actionListener="#{epiReport.sortDataList}" immediate="false">
-									<f:attribute name="sortField" value="educationLevel" />
-									<h:outputText value="Education Level" />
-								</h:commandLink>
-							</f:facet>
-							<h:outputText value="#{entry.educationLevel}" id="educationText" />
-						</h:column>
 						<h:column id="intensityCol">
 							<f:facet name="header">
 								<h:commandLink styleClass="intensity" id="intensityLink"
@@ -305,6 +259,7 @@
 							</f:facet>
 							<h:outputText value="#{entry.yearsSinceQuitting}" id="yrsSinceQuittingText" />
 						</h:column>
+						
 						<h:column id="fagerstromCol">
 							<f:facet name="header">
 								<h:commandLink styleClass="fagerstrom"  id="fagerstromLink"
@@ -315,6 +270,18 @@
 							</f:facet>
 							<h:outputText value="#{entry.fagerstrom}" id="fagerstromText" />
 						</h:column>
+						
+						<h:column id="caseCol">
+							<f:facet name="header">
+								<h:commandLink styleClass="caseStatus" id="caseLink"
+									actionListener="#{epiReport.sortDataList}" immediate="false">
+									<f:attribute name="sortField" value="caseStatus" />
+									<h:outputText value="Case Control Status" />
+								</h:commandLink>
+							</f:facet>
+							<h:outputText value="#{entry.caseStatus}" id="caseText" />
+						</h:column>
+						
 						<h:column id="stageCol">
 							<f:facet name="header">
 								<h:commandLink styleClass="stage" id="stageLink"
@@ -325,6 +292,29 @@
 							</f:facet>
 							<h:outputText value="#{entry.stage}" id="stageText" />
 						</h:column>
+						
+						<h:column id="genderHeader">
+							<f:facet name="header">
+								<h:commandLink styleClass="gender" id="genderHeaderLink"
+									actionListener="#{epiReport.sortDataList}" immediate="false">
+									<f:attribute name="sortField" value="gender" />
+									<h:outputText value="Gender" />
+								</h:commandLink>
+							</f:facet>
+							<h:outputText value="#{entry.gender}" id="genderHeaderText" />
+						</h:column>
+						
+						<h:column id="educationCol">
+							<f:facet name="header">
+								<h:commandLink styleClass="educationLevel" id="educationLink"
+									actionListener="#{epiReport.sortDataList}" immediate="false">
+									<f:attribute name="sortField" value="educationLevel" />
+									<h:outputText value="Education Level" />
+								</h:commandLink>
+							</f:facet>
+							<h:outputText value="#{entry.educationLevel}" id="educationText" />
+						</h:column>
+						
 						<h:column id="raCol">
 							<f:facet name="header">
 								<h:commandLink styleClass="residentialArea" id="raLink"
@@ -335,6 +325,28 @@
 							</f:facet>
 							<h:outputText value="#{entry.residentialArea}" id="raText"/>
 						</h:column>
+						
+						<h:column id="maritalCol">
+							<f:facet name="header">
+								<h:commandLink styleClass="maritalStatus" id="maritalLink"
+									actionListener="#{epiReport.sortDataList}" immediate="false">
+									<f:attribute name="sortField" value="maritalStatus" />
+									<h:outputText value="Marital Status" />
+								</h:commandLink>
+							</f:facet>
+							<h:outputText value="#{entry.maritalStatus}" id="maritalText" />
+						</h:column>
+						<h:column id="religionCol">
+							<f:facet name="header">
+								<h:commandLink styleClass="religion" id="religionLink"
+									actionListener="#{epiReport.sortDataList}" immediate="false">
+									<f:attribute name="sortField" value="religion" />
+									<h:outputText value="Religion" />
+								</h:commandLink>
+							</f:facet>
+							<h:outputText value="#{entry.religion}" id="religionText" />
+						</h:column>
+						
 						<h:column id="fcCol">
 							<f:facet name="header">
 								<h:commandLink styleClass="relativeWithLungCancer" id="fcLink"
@@ -345,7 +357,28 @@
 							</f:facet>
 							<h:outputText value="#{entry.relativeWithLungCancer}" id="fcText"/>
 						</h:column>
-
+						
+						<h:column id="relativeSmokingStatusCol">
+							<f:facet name="header" id="relativeSmokingStatusHeader">
+								<h:commandLink styleClass="smokingStatus" id="relativeSmokingStatusLink"
+									actionListener="#{epiReport.sortDataList}" immediate="false">
+									<f:attribute name="sortField" value="relativesWhoSmoked" />
+									<h:outputText value="Smoking Relatives" />
+								</h:commandLink>
+							</f:facet>
+							<h:outputText value="#{entry.relativesWhoSmoked}" id="relativeSmokingStatusText" />
+						</h:column>
+						
+						<h:column id="etsExposureCol">
+							<f:facet name="header" id="etsExposureHeader">
+								<h:commandLink styleClass="etsExposure" id="etsExposureLink"
+									actionListener="#{epiReport.sortDataList}" immediate="false">
+									<f:attribute name="sortField" value="etsExposure" />
+									<h:outputText value="ETS" />
+								</h:commandLink> 
+							</f:facet>
+							<h:outputText value="#{entry.etsExposure}" id="etsExposureText" />
+						</h:column>
 					</h:dataTable>
 				</div>
 				<br />
