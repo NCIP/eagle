@@ -1,7 +1,6 @@
 function FileData_Pairs(x)
 {
 x.t("interfaces","navigation");
-x.t("home","page");
 x.t("support","logging");
 x.t("getting","started");
 x.t("features","used");
@@ -12,20 +11,19 @@ x.t("logging","eagle");
 x.t("introduces","eagle");
 x.t("started","eagle");
 x.t("eagle","interfaces");
-x.t("eagle","home");
 x.t("eagle","getting");
-x.t("eagle","pages.");
 x.t("eagle","eagle");
 x.t("eagle","eagle\u2019s");
+x.t("eagle","workspace");
 x.t("eagle","section");
 x.t("eagle\u2019s","opening");
+x.t("workspace","application");
 x.t("section","include:");
 x.t("section","introduces");
 x.t("opening","page");
 x.t("page","logging");
-x.t("page","application");
 x.t("application","support");
 x.t("topics","section");
 x.t("navigation","common");
-x.t("used","eagle");
+x.t("used","pages.");
 }

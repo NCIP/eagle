@@ -41,49 +41,65 @@
     <Document title="Welcome to the EAGLE Online Help" href="Welcome.1.1.html" />
     <Document title="Online Help Tips" href="OnlineHelpBoilerplate.2.1.html" />
     <Document title="Application Support" href="Application%20Support.3.1.html" />
-    <Document title="Getting Started with EAGLE" href="Eagle1.0_Getting_Started.4.1.html" />
-    <Document title="About EAGLE" href="Eagle1.0_Getting_Started.4.2.html" />
-    <Document title="EAGLE’s Opening Page" href="Eagle1.0_Getting_Started.4.3.html" />
-    <Document title="Logging In" href="Eagle1.0_Getting_Started.4.4.html" />
-    <Document title="Accepting EAGLE Provisions" href="Eagle1.0_Getting_Started.4.5.html" />
-    <Document title="EAGLE Home Page" href="Eagle1.0_Getting_Started.4.6.html" />
-    <Document title="EAGLE Menu" href="Eagle1.0_Getting_Started.4.7.html" />
-    <Document title="EAGLE Tabs" href="Eagle1.0_Getting_Started.4.8.html" />
-    <Document title="EAGLE Blue Panel" href="Eagle1.0_Getting_Started.4.9.html" />
-    <Document title="Application Support" href="Eagle1.0_Getting_Started.4.10.html" />
-    <Document title="Logging Out" href="Eagle1.0_Getting_Started.4.11.html" />
-    <Document title="Analysis" href="Eagle1.0_High_Order_Analysis.5.1.html" />
-    <Document title="Analysis Overview" href="Eagle1.0_High_Order_Analysis.5.2.html" />
-    <Document title="Performing a Class Comparison" href="Eagle1.0_High_Order_Analysis.5.3.html" />
-    <Document title="F-test: One Way ANOVA" href="Eagle1.0_High_Order_Analysis.5.4.html" />
-    <Document title="GLM or Generalized Linear Model Details" href="Eagle1.0_High_Order_Analysis.5.5.html" />
-    <Document title="Viewing Results" href="Eagle1.0_View%20Results.6.1.html" />
-    <Document title="Results Overview" href="Eagle1.0_View%20Results.6.2.html" />
-    <Document title="Class Comparison Report" href="Eagle1.0_View%20Results.6.3.html" />
-    <Document title="Resorting Column Results" href="Eagle1.0_View%20Results.6.4.html" />
-    <Document title="Showing Additional Information" href="Eagle1.0_View%20Results.6.5.html" />
-    <Document title="Downloading a Report" href="Eagle1.0_View%20Results.6.6.html" />
-    <Document title="Paging Through a Report" href="Eagle1.0_View%20Results.6.7.html" />
-    <Document title="Displaying Comparison Groups" href="Eagle1.0_View%20Results.6.8.html" />
-    <Document title="Managing Lists" href="Eagle1.0_Manage_Lists.7.1.html" />
-    <Document title="Managing Lists Overview" href="Eagle1.0_Manage_Lists.7.2.html" />
-    <Document title="Adding New Lists" href="Eagle1.0_Manage_Lists.7.3.html" />
-    <Document title="Combining Existing Lists to Create a New List" href="Eagle1.0_Manage_Lists.7.4.html" />
-    <Document title="Viewing the Data Items in a List" href="Eagle1.0_Manage_Lists.7.5.html" />
-    <Document title="Removing Data Items" href="Eagle1.0_Manage_Lists.7.6.html" />
-    <Document title="Deleting an Entire List" href="Eagle1.0_Manage_Lists.7.7.html" />
-    <Document title="Exporting a List" href="Eagle1.0_Manage_Lists.7.8.html" />
-    <Document title="Glossary" href="Eagle_Glossary.8.1.html" />
+    <Document title="Getting Started with EAGLE" href="Eagle_Getting_Started.4.1.html" />
+    <Document title="About EAGLE" href="Eagle_Getting_Started.4.2.html" />
+    <Document title="EAGLE’s Opening Page" href="Eagle_Getting_Started.4.3.html" />
+    <Document title="Logging In" href="Eagle_Getting_Started.4.4.html" />
+    <Document title="Accepting EAGLE Provisions" href="Eagle_Getting_Started.4.5.html" />
+    <Document title="EAGLE Workspace" href="Eagle_Getting_Started.4.6.html" />
+    <Document title="EAGLE Menu" href="Eagle_Getting_Started.4.7.html" />
+    <Document title="EAGLE Tabs" href="Eagle_Getting_Started.4.8.html" />
+    <Document title="EAGLE Side Bar" href="Eagle_Getting_Started.4.9.html" />
+    <Document title="Application Support" href="Eagle_Getting_Started.4.10.html" />
+    <Document title="Logging Out" href="Eagle_Getting_Started.4.11.html" />
+    <Document title="Advanced Search" href="Eagle_Adv_Search.5.1.html" />
+    <Document title="Advanced Search Overview" href="Eagle_Adv_Search.5.2.html" />
+    <Document title="Performing an Epidemiology (EPI) Query" href="Eagle_Adv_Search.5.3.html" />
+    <Document title="Analysis" href="Eagle_High_Order_Analysis.6.1.html" />
+    <Document title="Analysis Overview" href="Eagle_High_Order_Analysis.6.2.html" />
+    <Document title="Performing a Class Comparison" href="Eagle_High_Order_Analysis.6.3.html" />
+    <Document title="F-test: One Way ANOVA" href="Eagle_High_Order_Analysis.6.4.html" />
+    <Document title="GLM or Generalized Linear Model Details" href="Eagle_High_Order_Analysis.6.5.html" />
+    <Document title="Managing Lists" href="Eagle_Manage_Lists.7.1.html" />
+    <Document title="Managing Lists Overview" href="Eagle_Manage_Lists.7.2.html" />
+    <Document title="Adding New Lists" href="Eagle_Manage_Lists.7.3.html" />
+    <Document title="Combining Existing Lists to Create a New List" href="Eagle_Manage_Lists.7.4.html" />
+    <Document title="Viewing the Data Items in a List" href="Eagle_Manage_Lists.7.5.html" />
+    <Document title="Removing Data Items" href="Eagle_Manage_Lists.7.6.html" />
+    <Document title="Deleting an Entire List" href="Eagle_Manage_Lists.7.7.html" />
+    <Document title="Exporting a List" href="Eagle_Manage_Lists.7.8.html" />
+    <Document title="Filtering a List (Blood, Tissue Normal, Tissue Cancer)" href="Eagle_Manage_Lists.7.9.html" />
+    <Document title="Viewing Results" href="Eagle_View%20Results.8.1.html" />
+    <Document title="Results Overview" href="Eagle_View%20Results.8.2.html" />
+    <Document title="Class Comparison Report" href="Eagle_View%20Results.8.3.html" />
+    <Document title="Resorting Column Results" href="Eagle_View%20Results.8.4.html" />
+    <Document title="Showing Additional Information" href="Eagle_View%20Results.8.5.html" />
+    <Document title="Downloading a Report" href="Eagle_View%20Results.8.6.html" />
+    <Document title="Paging Through a Report" href="Eagle_View%20Results.8.7.html" />
+    <Document title="Displaying Comparison Groups" href="Eagle_View%20Results.8.8.html" />
+    <Document title="Comparison Group Name Report" href="Eagle_View%20Results.8.9.html" />
+    <Document title="Epidemiology (EPI) Query Report" href="Eagle_View%20Results.8.10.html" />
+    <Document title="Glossary" href="Eagle_Glossary.9.1.html" />
   </DocumentInfo>
   <TopicMap>
     <Topic name="Welcome" href="Welcome.1.1.html#1052621" />
-    <Topic name="Opening_page" href="Eagle1.0_Getting_Started.4.3.html#1116016" />
-    <Topic name="Rules_of_the_road" href="Eagle1.0_Getting_Started.4.5.html#1125223" />
-    <Topic name="Home_page" href="Eagle1.0_Getting_Started.4.6.html#1124032" />
-    <Topic name="Analysis_overview" href="Eagle1.0_High_Order_Analysis.5.2.html#1067499" />
-    <Topic name="Class_comparison" href="Eagle1.0_High_Order_Analysis.5.3.html#1092908" />
-    <Topic name="View_results_overview" href="Eagle1.0_View%20Results.6.2.html#1067499" />
-    <Topic name="Class_comparison_report" href="Eagle1.0_View%20Results.6.3.html#1082972" />
-    <Topic name="Manage_lists_overview" href="Eagle1.0_Manage_Lists.7.2.html#1096151" />
+    <Topic name="opening_page" href="Eagle_Getting_Started.4.3.html#1116016" />
+    <Topic name="Rules_of_the_road" href="Eagle_Getting_Started.4.5.html#1125223" />
+    <Topic name="Workspace" href="Eagle_Getting_Started.4.6.html#1124032" />
+    <Topic name="AdvancedSearch_overview" href="Eagle_Adv_Search.5.2.html#1067499" />
+    <Topic name="EPI_query" href="Eagle_Adv_Search.5.3.html#1106192" />
+    <Topic name="EPI_query_consumption_tooltip" href="Eagle_Adv_Search.5.3.html#1106250" />
+    <Topic name="EPI_query_dependency_tooltip" href="Eagle_Adv_Search.5.3.html#1106274" />
+    <Topic name="EPI_query_patientchars_tooltip" href="Eagle_Adv_Search.5.3.html#1106291" />
+    <Topic name="EPI_query_behaviorial_tooltip" href="Eagle_Adv_Search.5.3.html#1106315" />
+    <Topic name="EPI_query_familyhistory_tooltip" href="Eagle_Adv_Search.5.3.html#1106348" />
+    <Topic name="EPI_query_smoke_tooltip" href="Eagle_Adv_Search.5.3.html#1106739" />
+    <Topic name="Analysis_overview" href="Eagle_High_Order_Analysis.6.2.html#1067499" />
+    <Topic name="Class_comparison" href="Eagle_High_Order_Analysis.6.3.html#1092908" />
+    <Topic name="Manage_lists_overview" href="Eagle_Manage_Lists.7.2.html#1096151" />
+    <Topic name="View_results_overview" href="Eagle_View%20Results.8.2.html#1067499" />
+    <Topic name="Class_comparison_report" href="Eagle_View%20Results.8.3.html#1082972" />
+    <Topic name="Comp_group_report" href="Eagle_View%20Results.8.9.html#1126772" />
+    <Topic name="EPI_query_report" href="Eagle_View%20Results.8.10.html#1127665" />
   </TopicMap>
 </WebWorksHelpBook>

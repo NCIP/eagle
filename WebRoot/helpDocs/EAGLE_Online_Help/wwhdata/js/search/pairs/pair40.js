@@ -1,0 +1,24 @@
+function FileData_Pairs(x)
+{
+x.t("lists","patients");
+x.t("download","report");
+x.t("file","downloading");
+x.t("results","epidemiology");
+x.t("patients","fulfilling");
+x.t("specifications","epi");
+x.t("(epi)","query");
+x.t("viewing","results");
+x.t("report","viewing");
+x.t("report","spreadsheet");
+x.t("report","page");
+x.t("report","epidemiology");
+x.t("query.","download");
+x.t("spreadsheet","file");
+x.t("page","lists");
+x.t("query","report");
+x.t("epidemiology","(epi)");
+x.t("epidemiology","query");
+x.t("epi","query.");
+x.t("downloading","report");
+x.t("fulfilling","specifications");
+}
