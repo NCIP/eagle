@@ -8,7 +8,7 @@
 </ul>
 
 <h2>
-<script type="text/javascript">Help.insertHelp("Opening_page", "align='right'");</script>
+<script type="text/javascript">Help.insertHelp("opening_page", "align='right'");</script>
 EAGLE Data Portal v<%=EAGLEConstants.appVersion %>
 </h2>
 
