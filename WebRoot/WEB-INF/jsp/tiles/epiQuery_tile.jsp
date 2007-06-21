@@ -131,7 +131,10 @@ var EpiQuery = {
 
 <p>
 <div class="comments">
-<h2>Epidemiology Query</h2>
+<h2 style="text-align:center">
+<script type="text/javascript">Help.insertHelp("EPI_query", "align='right'");</script>
+Epidemiology Query
+</h2>
 	<p style="font-size:10px; text-align:center;">
 			<a href="#smoking">Tobacco Consumption</a> |
 			<a href="#tobdep">Tobacco Dependency</a> |

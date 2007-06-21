@@ -1,6 +1,6 @@
 
 <h2 style="text-align:center">
-<script type="text/javascript">Help.insertHelp("Analysis_overview", "align='right'");</script>
+<script type="text/javascript">Help.insertHelp("AdvancedSearch_overview", "align='right'");</script>
 Advanced Search
 </h2>
 <div class="listboxtop">
