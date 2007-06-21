@@ -1,6 +1,6 @@
 
 <h2 style="text-align:center">
-<script type="text/javascript">Help.insertHelp("EAGLE_Workspace", "align='right'");</script>
+<script type="text/javascript">Help.insertHelp("Workspace", "align='right'");</script>
 Main Menu
 </h2>
 <div class="listboxtop">
