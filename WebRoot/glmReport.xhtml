@@ -4,8 +4,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:c="http://java.sun.com/jstl/core"
-	xmlns:i="http://caintegrator.nci.nih.gov/jsf"
-	xmlns:jsfExt="http://java.sun.com/jsf/extensions/dynafaces">
+	xmlns:i="http://caintegrator.nci.nih.gov/jsf">
 	<head>
 		<title>EAGLE Report</title>
 		<link rel="stylesheet" type="text/css" href="css/report.css" media="screen" />
@@ -13,8 +12,6 @@
 	<body>
 		
 		<f:view id="glmView">
-
-			<jsfExt:scripts />
 			
 				<i:querySummary backingBean="#{glmReport}"/>
 						
