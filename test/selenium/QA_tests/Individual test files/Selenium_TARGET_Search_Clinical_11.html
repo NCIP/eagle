@@ -1,0 +1,94 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Selenium_TARGET_Search_Clinical_11</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Selenium_TARGET_Search_Clinical_11</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/target/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>username</td>
+	<td>NCIISPYGuest</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>password</td>
+	<td>!spy1234</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=CLICKING HERE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Clinical</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>boneMarrowBlastDay8OP</td>
+	<td>label=&gt;=</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>boneMarrowBlastDay8</td>
+	<td>101</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>analysisResultName</td>
+	<td>BMBD29_GE_101_SC</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>BMBD29_GE_101_SC_link</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForPopUp</td>
+	<td>clinical_report</td>
+	<td>30000</td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>clinical_report</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTitle</td>
+	<td>exact:TARGET: Clinical Report</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Logout</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
