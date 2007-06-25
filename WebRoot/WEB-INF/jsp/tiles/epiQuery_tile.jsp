@@ -80,7 +80,7 @@ var EpiQuery = {
 					continue; //both equal to "" or set to equal
 				}
 				//debug("check " + ranges[i]);
-				if( (low!="" && high=="") || (low=="" && high!="")  || (low>high) )	{
+				if( (low!="" && high=="") || (low=="" && high!="")  || (parseInt(low) > parseInt(high)) )	{
 					//havent filled in both fields
 					errors.push(ranges[i].underscore().replace(/[_]+/g, " ").capitalize() + " range is incorrect");
 					$(ranges[i]+"Lower").style.color = "red";
