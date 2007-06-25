@@ -18,6 +18,7 @@ import gov.nih.nci.caintegrator.studyQueryService.dto.epi.SmokingStatus;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.TobaccoConsumptionCriterion;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 
@@ -156,6 +157,14 @@ public class EpidemiologicalQueryHandler implements QueryHandler {
                 assert (ageUpper.compareTo(ageLower) > 0);
                 targetCrit.add(Restrictions.between("tc.ageAtInitiation",
                         ageLower, ageUpper));
+            }
+            Integer quitLower = tobaccoCrit.getYearsSinceQuittingLower();
+            Integer quitUpper = tobaccoCrit.getYearsSinceQuittingUpper();
+            if (quitLower != null && quitUpper != null) {
+                assert (quitUpper.compareTo(quitLower) > 0);
+                Integer currentYear = Calendar.getInstance().get(Calendar.YEAR);
+                targetCrit.add(Restrictions.between("tc.yearsSinceQuitting",
+                        (currentYear - quitUpper), (currentYear - quitLower)));
             }
 
             SmokingStatus smokeStatus = tobaccoCrit.getSmokingStatus();
