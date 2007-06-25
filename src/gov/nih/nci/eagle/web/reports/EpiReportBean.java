@@ -14,7 +14,9 @@ import gov.nih.nci.caintegrator.studyQueryService.dto.epi.Religion;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.SmokingStatus;
 import gov.nih.nci.eagle.util.IntegerEnumResolver;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -141,8 +143,9 @@ public class EpiReportBean implements ReportBean {
     }
     
     public String getIntensity() {
+    	DecimalFormat df2 = new DecimalFormat( "#,###,###,##0.00" );
         if (cigaretteConsumption != null && cigaretteConsumption.getIntensity() != null) {
-            return cigaretteConsumption.getIntensity().toString();
+            return df2.format(cigaretteConsumption.getIntensity());
         }
         return "N/A";
     }
@@ -163,7 +166,10 @@ public class EpiReportBean implements ReportBean {
     
     public String getYearsSinceQuitting() {
         if (cigaretteConsumption != null && cigaretteConsumption.getYearsSinceQuitting() != null) {
-            return cigaretteConsumption.getYearsSinceQuitting().toString();
+        	Calendar rightNow = Calendar.getInstance(); 
+        	int year = rightNow.get(Calendar.YEAR);
+        	
+            return String.valueOf(year - cigaretteConsumption.getYearsSinceQuitting());
         }
         return "N/A";
     }
