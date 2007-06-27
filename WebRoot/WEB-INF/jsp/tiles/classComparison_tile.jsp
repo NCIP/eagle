@@ -88,6 +88,16 @@ var CCForm = {
 			$('analysisName').style.border="1px solid red";
 			return false;
 		}
+		if(isNaN($('foldchange').value))	{
+			alert("Please enter a number for fold change");
+			$('foldchange').style.border="1px solid red";
+			return false;
+		}
+		if(isNaN($('pvalue').value))	{
+			alert("Please enter a number for pvalue");
+			$('pvalue').style.border="1px solid red";
+			return false;
+		}
 		if($('statisticalMethod').selectedIndex == 0 && $('selectedBaseline').length<1)	{
 			//need a baseline
 			alert("Please choose a baseline");
@@ -130,10 +140,13 @@ var CCForm = {
 		//save the selectedGroups
 		MenuSwapper.saveMe( $('selectedGroups'),$('nonselectedGroups') );
 		
-		if(fromwhere == 'enter')
-			return true;
-		else
-			document.forms[0].submit();
+		if(fromwhere == 'enter')	{
+		//	return true;
+		}
+		else	{
+		//	document.forms[0].submit();
+		}
+		alert("SUBMIT");
 	
 	}
 
