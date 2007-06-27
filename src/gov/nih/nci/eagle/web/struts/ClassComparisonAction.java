@@ -148,7 +148,7 @@ public class ClassComparisonAction extends DispatchAction{
             
         }
         catch(Exception e){            
-            logger.error("Error getting copy number findings", e);
+            logger.error("Error getting findings", e);
             return (mapping.findForward("failure"));
         }
     }    
