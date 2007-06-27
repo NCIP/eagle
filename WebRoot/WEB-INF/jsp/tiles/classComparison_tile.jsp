@@ -34,7 +34,7 @@ var CCForm = {
 			//$('baselineField').show();
 		} 
 		
-		if(el.selectedIndex == '2')	{ 
+		if(el.selectedIndex == '2' || el.selectedIndex=='3')	{ 
 			$('covariates').show();
 			$('pvalue').disable();
 			$('foldchange').disable();
@@ -112,8 +112,9 @@ var CCForm = {
 			$('selectedGroups').style.backgroundColor = "yellow";
 			return false;
 		}
-		if($('statisticalMethod').selectedIndex == 2 && ($('selectedBaseline').length<1 || $('selectedGroups').length<1) )	{
+		if($('statisticalMethod').selectedIndex >= 2 && ($('selectedBaseline').length<1 || $('selectedGroups').length<1) )	{
 			//GLM is 1 and M
+			// changed selectedIndex to >=2, so it covers GLM and ANOVA w/cov
 			alert("Please select only 1 baseline and 1 or more comparison groups for this type of analysis");
 			$('selectedBaseline').style.border="1px solid red";
 			$('selectedBaseline').style.backgroundColor = "yellow";
@@ -167,6 +168,7 @@ Class Comparison Analysis
 		<html:option value="TTEst"> T-Test: Two Sample Test</html:option>
 		<html:option value="FTest"> F-Test: One Way ANOVA</html:option>
 		<html:option value="GLM">Generalized Linear Model with/without covariate adjustment</html:option>
+		<html:option value="ANOVA"> ANOVA with/without covariate adjustment</html:option>
 	</html:select>
 </div>
 
