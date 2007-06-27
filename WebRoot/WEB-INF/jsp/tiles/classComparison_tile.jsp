@@ -88,12 +88,12 @@ var CCForm = {
 			$('analysisName').style.border="1px solid red";
 			return false;
 		}
-		if(isNaN($('foldchange').value))	{
+		if($('foldchange').value == "" || isNaN($('foldchange').value))	{
 			alert("Please enter a number for fold change");
 			$('foldchange').style.border="1px solid red";
 			return false;
 		}
-		if(isNaN($('pvalue').value))	{
+		if($('pvalue').value=="" || isNaN($('pvalue').value))	{
 			alert("Please enter a number for pvalue");
 			$('pvalue').style.border="1px solid red";
 			return false;
