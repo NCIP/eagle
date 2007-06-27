@@ -35,242 +35,255 @@ import javax.jms.JMSException;
 import org.apache.log4j.Logger;
 
 public class GeneralizedLinearModelFindingStrategy extends
-		AsynchronousFindingStrategy {
-	
-	 private static Logger logger = Logger.getLogger(GeneralizedLinearModelFindingStrategy.class);
-	 private Collection<SampleGroup> sampleGroups = new ArrayList<SampleGroup>();
-	 private List<CoVariateType> coVariateTypes = new ArrayList<CoVariateType>();
-	 private GeneralizedLinearModelRequest glmRequest = null;
-	 private AnalysisServerClientManager analysisServerClientManager;
-	 private Map<ArrayPlatformType, String> dataFileMap;
-     
-     private static final Double variance = .95;
-	 
-	 private PatientGroupManager patientGroupManager;
-	
-	 /*
-	     * (non-Javadoc)
-	     * 
-	     * @see gov.nih.nci.caintegrator.service.findings.strategies.FindingStrategy#createQuery()
-	     *      This method validates that 2 groups were passed for generalized linear model as the statistical method
-	     */
-	    public boolean createQuery() throws FindingsQueryException {
+        AsynchronousFindingStrategy {
 
-	      
-	        // because each layer is valid I am assured I will be getting a fulling
-	        // populated query object
-	        StatisticalMethodType statisticType = getQueryDTO()
-	                .getStatisticTypeDE().getValueObject();
+    private static Logger logger = Logger
+            .getLogger(GeneralizedLinearModelFindingStrategy.class);
+    private Collection<SampleGroup> sampleGroups = new ArrayList<SampleGroup>();
+    private List<CoVariateType> coVariateTypes = new ArrayList<CoVariateType>();
+    private GeneralizedLinearModelRequest glmRequest = null;
+    private AnalysisServerClientManager analysisServerClientManager;
+    private Map<ArrayPlatformType, String> dataFileMap;
 
-	        if (getQueryDTO().getComparisonGroups() != null) {
-	        	
-	        	if(statisticType==StatisticalMethodType.GLM) {	           
-	                if (getQueryDTO().getComparisonGroups().size() < 1 && getQueryDTO().getBaselineGroupMap().size()>0) {
-	                    throw new FindingsQueryException(
-	                            "Incorrect Number of queries passed for the Generalized Linear Model statistical type");
-	                }	               
-	        	}
-	            return true;
-	        }
-	        return false;
-	    }
-	    
-	    protected void executeStrategy() {			
-			
-	    	glmRequest = new GeneralizedLinearModelRequest(taskResult
-	                .getTask().getCacheId(), taskResult.getTask().getId());
-			businessCacheManager.addToSessionCache(getTaskResult().getTask()
-	                .getCacheId(), getTaskResult().getTask().getId(),
-	                 getTaskResult());
-		}
-		
-	    
-	    /*
-		 * 
-		 */
-		public boolean analyzeResultSet() throws  FindingsAnalysisException {
-			StatisticalMethodType statisticType = getQueryDTO().getStatisticTypeDE().getValueObject();
-			
-			try {
-			    if(statisticType==StatisticalMethodType.GLM) {	
-			    	
-			    	 // set statistical method
-	                glmRequest.setStatisticalMethod(statisticType);
+    private static final Double variance = .95;
 
-					 // set Co-variates (0 or more)	                
-	                List<CoVariateDE> coVariateDEs = getQueryDTO().getCoVariateDEs();
-	                //what?  convert from DE back to enum? why?
-	                if(coVariateDEs!=null){
-		                Object[] obj = coVariateDEs.toArray();
-		                for(int i=0; i<obj.length;i++) {
-		                	CoVariateDE coVariateDE = (CoVariateDE)obj[i];
-		                	coVariateTypes.add(coVariateDE.getValueObject());	                	
-		                }
-	                }
-	                glmRequest.setCoVariateTypes(coVariateTypes);              
+    private PatientGroupManager patientGroupManager;
 
-			    	 // Set sample groups
-	                HashMap<String, List> comparisonGroupsMap = getQueryDTO().getComparisonGroupsMap();
-	                HashMap<String, List> baselineGroupMap = getQueryDTO().getBaselineGroupMap();
-	                GLMSampleGroup baseline  = null;
-	                for(String gname : baselineGroupMap.keySet()) {
-	                	List<String> groups = baselineGroupMap.get(gname);
-	                	 baseline = new GLMSampleGroup(gname);
-	                	 baseline.addAll(baselineGroupMap.get(gname));
-	                	 
-	                	for(String name : groups )	{                   	
-		                    //add each patient
-		                    
-		                    HashMap<String, String> annotationMap = new HashMap<String, String>();
-		                    //fetch the data about each patient
-		                    Map pm = patientGroupManager.getPatientInfo(name);
-		                    if(coVariateTypes.contains(CoVariateType.Gender))
-		                    	annotationMap.put("sex", pm.get("sex").toString());
-		                    if(coVariateTypes.contains(CoVariateType.Age))
-		                    	annotationMap.put("age", pm.get("age").toString());
-		                    if(coVariateTypes.contains(CoVariateType.SmokingStatus))	{
-		                    	String ss = pm.get("smoking_status") != null ? pm.get("smoking_status").toString() : "N/A";
-		                    	annotationMap.put("smoking_status", ss);
-		                    }
-		                    baseline.addPatientData(name, annotationMap);
-	                	}
-	                }
-                    glmRequest.setBaselineGroup(baseline);
+    /*
+     * (non-Javadoc)
+     * 
+     * @see gov.nih.nci.caintegrator.service.findings.strategies.FindingStrategy#createQuery()
+     *      This method validates that 2 groups were passed for generalized
+     *      linear model as the statistical method
+     */
+    public boolean createQuery() throws FindingsQueryException {
 
-	                
-	                List<GLMSampleGroup> glmsgs = new ArrayList<GLMSampleGroup>();
-	                for(String gname : comparisonGroupsMap.keySet()) {
-	                	List<String> groups = comparisonGroupsMap.get(gname);
-	                	GLMSampleGroup comparison = new GLMSampleGroup(gname);
-	                	comparison.addAll(comparisonGroupsMap.get(gname));
-	                	for(String name : groups )	{
-		                    
-		                    HashMap<String, String> annotationMap = new HashMap<String, String>();
-		                    Map pm = patientGroupManager.getPatientInfo(name);
-		                    if(coVariateTypes.contains(CoVariateType.Gender))
-		                    	annotationMap.put("sex", pm.get("sex").toString());
-		                    if(coVariateTypes.contains(CoVariateType.Age))
-		                    	annotationMap.put("age", pm.get("age").toString());
-		                    if(coVariateTypes.contains(CoVariateType.SmokingStatus))	{
-		                    	String ss = pm.get("smoking_status") != null ? pm.get("smoking_status").toString() : "N/A";
-		                    	annotationMap.put("smoking_status", ss);
-		                    }
-		                    comparison.addPatientData(name, annotationMap);
-	                	}
-	                	glmsgs.add(comparison);
-	                }
-	                
-                    glmRequest.setComparisonGroups(glmsgs);
-	               				
-				    // set Multiple Comparison Adjustment type
-	                glmRequest.setMultiGrpComparisonAdjType(getQueryDTO().getMultiGroupComparisonAdjustmentTypeDE().getValueObject());
-				
-	                // set gene variance 
-                    glmRequest.setGeneVariance(variance);
-				
-				    // go the correct matrix to fetch data			
-				
-	                glmRequest.setDataFileName(dataFileMap.get(getQueryDTO().getSpecimenTypeEnum().name()));
-			      
-			   analysisServerClientManager.sendRequest(glmRequest);
-			   return true;	
-			    }
-			}// end of try
-			catch(JMSException ex) {
-				logger.error(ex.getMessage());
-	  			throw new FindingsAnalysisException(ex.getMessage());
-			}
-			catch(Exception ex) {
-				logger.error("error in glm", ex);
-				throw new FindingsAnalysisException("Error in setting glmRequest object");
-			}
-			return false;
-		}
-		
+        // because each layer is valid I am assured I will be getting a fulling
+        // populated query object
+        StatisticalMethodType statisticType = getQueryDTO()
+                .getStatisticTypeDE().getValueObject();
 
-		public Finding getFinding() {
-	        return (GeneralizedLinearModelFinding) taskResult;
-	    }
-		
-		 public boolean validate(QueryDTO queryDTO) throws ValidationException {
-		        boolean _valid = false;
-		        if (queryDTO instanceof ClassComparisonQueryDTO) {
-		            ClassComparisonQueryDTO classComparisonQueryDTO = (ClassComparisonQueryDTO) queryDTO;
-		            try {
-		                
-		                ValidationUtility.checkForNull(classComparisonQueryDTO
-		                        .getArrayPlatformDE());
-		                ValidationUtility.checkForNull(classComparisonQueryDTO
-		                        .getComparisonGroups());
-		                ValidationUtility.checkForNull(classComparisonQueryDTO
-		                        .getExprFoldChangeDE());
-		                ValidationUtility.checkForNull(classComparisonQueryDTO
-		                        .getMultiGroupComparisonAdjustmentTypeDE());
-		                ValidationUtility.checkForNull(classComparisonQueryDTO
-		                        .getQueryName());
-		                ValidationUtility.checkForNull(classComparisonQueryDTO
-		                        .getStatisticalSignificanceDE());
-		                ValidationUtility.checkForNull(classComparisonQueryDTO
-		                        .getStatisticTypeDE());	                          
-		                
-		                _valid = true;
-		            } catch (ValidationException ex) {
-		                logger.error(ex.getMessage());
-		                throw ex;
-		            }
-		        }
-		        return _valid;
-		    }
+        if (getQueryDTO().getComparisonGroups() != null) {
 
-	    private ClassComparisonQueryDTOImpl getQueryDTO() {
-	        return (ClassComparisonQueryDTOImpl) taskResult.getTask().getQueryDTO();
-	    }
-    
-	    public TaskResult retrieveTaskResult(Task task) {
-	        TaskResult taskResult = (TaskResult) businessCacheManager
-	                .getObjectFromSessionCache(task.getCacheId(), task.getId());
-	        return taskResult;
-	    }
-	    
-	    public boolean canHandle(QueryDTO query) {
-	        if(query instanceof ClassComparisonQueryDTO) {
-	            ClassComparisonQueryDTO dto = (ClassComparisonQueryDTO)query;
-	            return ( dto.getStatisticTypeDE().getValueObject().equals(StatisticalMethodType.GLM));
-	        }
-	        return false;
-	    }
-	    
-	    public AnalysisServerClientManager getAnalysisServerClientManager() {
-	        return analysisServerClientManager;
-	    }
-	    
-	    public void setAnalysisServerClientManager(
-	            AnalysisServerClientManager analysisServerClientManager) {
-	        this.analysisServerClientManager = analysisServerClientManager;
-	    }
-	    
-	    public BusinessTierCache getBusinessCacheManager() {
-	        return businessCacheManager;
-	    }
-	    
-	    public void setBusinessCacheManager(BusinessTierCache cacheManager) {
-	        this.businessCacheManager = cacheManager;
-	    }
-	    
-	    public Map getDataFileMap() {
-	        return dataFileMap;
-	    }
-
-	    public void setDataFileMap(Map dataFileMap) {
-	        this.dataFileMap = dataFileMap;
-	    }
-
-        public PatientGroupManager getPatientGroupManager() {
-            return patientGroupManager;
+            if (statisticType == StatisticalMethodType.GLM) {
+                if (getQueryDTO().getComparisonGroups().size() < 1
+                        && getQueryDTO().getBaselineGroupMap().size() > 0) {
+                    throw new FindingsQueryException(
+                            "Incorrect Number of queries passed for the Generalized Linear Model statistical type");
+                }
+            }
+            return true;
         }
+        return false;
+    }
 
-        public void setPatientGroupManager(PatientGroupManager patientGroupManager) {
-            this.patientGroupManager = patientGroupManager;
+    protected void executeStrategy() {
+
+        glmRequest = new GeneralizedLinearModelRequest(taskResult.getTask()
+                .getCacheId(), taskResult.getTask().getId());
+        businessCacheManager.addToSessionCache(getTaskResult().getTask()
+                .getCacheId(), getTaskResult().getTask().getId(),
+                getTaskResult());
+    }
+
+    /*
+     * 
+     */
+    public boolean analyzeResultSet() throws FindingsAnalysisException {
+        StatisticalMethodType statisticType = getQueryDTO()
+                .getStatisticTypeDE().getValueObject();
+
+        try {
+            if (statisticType == StatisticalMethodType.GLM || statisticType == StatisticalMethodType.ANOVA) {
+
+                // set statistical method
+                glmRequest.setStatisticalMethod(statisticType);
+
+                // set Co-variates (0 or more)
+                List<CoVariateDE> coVariateDEs = getQueryDTO()
+                        .getCoVariateDEs();
+                // what? convert from DE back to enum? why?
+                if (coVariateDEs != null) {
+                    Object[] obj = coVariateDEs.toArray();
+                    for (int i = 0; i < obj.length; i++) {
+                        CoVariateDE coVariateDE = (CoVariateDE) obj[i];
+                        coVariateTypes.add(coVariateDE.getValueObject());
+                    }
+                }
+                glmRequest.setCoVariateTypes(coVariateTypes);
+
+                // Set sample groups
+                HashMap<String, List> comparisonGroupsMap = getQueryDTO()
+                        .getComparisonGroupsMap();
+                HashMap<String, List> baselineGroupMap = getQueryDTO()
+                        .getBaselineGroupMap();
+                GLMSampleGroup baseline = null;
+                for (String gname : baselineGroupMap.keySet()) {
+                    List<String> groups = baselineGroupMap.get(gname);
+                    baseline = new GLMSampleGroup(gname);
+                    baseline.addAll(baselineGroupMap.get(gname));
+
+                    for (String name : groups) {
+                        // add each patient
+
+                        HashMap<String, String> annotationMap = new HashMap<String, String>();
+                        // fetch the data about each patient
+                        Map pm = patientGroupManager.getPatientInfo(name);
+                        if (coVariateTypes.contains(CoVariateType.Gender))
+                            annotationMap.put("sex", pm.get("sex").toString());
+                        if (coVariateTypes.contains(CoVariateType.Age))
+                            annotationMap.put("age", pm.get("age").toString());
+                        if (coVariateTypes
+                                .contains(CoVariateType.SmokingStatus)) {
+                            String ss = pm.get("smoking_status") != null ? pm
+                                    .get("smoking_status").toString() : "N/A";
+                            annotationMap.put("smoking_status", ss);
+                        }
+                        baseline.addPatientData(name, annotationMap);
+                    }
+                }
+                glmRequest.setBaselineGroup(baseline);
+
+                List<GLMSampleGroup> glmsgs = new ArrayList<GLMSampleGroup>();
+                for (String gname : comparisonGroupsMap.keySet()) {
+                    List<String> groups = comparisonGroupsMap.get(gname);
+                    GLMSampleGroup comparison = new GLMSampleGroup(gname);
+                    comparison.addAll(comparisonGroupsMap.get(gname));
+                    for (String name : groups) {
+
+                        HashMap<String, String> annotationMap = new HashMap<String, String>();
+                        Map pm = patientGroupManager.getPatientInfo(name);
+                        if (coVariateTypes.contains(CoVariateType.Gender))
+                            annotationMap.put("sex", pm.get("sex").toString());
+                        if (coVariateTypes.contains(CoVariateType.Age))
+                            annotationMap.put("age", pm.get("age").toString());
+                        if (coVariateTypes
+                                .contains(CoVariateType.SmokingStatus)) {
+                            String ss = pm.get("smoking_status") != null ? pm
+                                    .get("smoking_status").toString() : "N/A";
+                            annotationMap.put("smoking_status", ss);
+                        }
+                        comparison.addPatientData(name, annotationMap);
+                    }
+                    glmsgs.add(comparison);
+                }
+
+                glmRequest.setComparisonGroups(glmsgs);
+
+                // set Multiple Comparison Adjustment type
+                glmRequest.setMultiGrpComparisonAdjType(getQueryDTO()
+                        .getMultiGroupComparisonAdjustmentTypeDE()
+                        .getValueObject());
+
+                // set gene variance
+                glmRequest.setGeneVariance(variance);
+
+                // go the correct matrix to fetch data
+
+                glmRequest.setDataFileName(dataFileMap.get(getQueryDTO()
+                        .getSpecimenTypeEnum().name()));
+
+                analysisServerClientManager.sendRequest(glmRequest);
+                return true;
+            }
+        }// end of try
+        catch (JMSException ex) {
+            logger.error(ex.getMessage());
+            throw new FindingsAnalysisException(ex.getMessage());
+        } catch (Exception ex) {
+            logger.error("error in glm", ex);
+            throw new FindingsAnalysisException(
+                    "Error in setting glmRequest object");
         }
+        return false;
+    }
+
+    public Finding getFinding() {
+        return (GeneralizedLinearModelFinding) taskResult;
+    }
+
+    public boolean validate(QueryDTO queryDTO) throws ValidationException {
+        boolean _valid = false;
+        if (queryDTO instanceof ClassComparisonQueryDTO) {
+            ClassComparisonQueryDTO classComparisonQueryDTO = (ClassComparisonQueryDTO) queryDTO;
+            try {
+
+                ValidationUtility.checkForNull(classComparisonQueryDTO
+                        .getArrayPlatformDE());
+                ValidationUtility.checkForNull(classComparisonQueryDTO
+                        .getComparisonGroups());
+                ValidationUtility.checkForNull(classComparisonQueryDTO
+                        .getExprFoldChangeDE());
+                ValidationUtility.checkForNull(classComparisonQueryDTO
+                        .getMultiGroupComparisonAdjustmentTypeDE());
+                ValidationUtility.checkForNull(classComparisonQueryDTO
+                        .getQueryName());
+                ValidationUtility.checkForNull(classComparisonQueryDTO
+                        .getStatisticalSignificanceDE());
+                ValidationUtility.checkForNull(classComparisonQueryDTO
+                        .getStatisticTypeDE());
+
+                _valid = true;
+            } catch (ValidationException ex) {
+                logger.error(ex.getMessage());
+                throw ex;
+            }
+        }
+        return _valid;
+    }
+
+    private ClassComparisonQueryDTOImpl getQueryDTO() {
+        return (ClassComparisonQueryDTOImpl) taskResult.getTask().getQueryDTO();
+    }
+
+    public TaskResult retrieveTaskResult(Task task) {
+        TaskResult taskResult = (TaskResult) businessCacheManager
+                .getObjectFromSessionCache(task.getCacheId(), task.getId());
+        return taskResult;
+    }
+
+    public boolean canHandle(QueryDTO query) {
+        if (query instanceof ClassComparisonQueryDTO) {
+            ClassComparisonQueryDTO dto = (ClassComparisonQueryDTO) query;
+            return ((dto.getStatisticTypeDE().getValueObject()
+                    .equals(StatisticalMethodType.GLM)) || (dto
+                    .getStatisticTypeDE().getValueObject()
+                    .equals(StatisticalMethodType.ANOVA)));
+        }
+        return false;
+    }
+
+    public AnalysisServerClientManager getAnalysisServerClientManager() {
+        return analysisServerClientManager;
+    }
+
+    public void setAnalysisServerClientManager(
+            AnalysisServerClientManager analysisServerClientManager) {
+        this.analysisServerClientManager = analysisServerClientManager;
+    }
+
+    public BusinessTierCache getBusinessCacheManager() {
+        return businessCacheManager;
+    }
+
+    public void setBusinessCacheManager(BusinessTierCache cacheManager) {
+        this.businessCacheManager = cacheManager;
+    }
+
+    public Map getDataFileMap() {
+        return dataFileMap;
+    }
+
+    public void setDataFileMap(Map dataFileMap) {
+        this.dataFileMap = dataFileMap;
+    }
+
+    public PatientGroupManager getPatientGroupManager() {
+        return patientGroupManager;
+    }
+
+    public void setPatientGroupManager(PatientGroupManager patientGroupManager) {
+        this.patientGroupManager = patientGroupManager;
+    }
 
 }

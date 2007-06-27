@@ -23,7 +23,7 @@ public class ManagedBeanUtil {
                 beanName = "classComparisonReport";
             else if(ccDto.getStatisticTypeDE().getValueObject().equals(StatisticalMethodType.FTest))
                 beanName = "ftestReport";
-            else if(ccDto.getStatisticTypeDE().getValueObject().equals(StatisticalMethodType.GLM))
+            else if(ccDto.getStatisticTypeDE().getValueObject().equals(StatisticalMethodType.GLM) || ccDto.getStatisticTypeDE().getValueObject().equals(StatisticalMethodType.ANOVA))
                 beanName = "glmReport";
         }
 
