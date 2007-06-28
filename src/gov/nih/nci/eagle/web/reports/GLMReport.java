@@ -63,7 +63,7 @@ public class GLMReport extends BaseClassComparisonReport {
     	List<String> gnames = ((GeneralizedLinearModelFinding)taskResult).getGroupNames();
     	List<String> newgnames = new ArrayList<String>();
     	for(String s : gnames)	{
-    		newgnames.add(s.replace("_afterAdjustment", " (after adjustment)").replaceAll("_beforeAdjustment", " (before adjustment)"));
+    		newgnames.add(s.replace("_afterAdjustment", " (after adjustment)").replaceAll("_beforeAdjustment", " (before adjustment)").replace("afterAdjustmentPvalue", "After Adjustment Pvalue").replace("beforeAdjustmentPvalue", "Before Adjustment Pvalue"));
     	}
     	Collections.sort(newgnames);
     	return newgnames;
