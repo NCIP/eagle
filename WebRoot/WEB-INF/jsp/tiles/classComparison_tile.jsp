@@ -141,12 +141,11 @@ var CCForm = {
 		MenuSwapper.saveMe( $('selectedGroups'),$('nonselectedGroups') );
 		
 		if(fromwhere == 'enter')	{
-		//	return true;
+			return true;
 		}
 		else	{
-		//	document.forms[0].submit();
+			document.forms[0].submit();
 		}
-		alert("SUBMIT");
 	
 	}
 
