@@ -50,7 +50,6 @@ public class EpiReport extends SortableReport{
            this.queryDTO = task.getQueryDTO();
             reportBeans = new ArrayList();
             for(StudyParticipant p : (Collection<StudyParticipant>)taskResult.getTaskResults()) {
-               // reportBeans.add(new EpiReportBean(p));
                 EpiReportBean erb = new EpiReportBean(p);
                 //set the available specimens
                 List availableSpecimens = new ArrayList<SpecimenType>();
@@ -77,9 +76,28 @@ public class EpiReport extends SortableReport{
     
     public void setPatientData(Collection patientData) {
         reportBeans = new ArrayList();
+        allReportBeans = new ArrayList();
         if(patientData != null) {
             for(StudyParticipant p : (Collection<StudyParticipant>)patientData) {
-                reportBeans.add(new EpiReportBean(p));
+                EpiReportBean erb = new EpiReportBean(p);
+                List availableSpecimens = new ArrayList<SpecimenType>();
+                //TODO: pull this out into a utlilty, as we do a similar thing in dynamiclisthelper
+                for(SpecimenType s: SpecimenType.values() ) {
+                    List justone = new ArrayList();
+                    justone.add(p.getStudySubjectIdentifier());
+                    List shouldbeone = listValidationService.validateList(justone, s);
+                    if(shouldbeone.size()==1){
+                        //hit
+                        availableSpecimens.add(s);
+                    }
+
+                }
+                erb.setAvailableSpecimens(availableSpecimens);
+                reportBeans.add(erb);
+            }
+            if(allReportBeans == null || allReportBeans.size()==0){
+                allReportBeans = new ArrayList();
+                allReportBeans.addAll(reportBeans);
             }
         }
     }
