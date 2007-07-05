@@ -73,6 +73,7 @@
 						currentStatus = "<b id=\"" + task.getId() + "_status\" ><script language=\"javascript\">document.write(showErrorHelp('"+comments+"','error'));</script></b> <img src='images/error.png' alt='error' id=\"" + task.getId() + "_image\" />";
 					}
 					
+					
 					out.println("<span style='color:#a90101; float:right'>" + currentStatus + "</span> ");					
 					String onclick="";					
 					if(task.getStatus()!= FindingStatus.Completed)	{
@@ -80,19 +81,19 @@
 					}					
 					//check the type of finding and create the appropriate link
 					if(task.getQueryDTO() instanceof EagleClinicalQueryDTO){						
-						out.println("<li><a id=\"" + task.getId() + "_link\" href=\"javascript:spawnx('clinicalReport.do?method=runReport&taskId=" + task.getId() + "&cacheId=" + task.getCacheId() + "', 750, 500,'clinical_report');\" onclick=\"" + onclick + "\">" + qname + "</a> <i>(Clinical)</i> ");
+						out.println("<li><a id=\"" + task.getId() + "_link\" href=\"javascript:spawnx('clinicalReport.do?method=runReport&taskId=' + encodeURIComponent('" + URLEncoder.encode(task.getId()) + "') + '&cacheId=" + URLEncoder.encode(task.getCacheId()) + "', 750, 500,'clinical_report');\" onclick=\"" + onclick + "\">" + qname + "</a> <i>(Clinical)</i> ");
 					}
 					else if(task.getQueryDTO() instanceof EPIQueryDTO){						
-						out.println("<li><a id=\"" + task.getId() + "_link\" href=\"javascript:spawnx('epiReport.do?method=runReport&taskId=" + task.getId() + "&cacheId=" + task.getCacheId() + "', 750, 500,'epi_report');\" onclick=\"" + onclick + "\">" + qname + "</a> <i>(Epi)</i> ");
+						out.println("<li><a id=\"" + task.getId() + "_link\" href=\"javascript:spawnx('epiReport.do?method=runReport&taskId=' + encodeURIComponent('" + URLEncoder.encode(task.getId()) + "') + '&cacheId=" + URLEncoder.encode(task.getCacheId()) + "', 750, 500,'epi_report');\" onclick=\"" + onclick + "\">" + qname + "</a> <i>(Epi)</i> ");
 					} 
 					else if(task.getQueryDTO() instanceof ClassComparisonQueryDTO){	
 						ClassComparisonQueryDTO dto = (ClassComparisonQueryDTO)task.getQueryDTO();
 						if(dto.getStatisticTypeDE().getValueObject().equals(StatisticalMethodType.TTest))
-							out.println("<li><a id=\"" + task.getId() + "_link\" href=\"javascript:spawnx('classComparisonReport.do?method=runReport&taskId=" + task.getId() + "&cacheId=" + task.getCacheId() + "', 750, 500,'cc_report');\" onclick=\"" + onclick + "\">" + qname + "</a> <i>(Class Comparison)</i> ");
+							out.println("<li><a id=\"" + task.getId() + "_link\" href=\"javascript:spawnx('classComparisonReport.do?method=runReport&taskId=' + encodeURIComponent('" + URLEncoder.encode(task.getId()) + "') + '&cacheId=" + task.getCacheId() + "', 750, 500,'cc_report');\" onclick=\"" + onclick + "\">" + qname + "</a> <i>(Class Comparison)</i> ");
 						else if(dto.getStatisticTypeDE().getValueObject().equals(StatisticalMethodType.FTest))
-							out.println("<li><a id=\"" + task.getId() + "_link\" href=\"javascript:spawnx('ftestReport.do?method=runReport&taskId=" + task.getId() + "&cacheId=" + task.getCacheId() + "', 750, 500,'cc_report');\" onclick=\"" + onclick + "\">" + qname + "</a> <i>(Class Comparison)</i> ");
+							out.println("<li><a id=\"" + task.getId() + "_link\" href=\"javascript:spawnx('ftestReport.do?method=runReport&taskId=' + encodeURIComponent('" + URLEncoder.encode(task.getId()) + "') + '&cacheId=" + task.getCacheId() + "', 750, 500,'cc_report');\" onclick=\"" + onclick + "\">" + qname + "</a> <i>(Class Comparison)</i> ");
 						else if(dto.getStatisticTypeDE().getValueObject().equals(StatisticalMethodType.GLM) || dto.getStatisticTypeDE().getValueObject().equals(StatisticalMethodType.ANOVA))
-							out.println("<li><a id=\"" + task.getId() + "_link\" href=\"javascript:spawnx('glmReport.do?method=runReport&taskId=" + task.getId() + "&cacheId=" + task.getCacheId() + "', 750, 500,'cc_report');\" onclick=\"" + onclick + "\">" + qname + "</a> <i>(Class Comparison)</i> ");
+							out.println("<li><a id=\"" + task.getId() + "_link\" href=\"javascript:spawnx('glmReport.do?method=runReport&taskId=' + encodeURIComponent('" + URLEncoder.encode(task.getId()) + "') + '&cacheId=" + task.getCacheId() + "', 750, 500,'cc_report');\" onclick=\"" + onclick + "\">" + qname + "</a> <i>(Class Comparison)</i> ");
 						else	{
 								out.println("<li>" + qname + "  ");					
 						}
