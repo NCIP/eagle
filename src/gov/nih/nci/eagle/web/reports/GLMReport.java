@@ -65,7 +65,6 @@ public class GLMReport extends BaseClassComparisonReport {
     	for(String s : gnames)	{
     		newgnames.add(s.replace("_afterAdjustment", " (after adjustment)").replaceAll("_beforeAdjustment", " (before adjustment)").replace("afterAdjustmentPvalue", "After Adjustment Pvalue").replace("beforeAdjustmentPvalue", "Before Adjustment Pvalue"));
     	}
-    	Collections.sort(newgnames);
     	return newgnames;
     }
 
