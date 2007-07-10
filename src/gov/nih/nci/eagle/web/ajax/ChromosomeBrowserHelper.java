@@ -18,7 +18,7 @@ import org.springframework.orm.hibernate3.HibernateTemplate;
 public class ChromosomeBrowserHelper {
 
     private HibernateTemplate hibernateTemplate;
-    private Integer chromosomeScale = 400000;
+    private Integer chromosomeScale = 200000;
 
     public String getDataForRange(Integer start, Integer end) {
         System.out.println("Got request start: " + start + " end: " + end);
