@@ -4,6 +4,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	xmlns:i="http://caintegrator.nci.nih.gov/jsf">
 	<head>
 		<title>EAGLE Report</title>
@@ -130,6 +131,26 @@
 					fieldValue="#{epiReport.queryDTO.patientCharacteristicsCriterion.maritalStatus.name}" />
 				<i:displayField fieldName="Religion"
 					fieldValue="#{epiReport.queryDTO.patientCharacteristicsCriterion.religion.name}" />
+
+				<c:choose>
+					<c:when test="${epiReport.queryDTO.familyHistoryCriterion.familyLungCancer=='0'}">
+						<i:displayField fieldName="Relatives with Lung Cancer" fieldValue="No" /> 	
+					</c:when>
+					<c:when test="${epiReport.queryDTO.familyHistoryCriterion.familyLungCancer=='1'}">
+						<i:displayField fieldName="Relatives with Lung Cancer" fieldValue="No" />
+					</c:when>
+					<c:when test="${epiReport.queryDTO.familyHistoryCriterion.familyLungCancer=='9'}">
+						<i:displayField fieldName="Relatives with Lung Cancer" fieldValue="Unknown" />
+					</c:when>
+					<c:otherwise></c:otherwise>
+				</c:choose>		
+					
+					
+				<i:displayField fieldName="Relatives Smoking Status"
+					fieldValue="#{epiReport.queryDTO.familyHistoryCriterion.smokingRelativeCollection}" />
+				<i:displayField fieldName="Exposure to Smoke"
+					fieldValue="#{epiReport.queryDTO.environmentalTobaccoSmokeCriterion.smokingExposureCollection}" />
+				
 			</div>
 
 			<h:form id="epiForm">
