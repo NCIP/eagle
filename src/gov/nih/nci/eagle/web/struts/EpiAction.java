@@ -19,11 +19,13 @@ import gov.nih.nci.caintegrator.studyQueryService.dto.epi.ResidentialArea;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.SmokingExposure;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.SmokingStatus;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.TobaccoType;
+import gov.nih.nci.eagle.util.CollisionDetector;
 import gov.nih.nci.eagle.util.ManagedBeanUtil;
 import gov.nih.nci.eagle.util.UILookupLoader;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -58,9 +60,18 @@ public class EpiAction extends DispatchAction {
     public ActionForward submit(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws IOException {
+    	
+		List<String> taskNames = new ArrayList<String>();
+		Collection tasks = presentationCacheManager.getAllSessionTasks(request.getSession().getId());
+		for(Object t : tasks){
+			taskNames.add( ((Task)t).getId() );
+		}
+
         //EPIQueryDTO dto = new EPIQueryDTO();
         QueryDTO dto = dtoBuilder.buildQueryDTO(form, request.getSession().getId());
-        dto.setQueryName(((EpiForm)form).getQueryName());
+        //dto.setQueryName(((EpiForm)form).getQueryName());
+        dto.setQueryName( CollisionDetector.renameOnCollision( ((EpiForm)form).getQueryName() , taskNames ) );
+        
         try {
             Task task = findingsManager.submitQuery(dto);
             presentationCacheManager.addNonPersistableToSessionCache(request
