@@ -54,27 +54,27 @@ a {
 </tr>
 <tr>
 <td>totalTime:</td>
-<td>18</td>
+<td>105</td>
 </tr>
 <tr>
 <td>numTestPasses:</td>
-<td>2</td>
+<td>3</td>
 </tr>
 <tr>
 <td>numTestFailures:</td>
-<td>1</td>
+<td>3</td>
 </tr>
 <tr>
 <td>numCommandPasses:</td>
-<td>68</td>
+<td>113</td>
 </tr>
 <tr>
 <td>numCommandFailures:</td>
-<td>2</td>
+<td>1</td>
 </tr>
 <tr>
 <td>numCommandErrors:</td>
-<td>0</td>
+<td>3</td>
 </tr>
 <tr>
 <td>Selenium Version:</td>
@@ -87,23 +87,16 @@ a {
 <tr>
 <td><TABLE>
 <TBODY>
-<TR class="title  status_failed">
+<TR class="title    status_failed">
 <TD>Test suite for the EAGLE application </TD></TR>
 <TR class="  status_passed">
 <TD><A href="#testresult0">EAGLE Login</A> </TD></TR>
 <TR class="  status_failed">
-<TD><A href="#testresult1">General UI Test Cases</A> </TD></TR><!-- 
-	<tr>
-		<td>
-			<a href="QA_tests/QA_baseline_testsCCA.html">Class Comparison Analysis</a>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<a href="QA_tests/QA_baseline_CCA_ViewResults.html">Class Comparison Analysis</a>
-		</td>
-	</tr>
---><!-- 	
+<TD><A href="#testresult1">General UI Test Cases</A> </TD></TR>
+<TR class="  status_passed">
+<TD><A href="#testresult2">CCA</A> </TD></TR>
+<TR class="  status_failed">
+<TD><A href="#testresult3">CCA View Results</A> </TD></TR><!-- 	
 	<tr>
 		<td>
 			<a href="QA_tests/QA_defect_retests.html">Defect retests</a>
@@ -111,12 +104,14 @@ a {
 	</tr>
 	<tr>
 		<td>
-			<a href="QA_tests/QA_baseline_debug_tests.html">Debugging test scripts</a>
+			<a href="QA_tests/QA_baseline_debug_tests.html">Debug test scripts</a>
 		</td>
 	</tr>
 -->
 <TR class="  status_passed">
-<TD><A href="#testresult2">EAGLE Logout</A> </TD></TR></TBODY></TABLE></td>
+<TD><A href="#testresult4">EAGLE Logout</A> </TD></TR>
+<TR class="  status_failed">
+<TD><A href="#testresult5">EPI query test</A> </TD></TR></TBODY></TABLE></td>
 <td>&nbsp;</td>
 </tr>
 </table><table><tr>
@@ -306,10 +301,11 @@ a {
 <TD>verifyTextPresent</TD>
 <TD>Compare Patient Groups</TD>
 <TD originalHTML></TD></TR>
-<TR class="  status_failed" style="CURSOR: pointer">
+<TR class="  status_passed" style="CURSOR: pointer">
 <TD>verifyTextPresent</TD>
-<TD>Existing Groups <BR>all_case all_control gender_females gender_males smoking_current_smokers smoking_former_smokers smoking_non_smokers stage_IA stage_IB stage_IIA stage_IIB stage_IIIA stage_IIIB stage_IV gender_females gender_males smoking_current_smokers smoking_former_smokers smoking_non_smokers stage_IA stage_IB stage_IIA stage_IIB stage_IIIA stage_IIIB stage_IV all_case all_control gender_females gender_males smoking_current_smokers smoking_former_smokers smoking_non_smokers stage_IA stage_IB stage_IIA stage_IIB stage_IIIA stage_IIIB stage_IV</TD>
-<TD originalHTML>false</TD></TR>
+<TD>Existing Groups</TD>
+<TD originalHTML></TD></TR><!-- <br /> all_case all_control gender_females gender_males smoking_current_smokers smoking_former_smokers smoking_non_smokers stage_IA stage_IB stage_IIA stage_IIB stage_IIIA stage_IIIB stage_IV gender_females gender_males smoking_current_smokers smoking_former_smokers smoking_non_smokers stage_IA stage_IB stage_IIA stage_IIB stage_IIIA stage_IIIB stage_IV all_case all_control gender_females gender_males smoking_current_smokers smoking_former_smokers smoking_non_smokers stage_IA stage_IB stage_IIA stage_IIB stage_IIIA stage_IIIB stage_IV
+-->
 <TR class="  status_passed" style="CURSOR: pointer">
 <TD>verifyTextPresent</TD>
 <TD>Baseline Group</TD>
@@ -354,10 +350,10 @@ a {
 <TD>verifyTextPresent</TD>
 <TD>Cigarette Smoking</TD>
 <TD originalHTML></TD></TR>
-<TR class="  status_failed" style="CURSOR: pointer">
+<TR class="  status_passed" style="CURSOR: pointer">
 <TD>verifyTextPresent</TD>
-<TD>Intensity Range: to (cigarettes per day)</TD>
-<TD originalHTML>false</TD></TR>
+<TD>Intensity Range:</TD>
+<TD originalHTML></TD></TR>
 <TR class="  status_passed" style="CURSOR: pointer">
 <TD>verifyTextPresent</TD>
 <TD>(cigarettes per day)</TD>
@@ -546,27 +542,1433 @@ a {
 <TD>click</TD>
 <TD>//input[@value='Intersect']</TD>
 <TD originalHTML></TD></TR>
-<TR class="  status_passed" style="CURSOR: pointer">
+<TR class="  status_failed" style="CURSOR: pointer">
 <TD>assertAlert</TD>
 <TD>The selected lists do not have any common entries.</TD>
-<TD originalHTML></TD></TR>
-<TR class="  status_done" style="CURSOR: pointer">
+<TD originalHTML>There&nbsp;were&nbsp;no&nbsp;alerts</TD></TR>
+<TR class="" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//div[@onclick='ManageListHelper.deleteList("Allcase_AllControl");return false;']</TD>
 <TD originalHTML></TD></TR>
-<TR class="  status_passed" style="CURSOR: pointer">
+<TR class="" style="CURSOR: pointer">
 <TD>assertConfirmation</TD>
 <TD>Delete this List?</TD>
 <TD originalHTML></TD></TR><!-- Logout handled by another program --></TBODY></TABLE></DIV></td>
 <td>&nbsp;</td>
 </tr><tr>
-<td><a name="testresult2">QA_tests/QA_Logout.html</a><br/><DIV>
+<td><a name="testresult2">QA_tests/QA_baseline_testsCCA.html</a><br/><DIV>
+<TABLE cellSpacing=1 cellPadding=1 border=1>
+<THEAD>
+<TR class="title status_passed">
+<TD colSpan=3>Class Comparison Analysis</TD></TR></THEAD>
+<TBODY><!-- Login handled by a separate script
+     Start the script on a known tab on the application -->
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Analysis</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Class Comparison Analysis</TD>
+<TD originalHTML></TD></TR><!--  Begin individual test cases for CCA --><!--  Test Case 3 Data Set 2 -->
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>pause</TD>
+<TD>1000</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>analysisName</TD>
+<TD originalHTML="TC3_2">TC3_2</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=all_case">label=all_case</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='Base&gt;&gt;']</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=gender_females">label=gender_females</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='&gt;&gt;']</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>//input[@value='Submit Analysis']</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyTextPresent</TD>
+<TD>TC3_2 (Class Comparison)</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Analysis</TD>
+<TD originalHTML="5000">5000</TD></TR><!--  Test Case 3 Data Set 17 -->
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Class Comparison Analysis</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>pause</TD>
+<TD>1000</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>analysisName</TD>
+<TD originalHTML="TC3_17">TC3_17</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=all_control">label=all_control</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='Base&gt;&gt;']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=stage_IA">label=stage_IA</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='&gt;&gt;']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>//input[@value='Submit Analysis']</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_17_link</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Analysis</TD>
+<TD originalHTML="2000">2000</TD></TR><!--  Test Case 3 Data Set 18 -->
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Class Comparison Analysis</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>pause</TD>
+<TD>1000</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>analysisName</TD>
+<TD originalHTML="TC3_18">TC3_18</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=all_case">label=all_case</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>removeSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=all_case">label=all_case</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=all_control">label=all_control</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='Base&gt;&gt;']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=stage_IB">label=stage_IB</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='&gt;&gt;']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>//input[@value='Submit Analysis']</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_18_link</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Analysis</TD>
+<TD originalHTML="10000">10000</TD></TR><!--  Test Case 3 Data Set 19 -->
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Class Comparison Analysis</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>pause</TD>
+<TD>1000</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>analysisName</TD>
+<TD originalHTML="TC3_19">TC3_19</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=all_control">label=all_control</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='Base&gt;&gt;']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=stage_IIA">label=stage_IIA</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='&gt;&gt;']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>//input[@value='Submit Analysis']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_19_link</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Analysis</TD>
+<TD originalHTML="10000">10000</TD></TR><!--  Test Case 3 Data Set 20 -->
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Class Comparison Analysis</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>pause</TD>
+<TD>2000</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>analysisName</TD>
+<TD originalHTML="TC3_20">TC3_20</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=all_control">label=all_control</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='Base&gt;&gt;']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=stage_IIB">label=stage_IIB</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='&gt;&gt;']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>//input[@value='Submit Analysis']</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_20_link</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Analysis</TD>
+<TD originalHTML="10000">10000</TD></TR><!--  Test Case 3 Data Set 21 -->
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Class Comparison Analysis</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>pause</TD>
+<TD>2000</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>analysisName</TD>
+<TD originalHTML="TC3_21">TC3_21</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=all_control">label=all_control</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='Base&gt;&gt;']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=stage_IIIA">label=stage_IIIA</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='&gt;&gt;']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>//input[@value='Submit Analysis']</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_21_link</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Analysis</TD>
+<TD originalHTML="10000">10000</TD></TR><!--  Test Case 3 Data Set 22 -->
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Class Comparison Analysis</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>pause</TD>
+<TD>2000</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>analysisName</TD>
+<TD originalHTML="TC3_22">TC3_22</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=all_control">label=all_control</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='Base&gt;&gt;']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=stage_IIIB">label=stage_IIIB</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='&gt;&gt;']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>//input[@value='Submit Analysis']</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_22_link</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Analysis</TD>
+<TD originalHTML="10000">10000</TD></TR><!--  Test Case 3 Data Set 23 -->
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Class Comparison Analysis</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>pause</TD>
+<TD>2000</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>analysisName</TD>
+<TD originalHTML="TC3_23">TC3_23</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=all_control">label=all_control</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='Base&gt;&gt;']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=stage_IV">label=stage_IV</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='&gt;&gt;']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>//input[@value='Submit Analysis']</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>pause</TD>
+<TD>1000</TD>
+<TD originalHTML></TD></TR><!--  comment out due to timing problems on the QA tier 
+<tr>
+	<td>verifyElementPresent</td>
+	<td>TC3_23_link</td>
+	<td>10000</td>
+</tr>
+-->
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Analysis</TD>
+<TD originalHTML="10000">10000</TD></TR><!--  Test Case 3 Data Set 24 -->
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Class Comparison Analysis</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>pause</TD>
+<TD>2000</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>analysisName</TD>
+<TD originalHTML="TC3_24">TC3_24</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=all_control">label=all_control</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='Base&gt;&gt;']</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=stage_IV">label=stage_IV</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='&gt;&gt;']</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>foldchange</TD>
+<TD originalHTML="0">0</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>pvalue</TD>
+<TD originalHTML="0">0</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>//input[@value='Submit Analysis']</TD>
+<TD originalHTML></TD></TR><!--  comment out due to timing problems on the QA tier 
+<tr>
+	<td>verifyElementPresent</td>
+	<td>TC3_24_link</td>
+	<td>10000</td>
+</tr>
+-->
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Analysis</TD>
+<TD originalHTML="10000">10000</TD></TR><!--  Test Case 3 Data Set 25 -->
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Class Comparison Analysis</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>pause</TD>
+<TD>2000</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>analysisName</TD>
+<TD originalHTML="TC3_25">TC3_25</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=all_control">label=all_control</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='Base&gt;&gt;']</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=stage_IV">label=stage_IV</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='&gt;&gt;']</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>foldchange</TD>
+<TD originalHTML="-1">-1</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>pvalue</TD>
+<TD originalHTML="-1">-1</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>//input[@value='Submit Analysis']</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_25_link</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Analysis</TD>
+<TD originalHTML="10000">10000</TD></TR><!--  Test Case 3 Data Set 26 -->
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Class Comparison Analysis</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>pause</TD>
+<TD>2000</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>analysisName</TD>
+<TD originalHTML="TC3_26">TC3_26</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=all_control">label=all_control</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='Base&gt;&gt;']</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=stage_IV">label=stage_IV</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='&gt;&gt;']</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>foldchange</TD>
+<TD originalHTML="3">3</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>//input[@value='Submit Analysis']</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_26_link</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Analysis</TD>
+<TD originalHTML="10000">10000</TD></TR><!--  Test Case 3 Data Set 27 -->
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Class Comparison Analysis</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>pause</TD>
+<TD>2000</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>analysisName</TD>
+<TD originalHTML="TC3_27">TC3_27</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>select</TD>
+<TD>platform</TD>
+<TD originalHTML="label=Tissue - Normal">label=Tissue - Normal</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=stage_IA">label=stage_IA</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='Base&gt;&gt;']</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=stage_IV">label=stage_IV</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='&gt;&gt;']</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>//input[@value='Submit Analysis']</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_27_link</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Analysis</TD>
+<TD originalHTML="10000">10000</TD></TR><!--  Test Case 3 Data Set 28 -->
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Class Comparison Analysis</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>pause</TD>
+<TD>2000</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>analysisName</TD>
+<TD originalHTML="TC3_28">TC3_28</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>select</TD>
+<TD>platform</TD>
+<TD originalHTML="label=Tissue - Cancer">label=Tissue - Cancer</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=stage_IA">label=stage_IA</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='Base&gt;&gt;']</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=stage_IV">label=stage_IV</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='&gt;&gt;']</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>//input[@value='Submit Analysis']</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_28_link</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Analysis</TD>
+<TD originalHTML="10000">10000</TD></TR><!--  Test Case 3 Data Set 29 -->
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Class Comparison Analysis</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>analysisName</TD>
+<TD originalHTML="TC3_29">TC3_29</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>select</TD>
+<TD>statisticalMethod</TD>
+<TD originalHTML="label=F-Test: One Way ANOVA">label=F-Test: One Way ANOVA</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=stage_IV">label=stage_IV</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=all_case">label=all_case</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>removeSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=stage_IV">label=stage_IV</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>removeSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=all_case">label=all_case</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=stage_IV">label=stage_IV</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='&gt;&gt;']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=smoking_non_smokers">label=smoking_non_smokers</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='&gt;&gt;']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>//input[@value='Submit Analysis']</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_29_link</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Analysis</TD>
+<TD originalHTML="10000">10000</TD></TR><!--  Test Case 3 Data Set 30 -->
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Class Comparison Analysis</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>analysisName</TD>
+<TD originalHTML="TC3_30">TC3_30</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>select</TD>
+<TD>statisticalMethod</TD>
+<TD originalHTML="label=F-Test: One Way ANOVA">label=F-Test: One Way ANOVA</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=all_control">label=all_control</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='&gt;&gt;']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=stage_IIB">label=stage_IIB</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='&gt;&gt;']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>//input[@value='Submit Analysis']</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_30_link</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Analysis</TD>
+<TD originalHTML="10000">10000</TD></TR><!--  Test Case 3 Data Set 31 -->
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Class Comparison Analysis</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>analysisName</TD>
+<TD originalHTML="TC3_31">TC3_31</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>select</TD>
+<TD>platform</TD>
+<TD originalHTML="label=Tissue - Normal">label=Tissue - Normal</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>select</TD>
+<TD>statisticalMethod</TD>
+<TD originalHTML="label=F-Test: One Way ANOVA">label=F-Test: One Way ANOVA</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=stage_IV">label=stage_IV</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='&gt;&gt;']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=smoking_non_smokers">label=smoking_non_smokers</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='&gt;&gt;']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>//input[@value='Submit Analysis']</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_31_link</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Analysis</TD>
+<TD originalHTML="10000">10000</TD></TR><!--  Test Case 3 Data Set 32 -->
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Class Comparison Analysis</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>analysisName</TD>
+<TD originalHTML="TC3_32">TC3_32</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>select</TD>
+<TD>platform</TD>
+<TD originalHTML="label=Tissue - Normal">label=Tissue - Normal</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>select</TD>
+<TD>statisticalMethod</TD>
+<TD originalHTML="label=F-Test: One Way ANOVA">label=F-Test: One Way ANOVA</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=gender_females">label=gender_females</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='&gt;&gt;']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=gender_males">label=gender_males</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='&gt;&gt;']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>//input[@value='Submit Analysis']</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_32_link</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Analysis</TD>
+<TD originalHTML="10000">10000</TD></TR><!--  Test Case 3 Data Set 33 -->
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Class Comparison Analysis</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>analysisName</TD>
+<TD originalHTML="TC3_33">TC3_33</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>select</TD>
+<TD>platform</TD>
+<TD originalHTML="label=Tissue - Cancer">label=Tissue - Cancer</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>select</TD>
+<TD>statisticalMethod</TD>
+<TD originalHTML="label=F-Test: One Way ANOVA">label=F-Test: One Way ANOVA</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=stage_IV">label=stage_IV</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='&gt;&gt;']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=smoking_non_smokers">label=smoking_non_smokers</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='&gt;&gt;']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>//input[@value='Submit Analysis']</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_33_link</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Analysis</TD>
+<TD originalHTML="10000">10000</TD></TR><!--  Test Case 3 Data Set 34 -->
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Class Comparison Analysis</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>analysisName</TD>
+<TD originalHTML="TC3_34">TC3_34</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>select</TD>
+<TD>platform</TD>
+<TD originalHTML="label=Tissue - Cancer">label=Tissue - Cancer</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>select</TD>
+<TD>statisticalMethod</TD>
+<TD originalHTML="label=F-Test: One Way ANOVA">label=F-Test: One Way ANOVA</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=gender_females">label=gender_females</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='&gt;&gt;']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=gender_males">label=gender_males</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='&gt;&gt;']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>//input[@value='Submit Analysis']</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_34_link</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Analysis</TD>
+<TD originalHTML="10000">10000</TD></TR><!--  Test Case 3 Data Set 35 -->
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Class Comparison Analysis</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>analysisName</TD>
+<TD originalHTML="TC3_35">TC3_35</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>select</TD>
+<TD>statisticalMethod</TD>
+<TD originalHTML="label=Generalized Linear Model with/without covariate adjustment">label=Generalized Linear Model with/without covariate adjustment</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=all_control">label=all_control</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='Base&gt;&gt;']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=stage_IIB">label=stage_IIB</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='&gt;&gt;']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>//input[@value='Submit Analysis']</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_35_link</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Analysis</TD>
+<TD originalHTML="10000">10000</TD></TR><!--  Test Case 3 Data Set 36 -->
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Class Comparison Analysis</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>analysisName</TD>
+<TD originalHTML="TC3_36">TC3_36</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>select</TD>
+<TD>statisticalMethod</TD>
+<TD originalHTML="label=Generalized Linear Model with/without covariate adjustment">label=Generalized Linear Model with/without covariate adjustment</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=all_control">label=all_control</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='Base&gt;&gt;']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=stage_IIIA">label=stage_IIIA</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='&gt;&gt;']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>//input[@value='Submit Analysis']</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_36_link</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Analysis</TD>
+<TD originalHTML="10000">10000</TD></TR><!--  Test Case 3 Data Set 37 -->
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Class Comparison Analysis</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>analysisName</TD>
+<TD originalHTML="TC3_37">TC3_37</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>select</TD>
+<TD>platform</TD>
+<TD originalHTML="label=Tissue - Normal">label=Tissue - Normal</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>select</TD>
+<TD>statisticalMethod</TD>
+<TD originalHTML="label=Generalized Linear Model with/without covariate adjustment">label=Generalized Linear Model with/without covariate adjustment</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=stage_IA">label=stage_IA</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='Base&gt;&gt;']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=stage_IV">label=stage_IV</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='&gt;&gt;']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>//input[@value='Submit Analysis']</TD>
+<TD originalHTML="10000">10000</TD></TR><!--  comment out due to timing problems on the QA tier 
+<tr>
+	<td>verifyElementPresent</td>
+	<td>TC3_37_link</td>
+	<td>10000</td>
+</tr>
+-->
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Analysis</TD>
+<TD originalHTML="10000">10000</TD></TR><!--  Test Case 3 Data Set 38 -->
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Class Comparison Analysis</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>pause</TD>
+<TD>2000</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>analysisName</TD>
+<TD originalHTML="TC3_38">TC3_38</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>select</TD>
+<TD>platform</TD>
+<TD originalHTML="label=Tissue - Normal">label=Tissue - Normal</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>select</TD>
+<TD>statisticalMethod</TD>
+<TD originalHTML="label=Generalized Linear Model with/without covariate adjustment">label=Generalized Linear Model with/without covariate adjustment</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>selectedCovariates</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>document.classComparisonForm.selectedCovariates[1]</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>document.classComparisonForm.selectedCovariates[2]</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=smoking_non_smokers">label=smoking_non_smokers</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='Base&gt;&gt;']</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=stage_IV">label=stage_IV</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='&gt;&gt;']</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>//input[@value='Submit Analysis']</TD>
+<TD originalHTML></TD></TR><!--  comment out due to slowness on the QA tier
+<tr>
+	<td>verifyTextPresent</td>
+	<td>TC3_38 (Class Comparison)</td>
+	<td>10000</td>
+</tr>
+-->
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Analysis</TD>
+<TD originalHTML="10000">10000</TD></TR><!--  Test Case 3 Data Set 39 -->
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Class Comparison Analysis</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>pause</TD>
+<TD>1000</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>analysisName</TD>
+<TD originalHTML="TC3_39">TC3_39</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>select</TD>
+<TD>platform</TD>
+<TD originalHTML="label=Tissue - Cancer">label=Tissue - Cancer</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>select</TD>
+<TD>statisticalMethod</TD>
+<TD originalHTML="label=Generalized Linear Model with/without covariate adjustment">label=Generalized Linear Model with/without covariate adjustment</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=stage_IA">label=stage_IA</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='Base&gt;&gt;']</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=stage_IV">label=stage_IV</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='&gt;&gt;']</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>//input[@value='Submit Analysis']</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_39_link</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Analysis</TD>
+<TD originalHTML="10000">10000</TD></TR><!--  Test Case 3 Data Set 40 -->
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Class Comparison Analysis</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>pause</TD>
+<TD>1000</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>analysisName</TD>
+<TD originalHTML="TC3_40">TC3_40</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>select</TD>
+<TD>platform</TD>
+<TD originalHTML="label=Tissue - Cancer">label=Tissue - Cancer</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>select</TD>
+<TD>statisticalMethod</TD>
+<TD originalHTML="label=Generalized Linear Model with/without covariate adjustment">label=Generalized Linear Model with/without covariate adjustment</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>selectedCovariates</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>document.classComparisonForm.selectedCovariates[1]</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>document.classComparisonForm.selectedCovariates[2]</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=smoking_non_smokers">label=smoking_non_smokers</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='Base&gt;&gt;']</TD>
+<TD originalHTML="1000">1000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>addSelection</TD>
+<TD>nonselectedGroups</TD>
+<TD originalHTML="label=stage_IV">label=stage_IV</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>//input[@value='&gt;&gt;']</TD>
+<TD originalHTML="10000">10000</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>//input[@value='Submit Analysis']</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyTextPresent</TD>
+<TD>TC3_40</TD>
+<TD originalHTML></TD></TR><!-- Logout is handled by a separate script --></TBODY></TABLE></DIV></td>
+<td>&nbsp;</td>
+</tr><tr>
+<td><a name="testresult3">QA_tests/QA_baseline_CCA_ViewResults.html</a><br/><DIV>
+<TABLE cellSpacing=1 cellPadding=1 border=1>
+<THEAD>
+<TR class="title status_failed">
+<TD colSpan=3>View Results for Class Comparison Analysis </TD></TR></THEAD>
+<TBODY><!-- Login handled by a separate script
+     Start the script on a known tab on the application -->
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=View Results</TD>
+<TD originalHTML></TD></TR><!--  Verufy the results for individual test cases for CCA --><!--  Test Case 3 Data Set 17 -->
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_17_link</TD>
+<TD originalHTML="10000">10000</TD></TR><!--  Test Case 3 Data Set 18 -->
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_18_link</TD>
+<TD originalHTML="1000">1000</TD></TR><!--  Test Case 3 Data Set 19 -->
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_19_link</TD>
+<TD originalHTML="1000">1000</TD></TR><!--  Test Case 3 Data Set 20 -->
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_20_link</TD>
+<TD originalHTML="1000">1000</TD></TR><!--  Test Case 3 Data Set 21 -->
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_21_link</TD>
+<TD originalHTML="1000">1000</TD></TR><!--  Test Case 3 Data Set 22 -->
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_22_link</TD>
+<TD originalHTML="1000">1000</TD></TR><!--  Test Case 3 Data Set 23 -->
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_23_link</TD>
+<TD originalHTML="1000">1000</TD></TR><!--  Test Case 3 Data Set 24 -->
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_24_link</TD>
+<TD originalHTML="1000">1000</TD></TR><!--  Test Case 3 Data Set 25 -->
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_25_link</TD>
+<TD originalHTML="1000">1000</TD></TR><!--  Test Case 3 Data Set 26 -->
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_26_link</TD>
+<TD originalHTML="1000">1000</TD></TR><!--  Test Case 3 Data Set 27 -->
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_27_link</TD>
+<TD originalHTML="1000">1000</TD></TR><!--  Test Case 3 Data Set 28 -->
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_28_link</TD>
+<TD originalHTML="1000">1000</TD></TR><!--  Test Case 3 Data Set 29 -->
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_29_link</TD>
+<TD originalHTML="1000">1000</TD></TR><!--  Test Case 3 Data Set 30 -->
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_30_link</TD>
+<TD originalHTML="1000">1000</TD></TR><!--  Test Case 3 Data Set 31 -->
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_31_link</TD>
+<TD originalHTML="1000">1000</TD></TR><!--  Test Case 3 Data Set 32 -->
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_32_link</TD>
+<TD originalHTML="1000">1000</TD></TR><!--  Test Case 3 Data Set 33 -->
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_33_link</TD>
+<TD originalHTML="1000">1000</TD></TR><!--  Test Case 3 Data Set 34 -->
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_34_link</TD>
+<TD originalHTML="1000">1000</TD></TR><!--  Test Case 3 Data Set 35 -->
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_35_link</TD>
+<TD originalHTML="1000">1000</TD></TR><!--  Test Case 3 Data Set 36 -->
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_36_link</TD>
+<TD originalHTML="1000">1000</TD></TR><!--  Test Case 3 Data Set 37 -->
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_37_link</TD>
+<TD originalHTML="1000">1000</TD></TR><!--  Test Case 3 Data Set 38 -->
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyTextPresent</TD>
+<TD>TC3_38 (Class Comparison)</TD>
+<TD originalHTML="1000">1000</TD></TR><!--  Test Case 3 Data Set 39 -->
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyElementPresent</TD>
+<TD>TC3_39_link</TD>
+<TD originalHTML="1000">1000</TD></TR><!--  Test Case 3 Data Set 40 -->
+<TR class="  status_passed" style="CURSOR: pointer">
+<TD>verifyTextPresent</TD>
+<TD>TC3_40</TD>
+<TD originalHTML></TD></TR><!--  Test Case 3 Data Set 2 -->
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>TC3_2_link</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_failed" style="CURSOR: pointer">
+<TD>waitForPopUp</TD>
+<TD>cc_report</TD>
+<TD originalHTML="30000">Window&nbsp;does&nbsp;not&nbsp;exist</TD></TR>
+<TR class="  status_failed" style="CURSOR: pointer">
+<TD>selectWindow</TD>
+<TD>cc_report</TD>
+<TD originalHTML>There&nbsp;was&nbsp;an&nbsp;unexpected&nbsp;Alert!&nbsp;[Analysis&nbsp;Not&nbsp;yet&nbsp;complete]</TD></TR>
+<TR class="" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>link=Close</TD>
+<TD originalHTML></TD></TR>
+<TR class="" style="CURSOR: pointer">
+<TD>selectWindow</TD>
+<TD>null</TD>
+<TD originalHTML></TD></TR>
+<TR class="" style="CURSOR: pointer">
+<TD>verifyTextPresent</TD>
+<TD>Report Results</TD>
+<TD originalHTML></TD></TR>
+<TR class="" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Analysis</TD>
+<TD originalHTML="5000">5000</TD></TR><!-- Logout is handled by a separate script --></TBODY></TABLE></DIV></td>
+<td>&nbsp;</td>
+</tr><tr>
+<td><a name="testresult4">QA_tests/QA_Logout.html</a><br/><DIV>
 <TABLE cellSpacing=1 cellPadding=1 border=1>
 <THEAD>
 <TR class="title status_passed">
 <TD colSpan=3>Logout</TD></TR></THEAD>
 <TBODY><!-- Logout -->
 <TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Logout</TD>
+<TD originalHTML></TD></TR></TBODY></TABLE></DIV></td>
+<td>&nbsp;</td>
+</tr><tr>
+<td><a name="testresult5">epiQueryTest.html</a><br/><DIV>
+<TABLE cellSpacing=1 cellPadding=1 border=1>
+<THEAD>
+<TR class="title status_failed">
+<TD colSpan=3>epiQueryTest</TD></TR></THEAD>
+<TBODY>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>open</TD>
+<TD>/eagle/</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>username</TD>
+<TD originalHTML="NCIISPYguest">NCIISPYguest</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>password</TD>
+<TD originalHTML="!spy1234">!spy1234</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>//input[@value='Login']</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=CLICKING HERE</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=Advanced Search</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>link=EPI Query</TD>
+<TD originalHTML></TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>queryName</TD>
+<TD originalHTML="epi test">epi test</TD></TR>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>select</TD>
+<TD>smokingStatus</TD>
+<TD originalHTML="label=Current Smoker">label=Current Smoker</TD></TR>
+<TR class="  status_failed" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>intensityLower</TD>
+<TD originalHTML="1">Selenium&nbsp;failure.&nbsp;Please&nbsp;report&nbsp;to&nbsp;selenium-dev@openqa.org,&nbsp;with&nbsp;error&nbsp;details&nbsp;from&nbsp;the&nbsp;log&nbsp;window.&nbsp;&nbsp;The&nbsp;error&nbsp;message&nbsp;is:&nbsp;Invalid&nbsp;argument.</TD></TR>
+<TR class="" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>intensityUpper</TD>
+<TD originalHTML="100">100</TD></TR>
+<TR class="" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>durationLower</TD>
+<TD originalHTML="1">1</TD></TR>
+<TR class="" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>durationUpper</TD>
+<TD originalHTML="100">100</TD></TR>
+<TR class="" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>ageAtInitiationLower</TD>
+<TD originalHTML="1">1</TD></TR>
+<TR class="" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>ageAtInitiationUpper</TD>
+<TD originalHTML="100">100</TD></TR>
+<TR class="" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>yearsSinceQuittingLower</TD>
+<TD originalHTML="1">1</TD></TR>
+<TR class="" style="CURSOR: pointer">
+<TD>type</TD>
+<TD>yearsSinceQuittingUpper</TD>
+<TD originalHTML="100">100</TD></TR>
+<TR class="" style="CURSOR: pointer">
+<TD>select</TD>
+<TD>fagerstromScore</TD>
+<TD originalHTML="label=2">label=2</TD></TR>
+<TR class="" style="CURSOR: pointer">
+<TD>clickAndWait</TD>
+<TD>document.epiForm.elements[46]</TD>
+<TD originalHTML></TD></TR>
+<TR class="" style="CURSOR: pointer">
+<TD>pause</TD>
+<TD>10000</TD>
+<TD originalHTML></TD></TR>
+<TR class="" style="CURSOR: pointer">
+<TD>click</TD>
+<TD>epi test_link</TD>
+<TD originalHTML></TD></TR>
+<TR class="" style="CURSOR: pointer">
+<TD>pause</TD>
+<TD>10000</TD>
+<TD originalHTML></TD></TR>
+<TR class="" style="CURSOR: pointer">
+<TD>waitForPopUp</TD>
+<TD>epi_report</TD>
+<TD originalHTML="30000">30000</TD></TR>
+<TR class="" style="CURSOR: pointer">
+<TD>selectWindow</TD>
+<TD>epi_report</TD>
+<TD originalHTML></TD></TR>
+<TR class="" style="CURSOR: pointer">
+<TD>selectWindow</TD>
+<TD>epi_report</TD>
+<TD originalHTML></TD></TR>
+<TR class="" style="CURSOR: pointer">
+<TD>verifyTextPresent</TD>
+<TD>IGC-01-1004</TD>
+<TD originalHTML></TD></TR>
+<TR class="" style="CURSOR: pointer">
+<TD>verifyTextPresent</TD>
+<TD>43 records found</TD>
+<TD originalHTML></TD></TR>
+<TR class="" style="CURSOR: pointer">
+<TD>close</TD>
+<TD>epi_report</TD>
+<TD originalHTML></TD></TR>
+<TR class="" style="CURSOR: pointer">
+<TD>selectWindow</TD>
+<TD>null</TD>
+<TD originalHTML></TD></TR>
+<TR class="" style="CURSOR: pointer">
 <TD>clickAndWait</TD>
 <TD>link=Logout</TD>
 <TD originalHTML></TD></TR></TBODY></TABLE></DIV></td>
