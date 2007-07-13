@@ -1,0 +1,125 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>classComparisonTest</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Manage Lists tests</td></tr>
+</thead><tbody>
+
+<!-- Login handled by another program -->
+
+
+<!--  test navigation between tabs and elements on each page -->
+<tr>
+	<td>click</td>
+	<td>link=Home</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Advanced Search</td>
+	<td></td>
+</tr>
+
+<!--  test Manage Lists functionality -->
+
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Manage Lists</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>PatientDID</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@id='' and @name='PatientDID' and @value='all_control']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>PatientDIDGroupName</td>
+	<td>Allcase_AllControl</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Join']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td></td>
+	<td>5000</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@id='' and @name='PatientDID' and @value='stage_IIIB']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@id='' and @name='PatientDID' and @value='stage_IV']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>PatientDIDGroupName</td>
+	<td>stage_IIIB_stage_IV</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Difference']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td></td>
+	<td>5000</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@id='' and @name='PatientDID' and @value='stage_IB']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@id='' and @name='PatientDID' and @value='all_control']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>PatientDIDGroupName</td>
+	<td>all_control_stage_IB_intersect</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Intersect']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertAlert</td>
+	<td>The selected lists do not have any common entries.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@onclick='ManageListHelper.deleteList("Allcase_AllControl");return false;']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertConfirmation</td>
+	<td>Delete this List?</td>
+	<td></td>
+</tr>
+
+<!-- Logout handled by another program -->
+
+
+</tbody></table>
+</body>
+</html>
