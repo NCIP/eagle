@@ -17,7 +17,7 @@ Main Menu
 	<div style="padding:10px; width:90%;">
 		<a href="analysisHome.do">Analysis</a><br/>
 		<div style="font-size:9px;">
-	    	Perform Class Comparisons using F-TEST, T-TEST, or GLM on saved patient lists. 
+	    	Perform Class Comparisons using F-TEST, T-TEST, ANOVA, or GLM on saved patient lists. 
 	    </div>
 	</div>
 
