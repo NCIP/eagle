@@ -177,37 +177,37 @@ Epidemiology Query
 		<b>Cigarette Smoking</b><br/>
 		Intensity Range: 
 		<html:select property="intensityLower" styleId="intensityLower" style="width:60px">
-			<option value="">N/A</option>
+			<option value="">any</option>
 			<html:options collection="avIntensity" property="value" labelProperty="label"/>
 		</html:select>
 		to
 		<html:select property="intensityUpper" styleId="intensityUpper" style="width:60px">
-			<option value="">N/A</option>
+			<option value="">any</option>
 			<html:options collection="avIntensity" property="value" labelProperty="label"/>
 		</html:select>
 		(cigarettes per day)
 		<br />
 		Duration Range: 
 		<html:select property="durationLower" styleId="durationLower" style="width:60px">
-			<option value="">N/A</option>
+			<option value="">any</option>
 			<html:options collection="avDur" property="value" labelProperty="label"/>
 		</html:select>
 		to
 		<html:select property="durationUpper" styleId="durationUpper" style="width:60px">
-			<option value="">N/A</option>
+			<option value="">any</option>
 			<html:options collection="avDur" property="value" labelProperty="label"/>
 		</html:select>
 		(years smoked)
 		<br />
 		Age at Initiation:	
 		<html:select property="ageAtInitiationLower" styleId="ageAtInitiationLower" style="width:60px">
-			<option value="">N/A</option>
+			<option value="">any</option>
 			<option value="1">1</option>
 			<html:options collection="avAgeInit" property="value" labelProperty="label"/>
 		</html:select>
 		to
 		<html:select property="ageAtInitiationUpper" styleId="ageAtInitiationUpper" style="width:60px">
-			<option value="">N/A</option>
+			<option value="">any</option>
 			<option value="1">1</option>
 			<html:options collection="avAgeInit" property="value" labelProperty="label"/>
 		</html:select>
@@ -215,12 +215,12 @@ Epidemiology Query
 		<br />
 		Years Since Quitting: 
 		<html:select property="yearsSinceQuittingLower" styleId="yearsSinceQuittingLower" style="width:60px">
-			<option value="">N/A</option>
+			<option value="">any</option>
 			<html:options collection="avYrsQuit" property="value" labelProperty="label"/>
 		</html:select>
 		to
 		<html:select property="yearsSinceQuittingUpper" styleId="yearsSinceQuittingUpper" style="width:60px">
-			<option value="">N/A</option>
+			<option value="">any</option>
 			<html:options collection="avYrsQuit" property="value" labelProperty="label"/>
 		</html:select>
 		(years)
