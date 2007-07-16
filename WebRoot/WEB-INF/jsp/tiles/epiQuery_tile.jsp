@@ -235,6 +235,7 @@ Epidemiology Query
 		<b>Fagerstrom Range</b>
 		<html:select property="fagerstromScoreLower" styleId="fagerstromScoreLower">
 			<option value="">Any</option>
+			<html:option value="0">0</html:option>
 			<html:option value="1">1</html:option>
 			<html:option value="2">2</html:option>
 			<html:option value="3">3</html:option>
