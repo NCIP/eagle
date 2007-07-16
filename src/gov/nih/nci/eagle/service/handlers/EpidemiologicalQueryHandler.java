@@ -55,8 +55,10 @@ public class EpidemiologicalQueryHandler implements QueryHandler {
         targetCrit.createCriteria("epidemiologicalFinding", "finding").setFetchMode("relativeCollection", FetchMode.JOIN);
         targetCrit.createAlias("finding.tobaccoConsumptionCollection", "tc",
                 CriteriaSpecification.LEFT_JOIN);
-        targetCrit.createAlias("finding.behavioralAssessment", "ba");
-        targetCrit.createAlias("finding.lifestyle", "ls");
+        targetCrit.createAlias("finding.behavioralAssessment", "ba",
+                CriteriaSpecification.LEFT_JOIN);
+        targetCrit.createAlias("finding.lifestyle", "ls",
+                CriteriaSpecification.LEFT_JOIN);
 
         targetCrit.createAlias("finding.environmentalFactorCollection", "factors", CriteriaSpecification.LEFT_JOIN);
 
