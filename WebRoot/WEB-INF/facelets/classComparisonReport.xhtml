@@ -77,14 +77,14 @@
 							<h:column>
 								<f:facet name="header">
 									<h:commandLink
-										styleClass="absoluteFoldChange"
+										styleClass="foldChange"
 										actionListener="#{classComparisonReport.sortDataList}"
 										immediate="false">
-										<f:attribute name="sortField" value="absoluteFoldChange" />
+										<f:attribute name="sortField" value="foldChange" />
 										<h:outputText value="Fold Change" />
 									</h:commandLink>
 								</f:facet>
-								<h:outputText value="#{entry.absoluteFoldChange}">
+								<h:outputText value="#{entry.foldChange}">
 									<f:convertNumber pattern="0.0000" />
 								</h:outputText>
 

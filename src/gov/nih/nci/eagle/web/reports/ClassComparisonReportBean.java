@@ -34,8 +34,8 @@ public class ClassComparisonReportBean implements ReportBean{
         return entry.getMeanGrp1();
     }
     
-    public Double getAbsoluteFoldChange() {
-        return entry.getAbsoluteFoldChange();
+    public Double getFoldChange() {
+        return entry.getFoldChange();
     }
     
     public String getGeneSymbol() {
