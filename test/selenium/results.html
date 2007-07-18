@@ -54,19 +54,19 @@ a {
 </tr>
 <tr>
 <td>totalTime:</td>
-<td>113</td>
+<td>114</td>
 </tr>
 <tr>
 <td>numTestPasses:</td>
-<td>5</td>
+<td>4</td>
 </tr>
 <tr>
 <td>numTestFailures:</td>
-<td>2</td>
+<td>3</td>
 </tr>
 <tr>
 <td>numCommandPasses:</td>
-<td>108</td>
+<td>96</td>
 </tr>
 <tr>
 <td>numCommandFailures:</td>
@@ -74,7 +74,7 @@ a {
 </tr>
 <tr>
 <td>numCommandErrors:</td>
-<td>2</td>
+<td>3</td>
 </tr>
 <tr>
 <td>Selenium Version:</td>
@@ -87,7 +87,7 @@ a {
 <tr>
 <td><TABLE>
 <TBODY>
-<TR class="title   status_failed">
+<TR class="title    status_failed">
 <TD>Test suite for the EAGLE application </TD></TR>
 <TR class="  status_passed">
 <TD><A href="#testresult0">EAGLE Login</A> </TD></TR>
@@ -97,7 +97,7 @@ a {
 <TD><A href="#testresult2">CCA</A> </TD></TR>
 <TR class="  status_failed">
 <TD><A href="#testresult3">CCA View Results</A> </TD></TR>
-<TR class="  status_passed">
+<TR class="  status_failed">
 <TD><A href="#testresult4">Manage Lists tests</A> </TD></TR><!--
 	<tr>
 		<td>
@@ -178,11 +178,13 @@ a {
 <TR class="  status_passed" style="CURSOR: pointer">
 <TD>verifyTextPresent</TD>
 <TD>Class Comparison Analysis</TD>
-<TD originalHTML></TD></TR>
-<TR class="  status_passed" style="CURSOR: pointer">
-<TD>verifyTextPresent</TD>
-<TD>Perform Class Comparisons using F-TEST, T-TEST, or GLM on saved patient lists.</TD>
-<TD originalHTML></TD></TR>
+<TD originalHTML></TD></TR><!-- 
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Perform Class Comparisons using F-TEST, T-TEST, or GLM on saved patient lists.</td>
+	<td></td>
+</tr>
+-->
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>clickAndWait</TD>
 <TD>link=Manage Lists</TD>
@@ -205,59 +207,23 @@ a {
 <TD originalHTML></TD></TR>
 <TR class="  status_passed" style="CURSOR: pointer">
 <TD>verifyTextPresent</TD>
-<TD>all_case</TD>
+<TD>genomic_case</TD>
 <TD originalHTML></TD></TR>
 <TR class="  status_passed" style="CURSOR: pointer">
 <TD>verifyTextPresent</TD>
-<TD>all_control</TD>
+<TD>genomic_control</TD>
 <TD originalHTML></TD></TR>
 <TR class="  status_passed" style="CURSOR: pointer">
 <TD>verifyTextPresent</TD>
-<TD>gender_females</TD>
+<TD>genomic_gender...</TD>
 <TD originalHTML></TD></TR>
 <TR class="  status_passed" style="CURSOR: pointer">
 <TD>verifyTextPresent</TD>
-<TD>gender_males</TD>
+<TD>genomic_smokin...</TD>
 <TD originalHTML></TD></TR>
 <TR class="  status_passed" style="CURSOR: pointer">
 <TD>verifyTextPresent</TD>
-<TD>smoking_curren...</TD>
-<TD originalHTML></TD></TR>
-<TR class="  status_passed" style="CURSOR: pointer">
-<TD>verifyTextPresent</TD>
-<TD>smoking_former...</TD>
-<TD originalHTML></TD></TR>
-<TR class="  status_passed" style="CURSOR: pointer">
-<TD>verifyTextPresent</TD>
-<TD>smoking_non_sm...</TD>
-<TD originalHTML></TD></TR>
-<TR class="  status_passed" style="CURSOR: pointer">
-<TD>verifyTextPresent</TD>
-<TD>stage_IA</TD>
-<TD originalHTML></TD></TR>
-<TR class="  status_passed" style="CURSOR: pointer">
-<TD>verifyTextPresent</TD>
-<TD>stage_IB</TD>
-<TD originalHTML></TD></TR>
-<TR class="  status_passed" style="CURSOR: pointer">
-<TD>verifyTextPresent</TD>
-<TD>stage_IIA</TD>
-<TD originalHTML></TD></TR>
-<TR class="  status_passed" style="CURSOR: pointer">
-<TD>verifyTextPresent</TD>
-<TD>stage_IIB</TD>
-<TD originalHTML></TD></TR>
-<TR class="  status_passed" style="CURSOR: pointer">
-<TD>verifyTextPresent</TD>
-<TD>stage_IIIA</TD>
-<TD originalHTML></TD></TR>
-<TR class="  status_passed" style="CURSOR: pointer">
-<TD>verifyTextPresent</TD>
-<TD>stage_IIIB</TD>
-<TD originalHTML></TD></TR>
-<TR class="  status_passed" style="CURSOR: pointer">
-<TD>verifyTextPresent</TD>
-<TD>stage_IV</TD>
+<TD>genomic_stage_...</TD>
 <TD originalHTML></TD></TR><!--  Verify the detailed contents of the Class Comparison page -->
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>clickAndWait</TD>
@@ -306,8 +272,7 @@ a {
 <TR class="  status_passed" style="CURSOR: pointer">
 <TD>verifyTextPresent</TD>
 <TD>Existing Groups</TD>
-<TD originalHTML></TD></TR><!-- <br /> all_case all_control gender_females gender_males smoking_current_smokers smoking_former_smokers smoking_non_smokers stage_IA stage_IB stage_IIA stage_IIB stage_IIIA stage_IIIB stage_IV gender_females gender_males smoking_current_smokers smoking_former_smokers smoking_non_smokers stage_IA stage_IB stage_IIA stage_IIB stage_IIIA stage_IIIB stage_IV all_case all_control gender_females gender_males smoking_current_smokers smoking_former_smokers smoking_non_smokers stage_IA stage_IB stage_IIA stage_IIB stage_IIIA stage_IIIB stage_IV
--->
+<TD originalHTML></TD></TR>
 <TR class="  status_passed" style="CURSOR: pointer">
 <TD>verifyTextPresent</TD>
 <TD>Baseline Group</TD>
@@ -528,7 +493,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=smoking_non_smokers">label=smoking_non_smokers</TD></TR>
+<TD originalHTML="label=genomic_smoking_non_smokers">label=genomic_smoking_non_smokers</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Base&gt;&gt;']</TD>
@@ -536,7 +501,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IV">label=stage_IV</TD></TR>
+<TD originalHTML="label=genomic_stage_IV">label=genomic_stage_IV</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -568,7 +533,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IA">label=stage_IA</TD></TR>
+<TD originalHTML="label=genomic_stage_IA">label=genomic_stage_IA</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Base&gt;&gt;']</TD>
@@ -576,7 +541,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IV">label=stage_IV</TD></TR>
+<TD originalHTML="label=genomic_stage_IV">label=genomic_stage_IV</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -620,7 +585,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=smoking_non_smokers">label=smoking_non_smokers</TD></TR>
+<TD originalHTML="label=genomic_smoking_non_smokers">label=genomic_smoking_non_smokers</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Base&gt;&gt;']</TD>
@@ -628,7 +593,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IV">label=stage_IV</TD></TR>
+<TD originalHTML="label=genomic_stage_IV">label=genomic_stage_IV</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -652,7 +617,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=all_case">label=all_case</TD></TR>
+<TD originalHTML="label=genomic_case">label=genomic_case</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Base&gt;&gt;']</TD>
@@ -660,7 +625,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=gender_females">label=gender_females</TD></TR>
+<TD originalHTML="label=genomic_gender_females">label=genomic_gender_females</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -684,7 +649,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=all_case">label=all_case</TD></TR>
+<TD originalHTML="label=genomic_case">label=genomic_case</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Base&gt;&gt;']</TD>
@@ -692,7 +657,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=gender_males">label=gender_males</TD></TR>
+<TD originalHTML="label=genomic_gender_males">label=genomic_gender_males</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -716,7 +681,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=all_case">label=all_case</TD></TR>
+<TD originalHTML="label=genomic_case">label=genomic_case</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Base&gt;&gt;']</TD>
@@ -724,7 +689,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=smoking_current_smokers">label=smoking_current_smokers</TD></TR>
+<TD originalHTML="label=genomic_smoking_current_smokers">label=genomic_smoking_current_smokers</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -748,7 +713,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=all_case">label=all_case</TD></TR>
+<TD originalHTML="label=genomic_case">label=genomic_case</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Base&gt;&gt;']</TD>
@@ -756,7 +721,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=smoking_former_smokers">label=smoking_former_smokers</TD></TR>
+<TD originalHTML="label=genomic_smoking_former_smokers">label=genomic_smoking_former_smokers</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -780,7 +745,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=all_case">label=all_case</TD></TR>
+<TD originalHTML="label=genomic_case">label=genomic_case</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Base&gt;&gt;']</TD>
@@ -788,15 +753,15 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=smoking_current_smokers">label=smoking_current_smokers</TD></TR>
+<TD originalHTML="label=genomic_smoking_current_smokers">label=genomic_smoking_current_smokers</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>removeSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=smoking_current_smokers">label=smoking_current_smokers</TD></TR>
+<TD originalHTML="label=genomic_smoking_current_smokers">label=genomic_smoking_current_smokers</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=smoking_non_smokers">label=smoking_non_smokers</TD></TR>
+<TD originalHTML="label=genomic_smoking_non_smokers">label=genomic_smoking_non_smokers</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -820,7 +785,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=all_case">label=all_case</TD></TR>
+<TD originalHTML="label=genomic_case">label=genomic_case</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Base&gt;&gt;']</TD>
@@ -828,7 +793,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IA">label=stage_IA</TD></TR>
+<TD originalHTML="label=genomic_stage_IA">label=genomic_stage_IA</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -852,7 +817,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=all_case">label=all_case</TD></TR>
+<TD originalHTML="label=genomic_case">label=genomic_case</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Base&gt;&gt;']</TD>
@@ -860,7 +825,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IB">label=stage_IB</TD></TR>
+<TD originalHTML="label=genomic_stage_IB">label=genomic_stage_IB</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -884,7 +849,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=all_case">label=all_case</TD></TR>
+<TD originalHTML="label=genomic_case">label=genomic_case</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Base&gt;&gt;']</TD>
@@ -892,7 +857,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IIA">label=stage_IIA</TD></TR>
+<TD originalHTML="label=genomic_stage_IIA">label=genomic_stage_IIA</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -916,7 +881,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=all_case">label=all_case</TD></TR>
+<TD originalHTML="label=genomic_case">label=genomic_case</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Base&gt;&gt;']</TD>
@@ -924,7 +889,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IIB">label=stage_IIB</TD></TR>
+<TD originalHTML="label=genomic_stage_IIB">label=genomic_stage_IIB</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -948,7 +913,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=all_case">label=all_case</TD></TR>
+<TD originalHTML="label=genomic_case">label=genomic_case</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Base&gt;&gt;']</TD>
@@ -956,7 +921,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IIIA">label=stage_IIIA</TD></TR>
+<TD originalHTML="label=genomic_stage_IIIA">label=genomic_stage_IIIA</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -980,7 +945,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=all_case">label=all_case</TD></TR>
+<TD originalHTML="label=genomic_case">label=genomic_case</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Base&gt;&gt;']</TD>
@@ -988,7 +953,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IIIB">label=stage_IIIB</TD></TR>
+<TD originalHTML="label=genomic_stage_IIIB">label=genomic_stage_IIIB</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -1012,7 +977,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=all_case">label=all_case</TD></TR>
+<TD originalHTML="label=genomic_case">label=genomic_case</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Base&gt;&gt;']</TD>
@@ -1020,7 +985,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IV">label=stage_IV</TD></TR>
+<TD originalHTML="label=genomic_stage_IV">label=genomic_stage_IV</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -1044,7 +1009,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=all_control">label=all_control</TD></TR>
+<TD originalHTML="label=genomic_control">label=genomic_control</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Base&gt;&gt;']</TD>
@@ -1052,7 +1017,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=smoking_current_smokers">label=smoking_current_smokers</TD></TR>
+<TD originalHTML="label=genomic_smoking_current_smokers">label=genomic_smoking_current_smokers</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -1076,7 +1041,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=all_control">label=all_control</TD></TR>
+<TD originalHTML="label=genomic_control">label=genomic_control</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Base&gt;&gt;']</TD>
@@ -1084,7 +1049,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=smoking_former_smokers">label=smoking_former_smokers</TD></TR>
+<TD originalHTML="label=genomic_smoking_former_smokers">label=genomic_smoking_former_smokers</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -1108,7 +1073,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=all_control">label=all_control</TD></TR>
+<TD originalHTML="label=genomic_control">label=genomic_control</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Base&gt;&gt;']</TD>
@@ -1116,7 +1081,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=smoking_non_smokers">label=smoking_non_smokers</TD></TR>
+<TD originalHTML="label=genomic_smoking_non_smokers">label=genomic_smoking_non_smokers</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -1140,7 +1105,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=all_control">label=all_control</TD></TR>
+<TD originalHTML="label=genomic_control">label=genomic_control</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Base&gt;&gt;']</TD>
@@ -1148,7 +1113,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IA">label=stage_IA</TD></TR>
+<TD originalHTML="label=genomic_stage_IA">label=genomic_stage_IA</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -1172,15 +1137,15 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=all_case">label=all_case</TD></TR>
+<TD originalHTML="label=genomic_case">label=genomic_case</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>removeSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=all_case">label=all_case</TD></TR>
+<TD originalHTML="label=genomic_case">label=genomic_case</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=all_control">label=all_control</TD></TR>
+<TD originalHTML="label=genomic_control">label=genomic_control</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Base&gt;&gt;']</TD>
@@ -1188,7 +1153,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IB">label=stage_IB</TD></TR>
+<TD originalHTML="label=genomic_stage_IB">label=genomic_stage_IB</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -1212,7 +1177,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=all_control">label=all_control</TD></TR>
+<TD originalHTML="label=genomic_control">label=genomic_control</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Base&gt;&gt;']</TD>
@@ -1220,7 +1185,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IIA">label=stage_IIA</TD></TR>
+<TD originalHTML="label=genomic_stage_IIA">label=genomic_stage_IIA</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -1244,7 +1209,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=all_control">label=all_control</TD></TR>
+<TD originalHTML="label=genomic_control">label=genomic_control</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Base&gt;&gt;']</TD>
@@ -1252,7 +1217,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IIB">label=stage_IIB</TD></TR>
+<TD originalHTML="label=genomic_stage_IIB">label=genomic_stage_IIB</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -1276,7 +1241,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=all_control">label=all_control</TD></TR>
+<TD originalHTML="label=genomic_control">label=genomic_control</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Base&gt;&gt;']</TD>
@@ -1284,7 +1249,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IIIA">label=stage_IIIA</TD></TR>
+<TD originalHTML="label=genomic_stage_IIIA">label=genomic_stage_IIIA</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -1308,7 +1273,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=all_control">label=all_control</TD></TR>
+<TD originalHTML="label=genomic_control">label=genomic_control</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Base&gt;&gt;']</TD>
@@ -1316,7 +1281,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IIIB">label=stage_IIIB</TD></TR>
+<TD originalHTML="label=genomic_stage_IIIB">label=genomic_stage_IIIB</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -1340,7 +1305,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=all_control">label=all_control</TD></TR>
+<TD originalHTML="label=genomic_control">label=genomic_control</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Base&gt;&gt;']</TD>
@@ -1348,7 +1313,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IV">label=stage_IV</TD></TR>
+<TD originalHTML="label=genomic_stage_IV">label=genomic_stage_IV</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -1372,7 +1337,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=all_control">label=all_control</TD></TR>
+<TD originalHTML="label=genomic_control">label=genomic_control</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Base&gt;&gt;']</TD>
@@ -1380,7 +1345,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IV">label=stage_IV</TD></TR>
+<TD originalHTML="label=genomic_stage_IV">label=genomic_stage_IV</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -1412,7 +1377,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=all_control">label=all_control</TD></TR>
+<TD originalHTML="label=genomic_control">label=genomic_control</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Base&gt;&gt;']</TD>
@@ -1420,7 +1385,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IV">label=stage_IV</TD></TR>
+<TD originalHTML="label=genomic_stage_IV">label=genomic_stage_IV</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -1452,7 +1417,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=all_control">label=all_control</TD></TR>
+<TD originalHTML="label=genomic_control">label=genomic_control</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Base&gt;&gt;']</TD>
@@ -1460,7 +1425,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IV">label=stage_IV</TD></TR>
+<TD originalHTML="label=genomic_stage_IV">label=genomic_stage_IV</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -1492,7 +1457,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IA">label=stage_IA</TD></TR>
+<TD originalHTML="label=genomic_stage_IA">label=genomic_stage_IA</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Base&gt;&gt;']</TD>
@@ -1500,7 +1465,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IV">label=stage_IV</TD></TR>
+<TD originalHTML="label=genomic_stage_IV">label=genomic_stage_IV</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -1528,7 +1493,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IA">label=stage_IA</TD></TR>
+<TD originalHTML="label=genomic_stage_IA">label=genomic_stage_IA</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Base&gt;&gt;']</TD>
@@ -1536,7 +1501,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IV">label=stage_IV</TD></TR>
+<TD originalHTML="label=genomic_stage_IV">label=genomic_stage_IV</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -1564,23 +1529,23 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IV">label=stage_IV</TD></TR>
+<TD originalHTML="label=genomic_stage_IV">label=genomic_stage_IV</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=all_case">label=all_case</TD></TR>
+<TD originalHTML="label=genomic_case">label=genomic_case</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>removeSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IV">label=stage_IV</TD></TR>
+<TD originalHTML="label=genomic_stage_IV">label=genomic_stage_IV</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>removeSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=all_case">label=all_case</TD></TR>
+<TD originalHTML="label=genomic_case">label=genomic_case</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IV">label=stage_IV</TD></TR>
+<TD originalHTML="label=genomic_stage_IV">label=genomic_stage_IV</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -1588,7 +1553,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=smoking_non_smokers">label=smoking_non_smokers</TD></TR>
+<TD originalHTML="label=genomic_smoking_non_smokers">label=genomic_smoking_non_smokers</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -1616,7 +1581,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=all_control">label=all_control</TD></TR>
+<TD originalHTML="label=genomic_control">label=genomic_control</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -1624,7 +1589,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IIB">label=stage_IIB</TD></TR>
+<TD originalHTML="label=genomic_stage_IIB">label=genomic_stage_IIB</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -1656,7 +1621,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IV">label=stage_IV</TD></TR>
+<TD originalHTML="label=genomic_stage_IV">label=genomic_stage_IV</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -1664,7 +1629,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=smoking_non_smokers">label=smoking_non_smokers</TD></TR>
+<TD originalHTML="label=genomic_smoking_non_smokers">label=genomic_smoking_non_smokers</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -1696,7 +1661,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=gender_females">label=gender_females</TD></TR>
+<TD originalHTML="label=genomic_gender_females">label=genomic_gender_females</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -1704,7 +1669,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=gender_males">label=gender_males</TD></TR>
+<TD originalHTML="label=genomic_gender_males">label=genomic_gender_males</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -1736,7 +1701,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IV">label=stage_IV</TD></TR>
+<TD originalHTML="label=genomic_stage_IV">label=genomic_stage_IV</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -1744,7 +1709,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=smoking_non_smokers">label=smoking_non_smokers</TD></TR>
+<TD originalHTML="label=genomic_smoking_non_smokers">label=genomic_smoking_non_smokers</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -1776,7 +1741,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=gender_females">label=gender_females</TD></TR>
+<TD originalHTML="label=genomic_gender_females">label=genomic_gender_females</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -1784,7 +1749,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=gender_males">label=gender_males</TD></TR>
+<TD originalHTML="label=genomic_gender_males">label=genomic_gender_males</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -1812,7 +1777,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=all_control">label=all_control</TD></TR>
+<TD originalHTML="label=genomic_control">label=genomic_control</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Base&gt;&gt;']</TD>
@@ -1820,7 +1785,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IIB">label=stage_IIB</TD></TR>
+<TD originalHTML="label=genomic_stage_IIB">label=genomic_stage_IIB</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -1848,7 +1813,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=all_control">label=all_control</TD></TR>
+<TD originalHTML="label=genomic_control">label=genomic_control</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Base&gt;&gt;']</TD>
@@ -1856,7 +1821,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IIIA">label=stage_IIIA</TD></TR>
+<TD originalHTML="label=genomic_stage_IIIA">label=genomic_stage_IIIA</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -1888,7 +1853,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IA">label=stage_IA</TD></TR>
+<TD originalHTML="label=genomic_stage_IA">label=genomic_stage_IA</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Base&gt;&gt;']</TD>
@@ -1896,7 +1861,7 @@ a {
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>addSelection</TD>
 <TD>nonselectedGroups</TD>
-<TD originalHTML="label=stage_IV">label=stage_IV</TD></TR>
+<TD originalHTML="label=genomic_stage_IV">label=genomic_stage_IV</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='&gt;&gt;']</TD>
@@ -2107,7 +2072,7 @@ a {
 <td><a name="testresult4">QA_tests/QA_baseline_ManageLists.html</a><br/><DIV>
 <TABLE cellSpacing=1 cellPadding=1 border=1>
 <THEAD>
-<TR class="title status_passed">
+<TR class="title status_failed">
 <TD colSpan=3>Manage Lists tests</TD></TR></THEAD>
 <TBODY><!-- Login handled by another program --><!--  test navigation between tabs and elements on each page -->
 <TR class="  status_done" style="CURSOR: pointer">
@@ -2128,7 +2093,7 @@ a {
 <TD originalHTML></TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
-<TD>//input[@id='' and @name='PatientDID' and @value='all_control']</TD>
+<TD>//input[@id='' and @name='PatientDID' and @value='genomic_control']</TD>
 <TD originalHTML></TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>type</TD>
@@ -2144,11 +2109,11 @@ a {
 <TD originalHTML="5000">5000</TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
-<TD>//input[@id='' and @name='PatientDID' and @value='stage_IIIB']</TD>
+<TD>//input[@id='' and @name='PatientDID' and @value='genomic_stage_IIIB']</TD>
 <TD originalHTML></TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>click</TD>
-<TD>//input[@id='' and @name='PatientDID' and @value='stage_IV']</TD>
+<TD>//input[@id='' and @name='PatientDID' and @value='genomic_stage_IV']</TD>
 <TD originalHTML></TD></TR>
 <TR class="  status_done" style="CURSOR: pointer">
 <TD>type</TD>
@@ -2158,35 +2123,35 @@ a {
 <TD>click</TD>
 <TD>//input[@value='Difference']</TD>
 <TD originalHTML></TD></TR>
-<TR class="  status_done" style="CURSOR: pointer">
+<TR class="  status_failed" style="CURSOR: pointer">
 <TD>pause</TD>
 <TD></TD>
-<TD originalHTML="5000">5000</TD></TR>
-<TR class="  status_done" style="CURSOR: pointer">
+<TD originalHTML="5000">There&nbsp;was&nbsp;an&nbsp;unexpected&nbsp;Alert!&nbsp;[Please&nbsp;select&nbsp;only&nbsp;2&nbsp;groups]</TD></TR>
+<TR class="" style="CURSOR: pointer">
 <TD>click</TD>
-<TD>//input[@id='' and @name='PatientDID' and @value='stage_IB']</TD>
+<TD>//input[@id='' and @name='PatientDID' and @value='genomic_stage_IB']</TD>
 <TD originalHTML></TD></TR>
-<TR class="  status_done" style="CURSOR: pointer">
+<TR class="" style="CURSOR: pointer">
 <TD>click</TD>
-<TD>//input[@id='' and @name='PatientDID' and @value='all_control']</TD>
+<TD>//input[@id='' and @name='PatientDID' and @value='genomic_all_control']</TD>
 <TD originalHTML></TD></TR>
-<TR class="  status_done" style="CURSOR: pointer">
+<TR class="" style="CURSOR: pointer">
 <TD>type</TD>
 <TD>PatientDIDGroupName</TD>
 <TD originalHTML="all_control_stage_IB_intersect">all_control_stage_IB_intersect</TD></TR>
-<TR class="  status_done" style="CURSOR: pointer">
+<TR class="" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//input[@value='Intersect']</TD>
 <TD originalHTML></TD></TR>
-<TR class="  status_passed" style="CURSOR: pointer">
+<TR class="" style="CURSOR: pointer">
 <TD>assertAlert</TD>
 <TD>The selected lists do not have any common entries.</TD>
 <TD originalHTML></TD></TR>
-<TR class="  status_done" style="CURSOR: pointer">
+<TR class="" style="CURSOR: pointer">
 <TD>click</TD>
 <TD>//div[@onclick='ManageListHelper.deleteList("Allcase_AllControl");return false;']</TD>
 <TD originalHTML></TD></TR>
-<TR class="  status_passed" style="CURSOR: pointer">
+<TR class="" style="CURSOR: pointer">
 <TD>assertConfirmation</TD>
 <TD>Delete this List?</TD>
 <TD originalHTML></TD></TR><!-- Logout handled by another program --></TBODY></TABLE></DIV></td>
@@ -2246,36 +2211,36 @@ a {
 <TD>select</TD>
 <TD>smokingStatus</TD>
 <TD originalHTML="label=Current Smoker">label=Current Smoker</TD></TR>
-<TR class="  status_failed" style="CURSOR: pointer">
-<TD>type</TD>
+<TR class="  status_done" style="CURSOR: pointer">
+<TD>select</TD>
 <TD>intensityLower</TD>
-<TD originalHTML="1">Selenium&nbsp;failure.&nbsp;Please&nbsp;report&nbsp;to&nbsp;selenium-dev@openqa.org,&nbsp;with&nbsp;error&nbsp;details&nbsp;from&nbsp;the&nbsp;log&nbsp;window.&nbsp;&nbsp;The&nbsp;error&nbsp;message&nbsp;is:&nbsp;Invalid&nbsp;argument.</TD></TR>
-<TR class="" style="CURSOR: pointer">
-<TD>type</TD>
+<TD originalHTML="label=1">label=1</TD></TR>
+<TR class="  status_failed" style="CURSOR: pointer">
+<TD>select</TD>
 <TD>intensityUpper</TD>
-<TD originalHTML="100">100</TD></TR>
+<TD originalHTML="100">Option&nbsp;with&nbsp;label&nbsp;'100'&nbsp;not&nbsp;found</TD></TR>
 <TR class="" style="CURSOR: pointer">
-<TD>type</TD>
+<TD>select</TD>
 <TD>durationLower</TD>
 <TD originalHTML="1">1</TD></TR>
 <TR class="" style="CURSOR: pointer">
-<TD>type</TD>
+<TD>select</TD>
 <TD>durationUpper</TD>
 <TD originalHTML="100">100</TD></TR>
 <TR class="" style="CURSOR: pointer">
-<TD>type</TD>
+<TD>select</TD>
 <TD>ageAtInitiationLower</TD>
 <TD originalHTML="1">1</TD></TR>
 <TR class="" style="CURSOR: pointer">
-<TD>type</TD>
+<TD>select</TD>
 <TD>ageAtInitiationUpper</TD>
 <TD originalHTML="100">100</TD></TR>
 <TR class="" style="CURSOR: pointer">
-<TD>type</TD>
+<TD>select</TD>
 <TD>yearsSinceQuittingLower</TD>
 <TD originalHTML="1">1</TD></TR>
 <TR class="" style="CURSOR: pointer">
-<TD>type</TD>
+<TD>select</TD>
 <TD>yearsSinceQuittingUpper</TD>
 <TD originalHTML="100">100</TD></TR>
 <TR class="" style="CURSOR: pointer">
