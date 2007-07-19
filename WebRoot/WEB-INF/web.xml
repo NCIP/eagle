@@ -60,6 +60,10 @@
         <filter-name>CheckLoginFilter</filter-name>
 		<url-pattern>*.do</url-pattern>
     </filter-mapping>  
+	<filter-mapping>
+        <filter-name>CheckLoginFilter</filter-name>
+		<url-pattern>*.jsf</url-pattern>
+    </filter-mapping>  
     
 	<!-- extension mapping for adding <script/>, <link/>, and other resource tags to JSF-pages  -->
 	<filter-mapping>
@@ -153,7 +157,15 @@
 	<welcome-file-list>
 		<welcome-file>/index.jsp</welcome-file>
 	</welcome-file-list>
-
+	<error-page>
+	     <error-code>404</error-code>
+	     <location>/404.jsp</location>
+	</error-page>
+	<error-page>
+	     <error-code>500</error-code>
+	     <location>/500.jsp</location>
+	</error-page>
+  
 	<!-- Struts Tag Library Descriptors -->
 	<taglib>
 		<taglib-uri>/WEB-INF/tlds/caintegrator-graphing.tld</taglib-uri>
