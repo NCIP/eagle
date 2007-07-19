@@ -50,7 +50,8 @@ public abstract class SortableReport {
         this.findingsManager = findingsManager;
     }
     public List getReportBeans() {
-        Collections.sort(reportBeans, sortComparator);
+        if(reportBeans != null)
+            Collections.sort(reportBeans, sortComparator);
         return reportBeans;
     }
     public void setReportBeans(List reportBeans) {
