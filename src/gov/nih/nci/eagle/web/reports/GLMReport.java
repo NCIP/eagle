@@ -6,7 +6,6 @@ import gov.nih.nci.caintegrator.domain.annotation.gene.bean.GeneBiomarker;
 import gov.nih.nci.caintegrator.service.findings.GeneralizedLinearModelFinding;
 import gov.nih.nci.caintegrator.service.task.TaskResult;
 import gov.nih.nci.eagle.util.FieldBasedComparator;
-import gov.nih.nci.eagle.util.PatientGroupManager;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -39,18 +38,18 @@ public class GLMReport extends BaseClassComparisonReport {
                     .getHugoGeneSymbol());
             reportBeans.add(bean);
         }
-        
-        patientInfoMap = new HashMap<String, List>();
-        for(String groupName : (List<String>)getBaselineGroups()) {
-            List patients = getQueryDTO().getBaselineGroupMap().get(groupName);
-            List patientInfo = patientManager.getPatientInfo(patients);
-            patientInfoMap.put(groupName, patientInfo);
-        }
-        for(String groupName : (List<String>)getComparisonGroups()) {
-            List patients = getQueryDTO().getComparisonGroupsMap().get(groupName);
-            List patientInfo = patientManager.getPatientInfo(patients);
-            patientInfoMap.put(groupName, patientInfo);
-        }
+//        
+//        patientInfoMap = new HashMap<String, List>();
+//        for(String groupName : (List<String>)getBaselineGroups()) {
+//            List patients = getQueryDTO().getBaselineGroupMap().get(groupName);
+//            List patientInfo = patientManager.getPatientInfo(patients);
+//            patientInfoMap.put(groupName, patientInfo);
+//        }
+//        for(String groupName : (List<String>)getComparisonGroups()) {
+//            List patients = getQueryDTO().getComparisonGroupsMap().get(groupName);
+//            List patientInfo = patientManager.getPatientInfo(patients);
+//            patientInfoMap.put(groupName, patientInfo);
+//        }
     }
 
 

@@ -33,17 +33,17 @@ public class ClassComparisonReport extends BaseClassComparisonReport {
                             .get(entry.getReporterId())).getHugoGeneSymbol());
             reportBeans.add(bean);
         }
-        patientInfoMap = new HashMap<String, List>();
-        for(String groupName : (List<String>)getBaselineGroups()) {
-            List patients = getQueryDTO().getBaselineGroupMap().get(groupName);
-            List patientInfo = patientManager.getPatientInfo(patients);
-            patientInfoMap.put(groupName, patientInfo);
-        }
-        for(String groupName : (List<String>)getComparisonGroups()) {
-            List patients = getQueryDTO().getComparisonGroupsMap().get(groupName);
-            List patientInfo = patientManager.getPatientInfo(patients);
-            patientInfoMap.put(groupName, patientInfo);
-        }
+//        patientInfoMap = new HashMap<String, List>();
+//        for(String groupName : (List<String>)getBaselineGroups()) {
+//            List patients = getQueryDTO().getBaselineGroupMap().get(groupName);
+//            List patientInfo = patientManager.getPatientInfo(patients);
+//            patientInfoMap.put(groupName, patientInfo);
+//        }
+//        for(String groupName : (List<String>)getComparisonGroups()) {
+//            List patients = getQueryDTO().getComparisonGroupsMap().get(groupName);
+//            List patientInfo = patientManager.getPatientInfo(patients);
+//            patientInfoMap.put(groupName, patientInfo);
+//        }
     }
 
 

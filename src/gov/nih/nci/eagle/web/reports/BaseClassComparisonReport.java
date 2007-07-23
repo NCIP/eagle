@@ -4,7 +4,6 @@ import gov.nih.nci.caintegrator.exceptions.FindingsQueryException;
 import gov.nih.nci.caintegrator.service.findings.ReporterBasedFinding;
 import gov.nih.nci.caintegrator.studyQueryService.dto.epi.EPIQueryDTO;
 import gov.nih.nci.eagle.query.dto.ClassComparisonQueryDTOImpl;
-import gov.nih.nci.eagle.util.PatientGroupManager;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -18,11 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 public abstract class BaseClassComparisonReport extends SortableReport {
 
 
-    protected PatientGroupManager patientManager;
     protected EpiReport epiReport;
-    protected PatientGroupReport groupReport;
-    protected Map<String, List> patientInfoMap;
-    
 
     
     public ClassComparisonQueryDTOImpl getQueryDTO() {
@@ -91,29 +86,6 @@ public abstract class BaseClassComparisonReport extends SortableReport {
     public List getComparisonGroups() {
         return new ArrayList(getQueryDTO().getComparisonGroupsMap().keySet());
     }    
-    public PatientGroupReport getGroupReport() {
-        return groupReport;
-    }
-
-    public void setGroupReport(PatientGroupReport groupReport) {
-        this.groupReport = groupReport;
-    }
-
-    public PatientGroupManager getPatientManager() {
-        return patientManager;
-    }
-
-    public void setPatientManager(PatientGroupManager patientManager) {
-        this.patientManager = patientManager;
-    }
-
-    public Map<String, List> getPatientInfoMap() {
-        return patientInfoMap;
-    }
-
-    public void setPatientInfoMap(Map<String, List> patientInfoMap) {
-        this.patientInfoMap = patientInfoMap;
-    }
 
     public EpiReport getEpiReport() {
         return epiReport;

@@ -6,7 +6,6 @@ import gov.nih.nci.caintegrator.domain.annotation.gene.bean.GeneBiomarker;
 import gov.nih.nci.caintegrator.service.findings.FTestFinding;
 import gov.nih.nci.caintegrator.service.task.TaskResult;
 import gov.nih.nci.eagle.util.FieldBasedComparator;
-import gov.nih.nci.eagle.util.PatientGroupManager;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -39,14 +38,14 @@ public class FTestReport extends BaseClassComparisonReport {
             reportBeans.add(bean);
         }
         
-        patientInfoMap = new HashMap<String, List>();
-
-
-        for(String groupName : (List<String>)getComparisonGroups()) {
-            List patients = getQueryDTO().getComparisonGroupsMap().get(groupName);
-            List patientInfo = patientManager.getPatientInfo(patients);
-            patientInfoMap.put(groupName, patientInfo);
-        }
+//        patientInfoMap = new HashMap<String, List>();
+//
+//
+//        for(String groupName : (List<String>)getComparisonGroups()) {
+//            List patients = getQueryDTO().getComparisonGroupsMap().get(groupName);
+//            List patientInfo = patientManager.getPatientInfo(patients);
+//            patientInfoMap.put(groupName, patientInfo);
+//        }
     }
     
     public void sortDataList(ActionEvent event) {

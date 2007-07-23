@@ -17,12 +17,6 @@
 	</application>
 	<navigation-rule>
 		<navigation-case>
-			<from-outcome>groupReport</from-outcome>
-			<to-view-id>/groupReport.jsf</to-view-id>
-		</navigation-case>
-	</navigation-rule>	
-	<navigation-rule>
-		<navigation-case>
 			<from-outcome>epiReport</from-outcome>
 			<to-view-id>/epiReport.jsf</to-view-id>
 		</navigation-case>
@@ -33,20 +27,12 @@
 		<managed-bean-class>gov.nih.nci.eagle.web.reports.ClassComparisonReport</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 		<managed-property>
-			<property-name>patientManager</property-name>
-			<value>#{patientManager}</value>
-		</managed-property>
-		<managed-property>
 			<property-name>findingsManager</property-name>
 			<value>#{eagleFindingsManager}</value>
 		</managed-property>
 		<managed-property>
 			<property-name>task</property-name>
 			<value>#{sessionScope["task"]}</value>
-		</managed-property>
-		<managed-property>
-			<property-name>groupReport</property-name>
-			<value>#{groupReport}</value>
 		</managed-property>
 		<managed-property>
 			<property-name>epiReport</property-name>
@@ -59,21 +45,13 @@
 		<managed-bean-class>gov.nih.nci.eagle.web.reports.FTestReport</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 		<managed-property>
-			<property-name>patientManager</property-name>
-			<value>#{patientManager}</value>
-		</managed-property>
-		<managed-property>
 			<property-name>findingsManager</property-name>
 			<value>#{eagleFindingsManager}</value>
 		</managed-property>
 		<managed-property>
 			<property-name>task</property-name>
 			<value>#{sessionScope["task"]}</value>
-		</managed-property>
-		<managed-property>
-			<property-name>groupReport</property-name>
-			<value>#{groupReport}</value>
-		</managed-property>		
+		</managed-property>	
 		<managed-property>
 			<property-name>epiReport</property-name>
 			<value>#{epiReport}</value>
@@ -85,10 +63,6 @@
 		<managed-bean-class>gov.nih.nci.eagle.web.reports.GLMReport</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 		<managed-property>
-			<property-name>patientManager</property-name>
-			<value>#{patientManager}</value>
-		</managed-property>
-		<managed-property>
 			<property-name>findingsManager</property-name>
 			<value>#{eagleFindingsManager}</value>
 		</managed-property>
@@ -96,10 +70,6 @@
 			<property-name>task</property-name>
 			<value>#{sessionScope["task"]}</value>
 		</managed-property>
-		<managed-property>
-			<property-name>groupReport</property-name>
-			<value>#{groupReport}</value>
-		</managed-property>	
 		<managed-property>
 			<property-name>epiReport</property-name>
 			<value>#{epiReport}</value>
@@ -122,11 +92,5 @@
 			<property-name>listValidationService</property-name>
 			<value>#{listValidationService}</value>
 		</managed-property>
-	</managed-bean>	
-	<managed-bean>
-		<description>Report to show patient groups</description>
-		<managed-bean-name>groupReport</managed-bean-name>
-		<managed-bean-class>gov.nih.nci.eagle.web.reports.PatientGroupReport</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>	
 </faces-config>
