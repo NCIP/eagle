@@ -1,31 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WebWorksHelpIX version="5.0" xmlns="urn:WebWorks-Help-Index-Schema">
+  <g t="Default" o="002" s=" ">
+    <i t="">
+      <j l="40#1132784" />
+      <j l="41#1132802" />
+    </i>
+  </g>
   <g t="A" o="002">
-    <i t="Adding">
-      <i t="list, combining">
-        <j l="25#1095145" />
+    <i t="adding">
+      <i t="new PatientDID list">
+        <j l="25#1097501" />
       </i>
-      <i t="new list (removing data items)">
-        <j l="27#1084855" />
+      <i t="new PatientDID list, combining">
+        <j l="26#1095145" />
+      </i>
+      <i t="new PatientDID list, EPI report">
+        <j l="36#1130178" />
       </i>
     </i>
     <i t="Advanced Search">
+      <i t="Epidemiology query">
+        <j l="16#1106194" />
+      </i>
       <i t="overview">
         <j l="15#1106174" />
       </i>
     </i>
-    <i t="Advanced searches">
-      <i t="Epidemiology query">
-        <j l="16#1106194" />
-      </i>
+    <i t="Age at Intiation">
+      <j l="16#1108357" />
     </i>
-    <i t="Analyses">
-      <i t="Class Comparison">
+    <i t="Analysis">
+      <i t="class comparison">
         <j l="19#1106149" />
       </i>
-      <i t="High Order Analysis">
-        <j l="18" />
+      <i t="overview">
+        <j l="18#1106338" />
       </i>
+    </i>
+    <i t="ANOVA">
+      <j l="43#1065744" />
+      <i t="details">
+        <j l="22#1107747" />
+      </i>
+    </i>
+    <i t="ANOVA with/without covariates">
+      <i t="output">
+        <j l="37#1132688" />
+      </i>
+    </i>
+    <i t="application support">
+      <j l="12#1129239" />
     </i>
   </g>
   <g t="B" o="002">
@@ -36,75 +60,106 @@
   <g t="C" o="002">
     <i t="caArray">
       <i t="glossary">
-        <j l="41#1065282" />
+        <j l="43#1065282" />
       </i>
     </i>
-    <i t="Class Comparison">
-      <i t="Analysis Form,description">
-        <j l="19#1106149" />
+    <i t="class comparison">
+      <j l="43#1065500" />
+      <i t="F-test, defined">
+        <j l="19#1106719" />
       </i>
-      <i t="displaying groups">
-        <j l="38#1126882" />
+      <i t="GLM, defined">
+        <j l="19#1105067" />
       </i>
-      <i t="High Order Analysis">
-        <j l="19#1106149" />
+      <i t="output for ANOVA">
+        <j l="37#1132688" />
       </i>
-      <i t="report description (View Results)">
-        <j l="33#1086398" />
+      <i t="output for F-test">
+        <j l="37#1132659" />
       </i>
-      <i t="report, downloading">
-        <j l="36#1126692" />
+      <i t="output for GLM">
+        <j l="37#1132674" />
       </i>
-      <i t="report, paging display">
-        <j l="37#1126927" />
+      <i t="output for T-test">
+        <j l="37#1132642" />
       </i>
-      <i t="report, sorting columns">
-        <j l="34#1126981" />
+      <i t="T-Test, defined">
+        <j l="19#1106710" />
       </i>
     </i>
     <i t="Class Comparison page, description">
       <j l="19#1105112" />
     </i>
-    <i t="Combining lists">
-      <j l="25#1095145" />
+    <i t="Class Comparison report">
+      <i t="description">
+        <j l="37#1132636" />
+      </i>
+      <i t="displaying comparison groups">
+        <j l="42#1132817" />
+      </i>
+      <i t="downloading">
+        <j l="40#1132784" />
+      </i>
+      <i t="navigating">
+        <j l="41#1132802" />
+      </i>
+      <i t="sorting columns">
+        <j l="38#1132731" />
+        <j l="38#1132731" />
+      </i>
     </i>
-    <i t="Creating">
-      <i t="lit, combining">
-        <j l="25#1095145" />
+    <i t="combining lists">
+      <j l="26#1095145" />
+    </i>
+    <i t="comparison groups">
+      <i t="displaying output">
+        <j l="42#1132817" />
       </i>
-      <i t="new list (removing data items)">
-        <j l="27#1084855" />
-      </i>
-      <i t="query, overview">
-        <j l="15#1106174" />
-      </i>
+    </i>
+    <i t="Component Patient Groups">
+      <j l="19#1104927" />
+    </i>
+    <i t="Co-variates">
+      <j l="19#1105736" />
     </i>
   </g>
   <g t="D" o="002">
-    <i t="Data items">
+    <i t="data items">
       <i t="removing from a list">
-        <j l="27#1084855" />
+        <j l="28#1084855" />
       </i>
       <i t="viewing in a list">
-        <j l="26#1080938" />
+        <j l="27#1080938" />
       </i>
     </i>
-    <i t="Deleting">
+    <i t="DCEG">
+      <j l="43#1065505" />
+    </i>
+    <i t="deleting">
+      <i t="data items">
+        <j l="28#1084855" />
+      </i>
       <i t="list">
-        <j l="28#1082089" />
+        <j l="29#1082089" />
       </i>
     </i>
-    <i t="Difference option, description">
-      <j l="25#1092590" />
+    <i t="Difference list option, description">
+      <j l="26#1092590" />
     </i>
-    <i t="Downloading">
+    <i t="downloading">
       <i t="reports">
-        <j l="36#1126692" />
+        <j l="40#1132784" />
       </i>
+    </i>
+    <i t="Duration Range">
+      <j l="16#1108350" />
     </i>
   </g>
   <g t="E" o="002">
     <i t="EAGLE">
+      <i t="application support">
+        <j l="12#1129239" />
+      </i>
       <i t="description of">
         <j l="4#1123765" />
       </i>
@@ -114,116 +169,188 @@
       <i t="getting help">
         <j l="9#1127031" />
       </i>
+      <i t="help">
+        <j l="12#1129239" />
+      </i>
       <i t="logging in">
         <j l="6#1094522" />
       </i>
       <i t="logging out">
         <j l="13#1095031" />
       </i>
+      <i t="Main Menu">
+        <j l="10#1123400" />
+      </i>
       <i t="menu">
         <j l="9#1127031" />
+        <j l="9#1127031" />
+      </i>
+      <i t="opening page">
+        <j l="5#1123791" />
+      </i>
+      <i t="side bar">
+        <j l="11#1122832" />
       </i>
       <i t="stands for">
         <j l="4#1123765" />
+      </i>
+      <i t="tabs">
+        <j l="10#1123400" />
       </i>
       <i t="workspace">
         <j l="7#1125243" />
       </i>
     </i>
+    <i t="Environmental Tobacco Smoke">
+      <j l="16#1108455" />
+    </i>
     <i t="Epidemiology (EPI)">
-      <i t="advanced search">
+      <j l="43#1065600" />
+      <i t="Advanced Search">
         <j l="16#1106194" />
       </i>
     </i>
-    <i t="Epidemiology Query">
-      <i t="report description (View Results)">
-        <j l="40#1127670" />
+    <i t="Epidemiology (EPI) report">
+      <i t="description">
+        <j l="34#1130229" />
+      </i>
+      <i t="downloading">
+        <j l="40#1132784" />
+      </i>
+      <i t="filtering">
+        <j l="35#1130157" />
+      </i>
+      <i t="navigating">
+        <j l="41#1132802" />
+      </i>
+      <i t="saving PatientDID list">
+        <j l="36#1130178" />
+      </i>
+      <i t="sorting columns">
+        <j l="38#1132731" />
       </i>
     </i>
-    <i t="Exporting">
-      <i t="list">
-        <j l="29#1095663" />
+    <i t="exporting">
+      <i t="PatientDID list">
+        <j l="30#1095663" />
       </i>
     </i>
   </g>
   <g t="F" o="002">
+    <i t="Fagerstrom">
+      <j l="16#1108371" />
+    </i>
+    <i t="filtering">
+      <i t="EPI report">
+        <j l="35#1130157" />
+      </i>
+    </i>
+    <i t="Fold Change">
+      <j l="19#1104951" />
+    </i>
     <i t="F-test One Way ANOVA">
       <i t="defined">
+        <j l="19#1106719" />
         <j l="20" />
       </i>
-      <i t="output">
-        <j l="33#1126583" />
+      <i t="description">
+        <j l="20#1106100" />
       </i>
+      <i t="output">
+        <j l="37#1132659" />
+      </i>
+    </i>
+    <i t="F-test, defined">
+      <j l="43#1065509" />
     </i>
   </g>
   <g t="G" o="002">
     <i t="Generalized Linear Model (GLM)">
+      <i t="details">
+        <j l="21#1105987" />
+      </i>
+    </i>
+    <i t="Generalized Linear Model (GLM) with/without covariates">
       <i t="defined">
         <j l="19#1105067" />
       </i>
+      <i t="output">
+        <j l="37#1132674" />
+      </i>
+    </i>
+    <i t="Generalized Linear Model test, defined">
+      <j l="43#1065517" />
     </i>
     <i t="GLM, see Generalized Linear Model">
       <j l="19#1105067" />
     </i>
     <i t="Glossary">
-      <j l="41#1065282" />
+      <j l="43#1065282" />
     </i>
   </g>
   <g t="H" o="002">
-    <i t="Help">
-      <i t="obtaining">
+    <i t="help">
+      <i t="application support (support link)">
+        <j l="9#1124954" />
+        <j l="12#1129239" />
+      </i>
+      <i t="documentation">
         <j l="9#1127031" />
       </i>
+      <i t="online help (help link)">
+        <j l="9#1124929" />
+      </i>
+      <i t="user guide documentation (user guide link)">
+        <j l="9#1124973" />
+      </i>
     </i>
-    <i t="Help link">
-      <j l="9#1124929" />
-    </i>
-    <i t="High Order Analysis">
-      <i t="Class Comparison">
+    <i t="high order analysis">
+      <j l="43#1065521" />
+      <i t="class comparison">
         <j l="19#1106149" />
       </i>
     </i>
   </g>
   <g t="I" o="002">
-    <i t="Intersect option, description">
-      <j l="25#1092588" />
+    <i t="Intensity Range">
+      <j l="16#1108343" />
+    </i>
+    <i t="Intersect list option, description">
+      <j l="26#1092588" />
     </i>
   </g>
   <g t="J" o="002">
-    <i t="Join option, description">
-      <j l="25#1092586" />
+    <i t="Join list option, description">
+      <j l="26#1092586" />
     </i>
   </g>
   <g t="L" o="002">
     <i t="Legal Rules of the Road page">
       <j l="7#1109711" />
     </i>
-    <i t="Lists">
+    <i t="lists">
       <i t="combining lists">
-        <j l="25#1095145" />
-      </i>
-      <i t="creating a new list">
-        <j l="27#1084855" />
+        <j l="26#1095145" />
       </i>
       <i t="deleting">
-        <j l="28#1082089" />
+        <j l="29#1082089" />
       </i>
       <i t="exporting">
-        <j l="29#1095663" />
+        <j l="30#1095663" />
       </i>
       <i t="removing data items">
-        <j l="27#1084855" />
+        <j l="28#1084855" />
       </i>
       <i t="viewing data items">
-        <j l="26#1080938" />
+        <j l="27#1080938" />
       </i>
     </i>
-    <i t="Logging in">
+    <i t="logging in">
       <i t="EAGLE">
         <j l="6#1094522" />
       </i>
     </i>
-    <i t="Logging out">
+    <i t="logging out">
       <i t="EAGLE">
         <j l="13#1095031" />
       </i>
@@ -234,103 +361,163 @@
     </i>
   </g>
   <g t="M" o="002">
-    <i t="Managing lists">
+    <i t="Main Menu">
+      <j l="10#1123400" />
+    </i>
+    <i t="Managing Lists">
       <i t="overview">
-        <j l="23#1079947" />
+        <j l="24#1079947" />
       </i>
+    </i>
+    <i t="minimizing lists">
+      <j l="24#1101472" />
+    </i>
+  </g>
+  <g t="N" o="002">
+    <i t="NCICB">
+      <j l="43#1065534" />
     </i>
   </g>
   <g t="O" o="002">
-    <i t="Overview">
+    <i t="opening page">
+      <j l="5#1123791" />
+    </i>
+    <i t="overview">
       <i t="Advanced Search">
         <j l="15#1106174" />
+      </i>
+      <i t="Analysis">
+        <j l="18#1106338" />
       </i>
       <i t="high order analyses">
         <j l="18#1106338" />
       </i>
       <i t="managing lists">
-        <j l="23#1079947" />
+        <j l="24#1079947" />
       </i>
       <i t="viewing output">
-        <j l="32#1108086" />
+        <j l="33#1108086" />
       </i>
     </i>
   </g>
   <g t="P" o="002">
-    <i t="Paging">
-      <i t="reports">
-        <j l="37#1126927" />
+    <i t="paging">
+      <i t="through reports">
+        <j l="41#1132802" />
       </i>
     </i>
-  </g>
-  <g t="Q" o="002">
-    <i t="Queries">
-      <i t="overview">
-        <j l="15#1106174" />
+    <i t="PatientDID list">
+      <j l="43#1065539" />
+      <i t="adding">
+        <j l="25#1097501" />
+        <j l="36#1130178" />
       </i>
+      <i t="deleting">
+        <j l="29#1082089" />
+      </i>
+      <i t="exporting">
+        <j l="30#1095663" />
+      </i>
+    </i>
+    <i t="p-value">
+      <j l="19#1104957" />
+      <j l="43#1065565" />
     </i>
   </g>
   <g t="R" o="002">
-    <i t="Rembrandt Manage Lists page">
-      <i t="description">
-        <j l="23#1079947" />
-      </i>
-    </i>
-    <i t="Removing">
+    <i t="removing">
       <i t="data items in a list">
-        <j l="27#1084855" />
+        <j l="28#1084855" />
       </i>
     </i>
-    <i t="Reports">
+    <i t="reports">
       <i t="Class Comparison">
-        <j l="33#1086398" />
+        <j l="37#1132636" />
       </i>
-      <i t="EPI Query">
-        <j l="40#1127670" />
+      <i t="EPI report">
+        <j l="34#1130229" />
+      </i>
+    </i>
+    <i t="resorting">
+      <i t="columns in reports">
+        <j l="38#1132731" />
       </i>
     </i>
   </g>
   <g t="S" o="002">
-    <i t="Side bar">
-      <i t="manage list information">
-        <j l="26#1087880" />
-        <j l="29#1095711" />
+    <i t="side bar">
+      <i t="display list items">
+        <j l="26#1099241" />
+      </i>
+      <i t="export PatientDID list">
+        <j l="30#1102558" />
       </i>
     </i>
-    <i t="Sorting">
+    <i t="side bar, description">
+      <j l="11#1122832" />
+    </i>
+    <i t="Smoking Status">
+      <j l="16#1108519" />
+    </i>
+    <i t="SNP">
+      <j l="43#1065544" />
+    </i>
+    <i t="sorting">
+      <i t="columns in reports">
+        <j l="38#1132731" />
+      </i>
       <i t="report columns">
-        <j l="34#1126981" />
+        <j l="38#1132731" />
       </i>
     </i>
-    <i t="Support link">
-      <j l="9#1124954" />
+    <i t="Specimen Type">
+      <j l="19#1105040" />
+    </i>
+    <i t="Statistical Method">
+      <j l="19#1104921" />
     </i>
   </g>
   <g t="T" o="002">
+    <i t="tabs, shown">
+      <j l="10#1123400" />
+    </i>
+    <i t="Tobacco Consumption">
+      <j l="16#1108508" />
+    </i>
+    <i t="T-test">
+      <j l="43#1065557" />
+    </i>
     <i t="T-test Two Sample Test">
       <i t="defined">
         <j l="19#1106710" />
       </i>
       <i t="output">
-        <j l="33#1095939" />
+        <j l="37#1132642" />
       </i>
     </i>
   </g>
   <g t="U" o="002">
-    <i t="User guide link">
-      <j l="9#1124973" />
+    <i t="User’s Guide">
+      <i t="accessing">
+        <j l="9#1124973" />
+      </i>
     </i>
   </g>
   <g t="V" o="002">
-    <i t="View Results page">
+    <i t="View Results">
       <i t="description">
-        <j l="32#1108086" />
+        <j l="33#1108086" />
       </i>
     </i>
-    <i t="Viewing">
+    <i t="viewing">
       <i t="data items in a list">
-        <j l="26#1080938" />
+        <j l="27#1080938" />
       </i>
+    </i>
+  </g>
+  <g t="W" o="002">
+    <i t="workspace">
+      <j l="7#1125243" />
     </i>
   </g>
 </WebWorksHelpIX>

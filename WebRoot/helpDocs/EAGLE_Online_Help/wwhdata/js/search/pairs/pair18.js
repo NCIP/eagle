@@ -1,6 +1,7 @@
 function FileData_Pairs(x)
 {
 x.t("link","high");
+x.t("results","overview");
 x.t("results","review");
 x.t("results","page");
 x.t("overview","eagle");
@@ -9,7 +10,6 @@ x.t("gene","expression");
 x.t("high","order");
 x.t("analyze","gene");
 x.t("comparison","high");
-x.t("comparison","report");
 x.t("comparison","analysis");
 x.t("filtering","normalization");
 x.t("further","analyze");
@@ -25,7 +25,7 @@ x.t("view","results");
 x.t("expression","data.");
 x.t("expression","data");
 x.t("page","further");
-x.t("page","class");
+x.t("page","view");
 x.t("data","filtering");
 x.t("order","analysis");
 x.t("class","comparison");

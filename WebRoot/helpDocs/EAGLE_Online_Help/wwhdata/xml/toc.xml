@@ -11,7 +11,7 @@
     </i>
     <i t="EAGLE Workspace" l="8">
       <i t="EAGLE Menu" l="9" />
-      <i t="EAGLE Tabs" l="10" />
+      <i t="EAGLE Main Menu and Tabs" l="10" />
       <i t="EAGLE Side Bar" l="11" />
     </i>
     <i t="Application Support" l="12" />
@@ -24,33 +24,35 @@
   <i t="Analysis" l="17">
     <i t="Analysis Overview" l="18" />
     <i t="Performing a Class Comparison" l="19">
-      <i t="F-test: One Way ANOVA" l="20" />
+      <i t="F-test: One Way ANOVA Details" l="20" />
       <i t="GLM or Generalized Linear Model Details" l="21" />
+      <i t="ANOVA Details" l="22" />
     </i>
   </i>
-  <i t="Managing Lists" l="22">
-    <i t="Managing Lists Overview" l="23" />
-    <i t="Adding New Lists" l="24">
-      <i t="Combining Existing Lists to Create a New List" l="25" />
+  <i t="Managing Lists" l="23">
+    <i t="Managing Lists Overview" l="24" />
+    <i t="Adding New Lists" l="25">
+      <i t="Combining Existing Lists to Create a New List" l="26" />
     </i>
-    <i t="Viewing the Data Items in a List" l="26" />
-    <i t="Removing Data Items" l="27" />
-    <i t="Deleting an Entire List" l="28" />
-    <i t="Exporting a List" l="29" />
-    <i t="Filtering a List (Blood, Tissue Normal, Tissue Cancer)" l="30" />
+    <i t="Viewing the Data Items in a List" l="27" />
+    <i t="Removing Data Items" l="28" />
+    <i t="Deleting an Entire List" l="29" />
+    <i t="Exporting a List" l="30" />
+    <i t="Filtering a List (Blood, Tissue Normal, Tissue Cancer)" l="31" />
   </i>
-  <i t="Viewing Results" l="31">
-    <i t="Results Overview" l="32" />
-    <i t="Class Comparison Report" l="33">
-      <i t="Resorting Column Results" l="34" />
-      <i t="Showing Additional Information" l="35" />
-      <i t="Downloading a Report" l="36" />
-      <i t="Paging Through a Report" l="37" />
-      <i t="Displaying Comparison Groups" l="38">
-        <i t="Comparison Group Name Report" l="39" />
-      </i>
+  <i t="Viewing Results" l="32">
+    <i t="View Results Overview" l="33" />
+    <i t="Epidemiology (EPI) Query Report" l="34">
+      <i t="Filtering the EPI Report" l="35" />
+      <i t="Saving Samples to a PatientDID List (EPI Report)" l="36" />
     </i>
-    <i t="Epidemiology (EPI) Query Report" l="40" />
+    <i t="Class Comparison Report" l="37">
+      <i t="Resorting Column Results" l="38" />
+      <i t="Showing Additional Information" l="39" />
+      <i t="Downloading a Report" l="40" />
+      <i t="Paging Through a Report" l="41" />
+      <i t="Displaying Comparison Groups" l="42" />
+    </i>
   </i>
-  <i t="Glossary" l="41" />
+  <i t="Glossary" l="43" />
 </WebWorksHelpTOC>

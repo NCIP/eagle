@@ -32,7 +32,7 @@
     <hr align="left" />
     <blockquote>
       <div class="Heading1"><a name="1118929">Application Support</a></div>
-      <div class="Body_Text"><a name="1129239">For any general information about the application, application support or to report a </a>bug, contact <span class="Popup"><a href="javascript:WWHClickedPopup('EAGLE_Online_Help', 'Eagle_Glossary.9.1.html#1065537', 'popups/Eagle_Glossary-1065537.html');" onMouseOver="javascript:WWHShowPopup('EAGLE_Online_Help', 'popups/Eagle_Glossary-1065537.html', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">NCICB</a></span> Application Support. </div>
+      <div class="Body_Text"><a name="1129239">For any general information about the application, application support or to report a </a>bug, contact <span class="Popup"><a href="javascript:WWHClickedPopup('EAGLE_Online_Help', 'Eagle_Glossary.9.1.html#1065537', 'popups/Eagle_Glossary-1065537.html');" onMouseOver="javascript:WWHShowPopup('EAGLE_Online_Help', 'popups/Eagle_Glossary-1065537.html', (document.all||document.getElementById||document.layers)?event:null);" onMouseOut="WWHHidePopup();">NCICB</a></span> Application Support.</div>
       <table id="1129241" class="Table_-_Column_Header" style="margin-bottom: pt; margin-left: pt; margin-right: pt; margin-top: pt; padding-bottom: pt; padding-left: pt; padding-right: pt; padding-top: pt; text-align: left;" cellspacing="1">
         <caption></caption>
         <tr>
@@ -135,6 +135,11 @@
           // Clear related topics
           //
           WWHClearRelatedTopics();
+
+          // Add related topics
+          //
+          WWHAddRelatedTopic("EAGLE Menu", "EAGLE_Online_Help", "Eagle_Getting_Started.4.7.html#1124037");
+          WWHAddRelatedTopic("About EAGLE", "EAGLE_Online_Help", "Eagle_Getting_Started.4.2.html#1123760");
 
           document.writeln(WWHRelatedTopicsInlineHTML());
         // -->
