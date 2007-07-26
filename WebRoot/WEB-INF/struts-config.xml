@@ -9,6 +9,7 @@
     	<form-bean name="loginForm" type="gov.nih.nci.eagle.web.struts.LoginForm"/>
     	<form-bean name="classComparisonForm" type="gov.nih.nci.eagle.web.struts.ClassComparisonForm"/>
     	<form-bean name="epiForm" type="gov.nih.nci.eagle.web.struts.EpiForm"/>
+    	<form-bean name="snpForm" type="gov.nih.nci.eagle.web.struts.SnpForm"/>
     	<form-bean name="clinicalForm" type="gov.nih.nci.eagle.web.struts.ClinicalForm"/>
   	</form-beans>
   <!-- ========== Global Exception Definitions ============================ -->
@@ -98,6 +99,25 @@
     <forward name="failure" path="/epiQueryInit.do?method=setup"/>    
     </action>
 
+    <action path="/snpQueryInit"
+           type="org.springframework.web.struts.DelegatingActionProxy"
+           name="snpForm"
+           scope="request"
+           validate="false"
+           parameter="method">
+    <forward name="success" path="eagle.snpQuery"/> 
+    <forward name="failure" path="caintegrator.welcome"/>    
+    </action>
+    <action path="/snpQuery"
+           type="org.springframework.web.struts.DelegatingActionProxy"
+           name="snpForm"
+           scope="request"
+           validate="true"
+           input="/snpQueryInit.do?method=setup"
+           parameter="method">
+    <forward name="success" path="caintegrator.viewResults"/> 
+    <forward name="failure" path="/snpQueryInit.do?method=setup"/>    
+    </action>
        
     <action path="/logout"
            type="gov.nih.nci.eagle.web.struts.LogoutAction"

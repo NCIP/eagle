@@ -71,4 +71,12 @@
 		<property name="presentationCacheManager" ref="presentationCacheManager" />
 	</bean>
 	
+	<bean name="/snpQueryInit"
+		class="gov.nih.nci.eagle.web.struts.SnpAction" scope="prototype">		
+	</bean>
+	<bean name="/snpQuery"
+		class="gov.nih.nci.eagle.web.struts.SnpAction" scope="prototype">		
+		<property name="presentationCacheManager" ref="presentationCacheManager" />
+	</bean>	
+	
 </beans>
