@@ -8,9 +8,9 @@ Main Menu
 </div>
 <div class="hoaMenuBox">
 	<div style="padding:10px; width:90%;">
-		<a href="advancedHome.do">Advanced Search</a><br/>
+		<a href="advancedHome.do">Search</a><br/>
 		<div style="font-size:9px;">
-	    	Perform an advanced query using EPI data as search criteria.  Results will yield a tabular report containing EPI data for each patient.
+	    	Perform an advanced query using EPI data as search criteria or search for a SNP among groups of patients.  Results will yield a tabular report containing EPI data for each patient or relevant SNP counts.
 	    </div>
 	</div>
 

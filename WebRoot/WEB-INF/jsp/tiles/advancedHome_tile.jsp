@@ -10,8 +10,15 @@ Advanced Search
 	<div style="padding:10px; width:90%;">
 		<a href="epiQueryInit.do?method=setup">EPI Query</a><br/>
 		<div style="font-size:9px;">
-	    Perform an advanced query using EPI data as search criteria.  Results will yield a tabular report containing EPI data for each patient.
-	     </div>
+	    	Perform a query using EPI data as search criteria.  Results will yield a tabular report containing EPI data for each patient.
+	    </div>
+	</div>
+	
+	<div style="padding:10px; width:90%;">
+		<a href="snpQueryInit.do?method=setup">SNP Query</a><br/>
+		<div style="font-size:9px;">
+	    	Perform a query among patient groups based on a single SNP.  Results will yield an RxC table displaying SNP counts.
+	    </div>
 	</div>
 <br/><br/><br/>
 </div>
