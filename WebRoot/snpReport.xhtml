@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:i="http://caintegrator.nci.nih.gov/jsf">
+	<head>
+		<title>EAGLE Report</title>
+		<link rel="stylesheet" type="text/css" href="css/report.css"
+			media="screen" />
+	</head>
+	<body>
+		<ui:include src="/WEB-INF/facelets/reportHeader.xhtml" />	
+		<script type="text/javascript"
+			src="dwrspring/interface/FeatureService.js"></script>
+		<script type="text/javascript" src="dwrspring/util.js"></script>
+		<script type="text/javascript" src="dwrspring/engine.js"></script>
+		<script type="text/javascript">
+			Event.observe(window, 'load', pageInit, false);
+			
+			function pageInit() {
+				FeatureService.getSnpCallReport(loadTable)
+			}
+			function loadTable(snpMap) {
+				console.log(snpMap);
+				var i = 1;
+				var table = $('snpTable');
+				for(var prop in snpMap) {
+					
+        			table.down(null, 0).down(null, i).innerHTML = prop;
+        			table.immediateDescendants()[1].down(null, i).innerHTML = snpMap[prop];
+        			i++
+    			}
+			}
+			
+		</script>
+
+
+
+		<table id="snpTable">
+			<tr>
+				<th>
+					Group Name
+				</th>
+				<th>
+
+				</th>
+				<th>
+
+				</th>
+				<th>
+
+				</th>
+				<th>
+
+				</th>
+				<th>
+
+				</th>
+				<th>
+
+				</th>
+			</tr>
+			<tr>
+				<td>
+				</td>
+				<td>
+				</td>
+				<td>
+				</td>
+				<td>
+				</td>
+				<td>
+				</td>
+				<td>
+				</td>
+				<td>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

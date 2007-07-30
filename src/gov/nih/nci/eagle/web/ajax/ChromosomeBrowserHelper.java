@@ -1,6 +1,7 @@
 package gov.nih.nci.eagle.web.ajax;
 
 import gov.nih.nci.caintegrator.domain.annotation.gene.bean.CytobandPosition;
+import gov.nih.nci.caintegrator.domain.annotation.snp.bean.SNPAnnotation;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,11 +19,11 @@ import org.springframework.orm.hibernate3.HibernateTemplate;
 public class ChromosomeBrowserHelper {
 
     private HibernateTemplate hibernateTemplate;
-    private Integer chromosomeScale = 200000;
+    //private Integer chromosomeScale = 200000;
 
-    public String getDataForRange(Integer start, Integer end) {
+    public Collection getDataForRange(Integer start, Integer end) {
         System.out.println("Got request start: " + start + " end: " + end);
-        return "Viewing from: " + (start * chromosomeScale) + " to: " + (end * chromosomeScale);
+        return null;
     }
 
     public Collection getChromosomeCytobands(final String chr) {
@@ -43,8 +44,8 @@ public class ChromosomeBrowserHelper {
             if(!("p arm").equals(pos.getCytoband()) && !("q arm").equals(pos.getCytoband()) && !("WHOLE").equals(pos.getCytoband())) {
                 cc = new ChromosomeCytoband();
                 cc.setName(pos.getCytoband());
-                cc.setStart(pos.getCytobandStartPosition() / chromosomeScale);
-                cc.setEnd(pos.getCytobandEndPosition() / chromosomeScale);
+                cc.setStart(pos.getCytobandStartPosition());
+                cc.setEnd(pos.getCytobandEndPosition());
                 items.add(cc);
             }
             
@@ -69,20 +70,41 @@ public class ChromosomeBrowserHelper {
             if(("p arm").equals(pos.getCytoband())) {
                 cc = new ChromosomeCytoband();
                 cc.setName(pos.getCytoband());
-                cc.setStart(pos.getCytobandStartPosition() / chromosomeScale);
-                cc.setEnd(pos.getCytobandEndPosition() / chromosomeScale);
+                cc.setStart(pos.getCytobandStartPosition());
+                cc.setEnd(pos.getCytobandEndPosition());
                 items.add(0, cc);
             }
             if(("q arm").equals(pos.getCytoband())) {
                 cc = new ChromosomeCytoband();
                 cc.setName(pos.getCytoband());
-                cc.setStart(pos.getCytobandStartPosition() / chromosomeScale);
-                cc.setEnd(pos.getCytobandEndPosition() / chromosomeScale);
+                cc.setStart(pos.getCytobandStartPosition());
+                cc.setEnd(pos.getCytobandEndPosition());
                 items.add(1, cc);
             }
             
         }
         return items;
+    }
+    
+    public Collection<Feature> getFeaturesForChromosome(final String chr) {
+        List<SNPAnnotation> snps = (List<SNPAnnotation>)hibernateTemplate.execute(new HibernateCallback() {
+            public Object doInHibernate(Session sess)
+                    throws HibernateException, SQLException {
+                Criteria criteria = sess.createCriteria(SNPAnnotation.class);
+                criteria.add(Restrictions.eq("chromosomeName", chr));
+                return criteria.list();
+            }
+        });
+        Collection<Feature> features = new ArrayList<Feature>();
+        for(SNPAnnotation snp : snps) {
+            Feature f = new Feature();
+            f.setType("snp");
+            f.setPhysicalLocation(snp.getChromosomeLocation());
+            f.setChromosome(snp.getChromosomeName());
+            f.setFeatureId(snp.getDbsnpId());
+            features.add(f);
+        }
+        return features;
     }
 
     public HibernateTemplate getHibernateTemplate() {

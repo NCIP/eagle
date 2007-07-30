@@ -77,6 +77,12 @@
 	<bean name="/snpQuery"
 		class="gov.nih.nci.eagle.web.struts.SnpAction" scope="prototype">		
 		<property name="presentationCacheManager" ref="presentationCacheManager" />
+		<property name="findingsManager" ref="eagleFindingsManager" />
+		<property name="dtoBuilder" ref="snpDTOBuilder" />
+	</bean>	
+	<bean name="/snpReport"
+		class="gov.nih.nci.eagle.web.struts.SnpAction" scope="prototype">	
+		<property name="presentationCacheManager" ref="presentationCacheManager" />
 	</bean>	
 	
 </beans>

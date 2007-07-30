@@ -1,10 +1,14 @@
 package gov.nih.nci.eagle.web.struts;
 
 import gov.nih.nci.caintegrator.application.cache.PresentationCacheManager;
+import gov.nih.nci.caintegrator.application.dtobuilder.QueryDTOBuilder;
 import gov.nih.nci.caintegrator.application.lists.ListType;
 import gov.nih.nci.caintegrator.application.lists.UserList;
 import gov.nih.nci.caintegrator.application.lists.UserListBeanHelper;
+import gov.nih.nci.caintegrator.dto.query.QueryDTO;
+import gov.nih.nci.caintegrator.exceptions.FindingsQueryException;
 import gov.nih.nci.caintegrator.service.task.Task;
+import gov.nih.nci.caintegrator.studyQueryService.FindingsManager;
 import gov.nih.nci.eagle.util.ManagedBeanUtil;
 
 import java.io.IOException;
@@ -15,21 +19,37 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
 import org.apache.struts.actions.DispatchAction;
 import org.apache.struts.util.LabelValueBean;
 
 public class SnpAction extends DispatchAction {
 
 	private PresentationCacheManager presentationCacheManager;
+    private FindingsManager findingsManager;
+    private QueryDTOBuilder  dtoBuilder; 
 
 	public ActionForward submit(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
 
-		// stuff here
+        QueryDTO dto = null;
+        dto = dtoBuilder.buildQueryDTO(form, request.getSession().getId());
+        
+        try {
+            Task task = findingsManager.submitQuery(dto);
+            presentationCacheManager.addNonPersistableToSessionCache(request.getSession().getId(),task.getId(),task);           
+        } catch (FindingsQueryException e) {
+            ActionErrors errors = new ActionErrors();
+            errors.add("queryErrors", new ActionMessage(
+                    "caintegrator.error.query"));
+            saveMessages(request, errors);
+            return (mapping.findForward("failure"));
+        }
 		return (mapping.findForward("success"));
 	}
 
@@ -58,14 +78,40 @@ public class SnpAction extends DispatchAction {
 		HttpSession session = request.getSession();
 
 		try {
+
+            
 			Task task = (Task) presentationCacheManager.getNonPersistableObjectFromSessionCache(session.getId(),request.getParameter("taskId"));
 			session.setAttribute("snpTask", task);
-			ManagedBeanUtil.clearReport(session, task);
 			return (mapping.findForward("success"));
 
 		} catch (Exception e) {
 			return (mapping.findForward("failure"));
 		}
 	}
+
+    public FindingsManager getFindingsManager() {
+        return findingsManager;
+    }
+
+    public void setFindingsManager(FindingsManager findingsManager) {
+        this.findingsManager = findingsManager;
+    }
+
+    public PresentationCacheManager getPresentationCacheManager() {
+        return presentationCacheManager;
+    }
+
+    public void setPresentationCacheManager(
+            PresentationCacheManager presentationCacheManager) {
+        this.presentationCacheManager = presentationCacheManager;
+    }
+
+    public QueryDTOBuilder getDtoBuilder() {
+        return dtoBuilder;
+    }
+
+    public void setDtoBuilder(QueryDTOBuilder dtoBuilder) {
+        this.dtoBuilder = dtoBuilder;
+    }
 
 }

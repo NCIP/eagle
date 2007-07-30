@@ -7,15 +7,15 @@ import org.apache.struts.validator.ValidatorForm;
 public class SnpForm extends ValidatorForm {
 
 	private String queryName;
-	private List<String> groupNames;
+	private String groupName;
 	private String snp;
 	
 	
-	public List<String> getGroupNames() {
-		return groupNames;
+	public String getGroupName() {
+		return groupName;
 	}
-	public void setGroupNames(List<String> groupNames) {
-		this.groupNames = groupNames;
+	public void setGroupName(String groupName) {
+		this.groupName = groupName;
 	}
 	public String getQueryName() {
 		return queryName;

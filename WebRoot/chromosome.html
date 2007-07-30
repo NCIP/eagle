@@ -217,12 +217,24 @@
 				$('dataGraph').innerHTML = '<b>' + returnVal + '</b>';
 			}	*/
 			dojo.addOnLoad(init);
-			
+			var bothArms;
+			var chrBands;
+			var cr;
 			function init() {
-				var chromosome = dojo.widget.byId('chromosomeBrowser');
-				chromosome.chromosome = "X";
-				chromosome.render();
+				dwr.util.useLoadingMessage();
+				DWREngine.beginBatch();
+				ChromosomeBrowserHelper.getChromosomeArms("1", function(tempArms){  bothArms = tempArms;});
+				ChromosomeBrowserHelper.getChromosomeCytobands("1", after);
+				DWREngine.endBatch();
+
+
 			}
+			
+			function after(bands) {
+
+				cr = new ChromosomeBrowser("1", bothArms, bands);
+			}
+			
     	</script>
 		<style type="text/css">
 			.movable { cursor: pointer; }
@@ -233,7 +245,7 @@
 		<table>
 			<tr>
 				<td>
-					<div id="chromosomeBrowser" dojoType="ChromosomeBrowser" style="width: 100px; height: 675px;"></div>
+					<div id="chromosomeBrowser"  style="width: 100px; height: 675px;"></div>
 				</td>
 				<td>
 					<div id="dataGraph"></div>

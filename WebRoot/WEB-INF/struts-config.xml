@@ -167,6 +167,12 @@
     <forward name="success" path="/epiReport.jsf" redirect="true"/>
     <forward name="failure" path="/500.jsp"/>
     </action>            
+    <action path="/snpReport" 
+    	 type="org.springframework.web.struts.DelegatingActionProxy"
+    	 parameter="method">
+    <forward name="success" path="/snpReport.jsf" redirect="true"/>
+    <forward name="failure" path="/500.jsp"/>
+    </action>            
          
  </action-mappings>
     

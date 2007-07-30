@@ -86,6 +86,9 @@
 					else if(task.getQueryDTO() instanceof EPIQueryDTO){						
 						out.println("<li><a id=\"" + task.getId() + "_link\" href=\"javascript:spawnx('epiReport.do?method=runReport&taskId=' + encodeURIComponent('" + URLEncoder.encode(task.getId()) + "') + '&cacheId=" + URLEncoder.encode(task.getCacheId()) + "', 750, 500,'epi_report');\" onclick=\"" + onclick + "\">" + qname + "</a> <i>(Epi)</i> ");
 					} 
+					else if(task.getQueryDTO() instanceof SnpQueryDTO){						
+						out.println("<li><a id=\"" + task.getId() + "_link\" href=\"javascript:spawnx('snpReport.do?method=runReport&taskId=' + encodeURIComponent('" + URLEncoder.encode(task.getId()) + "') + '&cacheId=" + URLEncoder.encode(task.getCacheId()) + "', 750, 500,'epi_report');\" onclick=\"" + onclick + "\">" + qname + "</a> <i>(SNP)</i> ");
+					} 
 					else if(task.getQueryDTO() instanceof ClassComparisonQueryDTO){	
 						ClassComparisonQueryDTO dto = (ClassComparisonQueryDTO)task.getQueryDTO();
 						if(dto.getStatisticTypeDE().getValueObject().equals(StatisticalMethodType.TTest))

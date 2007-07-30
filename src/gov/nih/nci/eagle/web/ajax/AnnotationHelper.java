@@ -3,7 +3,7 @@ package gov.nih.nci.eagle.web.ajax;
 import gov.nih.nci.caintegrator.domain.annotation.gene.bean.CytobandPosition;
 import gov.nih.nci.caintegrator.domain.annotation.gene.bean.GeneAlias;
 import gov.nih.nci.caintegrator.domain.annotation.service.AnnotationManager;
-import gov.nih.nci.caintegrator.domain.annotation.snp.bean.VariationReporter;
+import gov.nih.nci.caintegrator.domain.annotation.snp.bean.SNPAnnotation;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -59,15 +59,16 @@ public class AnnotationHelper {
     }
 
     public String[] getDbSnpIds(String symbol) {
-        if (symbol.indexOf("rs") == 0 && symbol.length() >= 3) {
-            List<VariationReporter> reportersForDbSnpId = annotationManager
-                    .getReportersForDbSnpId(symbol + "%");
+        if (symbol != null && symbol.length() >= 1) {
+            List<SNPAnnotation> reportersForDbSnpId = annotationManager
+                    .getSnpAnnotationsForSymbol(symbol + "%");
             String[] ids = new String[reportersForDbSnpId.size()];
             for (int i = 0; i < ids.length; i++) {
-                ids[i] = reportersForDbSnpId.get(i).getSnpAnnotation()
-                        .getDbsnpId();
+                if(reportersForDbSnpId.get(i).getDbsnpId().indexOf(symbol) >= 0)
+                    ids[i] = reportersForDbSnpId.get(i).getDbsnpId();
+                else 
+                    ids[i] = reportersForDbSnpId.get(i).getSecondaryIdentifier();
             }
-            System.out.println(ids.length);
             return ids;
         } else
             return new String[] {};

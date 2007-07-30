@@ -21,11 +21,13 @@
 				<ref bean="classComparisonQueryStrategy" />
 				<ref bean="fTestQueryStrategy" />
                 <ref bean="glmQueryStrategy" />
+                <ref bean="snpQueryStrategy" />
 			</list>
 		</property>
 		<property name="synchronousStrategyList">
 			<list>
 				<ref bean="synchronousEpiQueryStrategy" />
+				<ref bean="synchronousSnpQueryStrategy" />
 			</list>
 		</property>
 	</bean>
@@ -56,6 +58,24 @@
 		<property name="taskExecutor" ref="taskExecutor" />
 		<property name="taskResult" ref="taskResult" />
 	</bean>
+	<bean id="snpQueryStrategy"
+		class="gov.nih.nci.caintegrator.application.service.strategy.AsynchronousFindingStrategy"
+		scope="prototype">
+		<property name="queryHandler" ref="snpQueryHandler" />
+		<property name="businessCacheManager"
+			ref="businessCacheManager" />
+		<property name="taskExecutor" ref="taskExecutor" />
+		<property name="taskResult" ref="taskResult" />
+	</bean>	
+	<bean id="synchronousSnpQueryStrategy"
+		class="gov.nih.nci.caintegrator.application.service.strategy.SynchronousFindingStrategy"
+		scope="prototype">
+		<property name="queryHandler" ref="snpQueryHandler" />
+		<property name="businessCacheManager"
+			ref="businessCacheManager" />
+		<property name="taskExecutor" ref="taskExecutor" />
+		<property name="taskResult" ref="taskResult" />
+	</bean>	
 	<bean id="clinicalQueryStrategy"
 		class="gov.nih.nci.caintegrator.application.service.strategy.AsynchronousFindingStrategy"
 		scope="prototype">
@@ -158,6 +178,10 @@
 		class="gov.nih.nci.eagle.service.handlers.ClinicalQueryHandler">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	<bean id="snpQueryHandler"
+		class="gov.nih.nci.eagle.service.handlers.SnpQueryHandler">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 	<!--  Bean for Business cache manager -->
 	<bean id="businessCacheManager"
 		class="gov.nih.nci.caintegrator.application.cache.BusinessCacheManager"
@@ -179,6 +203,9 @@
         <bean id="epiDTOBuilder"
         	class="gov.nih.nci.eagle.query.dto.EPIQueryDTOBuilder" scope="prototype">
         </bean>
+        <bean id="snpDTOBuilder"
+        	class="gov.nih.nci.eagle.query.dto.SnpQueryDTOBuilder" scope="prototype">
+        </bean>
 
 	<!--  Beans for DWR -->
 	<bean id="inbox"
@@ -191,25 +218,13 @@
 		<property name="presentationTierCache"
 			ref="presentationCacheManager" />
 	</bean>
-	
+	<bean id="annotationHelper" class="gov.nih.nci.eagle.web.ajax.AnnotationHelper">
+		<dwr:remote javascript="AnnotationService"/>
+		<property name="annotationManager" ref="annotationManager" />
+	</bean>	
 	<bean id="DynamicListHelper" class="gov.nih.nci.eagle.web.ajax.DynamicListHelper">
 		<dwr:remote javascript="DynamicListHelper"/>
 		<property name="listValidationService" ref="listValidationService" />
-	</bean>
-	
-	<bean id="ChromosomeBrowserHelper" class="gov.nih.nci.eagle.web.ajax.ChromosomeBrowserHelper">
-		<dwr:remote javascript="ChromosomeBrowserHelper" >
-			<dwr:convert type="collection" class="java.util.Collection"/>
-			<dwr:convert type="bean" class="gov.nih.nci.eagle.web.ajax.ChromosomeCytoband"/>
-		</dwr:remote>
-		<property name="hibernateTemplate" ref="hibernateTemplate"/>
-	</bean>
-	
-	<bean id="ExpressionViewHelper" class="gov.nih.nci.eagle.web.ajax.ExpressionViewHelper">
-		<dwr:remote javascript="ExpressionViewHelper" >
-			<dwr:convert type="collection" class="java.util.Collection"/>
-			<dwr:convert type="bean" class="gov.nih.nci.eagle.web.ajax.ReporterExpressionValue"/>
-		</dwr:remote>
 	</bean>
 	
 	<bean id="listValidationService" class="gov.nih.nci.eagle.service.validation.ListValidationServiceImpl" >
