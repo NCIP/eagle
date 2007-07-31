@@ -1,6 +1,7 @@
 package gov.nih.nci.eagle.web.ajax;
 
 
+import gov.nih.nci.caintegrator.domain.annotation.snp.bean.SNPAnnotation;
 import gov.nih.nci.caintegrator.domain.finding.bean.Finding;
 import gov.nih.nci.caintegrator.domain.finding.variation.germline.bean.GenotypeFinding;
 import gov.nih.nci.caintegrator.exceptions.FindingsQueryException;
@@ -9,20 +10,28 @@ import gov.nih.nci.caintegrator.service.task.TaskResult;
 import gov.nih.nci.caintegrator.studyQueryService.FindingsManager;
 import gov.nih.nci.eagle.query.dto.SnpQueryDTO;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.directwebremoting.WebContextFactory;
+import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
 public class FeatureServiceImpl implements FeatureService {
 
     private FindingsManager findingsManager;
-    private HibernateTemplate hibernateTemplate;
+    HibernateTemplate hibernateTemplate;
     
-    public Collection getSnpCalls(String snpId, Collection<String> patientList1,
+    public Collection getFeatureDetails(String snpId, Collection<String> patientList1,
             Collection<String> patientList2) {
         SnpQueryDTO dto = new SnpQueryDTO();
         dto.setSnpId(snpId);
@@ -55,6 +64,30 @@ public class FeatureServiceImpl implements FeatureService {
         return findingMap;
     }
     
+    public Collection<Feature> getFeaturesForRegion(String chromosome) {
+        return getFeaturesForRegion(chromosome, null, null);
+    }
+    
+    public Collection<Feature> getFeaturesForRegion(final String chromosome, Long start, Long stop) {
+        List<SNPAnnotation> snps = (List<SNPAnnotation>)hibernateTemplate.execute(new HibernateCallback() {
+            public Object doInHibernate(Session sess)
+            throws HibernateException, SQLException {
+                Criteria criteria = sess.createCriteria(SNPAnnotation.class);
+                criteria.add(Restrictions.eq("chromosomeName", chromosome));
+                return criteria.list();
+            }
+        });
+        Collection<Feature> features = new ArrayList<Feature>();
+        for(SNPAnnotation snp : snps) {
+            Feature f = new Feature();
+            f.setType("snp");
+            f.setPhysicalLocation(snp.getChromosomeLocation());
+            f.setChromosome(snp.getChromosomeName());
+            f.setFeatureId(snp.getDbsnpId());
+            features.add(f);
+        }
+        return features;
+    }
     
 
     public FindingsManager getFindingsManager() {

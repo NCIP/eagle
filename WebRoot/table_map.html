@@ -7,8 +7,7 @@
    <script type="text/javascript" src="js/lib/scriptaculous/dragdrop.js"></script>
    <script type="text/javascript" src="js/lib/scriptaculous/slider.js"></script>
    <script type="text/javascript" src="js/wz_jsgraphics.js"></script>
-   <script type="text/javascript" src="dwrspring/interface/ChromosomeBrowserHelper.js"></script>
-   <script type="text/javascript" src="dwrspring/interface/ExpressionViewHelper.js"></script>
+   <script type="text/javascript" src="dwrspring/interface/ChromosomeBrowser.js"></script>
    <script type="text/javascript" src="dwrspring/util.js"></script>   
    <script type="text/javascript" src="dwrspring/engine.js"></script>   
    <script type="text/javascript">
@@ -107,8 +106,8 @@
 	var chrNumber = "1";
 	var divName = "chr";
 	function pageInit()	{
-		ChromosomeBrowserHelper.getChromosomeCytobands(chrNumber, makeBrowser);
-		ExpressionViewHelper.getValuesForRegion(chrNumber, null, null, makeGraph);
+		ChromosomeBrowser.getChromosomeCytobands(chrNumber, makeBrowser);
+		ChromosomeBrowser.getDataForRegion(chrNumber, null, null, makeGraph);
 
 	/* $('chr').style.width = stw + "px";
 	
@@ -142,7 +141,7 @@
 		else 
 			temp = 0;
 		console.log(temp * browser.scale);
-		ExpressionViewHelper.getValuesForRegion(chrNumber, (temp * browser.scale), ((temp + 500) * browser.scale), makeGraph);
+		ChromosomeBrowser.getDataForRegion(chrNumber, (temp * browser.scale), ((temp + 500) * browser.scale), makeGraph);
 		setTimeout(
 			function(){
 				$('loading').hide(); 

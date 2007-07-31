@@ -10,7 +10,21 @@
        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
        http://www.directwebremoting.org/schema/spring-dwr http://www.directwebremoting.org/schema/spring-dwr-2.0.xsd">
        
-       
+	<bean id="chromosomeBrowser" class="gov.nih.nci.eagle.web.ajax.ChromosomeBrowserImpl">
+		<dwr:remote javascript="ChromosomeBrowser" >
+			<dwr:convert type="collection" class="java.util.Collection"/>
+			<dwr:convert type="bean" class="gov.nih.nci.eagle.web.ajax.ChromosomeCytoband"/>
+			<dwr:convert type="bean" class="gov.nih.nci.eagle.web.ajax.Feature"/>
+		</dwr:remote>
+		<property name="annotationService" ref="annotationService"/>
+		<property name="expressionService" ref="expressionService"/>
+		<property name="featureService" ref="featureService"/>
+	</bean>
+		       
+	<bean id="annotationService" class="gov.nih.nci.eagle.web.ajax.AnnotationServiceImpl">
+		<property name="annotationManager" ref="annotationManager" />
+	</bean>
+	
 	<bean id="featureService" class="gov.nih.nci.eagle.web.ajax.FeatureServiceImpl">
 		<dwr:remote javascript="FeatureService">
 		</dwr:remote>
@@ -18,19 +32,10 @@
 		<property name="hibernateTemplate" ref="hibernateTemplate" />
 	</bean>
 	
-	<bean id="chromosomeBrowserHelper" class="gov.nih.nci.eagle.web.ajax.ChromosomeBrowserHelper">
-		<dwr:remote javascript="ChromosomeBrowserHelper" >
-			<dwr:convert type="collection" class="java.util.Collection"/>
-			<dwr:convert type="bean" class="gov.nih.nci.eagle.web.ajax.ChromosomeCytoband"/>
-			<dwr:convert type="bean" class="gov.nih.nci.eagle.web.ajax.Feature"/>
-		</dwr:remote>
-		<property name="hibernateTemplate" ref="hibernateTemplate"/>
-	</bean>
-	
 	<bean id="expressionService" class="gov.nih.nci.eagle.web.ajax.ExpressionServiceImpl">
 		<dwr:remote javascript="ExpressionService" >
 			<dwr:convert type="collection" class="java.util.Collection"/>
-			<dwr:convert type="bean" class="gov.nih.nci.eagle.web.ajax.ReporterExpressionValue"/>
+			<dwr:convert type="bean" class="gov.nih.nci.eagle.web.ajax.ExpressionValue"/>
 		</dwr:remote>
 	</bean>       
        

@@ -1,12 +1,12 @@
 package gov.nih.nci.eagle.web.ajax;
 
-public class ReporterExpressionValue {
+public class ExpressionValue {
 
     private String reporterId;
     private String sampleType;
     private Double foldChange;
     
-    public ReporterExpressionValue(String reporterId, String sampleType, Double foldChange) {
+    public ExpressionValue(String reporterId, String sampleType, Double foldChange) {
         this.reporterId = reporterId;
         this.sampleType = sampleType;
         this.foldChange = foldChange;

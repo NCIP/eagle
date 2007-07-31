@@ -5,20 +5,21 @@ import java.util.Collection;
 
 public class ExpressionServiceImpl implements ExpressionService {
 
-    public Collection getValuesForRegion(String chr, Long start, Long stop) {
-        System.out.println("Got request for region: " + start + " to " + stop);
+
+    public Collection<ExpressionValue> getExpressionValuesForRegion(String chromosome, Long start, Long end) {
+        System.out.println("Got request for region: " + start + " to " + end);
         Collection values = new ArrayList();
-        ReporterExpressionValue val = new ReporterExpressionValue("reporter1", "blood", 2.0);
+        ExpressionValue val = new ExpressionValue("reporter1", "blood", 2.0);
         values.add(val);
-        val = new ReporterExpressionValue("reporter1", "tissue", 1.5);
+        val = new ExpressionValue("reporter1", "tissue", 1.5);
         values.add(val);
-        val = new ReporterExpressionValue("reporter1", "cancer", -2.0);
+        val = new ExpressionValue("reporter1", "cancer", -2.0);
         values.add(val);
-        val = new ReporterExpressionValue("reporter2", "blood", 2.0);
+        val = new ExpressionValue("reporter2", "blood", 2.0);
         values.add(val);
-        val = new ReporterExpressionValue("reporter2", "tissue", 3.0);
+        val = new ExpressionValue("reporter2", "tissue", 3.0);
         values.add(val);
-        val = new ReporterExpressionValue("reporter3", "cancer", 10.0);
+        val = new ExpressionValue("reporter3", "cancer", 10.0);
         values.add(val);
         
         return values;
