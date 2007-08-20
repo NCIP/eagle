@@ -6,6 +6,9 @@ public class ExpressionValue {
     private String sampleType;
     private Double foldChange;
     
+    public ExpressionValue() {
+        
+    }
     public ExpressionValue(String reporterId, String sampleType, Double foldChange) {
         this.reporterId = reporterId;
         this.sampleType = sampleType;

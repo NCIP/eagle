@@ -1,6 +1,7 @@
 package gov.nih.nci.eagle.service.strategies;
 
 import gov.nih.nci.caintegrator.analysis.messaging.ClassComparisonRequest;
+import gov.nih.nci.caintegrator.analysis.messaging.CompoundAnalysisRequest;
 import gov.nih.nci.caintegrator.analysis.messaging.SampleGroup;
 import gov.nih.nci.caintegrator.application.analysis.AnalysisServerClientManager;
 import gov.nih.nci.caintegrator.application.cache.BusinessTierCache;
@@ -20,6 +21,7 @@ import gov.nih.nci.caintegrator.service.task.Task;
 import gov.nih.nci.caintegrator.service.task.TaskResult;
 import gov.nih.nci.caintegrator.util.ValidationUtility;
 import gov.nih.nci.eagle.enumeration.SpecimenType;
+import gov.nih.nci.eagle.query.dto.ChromosomeBrowserQueryDTO;
 import gov.nih.nci.eagle.query.dto.ClassComparisonQueryDTOImpl;
 
 import java.util.ArrayList;
@@ -111,17 +113,16 @@ import org.apache.log4j.Logger;
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-public class ClassComparisonFindingStrategy extends AsynchronousFindingStrategy {
+public class ChromosomeBrowserStrategy extends AsynchronousFindingStrategy {
     private static Logger logger = Logger
-            .getLogger(ClassComparisonFindingStrategy.class);
+            .getLogger(ChromosomeBrowserStrategy.class);
 
     private Collection<SampleGroup> sampleGroups = new ArrayList<SampleGroup>();
-    private ClassComparisonRequest classComparisonRequest = null;
+    private CompoundAnalysisRequest analysisRequest = null;
     private AnalysisServerClientManager analysisServerClientManager;
     private Map<String, String> dataFileMap;
 
-
-    public ClassComparisonFindingStrategy() {
+    public ChromosomeBrowserStrategy() {
 
     }
 
@@ -133,8 +134,6 @@ public class ClassComparisonFindingStrategy extends AsynchronousFindingStrategy 
      *      Wincoin Test
      */
     public boolean createQuery() throws FindingsQueryException {
-
-        // analysisServerClientManager.establishQueueConnection();
 
         // because each layer is valid I am assured I will be getting a fulling
         // populated query object
@@ -163,15 +162,12 @@ public class ClassComparisonFindingStrategy extends AsynchronousFindingStrategy 
     @Override
     protected void executeStrategy() {
 
-        classComparisonRequest = new ClassComparisonRequest(taskResult
-                .getTask().getCacheId(), taskResult.getTask().getId());
+        analysisRequest = new CompoundAnalysisRequest(taskResult.getTask()
+                .getCacheId(), taskResult.getTask().getId());
 
         businessCacheManager.addToSessionCache(getTaskResult().getTask()
                 .getCacheId(), getTaskResult().getTask().getId(),
                 getTaskResult());
-        System.out
-                .println("Task has been set to running and placed in cache, query will be run");
-
 
     }
 
@@ -181,68 +177,16 @@ public class ClassComparisonFindingStrategy extends AsynchronousFindingStrategy 
      * @see gov.nih.nci.caintegrator.service.findings.strategies.FindingStrategy#analyzeResultSet()
      */
     public boolean analyzeResultSet() throws FindingsAnalysisException {
-        StatisticalMethodType statisticType = getQueryDTO()
-                .getStatisticTypeDE().getValueObject();
-        classComparisonRequest.setStatisticalMethod(statisticType);
+
         try {
-            switch (statisticType) {
-            case TTest:
-            case Wilcoxin: {
-                // set MultiGroupComparisonAdjustmentType
-                classComparisonRequest
-                        .setMultiGroupComparisonAdjustmentType(getQueryDTO()
-                                .getMultiGroupComparisonAdjustmentTypeDE()
-                                .getValueObject());
-                // set foldchange
-
-                ExprFoldChangeDE foldChange = getQueryDTO()
-                        .getExprFoldChangeDE();
-                classComparisonRequest.setFoldChangeThreshold(foldChange
-                        .getValueObject());
-                // set platform
-                // Covert ArrayPlatform String to Enum -Himanso 10/15/05
-
-                ArrayPlatformType arrayPlatform = getQueryDTO()
-                        .getArrayPlatformDE()
-                        .getValueObjectAsArrayPlatformType();
-
-                classComparisonRequest.setArrayPlatform(arrayPlatform);
-
-                // Set sample groups
-                HashMap<String, List> comparisonGroupsMap = getQueryDTO().getComparisonGroupsMap();
-                HashMap<String, List> baselineGroupMap = getQueryDTO().getBaselineGroupMap();
-                for(String name : baselineGroupMap.keySet()) {
-                    SampleGroup baseline = new SampleGroup(name);
-                    List<String> group = baselineGroupMap.get(name);
-                    baseline.addAll(group);
-                    classComparisonRequest.setBaselineGroup(baseline);
-                }
-                for(String name : comparisonGroupsMap.keySet()) {
-                    SampleGroup comparison = new SampleGroup(name);
-                    List<String> group = comparisonGroupsMap.get(name);
-                    comparison.addAll(group);
-                    classComparisonRequest.setGroup1(comparison);
-                }
-                classComparisonRequest.setDataFileName(dataFileMap.get(getQueryDTO().getSpecimenTypeEnum().name()));
-
+            for (SpecimenType type : getQueryDTO().getSpecimenTypes()) {
+                ClassComparisonRequest req = createClassComparisonRequest(
+                        getQueryDTO(), type);
+                analysisRequest.addRequest(req);
             }
-            case GLM: {
 
-                // set baseline group
-                Object[] obj = sampleGroups.toArray();
-                if (obj.length >= 2) {
-                    classComparisonRequest.setGroup1((SampleGroup) obj[0]);
-                    classComparisonRequest
-                            .setBaselineGroup((SampleGroup) obj[1]);
-                }
-
-            }
-            // set PvalueThreshold
-            classComparisonRequest.setPvalueThreshold(getQueryDTO()
-                    .getStatisticalSignificanceDE().getValueObject());
-            analysisServerClientManager.sendRequest(classComparisonRequest);
+            analysisServerClientManager.sendRequest(analysisRequest);
             return true;
-            }
 
         } catch (JMSException e) {
             logger.error(e.getMessage());
@@ -252,7 +196,61 @@ public class ClassComparisonFindingStrategy extends AsynchronousFindingStrategy 
             throw new FindingsAnalysisException(
                     "Error in setting ClassComparisonRequest object");
         }
-        return false;
+    }
+
+    private ClassComparisonRequest createClassComparisonRequest(
+            ChromosomeBrowserQueryDTO queryDTO, SpecimenType type) {
+        ClassComparisonRequest classComparisonRequest = new ClassComparisonRequest(
+                taskResult.getTask().getCacheId(), taskResult.getTask().getId());
+
+        StatisticalMethodType statisticType = getQueryDTO()
+                .getStatisticTypeDE().getValueObject();
+        classComparisonRequest.setStatisticalMethod(statisticType);
+        switch (statisticType) {
+        case TTest:
+        case Wilcoxin: {
+            // set MultiGroupComparisonAdjustmentType
+            classComparisonRequest
+                    .setMultiGroupComparisonAdjustmentType(getQueryDTO()
+                            .getMultiGroupComparisonAdjustmentTypeDE()
+                            .getValueObject());
+            // set foldchange
+
+            ExprFoldChangeDE foldChange = getQueryDTO().getExprFoldChangeDE();
+            classComparisonRequest.setFoldChangeThreshold(foldChange
+                    .getValueObject());
+            // set platform
+            // Covert ArrayPlatform String to Enum -Himanso 10/15/05
+
+            ArrayPlatformType arrayPlatform = getQueryDTO()
+                    .getArrayPlatformDE().getValueObjectAsArrayPlatformType();
+
+            classComparisonRequest.setArrayPlatform(arrayPlatform);
+
+            // Set sample groups
+            HashMap<String, List> comparisonGroupsMap = getQueryDTO()
+                    .getComparisonGroupsMap();
+            HashMap<String, List> baselineGroupMap = getQueryDTO()
+                    .getBaselineGroupMap();
+            List group = baselineGroupMap.get(type.getName());
+            SampleGroup baseline = new SampleGroup(type.getName());
+            baseline.addAll(group);
+            classComparisonRequest.setBaselineGroup(baseline);
+
+            group = comparisonGroupsMap.get(type.getName());
+            SampleGroup comparison = new SampleGroup(type.getName());
+            comparison.addAll(group);
+            classComparisonRequest.setGroup1(comparison);
+            classComparisonRequest
+                    .setDataFileName(dataFileMap.get(type.name()));
+
+        }
+
+        }
+        // set PvalueThreshold
+        classComparisonRequest.setPvalueThreshold(getQueryDTO()
+                .getStatisticalSignificanceDE().getValueObject());
+        return classComparisonRequest;
     }
 
     public Finding getFinding() {
@@ -309,8 +307,8 @@ public class ClassComparisonFindingStrategy extends AsynchronousFindingStrategy 
         return _valid;
     }
 
-    private ClassComparisonQueryDTOImpl getQueryDTO() {
-        return (ClassComparisonQueryDTOImpl) taskResult.getTask().getQueryDTO();
+    private ChromosomeBrowserQueryDTO getQueryDTO() {
+        return (ChromosomeBrowserQueryDTO) taskResult.getTask().getQueryDTO();
     }
 
     @Override
@@ -322,11 +320,8 @@ public class ClassComparisonFindingStrategy extends AsynchronousFindingStrategy 
 
     @Override
     public boolean canHandle(QueryDTO query) {
-        if(query instanceof ClassComparisonQueryDTOImpl) {
-            ClassComparisonQueryDTO dto = (ClassComparisonQueryDTO)query;
-            return (dto.getStatisticTypeDE().getValueObject().equals(StatisticalMethodType.TTest) || dto.getStatisticTypeDE().equals(StatisticalMethodType.GLM));
-        }
-        return false;
+
+        return (query instanceof ChromosomeBrowserQueryDTO);
     }
 
     public AnalysisServerClientManager getAnalysisServerClientManager() {

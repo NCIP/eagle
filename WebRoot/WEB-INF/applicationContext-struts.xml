@@ -24,6 +24,15 @@
 		<property name="presentationCacheManager" ref="presentationCacheManager" />				
 		<property name="dtoBuilder" ref="classComparisonQueryDTOBuilder" />				
 	</bean>	
+	<bean name="/chromosomeBrowserInit"
+		class="gov.nih.nci.eagle.web.struts.ChromosomeBrowserAction" scope="prototype">		
+	</bean>
+	<bean name="/chromosomeBrowser"
+		class="gov.nih.nci.eagle.web.struts.ChromosomeBrowserAction" scope="prototype">		
+		<property name="findingsManager" ref="eagleFindingsManager"/>
+		<property name="presentationCacheManager" ref="presentationCacheManager" />				
+		<property name="dtoBuilder" ref="chromosomeBrowserQueryDTOBuilder" />				
+	</bean>		
 	<bean name="/classComparisonReport"
 		class="gov.nih.nci.eagle.web.struts.ClassComparisonAction" scope="prototype">		
 		<property name="presentationCacheManager" ref="presentationCacheManager" />	

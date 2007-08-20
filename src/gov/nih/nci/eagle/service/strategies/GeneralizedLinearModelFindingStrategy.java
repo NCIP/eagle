@@ -243,7 +243,7 @@ public class GeneralizedLinearModelFindingStrategy extends
     }
 
     public boolean canHandle(QueryDTO query) {
-        if (query instanceof ClassComparisonQueryDTO) {
+        if (query instanceof ClassComparisonQueryDTOImpl) {
             ClassComparisonQueryDTO dto = (ClassComparisonQueryDTO) query;
             return ((dto.getStatisticTypeDE().getValueObject()
                     .equals(StatisticalMethodType.GLM)) || (dto

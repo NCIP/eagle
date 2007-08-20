@@ -80,6 +80,12 @@
       <put name="mainForm" value="/WEB-INF/jsp/tiles/classComparison_tile.jsp" />
 	  <put name="sideBar" value="/WEB-INF/jsp/tiles/sideBar_tile.jsp" />
 	  <put name="tabs" value="/WEB-INF/jsp/tiles/cssTabs_tile.jsp?s=3" />
+    </definition>   
+      
+    <definition name="eagle.chromosomeBrowser" extends="cssBaseDef">
+      <put name="mainForm" value="/WEB-INF/jsp/tiles/chromosomeBrowser_tile.jsp" />
+	  <put name="sideBar" value="/WEB-INF/jsp/tiles/sideBar_tile.jsp" />
+	  <put name="tabs" value="/WEB-INF/jsp/tiles/cssTabs_tile.jsp?s=3" />
     </definition>     
  
      <definition name="eagle.epiQuery" extends="cssBaseDef">
