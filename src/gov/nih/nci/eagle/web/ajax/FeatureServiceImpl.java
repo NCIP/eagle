@@ -49,15 +49,19 @@ public class FeatureServiceImpl implements FeatureService {
         HttpSession session = WebContextFactory.get().getSession();
         Task task = (Task)session.getAttribute("snpTask");
         TaskResult result = (TaskResult)findingsManager.getTaskResult(task);
+        SnpQueryDTO sdto = (SnpQueryDTO) result.getTask().getQueryDTO();
+
+        HashMap<String, String> findingMap = new HashMap<String, String>();
+        findingMap.put("groupName", sdto.getPatientGroupName());
+        findingMap.put("snpId", sdto.getSnpId());
         
-        HashMap<String, Integer> findingMap = new HashMap<String, Integer>();
         for(GenotypeFinding finding : (Collection<GenotypeFinding>)result.getTaskResults()) {
             String call = finding.getCall();
 
             if(findingMap.containsKey(call)) {
-                findingMap.put(call, findingMap.get(call) + 1);
+                findingMap.put(call, String.valueOf( Integer.parseInt(findingMap.get(call)) + 1) );
             } else {
-                findingMap.put(call, 1);
+                findingMap.put(call, String.valueOf(1));
             }
         }
         

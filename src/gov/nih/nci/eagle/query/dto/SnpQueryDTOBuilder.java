@@ -33,6 +33,7 @@ public class SnpQueryDTOBuilder implements QueryDTOBuilder {
 
             ids = ulbh.getItemsFromList(snpForm.getGroupName());
             dto.setPatientIds(ids);
+            dto.setPatientGroupName(snpForm.getGroupName());
         }
         return dto;
 
