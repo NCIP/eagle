@@ -24,60 +24,54 @@
 			}
 			function loadTable(snpMap) {
 				console.log(snpMap);
-				var i = 1;
 				var table = $('snpTable');
+				
+				var hr = document.createElement("tr"); //header row
+				var group = document.createElement("th");
+				group.innerHTML = "Group Name / Call"; //ger group name from map
+				hr.appendChild(group);
+				
+				var dr = document.createElement("tr"); //data row (1 per group), dataRow[key].length
+				group = document.createElement("td");
+				group.innerHTML = snpMap["groupName"] + "<br/>SNP: " + snpMap["snpId"]; //ger group name from map
+				dr.appendChild(group);
+				
+				var snpHash = new Hash(snpMap);
+				snpHash.remove("groupName");
+				snpHash.remove("snpId");
+				
+				/*
 				for(var prop in snpMap) {
+					var th = document.createElement("th");
+					th.innerHTML = prop;
+					hr.appendChild(th);
 					
-        			table.down(null, 0).down(null, i).innerHTML = prop;
-        			table.immediateDescendants()[1].down(null, i).innerHTML = snpMap[prop];
-        			i++
-    			}
+					var td = document.createElement("td");
+					td.innerHTML = snpMap[prop];
+					dr.appendChild(td);
+					
+    			}*/
+    			snpHash.each(function(pair)	{
+    				pair.key
+    				pair.value
+    				var th = document.createElement("th");
+					th.innerHTML = pair.key;
+					hr.appendChild(th);
+					
+					var td = document.createElement("td");
+					td.innerHTML = pair.value;
+					dr.appendChild(td);
+					
+    			});
+    			
+    			table.appendChild(hr);
+    			table.appendChild(dr);
 			}
 			
 		</script>
 
-
-
-		<table id="snpTable">
-			<tr>
-				<th>
-					Group Name
-				</th>
-				<th>
-
-				</th>
-				<th>
-
-				</th>
-				<th>
-
-				</th>
-				<th>
-
-				</th>
-				<th>
-
-				</th>
-				<th>
-
-				</th>
-			</tr>
-			<tr>
-				<td>
-				</td>
-				<td>
-				</td>
-				<td>
-				</td>
-				<td>
-				</td>
-				<td>
-				</td>
-				<td>
-				</td>
-				<td>
-				</td>
-			</tr>
-		</table>
+	<div id="reportDiv">
+		<table id="snpTable"></table>
+	</div>
 	</body>
 </html>
