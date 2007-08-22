@@ -157,37 +157,52 @@ RDE.prototype = {
 		values: null,
 		initialize:function (div1, div2, values) {
 			Object.extend(this, div1, div2, values);
-			if ($(div1) && $(div2)) {
-				this.group1div = div1;
-				this.group2div = div2;
-				this.values = values;
+//			if ($(div1) && $(div2)) {
+//				this.group1div = div1;
+//				this.group2div = div2;
+//				this.values = values;
 				this.drawBars(values);
-			}
+//			}
 		},		
 		drawBars: function(values) {
+			var c = $(tContainerId);
+			var tab = document.createElement("table");
+			tab.cellPadding="1";
+			tab.cellSpacing="0";
+			tab.border="0";
+			
 			for (var index = 0; index < values.length; ++index) {
 				console.log(values[index]);
-				var locToAdd;
-				if(values[index].foldChange > 0) {
-					locToAdd = $(this.group2div);
-				} else {
-					locToAdd = $(this.group1div);
-				}
+
 				var newTr = document.createElement("tr");
-				var newTd = document.createElement("td");
+				//Left, Center, Right TDs
+				var newTdL = document.createElement("td");
+				var newTdC = document.createElement("td");
+				var newTdR = document.createElement("td");
+				
 				var newDiv = document.createElement("div");
-				newTd.appendChild(newDiv);
-				newTr.appendChild(newTd);
+				newTr.appendChild(newTdL);
+				newTr.appendChild(newTdC);
+				newTr.appendChild(newTdR);
+				newTdC.innerHTML = "&nbsp;";
+				newTdC.style.backgroundColor="#000";
+
 				newDiv.className = values[index].sampleType;
 				
 				if(values[index].foldChange<0)	{
 					newDiv.style.cssFloat="right";
+					newTdL.appendChild(newDiv);
+				}
+				else	{
+					newTdR.appendChild(newDiv);
 				}
 				
 				newDiv.style.width = ((Math.abs(values[index].foldChange) / 10) * 100) + "px";
 				
 				newDiv.innerHTML = "&nbsp;";
-				locToAdd.appendChild(newTr);
+				//newDiv.innerHTML += Math.round(values[index].foldChange*1000)/1000;
+				tab.appendChild(newTr);
 			}
+			c.appendChild(tab);
 		}
 	});
