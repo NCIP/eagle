@@ -1,0 +1,53 @@
+<style>
+#chr {
+	margin-left:5px;
+}
+
+#chr:hover	{
+	cursor:move;
+}
+
+#chr td	{
+	border-left:2px solid #000;
+	border-right:2px solid #000;
+	background-color:#fff;
+}
+
+#tImage table td {
+	vertical-align:top;
+}
+</style>
+
+<div id="rdeContainer">
+<a href="#" onclick="rde.zoom('in'); return false;">[+]</a> / 
+<a href="#" onclick="rde.zoom('out'); return false;">[-]</a>
+<a href="#" onclick="rde.zoom('reset'); return false;">[reset]</a>
+
+<table>
+<tr>
+<td>
+	<div id="mainCanvas" style="border:1px solid red; height:500px; width:65px; overflow:hidden; background-color:#e0e0e0;">
+		<table id="chr" border="0" cellspacing="0" cellpadding="0" style=""></table>
+	</div>
+</td>
+<td>
+	<div id="loading" style="display:none;width:500px; height:500px;">
+		<img src="img/ajax-loader.gif" style="padding-left:100px;padding-top:100px;"/>
+	</div>
+	<div id="tImage" style="width:500px; height:500px">
+		<table>
+			<tr>
+				<td>
+					<table id="group1" style="width:500px; border-right: solid; ">
+					</table>
+				</td>
+				<td>
+					<table id="group2" style="width:500px; border-left: solid; ">
+					</table>
+				</td>
+			</tr>
+		</table>
+	</div>
+</td>
+</table>
+</div>
