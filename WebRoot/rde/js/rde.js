@@ -46,7 +46,7 @@ RDE.prototype = {
 		else 
 			temp = 0;
 		console.log(temp * browser.scale);
-		ChromosomeBrowser.getDataForRegion(chrNumber, (temp * browser.scale), ((temp + 500) * browser.scale), makeGraph);
+		ChromosomeBrowser.getDataForRegion(chrNumber, (temp * browser.scale), ((temp + 500) * browser.scale), rde.makeGraph);
 		setTimeout(
 			function(){
 				$(loadingContainerId).hide(); 
