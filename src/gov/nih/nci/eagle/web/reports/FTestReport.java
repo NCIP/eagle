@@ -3,7 +3,10 @@ package gov.nih.nci.eagle.web.reports;
 import gov.nih.nci.caintegrator.analysis.messaging.FTestResultEntry;
 import gov.nih.nci.caintegrator.application.configuration.SpringContext;
 import gov.nih.nci.caintegrator.domain.annotation.gene.bean.GeneBiomarker;
+import gov.nih.nci.caintegrator.domain.annotation.gene.bean.GeneExprReporter;
+import gov.nih.nci.caintegrator.service.findings.ClassComparisonFinding;
 import gov.nih.nci.caintegrator.service.findings.FTestFinding;
+import gov.nih.nci.caintegrator.service.findings.GeneralizedLinearModelFinding;
 import gov.nih.nci.caintegrator.service.task.TaskResult;
 import gov.nih.nci.eagle.util.FieldBasedComparator;
 
@@ -32,9 +35,16 @@ public class FTestReport extends BaseClassComparisonReport {
         reportBeans = new ArrayList<FTestReportBean>();
 
         for (FTestResultEntry entry : ((FTestFinding)result).getResultEntries()) {
-            FTestReportBean bean = new FTestReportBean(entry, ((GeneBiomarker)((FTestFinding)taskResult)
-                    .getReporterAnnotationsMap().get(entry.getReporterId()))
-                    .getHugoGeneSymbol());
+            GeneBiomarker gene = null;
+            Collection genes = ((GeneExprReporter) ((FTestFinding)taskResult).getReporterAnnotationsMap()
+                    .get(entry.getReporterId())).getGeneBiomarkerCollection();
+            if(genes != null && genes.size() > 0) {
+                gene = (GeneBiomarker)genes.iterator().next();
+            }
+            String geneName = null;
+            if(gene != null)
+                geneName = gene.getHugoGeneSymbol();
+            FTestReportBean bean = new FTestReportBean(entry, geneName);
             reportBeans.add(bean);
         }
         

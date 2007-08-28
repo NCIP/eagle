@@ -99,8 +99,8 @@
 										<h:outputText value="Gene Symbol" />
 									</h:commandLink>
 								</f:facet>
-								<a href="#" onclick="spawnAnnotation('gene', '#{classComparisonReport.annotationMap[entry.reporterId].hugoGeneSymbol}');return false;">
-								<h:outputText value="#{classComparisonReport.annotationMap[entry.reporterId].hugoGeneSymbol}" />
+								<a href="#" onclick="spawnAnnotation('gene', '#{entry.geneSymbol}');return false;">
+								<h:outputText value="#{entry.geneSymbol}" />
 								</a>
 
 							</h:column>

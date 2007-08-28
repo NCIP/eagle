@@ -3,6 +3,9 @@ package gov.nih.nci.eagle.web.reports;
 import gov.nih.nci.caintegrator.analysis.messaging.GeneralizedLinearModelResultEntry;
 import gov.nih.nci.caintegrator.application.configuration.SpringContext;
 import gov.nih.nci.caintegrator.domain.annotation.gene.bean.GeneBiomarker;
+import gov.nih.nci.caintegrator.domain.annotation.gene.bean.GeneExprReporter;
+import gov.nih.nci.caintegrator.service.findings.ClassComparisonFinding;
+import gov.nih.nci.caintegrator.service.findings.FTestFinding;
 import gov.nih.nci.caintegrator.service.findings.GeneralizedLinearModelFinding;
 import gov.nih.nci.caintegrator.service.task.TaskResult;
 import gov.nih.nci.eagle.util.FieldBasedComparator;
@@ -33,9 +36,16 @@ public class GLMReport extends BaseClassComparisonReport {
         reportBeans = new ArrayList<GLMReportBean>();
 
         for (GeneralizedLinearModelResultEntry entry : ((GeneralizedLinearModelFinding)result).getResultEntries()) {
-            GLMReportBean bean = new GLMReportBean(entry, ((GeneBiomarker)((GeneralizedLinearModelFinding)result)
-                    .getReporterAnnotationsMap().get(entry.getReporterId()))
-                    .getHugoGeneSymbol());
+            GeneBiomarker gene = null;
+            Collection genes = ((GeneExprReporter) ((GeneralizedLinearModelFinding)taskResult).getReporterAnnotationsMap()
+                    .get(entry.getReporterId())).getGeneBiomarkerCollection();
+            if(genes != null && genes.size() > 0) {
+                gene = (GeneBiomarker)genes.iterator().next();
+            }
+            String geneName = null;
+            if(gene != null)
+                geneName = gene.getHugoGeneSymbol();
+            GLMReportBean bean = new GLMReportBean(entry, geneName);
             reportBeans.add(bean);
         }
 //        
