@@ -12,8 +12,8 @@ public class ChromosomeBrowserImpl implements ChromosomeBrowser {
 
     // private Integer chromosomeScale = 200000;
 
-    public Collection getDataForRegion(String chromosome, Long start, Long end) {
-        Collection<ExpressionValue> expressions = expressionService.getExpressionValuesForRegion(chromosome, start, end);
+    public List getDataForRegion(String chromosome, Long start, Long end) {
+        List<ExpressionValue> expressions = expressionService.getExpressionValuesForRegion(chromosome, start, end);
         return expressions;
     }
 
