@@ -117,7 +117,6 @@ public class ChromosomeBrowserStrategy extends AsynchronousFindingStrategy {
     private static Logger logger = Logger
             .getLogger(ChromosomeBrowserStrategy.class);
 
-    private Collection<SampleGroup> sampleGroups = new ArrayList<SampleGroup>();
     private CompoundAnalysisRequest analysisRequest = null;
     private AnalysisServerClientManager analysisServerClientManager;
     private Map<String, String> dataFileMap;
@@ -182,7 +181,8 @@ public class ChromosomeBrowserStrategy extends AsynchronousFindingStrategy {
             for (SpecimenType type : getQueryDTO().getSpecimenTypes()) {
                 ClassComparisonRequest req = createClassComparisonRequest(
                         getQueryDTO(), type);
-                analysisRequest.addRequest(req);
+                if(req != null)
+                    analysisRequest.addRequest(req);
             }
 
             analysisServerClientManager.sendRequest(analysisRequest);
@@ -243,6 +243,8 @@ public class ChromosomeBrowserStrategy extends AsynchronousFindingStrategy {
             classComparisonRequest.setGroup1(comparison);
             classComparisonRequest
                     .setDataFileName(dataFileMap.get(type.name()));
+            if(baseline.size() < 3 || comparison.size() < 3)
+                return null;
 
         }
 
