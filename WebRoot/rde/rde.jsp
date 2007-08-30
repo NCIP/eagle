@@ -33,14 +33,37 @@
 
    </script>  
 	<style>
-		.blood {
-			background-color:red;
+	#loadingHdr, .loadingHdr	{
+		opacity: .5;
+		filter: alpha(opacity=50);
+	}
+		.blood, .tissue, .cancer	{
+			/*
+				opacity: .5;
+				filter: alpha(opacity=50);
+			*/
+			border:0px;
 		}
-		.tissue {
-			background-color:green;
+		.blood, .Blood {
+color:red;
+			border-right: 2px solid red;
+			border-left: 2px solid red;
+			border-top: 2px solid red;
+			position:relative;
 		}
-		.cancer {
-			background-color:blue;
+		.tissue, .TissueNormal {
+			border-right: 2px solid green;
+			border-left: 2px solid green;
+			border-top: 2px solid green;
+			position:relative;
+			color:green;
+		}
+		.cancer, .TissueCancer {
+			border-right: 2px solid blue;
+			border-left: 2px solid blue;
+			border-top: 2px solid blue;
+			position:relative;
+			color:blue;
 		}
 	</style>
 </head>
