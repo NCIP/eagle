@@ -93,5 +93,10 @@
 		class="gov.nih.nci.eagle.web.struts.SnpAction" scope="prototype">	
 		<property name="presentationCacheManager" ref="presentationCacheManager" />
 	</bean>	
+	<bean name="/rde"
+		class="gov.nih.nci.eagle.web.struts.ChromosomeBrowserAction" scope="prototype">	
+		<property name="presentationCacheManager" ref="presentationCacheManager" />
+		<property name="findingsManager" ref="eagleFindingsManager" />
+	</bean>	
 	
 </beans>

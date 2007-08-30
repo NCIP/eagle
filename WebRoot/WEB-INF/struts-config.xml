@@ -194,7 +194,14 @@
     <forward name="success" path="/snpReport.jsf" redirect="true"/>
     <forward name="failure" path="/500.jsp"/>
     </action>            
-         
+     
+	<action path="/rde"
+    	 type="org.springframework.web.struts.DelegatingActionProxy"
+    	 parameter="method">
+    <forward name="success" path="/rde/rde.jsp" redirect="true"/>
+    <forward name="failure" path="/500.jsp"/>
+    </action>           
+      
  </action-mappings>
     
     <!-- ========== Controller Configuration =============================== -->
