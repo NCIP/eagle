@@ -8,16 +8,19 @@ import gov.nih.nci.caintegrator.application.lists.ListType;
 import gov.nih.nci.caintegrator.application.lists.UserList;
 import gov.nih.nci.caintegrator.application.lists.UserListBeanHelper;
 import gov.nih.nci.caintegrator.exceptions.FindingsQueryException;
-import gov.nih.nci.caintegrator.service.findings.CompoundClassComparisonFinding;
 import gov.nih.nci.caintegrator.service.task.Task;
 import gov.nih.nci.caintegrator.service.task.TaskResult;
 import gov.nih.nci.caintegrator.studyQueryService.FindingsManager;
 import gov.nih.nci.eagle.enumeration.SpecimenType;
+import gov.nih.nci.eagle.finding.SnpClassComparisonComboFinding;
 import gov.nih.nci.eagle.query.dto.ChromosomeBrowserQueryDTO;
+import gov.nih.nci.eagle.ui.rde.CategoricalDataSource;
+import gov.nih.nci.eagle.ui.rde.CgomCategoricalDataSource;
 import gov.nih.nci.eagle.ui.rde.CgomContinuousDataSource;
 import gov.nih.nci.eagle.ui.rde.ContinuousDataSource;
 import gov.nih.nci.eagle.util.CollisionDetector;
 import gov.nih.nci.eagle.web.ajax.ExpressionService;
+import gov.nih.nci.eagle.web.ajax.FeatureService;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -141,10 +144,15 @@ public class ChromosomeBrowserAction extends DispatchAction{
  
                 session.setAttribute("task", task);
                 TaskResult taskResult = findingsManager.getTaskResult(task);
-                ContinuousDataSource source = new CgomContinuousDataSource((CompoundClassComparisonFinding)taskResult);
+                
+                SnpClassComparisonComboFinding finding = (SnpClassComparisonComboFinding)taskResult;
+                ContinuousDataSource source = new CgomContinuousDataSource(finding);
                 ExpressionService service = (ExpressionService)SpringContext.getBean("expressionService");
                 service.setContinuousDataSource(source);
                 
+                CategoricalDataSource catSource = new CgomCategoricalDataSource(finding);
+                FeatureService featureService = (FeatureService)SpringContext.getBean("featureService");
+                featureService.setCategoricalDatasource(catSource);
             return (mapping.findForward("success"));
             
         }

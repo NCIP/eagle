@@ -19,20 +19,23 @@ import gov.nih.nci.caintegrator.service.findings.ClassComparisonFinding;
 import gov.nih.nci.caintegrator.service.findings.Finding;
 import gov.nih.nci.caintegrator.service.task.Task;
 import gov.nih.nci.caintegrator.service.task.TaskResult;
+import gov.nih.nci.caintegrator.studyQueryService.QueryHandler;
 import gov.nih.nci.caintegrator.util.ValidationUtility;
 import gov.nih.nci.eagle.enumeration.SpecimenType;
+import gov.nih.nci.eagle.finding.SnpClassComparisonComboFinding;
 import gov.nih.nci.eagle.query.dto.ChromosomeBrowserQueryDTO;
-import gov.nih.nci.eagle.query.dto.ClassComparisonQueryDTOImpl;
+import gov.nih.nci.eagle.query.dto.SnpQueryDTO;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.jms.JMSException;
 
 import org.apache.log4j.Logger;
+import org.springframework.core.task.TaskExecutor;
 
 /**
  * @author sahnih, harrismic, shinohaa
@@ -120,6 +123,8 @@ public class ChromosomeBrowserStrategy extends AsynchronousFindingStrategy {
     private CompoundAnalysisRequest analysisRequest = null;
     private AnalysisServerClientManager analysisServerClientManager;
     private Map<String, String> dataFileMap;
+    private QueryHandler snpQueryHandler;
+    protected TaskExecutor taskExecutor;
 
     public ChromosomeBrowserStrategy() {
 
@@ -161,12 +166,63 @@ public class ChromosomeBrowserStrategy extends AsynchronousFindingStrategy {
     @Override
     protected void executeStrategy() {
 
-        analysisRequest = new CompoundAnalysisRequest(taskResult.getTask()
-                .getCacheId(), taskResult.getTask().getId());
-
         businessCacheManager.addToSessionCache(getTaskResult().getTask()
                 .getCacheId(), getTaskResult().getTask().getId(),
                 getTaskResult());
+        analysisRequest = new CompoundAnalysisRequest(taskResult
+                .getTask().getCacheId(), taskResult.getTask().getId());
+        Runnable task = new Runnable() {
+            public void run() {
+                ChromosomeBrowserQueryDTO queryDTO = getQueryDTO();
+                HashMap<String, List> groupMap = queryDTO.getBaselineGroupMap();
+                HashMap<String, List> comparisonMap = queryDTO
+                        .getComparisonGroupsMap();
+                Set<String> baselineSet = new HashSet<String>();
+                Set<String> comparisonSet = new HashSet<String>();
+                for (String baselineName : groupMap.keySet()) {
+                    baselineSet.addAll(groupMap.get(baselineName));
+                }
+                for (String comparisonName : comparisonMap.keySet()) {
+                    comparisonSet.addAll(comparisonMap.get(comparisonName));
+                }
+
+                SnpQueryDTO dto = new SnpQueryDTO();
+                dto.setPatientIds(baselineSet);
+
+                List results = snpQueryHandler.getResults(dto);
+                ((SnpClassComparisonComboFinding) getTaskResult())
+                        .setBaselineGroupSnps(results);
+
+                dto = new SnpQueryDTO();
+                dto.setPatientIds(comparisonSet);
+                results = snpQueryHandler.getResults(dto);
+                ((SnpClassComparisonComboFinding) getTaskResult())
+                        .setComparisonGroupSnps(results);
+
+                analysisRequest = new CompoundAnalysisRequest(taskResult
+                        .getTask().getCacheId(), taskResult.getTask().getId());
+
+                businessCacheManager.addToSessionCache(getTaskResult()
+                        .getTask().getCacheId(), getTaskResult().getTask()
+                        .getId(), getTaskResult());
+                try {
+                    for (SpecimenType type : getQueryDTO().getSpecimenTypes()) {
+                        ClassComparisonRequest req = createClassComparisonRequest(
+                                getQueryDTO(), type);
+                        if (req != null)
+                            analysisRequest.addRequest(req);
+                    }
+
+                    analysisServerClientManager.sendRequest(analysisRequest);
+
+                } catch (JMSException e) {
+                    logger.error(e.getMessage());
+                } catch (Exception e) {
+                    logger.error("error analyzing", e);
+                }
+            }
+        };
+        taskExecutor.execute(task);
 
     }
 
@@ -177,25 +233,26 @@ public class ChromosomeBrowserStrategy extends AsynchronousFindingStrategy {
      */
     public boolean analyzeResultSet() throws FindingsAnalysisException {
 
-        try {
-            for (SpecimenType type : getQueryDTO().getSpecimenTypes()) {
-                ClassComparisonRequest req = createClassComparisonRequest(
-                        getQueryDTO(), type);
-                if(req != null)
-                    analysisRequest.addRequest(req);
-            }
-
-            analysisServerClientManager.sendRequest(analysisRequest);
-            return true;
-
-        } catch (JMSException e) {
-            logger.error(e.getMessage());
-            throw new FindingsAnalysisException(e.getMessage());
-        } catch (Exception e) {
-            logger.error("error analyzing", e);
-            throw new FindingsAnalysisException(
-                    "Error in setting ClassComparisonRequest object");
-        }
+//        try {
+//            for (SpecimenType type : getQueryDTO().getSpecimenTypes()) {
+//                ClassComparisonRequest req = createClassComparisonRequest(
+//                        getQueryDTO(), type);
+//                if (req != null)
+//                    analysisRequest.addRequest(req);
+//            }
+//
+//            analysisServerClientManager.sendRequest(analysisRequest);
+//            return true;
+//
+//        } catch (JMSException e) {
+//            logger.error(e.getMessage());
+//            throw new FindingsAnalysisException(e.getMessage());
+//        } catch (Exception e) {
+//            logger.error("error analyzing", e);
+//            throw new FindingsAnalysisException(
+//                    "Error in setting ClassComparisonRequest object");
+//        }
+        return true;
     }
 
     private ClassComparisonRequest createClassComparisonRequest(
@@ -243,7 +300,7 @@ public class ChromosomeBrowserStrategy extends AsynchronousFindingStrategy {
             classComparisonRequest.setGroup1(comparison);
             classComparisonRequest
                     .setDataFileName(dataFileMap.get(type.name()));
-            if(baseline.size() < 3 || comparison.size() < 3)
+            if (baseline.size() < 3 || comparison.size() < 3)
                 return null;
 
         }
@@ -349,6 +406,22 @@ public class ChromosomeBrowserStrategy extends AsynchronousFindingStrategy {
 
     public void setDataFileMap(Map dataFileMap) {
         this.dataFileMap = dataFileMap;
+    }
+
+    public QueryHandler getSnpQueryHandler() {
+        return snpQueryHandler;
+    }
+
+    public void setSnpQueryHandler(QueryHandler snpQueryHandler) {
+        this.snpQueryHandler = snpQueryHandler;
+    }
+
+    public TaskExecutor getTaskExecutor() {
+        return taskExecutor;
+    }
+
+    public void setTaskExecutor(TaskExecutor taskExecutor) {
+        this.taskExecutor = taskExecutor;
     }
 
 }

@@ -31,4 +31,16 @@ public class Feature {
     public void setType(String type) {
         this.type = type;
     }
+    
+    @Override
+    public boolean equals(Object obj) {
+        Feature f = (Feature)obj;
+        if(!chromosome.equals(f.getChromosome()))
+            return false;
+        if(!featureId.equals(f.getFeatureId()))
+            return false;
+        if(!physicalLocation.equals(f.getPhysicalLocation()))
+            return false;
+        return (type.equals(f.getType()));
+    }
 }

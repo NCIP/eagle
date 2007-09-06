@@ -25,7 +25,7 @@ public class SnpQueryHandler implements QueryHandler {
         criteria.createAlias("specimen", "sp");
         criteria.createAlias("specimen.studyParticipant", "patient");
         criteria.createAlias("snpAnnotation", "snp");
-        criteria.createCriteria("specimen.studyParticipant.epidemiologicalFinding", "finding").setFetchMode("relativeCollection", FetchMode.JOIN);
+        //criteria.createCriteria("specimen.studyParticipant.epidemiologicalFinding", "finding").setFetchMode("relativeCollection", FetchMode.JOIN);
         
         SnpQueryDTO dto = (SnpQueryDTO)query;
         
