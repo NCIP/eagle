@@ -13,12 +13,15 @@ High Order Analysis
 	    Perform Class Comparisons using F-TEST, T-TEST, ANOVA, or GLM on saved patient lists.
 	     </div>
 	</div>
+<% /*
 	<div style="padding:10px; width:90%;">
 		<a href="chromosomeBrowserInit.do?method=setup">Chromosome Browser Query</a><br/>
 		<div style="font-size:9px;">
 	    	Query the Chromosome Browser
 	    </div>
-	</div>	
+	</div>
+*/
+%>	
 <br/><br/><br/>
 </div>
 
