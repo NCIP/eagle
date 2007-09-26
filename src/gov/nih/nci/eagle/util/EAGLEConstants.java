@@ -10,7 +10,7 @@ public final class EAGLEConstants {
     public static final int BM_BLAST_COLUMNS = 4;
     public static final String  APPLICATION_RESOURCES = "ApplicationResources"; //test
 
-    public static String appVersion = "0.3";
+    public static String appVersion = "0.4";
 
     public static String getCSMAppName()	{
 		String appname = System.getProperty("gov.nih.nci.eagle.csm_app_name") != null ? (String) System.getProperty("gov.nih.nci.eagle.csm_app_name") : "eagle";
