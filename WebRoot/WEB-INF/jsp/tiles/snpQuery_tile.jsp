@@ -11,7 +11,29 @@
 <script type="text/javascript" src="js/lib/scriptaculous/effects.js"></script>
 <script type="text/javascript" src="js/lib/scriptaculous/controls.js"></script>
 <script type="text/javascript" src="js/autocomplete.js"></script>
-<html:form action="snpQuery.do?method=submit">
+
+<script type="text/javascript">
+ var SNPForm = {
+ 	validate: function(fromwhere)	{
+ 		var msg = "All fields are required.  Please fill in each field.";
+ 		
+ 		if($('queryName').value == "" || $('snp').value == "")	{
+ 			alert(msg);
+ 			return false;
+ 		}
+ 		
+ 		if(fromwhere == 'enter')	{
+			return true;
+		}
+		else	{
+			document.forms[0].submit();
+		}
+ 	}
+ 
+ 
+ }
+</script>
+<html:form action="snpQuery.do?method=submit" onsubmit="return SNPForm.validate('enter'); ">
 
 	<html:errors property="queryErrors" />
 
@@ -44,7 +66,7 @@
 		</div>
 		
 		<div style="text-align:center">
-			<input type="button" value="Submit Query" onclick="submit()"/>
+			<input type="button" value="Submit Query"  onclick="return SNPForm.validate(); " />
 		</div>
 	</div>
 	</p>
