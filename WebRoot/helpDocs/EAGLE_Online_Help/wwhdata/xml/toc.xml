@@ -20,39 +20,41 @@
   <i t="Advanced Search" l="14">
     <i t="Advanced Search Overview" l="15" />
     <i t="Performing an Epidemiology (EPI) Query" l="16" />
+    <i t="Performing an SNP Query" l="17" />
   </i>
-  <i t="Analysis" l="17">
-    <i t="Analysis Overview" l="18" />
-    <i t="Performing a Class Comparison" l="19">
-      <i t="F-test: One Way ANOVA Details" l="20" />
-      <i t="GLM or Generalized Linear Model Details" l="21" />
-      <i t="ANOVA Details" l="22" />
+  <i t="Analysis" l="18">
+    <i t="Analysis Overview" l="19" />
+    <i t="Performing a Class Comparison" l="20">
+      <i t="F-test: One Way ANOVA Details" l="21" />
+      <i t="GLM or Generalized Linear Model Details" l="22" />
+      <i t="ANOVA Details" l="23" />
     </i>
   </i>
-  <i t="Managing Lists" l="23">
-    <i t="Managing Lists Overview" l="24" />
-    <i t="Adding New Lists" l="25">
-      <i t="Combining Existing Lists to Create a New List" l="26" />
+  <i t="Managing Lists" l="24">
+    <i t="Managing Lists Overview" l="25" />
+    <i t="Adding New Lists" l="26">
+      <i t="Combining Existing Lists to Create a New List" l="27" />
     </i>
-    <i t="Viewing the Data Items in a List" l="27" />
-    <i t="Removing Data Items" l="28" />
-    <i t="Deleting an Entire List" l="29" />
-    <i t="Exporting a List" l="30" />
-    <i t="Filtering a List (Blood, Tissue Normal, Tissue Cancer)" l="31" />
+    <i t="Viewing the Data Items in a List" l="28" />
+    <i t="Removing Data Items" l="29" />
+    <i t="Deleting an Entire List" l="30" />
+    <i t="Exporting a List" l="31" />
+    <i t="Filtering a List (Blood, Tissue Normal, Tissue Cancer)" l="32" />
   </i>
-  <i t="Viewing Results" l="32">
-    <i t="View Results Overview" l="33" />
-    <i t="Epidemiology (EPI) Query Report" l="34">
-      <i t="Filtering the EPI Report" l="35" />
-      <i t="Saving Samples to a PatientDID List (EPI Report)" l="36" />
+  <i t="Viewing Results" l="33">
+    <i t="View Results Overview" l="34" />
+    <i t="Epidemiology (EPI) Query Report" l="35">
+      <i t="Filtering the EPI Report" l="36" />
+      <i t="Saving Samples to a PatientDID List (EPI Report)" l="37" />
     </i>
-    <i t="Class Comparison Report" l="37">
-      <i t="Resorting Column Results" l="38" />
-      <i t="Showing Additional Information" l="39" />
-      <i t="Downloading a Report" l="40" />
-      <i t="Paging Through a Report" l="41" />
-      <i t="Displaying Comparison Groups" l="42" />
+    <i t="SNP Query Report" l="38" />
+    <i t="Class Comparison Report" l="39">
+      <i t="Resorting Column Results" l="40" />
+      <i t="Showing Additional Information" l="41" />
+      <i t="Downloading a Report" l="42" />
+      <i t="Paging Through a Report" l="43" />
+      <i t="Displaying Comparison Groups" l="44" />
     </i>
   </i>
-  <i t="Glossary" l="43" />
+  <i t="Glossary" l="45" />
 </WebWorksHelpTOC>

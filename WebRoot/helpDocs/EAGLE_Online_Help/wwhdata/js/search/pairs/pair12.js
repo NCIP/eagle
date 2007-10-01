@@ -1,7 +1,6 @@
 function FileData_Pairs(x)
 {
 x.t("email","please");
-x.t("available","monday");
 x.t("toll","free:");
 x.t("contact","information");
 x.t("contact","ncicb");
@@ -9,9 +8,9 @@ x.t("telephone","support");
 x.t("telephone","number.");
 x.t("description","problem");
 x.t("http://ncicb.nci.nih.gov/ncicb/support","telephone:");
-x.t("support","available");
 x.t("support","getting");
 x.t("support","url");
+x.t("support","available:");
 x.t("support","report");
 x.t("support","requests");
 x.t("support","application");
@@ -32,6 +31,7 @@ x.t("friday","eastern");
 x.t("started","eagle");
 x.t("recreate","it.");
 x.t("error","messages");
+x.t("available:","monday");
 x.t("messages","received");
 x.t("free:","888-478-4423");
 x.t("eagle","application");

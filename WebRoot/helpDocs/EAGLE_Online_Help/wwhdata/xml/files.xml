@@ -55,6 +55,7 @@
     <Document title="Advanced Search" href="Eagle_Adv_Search.5.1.html" />
     <Document title="Advanced Search Overview" href="Eagle_Adv_Search.5.2.html" />
     <Document title="Performing an Epidemiology (EPI) Query" href="Eagle_Adv_Search.5.3.html" />
+    <Document title="Performing an SNP Query" href="Eagle_Adv_Search.5.4.html" />
     <Document title="Analysis" href="Eagle_High_Order_Analysis.6.1.html" />
     <Document title="Analysis Overview" href="Eagle_High_Order_Analysis.6.2.html" />
     <Document title="Performing a Class Comparison" href="Eagle_High_Order_Analysis.6.3.html" />
@@ -75,18 +76,19 @@
     <Document title="Epidemiology (EPI) Query Report" href="Eagle_View%20Results.8.3.html" />
     <Document title="Filtering the EPI Report" href="Eagle_View%20Results.8.4.html" />
     <Document title="Saving Samples to a PatientDID List (EPI Report)" href="Eagle_View%20Results.8.5.html" />
-    <Document title="Class Comparison Report" href="Eagle_View%20Results.8.6.html" />
-    <Document title="Resorting Column Results" href="Eagle_View%20Results.8.7.html" />
-    <Document title="Showing Additional Information" href="Eagle_View%20Results.8.8.html" />
-    <Document title="Downloading a Report" href="Eagle_View%20Results.8.9.html" />
-    <Document title="Paging Through a Report" href="Eagle_View%20Results.8.10.html" />
-    <Document title="Displaying Comparison Groups" href="Eagle_View%20Results.8.11.html" />
+    <Document title="SNP Query Report" href="Eagle_View%20Results.8.6.html" />
+    <Document title="Class Comparison Report" href="Eagle_View%20Results.8.7.html" />
+    <Document title="Resorting Column Results" href="Eagle_View%20Results.8.8.html" />
+    <Document title="Showing Additional Information" href="Eagle_View%20Results.8.9.html" />
+    <Document title="Downloading a Report" href="Eagle_View%20Results.8.10.html" />
+    <Document title="Paging Through a Report" href="Eagle_View%20Results.8.11.html" />
+    <Document title="Displaying Comparison Groups" href="Eagle_View%20Results.8.12.html" />
     <Document title="Glossary" href="Eagle_Glossary.9.1.html" />
   </DocumentInfo>
   <TopicMap>
     <Topic name="Welcome" href="Welcome.1.1.html#1052621" />
-    <Topic name="opening_page" href="Eagle_Getting_Started.4.3.html#1116016" />
-    <Topic name="Rules_of_the_road" href="Eagle_Getting_Started.4.5.html#1125223" />
+    <Topic name="opening_page" href="Eagle_Getting_Started.4.3.html#1135316" />
+    <Topic name="Rules_of_the_road" href="Eagle_Getting_Started.4.5.html#1130619" />
     <Topic name="Workspace" href="Eagle_Getting_Started.4.6.html#1124032" />
     <Topic name="AdvancedSearch_overview" href="Eagle_Adv_Search.5.2.html#1067499" />
     <Topic name="EPI_query" href="Eagle_Adv_Search.5.3.html#1106192" />
@@ -95,11 +97,13 @@
     <Topic name="EPI_query_patientchars_tooltip" href="Eagle_Adv_Search.5.3.html#1108377" />
     <Topic name="EPI_query_behaviorial_tooltip" href="Eagle_Adv_Search.5.3.html#1108429" />
     <Topic name="EPI_query_familyhistory_tooltip" href="Eagle_Adv_Search.5.3.html#1108442" />
+    <Topic name="SNP_query" href="Eagle_Adv_Search.5.4.html#1108702" />
     <Topic name="Analysis_overview" href="Eagle_High_Order_Analysis.6.2.html#1067499" />
     <Topic name="Class_comparison" href="Eagle_High_Order_Analysis.6.3.html#1092908" />
     <Topic name="Manage_lists_overview" href="Eagle_Manage_Lists.7.2.html#1096151" />
     <Topic name="View_results_overview" href="Eagle_View%20Results.8.2.html#1067499" />
-    <Topic name="EPI_query_report" href="Eagle_View%20Results.8.3.html#1127665" />
-    <Topic name="Class_comparison_report" href="Eagle_View%20Results.8.6.html#1132631" />
+    <Topic name="EPI_query_report" href="Eagle_View%20Results.8.3.html#1136662" />
+    <Topic name="SNP_query_report" href="Eagle_View%20Results.8.6.html#1132631" />
+    <Topic name="Class_comparison_report" href="Eagle_View%20Results.8.7.html#1136675" />
   </TopicMap>
 </WebWorksHelpBook>

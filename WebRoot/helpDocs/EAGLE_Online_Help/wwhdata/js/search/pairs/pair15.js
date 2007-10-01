@@ -1,13 +1,17 @@
 function FileData_Pairs(x)
 {
+x.t("(snp)","query");
 x.t("type","heading");
 x.t("advanced","search");
 x.t("link","start");
 x.t("start","defining");
+x.t("single","nucleotide");
+x.t("snp","query");
 x.t("results","overview");
 x.t("results","review");
 x.t("results","page");
 x.t("overview","advanced");
+x.t("nucleotide","polymorphisms");
 x.t("enables","define");
 x.t("search","type");
 x.t("search","advanced");
@@ -21,11 +25,14 @@ x.t("(epi)","query");
 x.t("select","advanced");
 x.t("define","queries");
 x.t("heading","click");
+x.t("performing","snp");
 x.t("performing","epidemiology");
 x.t("click","link");
+x.t("polymorphisms","(snp)");
 x.t("view","results");
 x.t("page","enables");
 x.t("page","view");
+x.t("query","single");
 x.t("query","advanced");
 x.t("query","performing");
 x.t("epidemiology","(epi)");

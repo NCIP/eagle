@@ -3,6 +3,7 @@ function FileData_Pairs(x)
 x.t("describes","perform");
 x.t("advanced","search");
 x.t("advanced","query");
+x.t("snp","query");
 x.t("overview","performing");
 x.t("include:","advanced");
 x.t("perform","advanced");
@@ -14,8 +15,10 @@ x.t("eagle","data.");
 x.t("section","describes");
 x.t("section","include:");
 x.t("data.","topics");
+x.t("performing","snp");
 x.t("performing","epidemiology");
 x.t("query","eagle");
+x.t("query","performing");
 x.t("epidemiology","(epi)");
 x.t("topics","section");
 }
