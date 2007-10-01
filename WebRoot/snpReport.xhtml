@@ -14,6 +14,7 @@
 		<ui:include src="/WEB-INF/facelets/reportHeader.xhtml" />	
 		<script type="text/javascript"
 			src="dwrspring/interface/FeatureService.js"></script>
+		<script type="text/javascript" src="js/Help.js"></script>
 		<script type="text/javascript" src="dwrspring/util.js"></script>
 		<script type="text/javascript" src="dwrspring/engine.js"></script>
 		<script type="text/javascript">
@@ -70,8 +71,11 @@
 			
 		</script>
 
-	<div id="reportDiv">
-		<table id="snpTable"></table>
-	</div>
+		<span id="helpC" style="float:right"></span>
+		<script type="text/javascript">try { Help.insertHelpInto("SNP_query_report");}catch(e){}</script>
+
+		<div id="reportDiv">
+			<table id="snpTable"></table>
+		</div>
 	</body>
 </html>
