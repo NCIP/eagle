@@ -17,6 +17,7 @@
 		<script type="text/javascript" src="js/Help.js"></script>
 		<script type="text/javascript" src="dwrspring/util.js"></script>
 		<script type="text/javascript" src="dwrspring/engine.js"></script>
+		
 		<script type="text/javascript">
 			Event.observe(window, 'load', pageInit, false);
 			
@@ -24,6 +25,7 @@
 				FeatureService.getSnpCallReport(loadTable)
 			}
 			function loadTable(snpMap) {
+
 				//console.log(snpMap);
 				var table = $('snpTable');
 				
@@ -40,33 +42,47 @@
 				var snpHash = new Hash(snpMap);
 				snpHash.remove("groupName");
 				snpHash.remove("snpId");
-				
-				/*
-				for(var prop in snpMap) {
+				if(snpHash.keys().length == 0)	{
 					var th = document.createElement("th");
-					th.innerHTML = prop;
+					th.innerHTML = "No Results";
 					hr.appendChild(th);
 					
 					var td = document.createElement("td");
-					td.innerHTML = snpMap[prop];
+					td.innerHTML = "No results for this SNP";
 					dr.appendChild(td);
-					
-    			}*/
-    			snpHash.each(function(pair)	{
-    				pair.key
-    				pair.value
-    				var th = document.createElement("th");
-					th.innerHTML = pair.key;
-					hr.appendChild(th);
-					
-					var td = document.createElement("td");
-					td.innerHTML = pair.value;
-					dr.appendChild(td);
-					
-    			});
+				}
+				else	{
+					/*
+					for(var prop in snpMap) {
+						var th = document.createElement("th");
+						th.innerHTML = prop;
+						hr.appendChild(th);
+						
+						var td = document.createElement("td");
+						td.innerHTML = snpMap[prop];
+						dr.appendChild(td);
+						
+	    			}*/
+	    			
+	    			snpHash.each(function(pair)	{
+	    			//	pair.key
+	    			//	pair.value
+	    				var th = document.createElement("th");
+						th.innerHTML = pair.key;
+						hr.appendChild(th);
+						
+						var td = document.createElement("td");
+						td.innerHTML = pair.value;
+						dr.appendChild(td);
+						
+	    			});
+    			}
     			
-    			table.appendChild(hr);
-    			table.appendChild(dr);
+    			//IE wont build a table w/o a tbody
+    			var tbody = document.createElement("tbody");
+    			tbody.appendChild(hr);
+    			tbody.appendChild(dr);
+    			table.appendChild(tbody);
 			}
 			
 		</script>
