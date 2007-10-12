@@ -12,12 +12,9 @@ x.t("started","eagle");
 x.t("eagle","logging");
 x.t("eagle","workspace");
 x.t("eagle","follow");
-x.t("eagle\u2019s","opening");
 x.t("workspace","click");
-x.t("corner.","eagle\u2019s");
 x.t("follow","steps.");
 x.t("click","logout");
-x.t("opening","page");
 x.t("logout","link");
 x.t("log","eagle");
 }
