@@ -13,7 +13,12 @@ public class GLMReportBean implements ReportBean {
     
     public GLMReportBean(GeneralizedLinearModelResultEntry entry, String geneSymbol) {
         this.entry = entry;
-        this.geneSymbol = geneSymbol;
+        if(geneSymbol==null)	{
+        	this.geneSymbol = "";
+        }
+        else	{
+        	this.geneSymbol = geneSymbol;
+        }
     }
     
     public String getReporterId() {
