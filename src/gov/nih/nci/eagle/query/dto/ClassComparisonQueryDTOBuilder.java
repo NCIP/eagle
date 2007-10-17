@@ -71,7 +71,7 @@ public class ClassComparisonQueryDTOBuilder implements QueryDTOBuilder{
 		ClassComparisonQueryDTOImpl  classComparisondto = new ClassComparisonQueryDTOImpl();
 		
 		//set taskId/analysis name
-        if(classComparisonForm.getAnalysisName().trim().length()>1){
+        if(classComparisonForm.getAnalysisName().trim().length()>0){
         	classComparisondto.setQueryName(classComparisonForm.getAnalysisName());
         }
         
