@@ -1,0 +1,79 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Selenium_EAGLE_TC5</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Selenium_EAGLE_TC5</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/eagle/welcome.do</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Analysis</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Class Comparison Analysis</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>analysisName</td>
+	<td>NAK500</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>statisticalMethod</td>
+	<td>label=Generalized Linear Model with/without covariate adjustment</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>document.classComparisonForm.selectedCovariates[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=genomic_control</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='Base&gt;&gt;']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=genomic_gender_males</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=genomic_case</td>
+</tr>
+<tr>
+	<td>removeSelection</td>
+	<td>nonselectedGroups</td>
+	<td>label=genomic_gender_males</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//input[@value='&gt;&gt;']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Submit Analysis']</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
