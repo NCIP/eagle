@@ -1,3 +1,10 @@
+/*L
+ *  Copyright SAIC
+ *
+ *  Distributed under the OSI-approved BSD 3-Clause License.
+ *  See http://ncip.github.com/eagle/LICENSE.txt for details.
+ */
+
 /**
 	This is a simple class that can load, save, and remove 
 	files from the native file system. It is needed by Safari and Opera
