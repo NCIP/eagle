@@ -1,0 +1,210 @@
+EAGLE
+Copyright (c) 2001, SAIC
+
+This project is distributed under the BSD 3-Clause License.
+Please see LICENSE file for details.
+
+This project was developed as part of the NCI caBIG initiative.
+
+The project was initially developed by SAIC under funding from the CBIIT office of the National Cancer Institute.
+
+In 2013, as part of the National Cancer Informatics Program (NCIP) Open Development Initiative, 
+the EAGLE source code was migrated to GitHub to allow further development by the broader community.
+
+This project includes as sub-components other projects that are copyrighted by third parties and that distributed under various licenses. Please find a summary in the list below:
+
+1) unittest.js, sound.js, scriptaculous.js, effects.js, dragdrop.js, controls.js, builder.js
+   Copyright Thomas Fuchs
+   Distributed under
+2) slider.js 
+   Copyright Marty Haught, Thomas Fuchs
+   Distributed under
+3) wwhelp (generated code)
+   Copyright by Quadralay Corporation
+   Distributed under BSD 3-Clause License
+4) Dojo component
+   Copyright by The Dojo Foundation
+   Distributed under BSD 3-Clause License
+5) event-selectors.js
+   Copyright by Justin Palmer
+   Distributed under BSD 3-Clause License
+6) jquery.js
+   Copyright by John Resig (jquery.com)
+   Distributed under MIT License
+7) jslog.js   
+   Copyright by  Andre Lewis
+   Distributed under MIT License
+8) niftycube.js
+   Copyright by  Alessandro Fulciniti
+   Distributed under GNU Public License
+9) tabber.js
+   Copyright by  Patrick Fitzgerald
+   Distributed under BSD 3-Clause License
+10)wz_jsgraphics.js
+   Copyright by Walter Zorn
+   Distributed under LGPL License
+
+
+==================== Copyright notice by Marty Haught, Thomas Fuchs =========================
+
+// Copyright (c) 2005 Marty Haught, Thomas Fuchs
+//
+// See http://script.aculo.us for more info
+//
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  
+
+==================== Copyright notice by Thomas Fuchs =========================
+   
+// Copyright (c) 2005 Thomas Fuchs (http://script.aculo.us, http://mir.aculo.us)
+//
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+==================== Copyright notice by Justin Palmer =========================
+
+
+// EventSelectors
+// Copyright (c) 2005-2006 Justin Palmer (http://encytemedia.com)
+// Examples and documentation (http://encytemedia.com/event-selectors)
+//
+// EventSelectors allow you access to Javascript events using a CSS style syntax.
+// It goes one step beyond Javascript events to also give you :loaded, which allows
+// you to wait until an item is loaded in the document before you begin to interact
+// with it.
+//
+// Inspired by the work of Ben Nolan's Behaviour (http://bennolan.com/behaviour)
+//
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+
+==================== Copyright notice by Andre Lewis =========================
+
+
+Copyright (c) 2005, Andre Lewis, andre@earthcode.com
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided
+that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+    * Neither the name of "Andre Lewis" nor the names of contributors to this software may be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
+IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+==================== Copyright notice by Alessandro Fulciniti =========================
+
+
+/* Nifty Corners Cube - rounded corners with CSS and Javascript
+Copyright 2006 Alessandro Fulciniti (a.fulciniti@html.it)
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+*/
+
+==================== Copyright notice by Walter Zorn =========================
+
+Copyright (c) 2002-2004 Walter Zorn. All rights reserved.
+Created 3. 11. 2002 by Walter Zorn (Web: http://www.walterzorn.com )
+Last modified: 1. 6. 2007
+
+Performance optimizations for Internet Explorer
+by Thomas Frank and John Holdsworth.
+fillPolygon method implemented by Matthieu Haller.
+
+High Performance JavaScript Graphics Library.
+Provides methods
+- to draw lines, rectangles, ellipses, polygons
+        with specifiable line thickness,
+- to fill rectangles, polygons, ellipses and arcs
+- to draw text.
+NOTE: Operations, functions and branching have rather been optimized
+to efficiency and speed than to shortness of source code.
+
+LICENSE: LGPL
+
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License (LGPL) as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA,
+or see http://www.gnu.org/copyleft/lesser.html
+*/
