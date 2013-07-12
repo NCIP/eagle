@@ -10,6 +10,6 @@ Please see the NOTICE and LICENSE files for details.
 
 You will find more details about the EAGLE in the following links:
  * [Code Repository] (https://github.com/NCIP/eagle)
- * [EAGLE portal] (http://eagle.cancer.gov)
+ * [EAGLE web site] (http://eagle.cancer.gov)
 
 Please join us in further developing and improving EAGLE.
