@@ -1,7 +1,7 @@
 Welcome to the EAGLE Project!
 =====================================
 
-Environment And Genetics in Lung cancer Etiology (EAGLE) portal was developed to support query and analysis of expression microarry, and clinical/epidemiology data.
+Environment And Genetics in Lung cancer Etiology (EAGLE) data portal was developed to support query and analysis of expression microarry, and clinical/epidemiology data.
 
 The EAGLE is an Open Source project and it is written in Java using Spring Framework, Hibernate, JSF, Apache Commons, caCORE CSM, caCORE CLM and Struts.
 
